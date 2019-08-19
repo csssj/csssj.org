@@ -1,7 +1,11 @@
 # It turns out that DreamHost's Apache is already configured to deny
 # dotfile access, so we don't have to go to any extra measures here.
-# Handy.
+# Handy. But we do need to block access to the README.
 
+<Files README.md>
+Order Allow,Deny
+Deny from all
+</Files>
 
 # Redirect errors of various kinds to our own handler pages.
 
