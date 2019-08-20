@@ -1,0 +1,224 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/2/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/2/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "2";
+var thisyear = "2008";
+var nextmonth = "April";
+var nextday = "12-13";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("March 2008","2, Sunday - 10:30am to 12:00pm","Board Meeting.","2, Sunday - 12:30pm to 3:00pm","Peder Samuelsen - Cacti of Patagonia","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2008","12-13, Sat - 9:00am to 5:00 pm &amp; Sun - 10:00am to 4:00pm","39<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2008","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2008","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","Tour of Stanford's Arizona Garden","","");
+
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2007","15-16, Sat - Sun - 9:00am to 5:00pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>It will be held at the Jardins de San Juan restaurant.<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><font size="-1"><B> Note the change in the dates for the Spring Show and Sale </B></font></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Peder Samuelsen - Cacti of Patagonia</B><br>
+<br>
+<P>
+Peder Samuelsen will be making a presentation on the cacti of Patagonia, Argentina.  Several of our society members accompanied Mr. Samuelsen on this tour.  Although there are not as many cacti and succulents to see as you would see in northern Argentina, the scenery is magnificent and there were some cacti.
+</P>
+<br><br>
+<P>
+<font size="+1"><B>Plants of the Month for March:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Brazil (<I>Trichocereus, Micranthocereus, Arrojadoa</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter blooming <I>crassulaceae</I></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or it turned out different than you thought</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Melocactus</I> or <I>Echeveria</I></td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with G through M should bring a snack for the March meeting.</font></B>
+</P>
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez'","Linda Delgado","When I think about the times in my life that I have been happiest, they usually involve family, friends and nature.  And to be totally honest: food.</P><P>Friends and family can be the same thing sometimes.  I have a large family, but there is always room for more.  I have friends that my kids call aunt or uncle.  One of my best friends is one of my sisters.  And my best friend is like a sister to me.  Many members of our club seem like family.  They can make you crazy, and they can bring you great joy.  But when one member has a tough time of it, we all try to pull together.</P><P>Nature can be overwhelmingly complex or simple and uncomplicated.  And I find them all fascinating.   Anyone that has seen the Grand Canyon, Niagra Falls, or the Northern Lights can understand what I mean by overwhelming.  What about a hummingbird, newborn baby, or a plant in bloom?  They are all pretty powerful!  Have you ever looked down and seen a rock that seemed so unusual that you had to put it in your pocket and take it home?  Have you ever seen something that moved you so much that you couldn’t even find the words to describe it?  Have you ever been struck with the humor of seeing all of your friends stooped over and looking at a plant the size of a quarter as though they had just seen the promised land?</P><P>Coming together with friends once a month, calling or visiting when you just can’t wait until the next meeting, and grieving when one is lost to us: these are the things that make us family.  Sharing, participation, and consideration are all a part of it.  But, let’s not forget the food.");
+
+fmart ("Guadalupe River Park Succulent Garden","Tony Bassano","<center><TABLE><tr><td valign='top'><img src='csssjcactusgarden071121a.jpg' width=320 height=239 hspace=23></td><td valign='top'><br><img src='csssjcactusgarden071121e.jpg' width=320 height=239></td></tr></TABLE><br>November 21, 2007</center>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td><img src='echinocereus ferreirianus sb1268a.jpg' width=320 height=280 hspace=16 vspace=0 align='left'><br>Central Baja California is the habitat area for this wonderful plant.  I know that it is not in demand as its variety <I>lindsayi</I>, but <I>Echinocereus ferreirianus</I> is just as beautiful. There is very little difference in flower color, this plant has a bit larger flower. The plant body is cylindrical as compared to <I>lindsayi</I>.  <I>E.ferreirianu</I>s can get to 9 cm in diameter and to 30 to 40 cm tall.  My three plants have several heads, but they do not make large clumps.  The flower is up to 10 cm across.  The dark central spines give the plant a good amount of protection as they can grow up to 10 cm long.  I have been growing this plant in an unheated hot house for years, and as long as it is dry the cold does not seem to bother it.</td></tr><tr><td><img src='echinocereus ferreirianus sb1268.jpg' width=320 height=280 hspace=16 vspace=0 align='right'><br><br>Not to say that <I>E. ferreirianus</I> is hard to bloom, but I have been waiting for some years for it to bloom again.  I say 'again' for they bloomed after getting to blooming size about 12 years ago and then stopped.  Three years ago, I repotted them and finally they have bloomed again.  This is one plant that I have never seen for sale by anyone.  I grew my plants from seed I bought from Mesa Garden many years ago.</td></tr></TABLE>");
+
+fmart ("Success of the SHOW and SALE depends on you!","Tony Bassano","Yes!  This is a great opportunity for you to show a well-grown plant and share your enthusiasm.  Success of this Show and Sale is dependent on you bringing in plants to share and show with the hundreds of people who bring their families and friends to see and learn about cacti and succulents.  So please, support the Cactus and Succulent Society of San Jose in this effort.");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

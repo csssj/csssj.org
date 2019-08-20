@@ -1,0 +1,366 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 9/9/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 9/9/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "September";
+var thisday = "9";
+var thisyear = "2018";
+var nextmonth = "September";
+var nextday = "22-23";
+var nextyear = "2018";
+var deadline = "September 14, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>"); 
+
+fmcal ("September 2018","9, Sunday - 10:30am to 12:00pm","Board Meeting","9, Sunday - 12:30pm to 3:00pm","Superb Succulents and Preparing for the Upcoming People’s Choice Show","22-23, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm","13th Annual Fall Show &amp; Sale");
+
+document.write("<br><br>");
+
+fmcal ("October 2018","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2018","1, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Superb Succulents and Preparing for the Upcoming People’s Choice Show</B>
+</P>
+<P>
+Some of the most wonderful and spectacular plants can be seen at our shows.  These are the plants that make the show special and that draw people in.  And in many cases, they are the reason we became interested in the world of succulents.
+</P>
+<P>
+September’s program will feature photographs of many of the superb succulents from our club’s shows, as well as highlights of other shows that most members may not have the opportunity to enjoy, such Sacramento, Fresno, and the CSSA show at the Huntington. We will showcase a wide variety of superb succulents in a wide variety of genera and discuss what makes them so special. We will also focus on our upcoming show, and how you can get YOUR special plant ready to dazzle. 
+</P>
+<P>
+Former Show Chair Jaan Lepson will discuss the People’s Choice in general and this year’s prize categories in particular, highlighting previous winners. He will show examples that won and some that did not, and discuss possible reasons why. Our resident artist Kathi Cambiano and Sales Chair Peter Beiersdorfer will demonstrate potting up plants for the show and how to make them appealing to a wide audience. Props are allowed!
+</P>
+<P>
+In addition, Peter and Jaan will bring in plants for sale, many of which are not the “cookie-cutter” cacti and succulents most often seen at the sales.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grey Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grey Succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants for the Peoples Choice Show at the Fall Show and Sale (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Cactus or Succulent in Bloom</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through G should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Photographs from this Month's Presentation","","Jaan Lepson","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('austrocylindropuntiasubulatafacristata.jpg',720,1000)><img src='austrocylindropuntiasubulatafacristata.jpg' width=288 height=400 hspace=27 vspace=17 class='enl'></a></td><td valign='top' align='center'><a href=javascript:poppic('crassularupestrisvmarnierianum.jpg',1015,630)><img src='crassularupestrisvmarnierianum.jpg' width=406 height=252 hspace=27 vspace=67 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Sunshine Report","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Past President Bill Kurtz has just celebrated his 90th birthday!  Bill continues to enjoy reading about the club people and activities in our newsletter.  Happy Birthday Bill!</P><P>Linda Delgado’s mom just passed away.  Linda is Past President and current Secretary.  Linda has spent a great deal of time during the last year caring for her mother during her final illness.  Sorry for your loss Linda!</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Our August meeting was the club’s ever-popular Country Store, and fun was had by all.  We had a wonderful turnout, and everyone brought loads of stuff to donate for this activity.  The club made over $400 from ticket sales, which helps pay our rent.</P><P>	At our September 9 meeting, Kathi Cambiano will be hosting a discussion on how to prepare a prize-winning plant for the Fall Show.  Kathi has invited long-time prior Show Chair Jaan Lepson to share his advice as well.  For those of you who are new, our Fall Show differs from the Spring Show in that it is People’s Choice.  This means the public votes by putting little colored dots by the plants they like best, and the most popular plants win a prize, usually a nice pot.  If you want more tips on what makes a plant/pot combination popular with the public, this is a talk you will want to attend.</P><P>	This year’s Fall Show and Sale will again be held at Peterson Middle School in Sunnyvale.  This year it will be held earlier than usual, on Sept 21-23.</P><P>On Friday Sept 21, we will set up (tables are scheduled to be delivered between 3:30-4:30pm), and on Sept 22-23 the sale will be open to the public.  No members of the public are allowed in early (No earlybird shoppers!  No non-member personal friends!).  It helps to wear your name badge, especially if you’re new, so the folks doing door security will know to let you in.  This includes Friday night too.</P><P>Club members with an ID badge, whether volunteering to help or not,  may participate in early-bird shopping for ONE hour prior to opening on Saturday or Sunday morning.  This is a benefit of club membership, not available to the general public.  In addition, all club members, whether volunteering or not, are welcome to join us for a free lunch on the back patio on Saturday or Sunday – please bring a side dish to share.</P><P>Remember to bring empty boxes and newspaper for customers to put their plants in.  You get 5 cents added to your ShowBucks for every box.  Some folks bring in over a hundred boxes, so this can add up.  Last time we ran low on boxes, and had to send out a search party.</P><P>Teardown will be for about two hours after the sale ends on Sunday, and we particularly need more helpers for that, since everyone will already be tired and ready to go home.  The more helping hands we have, the faster we’re done and outta-there.  You do get ShowBucks for helping tear down.</P><P>Volunteers to help with setup, tear-down, and during the sale, can register with Bobbi Bornstein, who is keeping the signup lists in an online spreadsheet.  She can be reached at <a href='mailto:bborn129@gmail.com?Subject=Show%20and%20Sale%20Volunteering'>bborn129@gmail.com</a>. Remember that volunteers who help during the sale and during teardown get ShowBucks.  Volunteers who help with setup on Friday do not get ShowBucks, but instead get pizza and primo early-bird shopping.  Bobbi is also tracking who’s bringing which side-dish to go along with lunch on Saturday and Sunday.</P><P>See a review of some of the club policies relating to the show and sale below.  A few bits are NEW this time, but mostly the policies are unchanged.</P><br><P><B><center>SOME CLUB POLICIES REGARDING THE SHOW &amp; SALE: </center><br>ShowBucks: </B><br>	All vendors are required to help with various jobs during the sale as part of their contract, and are rewarded with their profits (which can be considerable).</P><P>Non-vendor club members (and small vendors selling less than 20 items) are rewarded for also volunteering to help with these jobs by being given ShowBucks.  A ShowBuck is a paper coupon for a certain dollar amount that can be applied toward plant purchases at this or future sales or to plants sold at the Holiday Party in December.  As of the last Show and Sale, the rate for volunteering two or more hours on Saturday is $10 (max).  You can earn another $10 by volunteering two or more hours on Sunday as well.<br> <br>	Volunteers on Friday do not receive ShowBucks, as they are rewarded once setup is complete with free pizza and primo earlybird shopping.  Don’t show up for pizza and shopping on Friday if you didn’t help setup.</P><P>However many boxes you brought in are added to the value of your ShowBucks at 5 cents each.</P><P>Some of the types of jobs you can earn ShowBucks for include Door Security (making sure customers have a receipt for their plants), Plant Hotel (watching over customers’ plants while they continue shopping),  Cashier’s Assistant (packing plants back in boxes after they’re rung up by the cashier), Show Assistant (for the fall show, this mostly means helping count the dots awarded to each plant in the show, or making sure show plants don’t walk out the door), Box Maker (cutting down/taping cardboard boxes to a good size for the customers to use), etc.  During tear down, the main jobs are folding up the tables once the vendors have removed their plants, throwing out leftover boxes and trash into the school dumpster, and sweeping up.</P><P>To collect your ShowBucks, see the ShowBucks Manager, currently Roger Lane, during the Show &amp; Sale.  See me if any questions come up about whether you are or are not entitled to ShowBucks.</P><P><B>Plant Hotel:  <br></B>The Plant Hotel is where boxes of plants may be stored until the customer is ready to pay for them.  Outside customers are given a ticket to hold onto, so someone else doesn’t take their box of goodies.  Club members putting plants there should use the back tables and should write their names on their boxes, if the Plant Hotel staff isn’t on duty yet to hand out tickets.</P><P>Starting at the Spring 2018 Sale, any plants left in the Plant Hotel on Saturday night by non-members will be put back out for sale.  This reduces the chance of abandoned plants that could otherwise be sold.  At the last several sales the Plant Hotel has filled up on Friday night, leaving no space for outside customers’ plants on Saturday morning.<br></P><P></P><P><B>NEW:</B> This time we are expecting to open a cash register on Friday night, so vendors can pay for plants they’re buying from other vendors and get them out of the Plant Hotel.  We will target having this register open for about an hour (after pizza), starting around 6:30-7:00, or whenever the cash register is confirmed to be working.  Club members expecting to earn ShowBucks on Saturday or Sunday won’t have received them yet and may wish to postpone their purchase until they have those in hand.</P><P><B>NEW:</B>  Some customers stand at the front of the Plant Hotel while deciding whether to put something back or not.  This blocks the road.  These folks should be politely encouraged to do their sorting elsewhere.</P><P><B>Long Lines at Checkout:<br></B>At the last sale, and occasionally before that, lines of customers waiting to checkout have reached unacceptable lengths.  Last time we had already added the third (and last) cash register available from NorCal, and we were still swamped.   It’s not good business to make people wait a long time to give us their money.</P><P><B>NEW:</B>  The most common recommendation from cashiers to speed up the line is to not sell plants that don’t have a barcode on them, due to all the time-consuming extra manual steps that are required.  So starting with this sale, vendors must have a barcode on each item, as the cashiers will not ring up items without barcodes.  This policy also applies to small vendors (selling 20 items or less).  Contact Peter Beiersdorfer well in advance to get your barcodes.</P><P><B>NEW:</B> In case our checkout line grows out the back door again, five additional tables have been ordered.  These will be set up in a row on the back patio, so customers at least have a place to rest their boxes while the line moves along.</P><P><B>Fall Show:<br></B>Starting with the Spring 2018 Show, the Show Director job is being shared by Svetlana Bellam and Roger Lane.  This is their first time managing the Fall Show, which is People’s Choice rather than professionally judged like our Spring Show.  After studying how the Fall Show judging has been done in the past, they have decided to simplify how winners are determined.</P><P><B>NEW:</B> In the Fall Show, prizes will be awarded to the top 12 vote getters overall.  This replaces the previous policy of counting up individual points within many sub-categories.  The new policy has been finalized since the vendor-invitation letters were sent out, so please accept our apologies for any confusion this transition may cause.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2mammillariazephyranthoides.jpg',1011,675)><img src='2mammillariazephyranthoides.jpg' width=404 height=270 hspace=27 vspace=17 align='right' class='enl'></a><br>Way back in the dark ages of the 1980s and 1990s, I had a large <I>Mammillaria zephyranthoides</I>.  Then the plant was known as <I>Dolichothele zephyranthoides</I>.  Much to my disgust, the plant was killed in the big freeze we had back then.  When the light hit the plant just right, it looked like a pot full of spider webs.  I do not remember where I obtained the plant, but, since it died, I have not seen any for sale or seen any articles about it. About two years ago, a friend said that she had some plants she grew from seed.  She gave me one of the seedlings; that plant seemed to like my growing conditions and it soon out grew its 5 cm pot.  So I put it in a 9 cm pot, and it has grown and filled it.  I have just up potted it to a 15 cm pot.  The rest of the seedlings that she had slowly got smaller and would not grow, so she gave me the last two, one of those died and the other is growing just fine. The first plant is now 10 cm across, and the second plant is 7 cm across.  The 7 cm plant I have had for just over a year.</td> </tr><tr><td valign='top'>For many years, I also thought cactus plants were slow growing.  Then I started watering with acidic water, and my thinking changed.  For my many years as a member of different cactus societies, I have heard many times how slow growing <I>Ariocarpus</I> are. True, when they reach maturity, they stop or almost stop growing, but when they are young and they receive acidic water, they are not all that slow growing.  It is the same with all the cactus plants that I have, they grow at a decent rate since they get acidic water.</P><P>The photo above is a 10 cm diameter plant.  It is easy to see the hooked central spines as they are dark and stand out against the white radials.  The pubescence on the spines does not show up in the photo, but when I enlarge the photo ten times then it shows up very clearly.  All the spines are soft and flexible even the centrals with the hook.</td></tr><tr><td valign='top'><a href=javascript:poppic('3mammillariazephyranthoides.jpg',1011,674)><img src='3mammillariazephyranthoides.jpg' width=404 height=270 hspace=27 vspace=17 align='right' class='enl'></a><br>Even if the centrals are soft and flexible the hooks still want to hold on to the fingers.  The spines can be seen sticking out in all directions.  The tubercles are quite easy to see and the oval to round wool covered areoles stand out real well.  The radial spines look white which they are but they are also semi-translucent.  Only the base of the centrals shows up as semi-translucent, for there is too much color in the rest of the spine to allow any light to show through.</td></tr><tr><td valign='top'><a href=javascript:poppic('7mammillariazephyranthoides.jpg',1011,674)><img src='7mammillariazephyranthoides.jpg' width=404 height=270 hspace=27 vspace=17 align='left' class='enl'></a><br>The photo to the left shows the outside of the flower from the side.  Here can be seen that the petals that are closer to the inside of the flower have midstripes that become lighter until it is a narrow pinkish stripe.  The photo below shows two flowers and with a difference in the flowers.  The flower on the left has just opened; the style is quite well above the anthers and is light greenish in color.  A close look at the top of the filaments shows they bend and kind of wrap around the style. The filaments are greenish at the bottom and with only some pink at the tips.  The flower on the right opened the day before and what a difference between the two.  The filaments are unwound and the anthers have opened; the filaments are pink all the way from top to bottom and the style is also pink.  With the unwinding of the filaments the stigma is now only a few millimeters above the open anthers.  This is the first time I have seen a flower change that much on a plant.  I did not see the flowers close at night nor open the next day.  If they do they open very early and close very late.  As the flowers stayed at 6 cm for at least three days, I have to believe that they did not close at night.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('9mammillariazephyranthoides.jpg',1011,674)><img src='9mammillariazephyranthoides.jpg' width=404 height=270 hspace=27 vspace=17 class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('10mammillariazephyranthoides.jpg',1011,674)><img src='10mammillariazephyranthoides.jpg' width=404 height=270 hspace=27 vspace=17 align='left' class='enl'></a><br>In the NCL Hunt says that the plants habitat in the state of Oaxaca 'in the cold region', 7000 feet elevation [2150 meters].  Pilbeam, in the book, <I>Mammillaria</I>, gives the elevation as being from1800 to 2400 meters, 5905.5 to 7874 feet.  A site on the web gives the elevation in Oaxaca at 2000 meters and a site in Hidalgo as being 2400 meters. A plant that comes from the lower elevation of 5905 feet [1800m] will not be able to take as much cold as a plant from 7874 feet [2400m].  I found one site that started that the plants can take temperatures down to -8 C or 17 F if the soil is dry.  I left my plants out all winter but out of the rain, and they have shown no damage; I have noticed that they have grown over the winter.  I do not know what our lowest temperature dropped to, but I know that we had several hard frosts.</P><P>Since the plant has a good sized taproot it is a good idea to have a fast draining soil and allow the soil to dry between waterings.  If you do not want your plants to be slow growing, then I suggest watering with acidic water.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

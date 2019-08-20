@@ -1,0 +1,289 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/17/2014">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 5/17/2014</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "17";
+var thisyear = "2014";
+var nextmonth = "June";
+var nextday = "1";
+var nextyear = "2014";
+var deadline = "May 23, 2014";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("May 2014","17, Saturday -  7:30am to 5:00pm","Field Trip to the University of California in Davis","","","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2014","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","All About Euphorbias - Naomi Bloss","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2014","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2014","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2014","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2014","19-20, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Contact Naomi Bloss for details 831-722-1446","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Field Trip to the University of California in Davis</B><br>
+<br>
+<P>
+Please join us on a fun field trip on Saturday May 17th instead of our usual May meeting!  We will be getting a personal tour of the UC-Davis Botanical Conservatory by the head of the conservatory, as well as a visit to their nursery where many interesting plants will be for sale.
+</P>
+<P>
+Most of us will be traveling together by bus, but you're welcome to drive yourself if you prefer.  The bus will be departing San Jose at 7:30am from the VTA Park n Ride on Camden Ave at Highway 85.  There will be refreshments on the bus, but you will need to bring a bag lunch.  Adult beverages are allowed.  The tour begins at 10am.  We should be back in San Jose by 5pm.
+</P>
+<P>
+If you haven't yet reserved a spot on the bus, or if you have questions, please contact Sonia Dyer at <a href="mailto:sonia.dyer@sbcglobal.net?Subject=Davis%20Trip">sonia.dyer@sbcglobal.net</a> or 408-629-5735.
+</P>
+<P>
+<center>
+<img src="vtaparknride.gif" width=666 height=552 border=1 vspace=5>
+</center>
+</P>
+<br>
+<!-- 
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted or Crested Cacti</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Crested Succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Getting ready for the Show! (Bring your staged plants in for a friendly critique) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>The plants that got you interested in the hobby</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+
+</P>
+ -->
+<!-- 
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><font size="+2" color="#FF0000">Note</font><font size="+1"> that the meeting will be in the Meeting Hall this month<br> and not in the Multi-Cultural building.</font></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Lost Igloo Cooler and Paring Knife","Terri Koike","<TABLE><tr><td><img src='cooler001.jpg' width=420 height=336 align='left' hspace=17>This gray and white Igloo &quot;Little Playmate Elite&quot; cooler was left on the snack table at our Spring Show &amp; Sale this past weekend, along with a small paring knife.  Do these things belong to a club member?  Since the May event is the UC Davis trip, I will bring these things to the June meeting.</td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='huernia zebrina pl.jpg' width=403 height=333 hspace=17 align='left'><br>Plant - - <I>Huernia zabrina</I></P><P>Habitat - -  Africa;  Botswana, Namibia. South Africa</P><P>Body - - 4 or 5 ribs, teeth to 5 mm long, stems to 8 cm tall (more in cultivation) greenish brown, gray brown, green gray</P><P>Flower - - to 4 cm across, yellow with reddish bands, center ring - reddish with yellow spots here and there.</td></tr><tr><td valign='top'><img src='huernia zebrina.jpg' width=403 height=333 hspace=17 align='right'><br>Comments - - My grandsons call this the life-saver plant, because of that raised ring.  For you that do not know what life savers are, it is a candy with a hole in the middle.  The plant blooms several times over the summer and into late fall.  Give it regular waterings and good soil that drains quite fast.  Protect from too much sunlight in the heat of summer.  For me, the heat and too much sunlight combine to burn back the stem ends.  If you give it too much shade, the stems turn green.</td></tr></TABLE></center>");
+
+fmart ("45<sup>th</sup> Annual Spring Show and Sale","Jaan Lepson","The Club's 45<sup>th</sup> annual Spring Show and Sale took place at Peterson Middle School on April 5-6. It was the biggest, and I think the best, show since I've been around.  Over 300 plants were exhibited - it's a good thing we had lots of room in our new location. As is traditional, the Spring Show is professionally judged, with two teams of two judges each for cacti and for succulents.</P><P>When all was said and done (the clerks get to hear what was said!), Naomi Bloss took the Sweepstake prize (surprise, surprise!). The following prizes were also awarded.<TABLE><tr><td><img src='frailea asteroides.jpg' width=450 height=430 hspace=17 align='left'><br>Best Cactus Novice: <I>Frailea asteroides</I> (Janet Stevenson)<br>Best Succulent Novice: <I>Euphorbia</I> variegated <I>lactea</I> (Terri Koike)<br><br>Best Cactus Advanced: <I>Uebelmannia flavispina</I> (Ron &amp; Leona Harris)<br>Best Succulent Advanced: <I>Larryleachia perlata</I> (Joseph Hidalgo)<br><br>Best Cactus Open: <I>Astrophytum</I> 'Onzuka' (Bill Munkacsy)<br>Best Succulent Open: <I>Ceraria namaquensis</I> (Naomi Bloss)</td></tr><tr><td><img src='euphorbia variegated.jpg' width=388 height=600 hspace=17 align='right'><br>Best Cereinae: <I>Echinocereus pulchellus</I> (Bill Munkacsy)<br>Best Copiapoa: <I>Copiapoa cinerea</I> (Bill Munkacsy)<br>Best Echinocactinae other than Mammillaria or Copiapoa: <I>Ortegocactus macdougallii</I>  (Bill Munkacsy)<br>Best Mammillaria: <I>Mammillaria bocasana</I> 'Fred' (Lisa Bloss)<br>Best Echinopsidinae: <I>Sulcorebutia arenacea</I> (Bill Munkacsy)<br>Best Opuntiaceae: <I>Austrocylindropuntia pachypus</I> (Elton Roberts)</td></tr><tr><td><img src='tylecodon noltei.jpg' width=500 height=690 hspace=17 align='left'><br>Best Aizoaceae (mesembs): <I>Trichodiadema bulbosum</I> (Nick Wilkinson)<br>Best Aloe: <I>Aloe melanacantha</I> (Naomi Bloss)<br>Best Asclepiadaceae: <I>Hoodia vatteri</I> (Peter Beiersdorfer)<br>Best Asteraceae (Compositae): <I>Othonna euphorbioides</I> (Joel Parker)<br>Best Crassulaceae: <I>Tylecodon noltei</I> (Gregg DeChirico)<br>Best Haworthia: <I>Haworthia truncata</I> (Peter Beiersdorfer)<br>Best Euphorbiaceae: <I>Euphorbia bupleurifolia</I> (Nick Wilkinson)<br>Best Monocotyledon other than Aloe or Haworthia: <I>Calibanus hookeri</I> (Naomi Bloss)</td></tr><tr><td><img src='ceraria namaquensis.jpg' width=540 height=570 hspace=17 align='right'><br>Best Photography: <I>Dudleya</I> (Kathi Cambiano)<br><br>Directors' Choice: <I>Aloe aristata v. leiophylla </I>(Eddy and Larry Livermont)</br></br><br>As always, the club members' help was indispensible for our show's success.  I would like to thank everyone who came out to help with set-up and security, and most especially staging and clerking.  YOU are the reason everything went so well!</td></tr></TABLE>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

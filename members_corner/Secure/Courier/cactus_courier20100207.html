@@ -1,0 +1,258 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/7/2010">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/7/2010</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "7";
+var thisyear = "2010";
+var nextmonth = "March";
+var nextday = "7";
+var nextyear = "2010";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("February 2010","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","Steve McCabe - <I>Dudleyas</I>","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2010","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","Keith Taylor - Growing and Displaying Caudiciforms","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2010","10-11, Sat - 9:00am to 5:00 pm & Sun - 10:00am to 4:00pm","41<sup>st</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2010","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Trip to Namibia","","");
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("April 2010","24-25, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Steve McCabe - <I>Dudleyas</I></B><br>
+<br>
+<P>
+Named for Stanford professor William Dudley, <I>Dudleyas</I> are native to the southwestern United States and Baja California.  At one time or another they have been included in the genera <I>Cotyledon</I> and <I>Echeveria</I>, but <I>Dudleyas</I> are now considered to be members of a genus all their own.
+</P>
+<P>
+Steve McCabe is the Coordinator of Research and Education and Curator of Succulents for the Arboretum at UC Santa Cruz.  A succulent show competitor since his teen years, his status as a scientist, horticulturist, and grower are well established.
+</P>
+<P>
+Steve will be bringing plants to sell.
+</P>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Nastiest Spines</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter growing or blooming succulents (<I>Aloes</I>, <I>Senecios</I>, <I>Conophytums</I>, etc.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Dudleya</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Valentine theme (red/pink flowers, plants, spines, or blush)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("2010 Spring Show & Sale","Bill Gingras","The 2010 CSSSJ Spring Show and Sale is rapidly approaching.  Our show and sale is being held on April 10th and 11th this year, with set up on the 9th.</P><P>Our spring show is a professionally judged event, with two hired judges for cacti and two hired judges for the other succulents.</P><P>If you've already won 50 first place ribbons in other CSSA-affiliated shows, have been competing for more than 5 years, possess a nurseryman's license, or are not a member of CSSSJ, you cannot exhibit your plants as a novice.  The rest of us can exhibit our plants in the novice class, and if you've never exhibited plants before, it is quite easy, fun, and rewarding.</P><P>Briefly, if you have cacti or succulents in your collection that you really like, are clean and well grown, and are nicely potted, chances are that they are good candidates for exhibiting as novice class plants.  Please think about exhibiting them.  I will be bringing rules and categories sheets and entry cards to the next two meetings, and any one of us who has exhibited plants before will be more than happy to answer any questions you might have regarding how to prepare your plants for the show.</P><P>If you decide not to exhibit plants in the show (or even if you do), you can still support the show and sale effort by volunteering.  Please plan on lending a hand this year.  I will be circulating a volunteer sign-up list at the next two meetings, where you can sign up in person.  The sign-up list explains the various types of volunteers that we need.  Briefly, we'll need volunteers to help set up the show on Friday night, facilitate the judging and run cash registers on Saturday morning, provide security all weekend, and tear it all down on Sunday evening.  No special skills are required.  As long as you have a desire to help out, we'll find something for you to do.  If you would like to volunteer but will not be coming to the next two meetings, please call me at 408-981-5904 and I can answer any questions you might have and add you to the list.</P><P>Here are some other Show/Sale-related items:</P><P><TABLE cellspacing=8><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>If you volunteer to work at least one shift at the show and sale, you earn a &quot;Show Bucks&quot; coupon worth $5.00 that you can use to buy plants with at the show.</td></tr> <tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>A bonus for people who volunteer to help us on Friday evening, or for people who enter plants in the show, is that you get &quot;first dibs&quot; on sale plants.  Some plants on the sale tables are one-of-a-kind or in very limited quantities, and by being on site on Friday night, you can choose plants before the show opens to the general public (note that this is specifically NOT an invitation to simply come by and shop early; it is for Friday volunteers and show entrants only).</td></tr></TABLE></P><P><font size='+2'><B>Note:</B></font><br>We will need boxes suitable for our buyers to carry away their plants.  So please start saving up cardboard boxes now.");
+
+fmart ("Mini-Show","Kathi Cambiano","For the monthly mini-shows, Joseph Hidalgo and I have worked to include as many of the suggestions that you voted for at the Holiday Party.  Although three of the four categories are fairly specific, if you have something that you'd like to show off that doesn't fit any of those, Something Special fits the bill.  Each month, Something Special will have a topic for the month, but is always open to YOUR CHOICE unlike the other categories.  We look forward to seeing lots of amazing plants at this year's meetings.");
+
+fmart ("An introduction to the Amazing, Astonishing <I>Adromischus</I>","Joseph Hidalgo <font size='-2'>(Continued from January Courier)</font>","<B>Other cultural notes</B><br>Photos of plants in the wild will show happy full balanced specimens growing in full sun.  Beware! You can burn your plant in full summer sun this way.  Higher light intensity can improve colors or intensify mottling, freckling, and reds, but you should avoid exposing your plants to full unprotected summer sun.  Other reports from other fanatics have stated that the plants are partially shaded in the wild, or grow under the shade of other plants.  The best plants I ever saw in cultivation were from Anne Shien of Marina California, A long time member of our club, who still belongs to the Monterrey Bay club.  She grows them in the green house on the top shelves where they receive the most light, so her plants are balanced in growth and color, the light is never full intensity as it is filtered through greenhouse plastic roofing, or shade cloth.  It seems that here they are always growing.  I deduce it is because the plants think it is perpetual spring or fall in the green house, with her climate being cool all year round and being near the coast, with no frost.  Come to think of it, this is probably similar to coastal Namibia or Western South Africa, where they are native.</P><P>I have heard that these guys can suffer from mealy bugs, scale, mites, and sciara fly, and aphids(on flower stalks).  I have only witnessed the small sciara flies (when soil stays wet longer in spring), which can be dangerous because the maggots eat roots.  A good way to remedy it all is with a good systemic insecticide twice a year in the growing season, drenching the soil and not spraying the plant (as you can break down the waxy layer and disfigure or burn your plant.) Keep an eye on it, because some insecticides make your plants more sensitive to light.</P><P><B>Repotting and restarting </B><br>All plants need repotting after a few years.  The slower growing forms of <I>Adromischus</I> needing it less.  This gives you a chance to check for pests and reshape leggy plants.  I would not throw anything out, as most pieces of stem or leaf can be reused as future propagation material.  If you have the patience or know how, I would suggest that you make new plants from seed.  Most forms that are out there are clones of a single parent plant, coming from leaves and stems from original wild material.  New variations and combinations come from seed and hardy beautiful hybrids coming from crosses.  If we continue to share material and make new plants, we are helping the continuation of the species, sparing wild lands and wild plants from plant poachers.  There is a higher responsibility for all plant fanatics out there.  Everyone should be doing our best to propagate material for future generations to come.</P><P>I recommend <a href='http://cactusfile.com/cactusFile.htm'>&quot;The Cactus File Handbook #3&quot;</a> by John Pilbeam, Chris Rodgerson and Derek Tribble available online at <a href='http://www.rainbowgardensbookshop.com/cactusccb.html'>Rainbow Garden Book store</a> or <a href='http://www.amazon.com/Adromischus-Cacts-File-Handbook-Cactus/dp/0952830248/ref=sr_1_1?ie=UTF8&s=books&qid=1264896606&sr=1-1'>Amazon.com</a>.</P><P><font size='-1'>(Note from ed: I checked out both the Rainbow Garden Bookshop and Amazon.  Rainbow Garden did not list this book although it might be available on request.  Amazon listed the book as out of print.  Used copies may become available through Amazon at a later date.)</font>");
+
+fminiadd ("Tony Bassano",0,25,0);
+fminiadd ("Peter Beiersdorfer",0,25,0);
+fminiadd ("Kathi Cambiano",0,0,25);
+fminiadd ("Byron Fan",0,0,24);
+fminiadd ("Joseph Hidalgo",0,0,25);
+fminiadd ("Bill Kurtz",22,0,0);
+fminiadd ("Jaan Lepson",0,0,25);
+fminiadd ("Marilyn Moyer",0,23,0);
+fminiadd ("Bill Munkacsy",25,0,0);
+fminiadd ("Janet Rollin",0,0,15);
+fminiadd ("Joe Silva",0,0,19);
+fminiadd ("Ellen Stubblefield",0,24,0);
+fminiadd ("Gary Stubblefield",0,17,0);
+
+fmini ("<TABLE><tr><td nowrap valign='top'>Standings as of January 2010:</td></tr></TABLE>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

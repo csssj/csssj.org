@@ -1,0 +1,393 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/9/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/9/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "9";
+var thisyear = "2017";
+var nextmonth = "August";
+var nextday = "6";
+var nextyear = "2017";
+var deadline = "July 28, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("July 2017","9, Sunday - 11:00am to 12:00pm","Board Meeting","9, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2017","6, Sunday - 11:00am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Wendy Soneson - watercolor of succulents","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2017","10, Sunday - 11:00am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Russell Wagner - Mesemb family","29/30, Fri/Sat - 9:00pm to 5:00pm","Succulent Gardens Field Trip - Castroville");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Country Store</B><br>
+<br>
+<P>
+If you have been to our Country Store before, you know that this is one of the most fun events of the season.  It is a great opportunity for you to share with your fellow members. (Bring plants that you think other members would enjoy, unless you are looking forward to taking them back home yourself.  If you bring desserts, make certain that they are individually wrapped.)
+</P>
+<P>
+Here is how it works.  First separate tables are set up for each category, cacti, succulents, associated items, and desserts.  Then we all buy tickets at five tickets for a dollar.  Members can use their tickets in whatever categories they like.  A board member for each table picks tickets, and each winning member in the order their ticket was selected gets their pick of what is on that table.  This is repeated until the Country Store is done or everyone dies laughing.
+</P>
+<P>
+No MiniShow is planned for this meeting because of the Country Store.  Of course, if you have something of particular interest, you are welcome to bring it.
+</P>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Rebutia</I> and <I>Sulcorebutia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Kalanchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Puyas and other Bromeliads (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Aeonium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through G should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("<TABLE><tr><td><img src=' welcomecactus.gif' width=77 height=121></td><td valign='bottom'><center><B class='arthead'>WELCOME NEW MEMBERS</B><br><B>by Sandy Carter</B></center></td><td><img src=' welcomecactus2.gif' width=77 height=121></td></tr></TABLE>","","","<center>A few new members have joined us recently.</P><P>Please join us in welcoming them:</P><P>Paul Stabile<br>Linda Prada-Baez &amp; Paul Landon<br>Jennifer Van Fleet &amp; Ann Krohn<br>Jim Smith &amp; Connie O’Grady<br>Dena Mossar<br>Elizabeth Macapanpan<br>Tania Escobar &amp; Emily Luong<br>Julia Xiong<br>Manuela Burge<br>Jim Pertsch<br>Elizabeth Judge<br>Karen Jefferson</P><P>Our active membership is now: 194</center>");
+
+fmart ("Spotlight Interview with Harley Barber","Asmita Deshpande","","Harley always liked to maintain his own yard and garden.  Then the drought hit hard, and there was a lot of emphasis on cactus and succulent use in the garden to conserve water.  Harley also hates mowing the lawn, so succulents became a natural choice for his garden.  Along the way, he also picked up Bromeliads and air plants.  Later on, he found out about San Jose Cactus and Succulent Society and became a member.  He has been a member for the last year and half.  He enjoys meetings, lectures given by different speakers, and looking at plants members bring for the mini show.  It’s learning and socializing event for him.</P><P>He is retired but works part time and enjoys computer games, going to the gym, working out, and bird watching besides gardening.  He likes to encourage birds to visit his yard.</P><P>He lives with his wife here in Sunnyvale and has one grown up son who live sin Colorado with his family.");
+
+fmart ("The Prez Sez","Sonia Dyer","","July is time for our ever-popular Country Store.  Tickets, as usual, will be sold 5 for $1.  You can pick up some really great stuff for those 20 cent tickets.</P><P>Remember Linda Delgado’s suggestion to bring extra stick-on return-address-labels to put on the back of each ticket you buy, so you don’t have to keep track of all the little numbers on the tickets.  Great idea Linda!</P><P>Smart folks also bring along a small cart, wheelbarrow, or U-Haul, to tote away all their winnings.");
+
+
+
+fmart ("Report on the June 2017 Meeting","Sonia Dyer","Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('briankemble20170604.jpg',599,443)><img src='briankemble20170604.jpg' width=240 height=177 hspace=17 vspace=17 align='left' class='enl'></a><br>Our speaker for the June 4 meeting was Brian Kemble, who spoke on Puyas.</P><P>Brian is Curator of the Ruth Bancroft Gardens in Walnut Creek, and the club is planning a field trip there next spring.  Brian is also a member of the board of the CSSA, and writes a monthly article for the San Jose Mercury News.  He is a noted expert on succulents and bromeliads.</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph29211.jpg',852,988)><img src='mcph29211.jpg' width=375 height=435 hspace=17 vspace=17 align='right' class='enl'></a><br>Puyas are members of the bromeliad family and inhabit dry areas from Mexico down the Andes Mountains to Chile, and are often found growing with succulents.  Brian handed out a list of a whopping 75 different species in the Puya genus and showed photos of many of them.  They often have very unusual flowers.  My favorite was the the <I>Puya alpestris</I>, from Chile, whose flowers are a wonderful metallic blue-green.  Many thanks, Brian!</td></tr></TABLE></center>");
+
+fmart ("June 2017 Mini Show","Therese McQuillan","Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'>After a successful field trip last month to the UC Santa Cruz Arboretum, we were back to our Mini Shows for June.  The list of winners and their winning photos are below.  Congratulations to everyone who won and thanks to everyone who participated!</P><P>FYI, after the June meeting, a few people previously in the Novice category graduated to the Advanced category, because they've been Club members for five years.</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0465.jpg',1010,805)><img src='mcph0465.jpg' width=354 height=282 hspace=17 vspace=17 align='left' class='enl'></a><br><br><br><font size='+2'><B>Something Special:</B> <I>Puyas and other bromeliads (or your choice)</I></font></P><P><B>Advanced: </B><I>Tephrocactus geometricus</I>: Peter Beiersdorfer</P><P><B>Novice</B>: <I>Graptopetalum</I>: Monica Moran </td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0472.jpg',933,1000)><img src='mcph0472.jpg' width=327 height=350 hspace=100 vspace=17 align='right' class='enl'></a><br><br><br><font size='+2'><B>Cactus:</B> <I>Rebutia and Sulcorebutia</I></font></P><P><B>Advanced</B>: <I>Rebutia</I>:  Peter Beiersdorfer</P><P><B>Novice:</B> <I>Rebutia</I>: Cecilia Caday (photo to the right)</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0474.jpg',753,1000)><img src='mcph0474.jpg' width=264 height=350 hspace=17 vspace=17 align='left' class='enl'></a><br><br><br><font size='+2'><B>Succulents:</B> <I> Kalanchoe</I></font></P><P><B>Advanced: </B><I>Kalanchoe</I> 'Pink Butterflies': Ellen Stubblefield</P><P><B>Novice:</B> <I>Kalanchoe</I>: Renu James </td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0478.jpg',906,1000)><img src='mcph0478.jpg' width=317 height=350 hspace=100 vspace=17 align='right' class='enl'></a><br><br><br><font size='+2'><B>Beginner's Luck:</B> <I>Aenoium</I></font></P><P><I>Aeonium arboreum</I> 'Zwartkop' with <I>Crassula pubescens</I>: Renu James</td></tr><tr><td valign='top'>If you have ideas for plant categories, drop a note to tmcq01@att.net. Check out our Mini Show rules: <a href='http://www.csssj.org/members_corner/Secure/mini_show_rules.html' target='_blank'>http://www.csssj.org/members_corner/Secure/mini_show_rules.html</a>.</td></tr></TABLE></center>");
+
+fmart ("July 2002 Revisited: What's Bugging You","Jim Daniel","","You don't know when to propagate your <I>Epiphyllums</I>?  How about now?  Most Eppies bloom around Mother's Day.  Those that bloom later, you can take the clippers too, also.  Just avoid the stems that have buds on them.  You never remove more than 25% of growth from a single plant.  If you remove more than this, the plant will take 2 or 3 years to recover completely.  The cuttings should be 6&quot; long.  (Longer stems mean more cuttings.)  As soon as the cutting is removed, write the name of the plant on the stem.  Trim the bottom into a &quot;V&quot;; trim the top at a 45-degree angle.  (This is so you get the right end down in the soil mix.)  Insert about 2 inches into the potting mix.  The reason for trimming the top is it encourages a branching plant.  I have seen single stemmed Eppies 10 feet long without side branches.  Here is a mix that I acquired from Bob &amp; Margaret Grim.  They in turn acquired the recipe from Harry Johnson many moons ago:</P><P><TABLE><tr><td> &nbsp; &nbsp; &nbsp; </td><td>Two parts Sphagnum Moss<br>Four parts Peat Moss<br>One part Oakleaf Mold<br>Two parts Red Lava Fines<br>One scoop of Fertilizer</td></tr></TABLE></P><P>Mix well.  Happy growing.  Jim Daniel.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B> Standings as of June 2017:</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",50);
+fminiadd ("Cecilia Caday",50);
+fminiadd ("Kathi Cambiano",47);
+fminiadd ("Sonia Dyer",16);
+fminiadd ("Debbie Ellis",3);
+fminiadd ("Joseph Hildago",17); 
+fminiadd ("Terri Koike",17);
+fminiadd ("JoAnn Lambert",15);
+fminiadd ("Jaan Lepson",49);
+fminiadd ("Susan McKuhen",25);
+fminiadd ("Therese McQuillan",39);
+fminiadd ("Loyd Monaco",35);
+fminiadd ("Ross Smith",2);
+fminiadd ("Janet Stevenson",12);
+fminiadd ("Ellen Stubblefield",69);
+fminiadd ("Gary Stubblefield",38);
+fminiadd ("Jacky Wilk",16);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Judianne Ganschow",25);
+fminiadd ("Renu James",25); 
+fminiadd ("Catherine Lau",9);
+fminiadd ("Bill Lemke",4);
+fminiadd ("Joyce McPheeters",25);
+fminiadd ("Monica Moran",56);
+fminiadd ("Slava Sigal",6);
+fminiadd ("Janet Sparks",25);
+fminiadd ("Navi West",1);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+fmart ("Get Well Cards","Rich Kroll","","Thank you to all the members who sent me get well cards.  When things were starting to get to me, the cards uplifted my spirits.  At the time of this writing, I have made it through what I hope will be the last medical procedure for a while.  I just wanted everyone to know how much I appreciated their thoughts and well wishes on my behalf.  Thank you all.");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2escobariahesteri.jpg',754,846)><img src='2escobariahesteri.jpg' width=302 height=338 hspace=17 vspace=17 align='right' class='enl'></a><br><TABLE cellpadding=17><tr><td valign='top'><I>Escobaria hesteri</I> (Y. Wright) Buxbaum<I></I></td><td valign='top'>Synonyms: <I>Coryphantha hesteri</I>, [<I>Mammillaria hesteri</I>]<I></td></tr></TABLE></P><P><I>Escobaria hesteri</I> is an interesting plant.  If given acidic water, it will make a fairly large clump over the years.  My largest plant was in a 35.5 cm pot and had it filled in about fifteen years or less.</td></tr><tr><td valign='top'><a href=javascript:poppic('5escobariahesteri.jpg',998,665)><img src='5escobariahesteri.jpg' width=349 height=233 hspace=17 vspace=17 align='left' class='enl'></a><br>I usually only show one photo of the spine clusters, but, in this case, I show two photos of the spine clusters which I think is important.  The reason is that Anderson says that the plant has 1 – 4 central spines.  Weniger says that there is one spine that is markedly heavier and mistaken as a central spine.  To me it sounds like Weniger is saying there are no central spines.  If we study the photos, it is easy to see why the difference in opinion.  Notice in Weniger’s description where he gives the range of where the plant grows.  It says a small area southeast of Alpine and a second small area west of Sanderson.  By road the two towns are 84.4 miles apart, so I have to guess that the two areas the plants grow have to be something like at least 70 miles apart.  The photo to the left is the spine clusters on one of the large stemmed plants.  Note that there are, without a doubt, central spines on each of the areoles.  Compare that photo with the photo below; there are no central spines on that plant.  When I read the description given by Anderson and also Benson, I figured that all the plants have central spines.  Then I read Weniger’s description; I kind of thought that he did not know what he was talking about.  Looking in the NCL; central spines are listed as 0 – 4.  I think this shows that there is at least knowledge of plants that have 0 central spines.<br><a href=javascript:poppic('7escobariahesteri.jpg',998,665)><img src='7escobariahesteri.jpg' width=349 height=233 hspace=100 vspace=17 align='right' class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('9escobariahesteri.jpg',998,665)><img src='9escobariahesteri.jpg' width=349 height=233 hspace=17 vspace=17 align='left' class='enl'></a><br> <I>Escobaria hesteri</I> flowers are 3 cm in diameter.  Weniger says that the petals are fringed with long white hairs.  I have enlarged the petals to just over 30 cm long and those white hairs are actually light pink.  The petal edges are ragged or like saw teeth but only on the upper 2/3 of the petal.  The style is cream color with a pink cast to it. The stigma lobes are a very, very light pink, almost white but not quite.  The filaments are about the same color as the style, and the pollen is egg yolk yellow.  The photo to the left is a shot of two flowers on a different plant but all are the same in looks and size.</P><P>If kept dry over the winter, the plants can take temperatures down to -12 C [10F].  I grow the plants under opaque plastic, so they are getting at least 90% of the sunlight.  The plants do not have deep roots, and I would suggest a pot no deeper than about 10 cm or 4 inches.  Over watering and using alkaline water can and will kill the plants.  Allow the soil to dry between waterings. </td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

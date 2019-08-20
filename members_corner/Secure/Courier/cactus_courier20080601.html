@@ -1,0 +1,237 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/1/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/1/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "1";
+var thisyear = "2008";
+var nextmonth = "July";
+var nextday = "13";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("June 2008","1, Sunday - 12:30pm to 3:00pm","Tour of Stanford's Arizona Garden","","","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2008","13, Sunday - 10:30am to 12:00pm","Board Meeting.","13, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2008","3, Sunday - 10:30am to 12:00pm","Board Meeting.","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2008","7, Sunday - 10:30am to 12:00pm","Board Meeting.","7, Sunday - 12:30pm to 3:00pm","Kathy Hendig - Pottery Workshop","","");
+
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("June 2008","7","SF Epiphyllum Society Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA</font>","14-15","SF Succulent & Cactus Society Show & Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA</font>","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><font size="-1"><B> Note the change in the dates for the Spring Show and Sale </B></font></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Tour of Stanford's Arizona Garden</B><br>
+<br>
+<P>
+The Stanford Arizona Garden is on the south side of the mausoleum off Quarry Road between Campus Drive and Arboretum Road.  It has also been called the Cactus Garden.  Designed for Jane and Leland Stanford by landscape architect Rudolf Ulrich between 1881 and 1883, it had been neglected from the 1920's until recently.  For several years, the Stanford grounds keeping staff and local cacti enthusiasts (many of them members of our club) have been restoring the garden to its former glory.
+</P>
+<P>
+There is parking near the garden that is free on the weekends.  Members should arrive at the garden by 12:30 pm.  Herb Fong, Stanford's Chief Groundskeeper, will lead a tour of the garden starting at 1:00 pm.  
+</P>
+<center><img src="stanfordarizonagarden2.gif" width=395 height=361 border=1></center>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for May:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What you bought at the show and sale and how you plan to stage it</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What you bought at the show and sale and how you plan to stage it</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What you bought at the show and sale and how you plan to stage it</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Favorite Agave</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with N through Z should bring a snack for the May meeting.</font></B>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td><img src='arthrocereus rondonianus.jpg' width=320 height=280 hspace=16 vspace=0 align='left'><I>Arthrocereus rondonianus</I> is kind of different from most night blooming cactus in that it has such a bright colored flower.  The plant is a small cerei with stems to about 2.5 cm in diameter and to 40 or 50 cm tall.  Stems are covered with yellow spines none over about 2 cm long.  The flower is to 8 cm across and to about 10 cm long.  If I had seen it open a bit earlier, this one would be open more.  The flowers fade by around 9:00 am and that is a shame as it is so pretty.</P><P>Coming from Brazil it should be kept warm over the winter.  Now to tell you the truth, I have had the plant survive 16 degrees Fahrenheit in my unheated hothouses.  That is with the plant being dry over the winter.  In time, the plant makes a clump of up to a dozen heads.  This time it had three of the flowers open.</td></tr></TABLE>");
+
+fmart ("Pictures from the Spring Show &amp; Sale","Jaan Lepson","<center><img src='show0804.jpg' width=600 height=274 hspace=16 vspace=0></center>");
+
+
+fmart ("May 4 Meeting Notes","Peter Beiersdorfer","<TABLE><tr><td><img src='peter080520a3.jpg' width=236 height=244 hspace=16 vspace=0 align='left'> Our meeting on May 4 2008 centered on bromeliads.  Roger Lane gave a hands-on presentation explaining the bromeliad family:</P><P><TABLE><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>The  Pitcairnioideae subfamily, which contains the most ancestral bromeliads and which almost all are terrestrial</td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>The Bromelioideae subfamily, whose members are almost all epiphytic and hold water within their rosette-forming leaves (pineapples belong to this group) </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>The Tillandsioideae subfamily, whose members are epiphytes and generally have spineless leaves (think Spanish moss)</td></tr></TABLE></P><P>We learned how to care for the plants and propagate them from offsets, and saw some superb specimens in a slide show.</td></tr></TABLE>");
+
+
+
+fmclass ("Free","Free Plants","Carol Ave-Lallemant has more than 30 plants that she would like to give away to someone who will care for them.  She lives on Plummer Avenue in San Jose.  Contact her at 408-723-2717 to make arrangements to see the plants she is giving away.","Bookcase Needs Home","The Board has authorized the disposition of a large - 72&quot;h x 36&quot;w - very high quality oak bookcase.  It has four adjustable shelves and is quite heavy.  A SUV type vehicle and person(s) able to lift it will be necessary for transport.  Call Bill Kurtz for further info at (408) 243-3692.","","","Sell","Cacti and Succulents for Sale","I am no longer physically able to care for the cacti and succulents in my greenhouse.  Many of the plants are large, well established specimens.  Anyone who is interested can phone me at 408-281-1290 or email me at <a href='mailto:rkroll@aol.com'>rkroll@aol.com</a>.</P><P>Rich Kroll ","","","","");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

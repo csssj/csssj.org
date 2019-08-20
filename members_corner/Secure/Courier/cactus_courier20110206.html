@@ -1,0 +1,252 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/6/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/6/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "6";
+var thisyear = "2011";
+var nextmonth = "March";
+var nextday = "6";
+var nextyear = "2011";
+var deadline = "February 25, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("February 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Get Your Glaze on with Kim Manfredi","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2011","2-3, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","42<sup>nd</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2011","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2011","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2010","18-19, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br><font size='-1'>Contact Naomi Bloss at 831-722-1446</font>","","","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Get Your Glaze On with Kim Manfredi</B><br>
+<br>
+<P>
+At the February meeting, ceramic artist, Kim Manfredi, will be back with our fired pots to help us prepare them for their final journey through the kiln.  She will demo glazing techniques, before we start on our own.  Kim will be providing all the necessary materials for the activity.  So just come prepared to let your creative juices flow.
+</p>
+<p>
+If you made a pot and can’t attend the meeting, be sure to contact Kathi Cambiano (408-293-4887 or <a href="mailto:cactuskathi-csssj@yahoo.com">cactuskathi-csssj@yahoo.com</a>) by February 4.  Your choices will be to have someone else glaze your pot for you, or to leave the pot in it’s unglazed state.
+</P>
+<P>
+The glazing will not be as lengthy as the pot making, so we anticipate a shorter meeting that should enable everyone to make it home in time to watch the Super Bowl! 
+</P>
+<P>
+<I>Kim will return in March to deliver our finished pots.</I>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>The &quot;un-beauty&quot; contest for the Hairiest Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>The &quot;un-beauty&quot; contest for weird succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Valentine theme (red/pink flowers, plants, spines, or blush) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Aloes</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<TABLE border=5 width="95%"><tr><td>
+<TABLE border=1 cellpadding=7><tr><td>
+<font size="+2" color="#990000">Note: The meeting location has been changed from the Meeting Hall to the Multi-Cultural Center.<br>
+ &nbsp; &nbsp; <font size="-1">(See last article for more information.)</font>
+</font>
+</td></tr></TABLE>
+</td></tr></TABLE>
+<br>
+</P>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Changes for the Mini Show for 2011","Kathi Cambiano","At the November Board Meeting, we discussed the input that was gathered from the Mini Show survey. Based on that discussion, the Board voted to make the following change to the rules governing the Mini Show:</P><p><center><TABLE width='95%'><tr><td>There will be a limit of three (3) entries per person per month.  This is not per category, but overall a TOTAL of three entries.</td></tr></TABLE></center></P><P>These changes are intended to work with our limited space, and to encourage more members to participate.  Please bring in your very best trio of plants each month to share with your fellow members.");
+
+fmart ("January Program: Clay Fun with Kim Manfredi","Jaan Lepson","<TABLE width='100%'><tr><td><img src='4_members.jpg' width=378 height=264 hspace=9 align='left'><br>Our January program was Clay Fun, taught by master potter Kim Manfredi.  Kim began by demonstrating a variety of techniques, such as throwing to stretch a slab, rolling out with her extra-jumbo rolling pins, using molds, and coiling.  After making a few demo pots (she makes it look so easy!), she turned us loose on the clay, giving us tips and help as needed.  We had a great time and made lots of interesting pots. Kim brought many tools for us to use, as well as a multitude of stamps and objects with which to texture our pots.  Members brought textural items too, such as redwood leaves, bark, and shells.  This month we will get our fired pots back and will glaze them with Kim’s help.</td></tr></TABLE>");
+
+fmart ("&quot;Un-Beauty&quot; Contest in February", "Kathi Cambiano","For our Mini Show in February, we’ll be having an &quot;Un-Beauty&quot; contest.  In the cactus category, the winner will be the hairiest cactus.  For the succulents, the weirdest succulent will be the winner.  There may even be a sash involved!");
+
+fmart ("Sowing Something Special","Bill Kurtz","The Something Special category in the Mini Show at the September meeting will be &quot;Seedlings you have sown&quot;.  Now would be a good time to germinate your seeds.");
+
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE width='100%'><tr><td valign='top'><img src='escobaria robbinsorum pl.jpg' width=320 height=280 hspace=17 align='left'><br>Discovered and named in the late 1970s, <I>Escobaria robbinsorum</I> is still not a plant you see all that often at shows or sales.  This is a wonderful plant that does not get very big even after 16 years.  That is how old this plant is.  It now almost fills a 110 mm pot.  Heads are to 10 cm tall and 6 to 7 cm in diameter.  The plant stays a single head for a few years before starting to offset. The flowers are greenish white to light pink, to 2 cm in diameter.</td></tr><tr><td><img src='escobaria robbinsorum.jpg' width=320 height=280 hspace=17 align='right'><br>This is October 28, and there are flowers on 3 of the plants.  They start blooming in the spring and continue till it gets colder than it has been up to now.  Usually they will bloom for me until November, when the warm days end.  Soil needs to drain quickly.  Keep the plant dry over the winter, and it can take a lot of cold.  Habitat is in southern Arizona.</td></tr></TABLE>");
+
+fmart ("Search Committee","Kathi Cambiano","We need to find a new location for our show and sale, and the board would like to form a search committee to look into viable venues.  If you can help out the club with this vital function, please contact Kathi at 408-293-4887.");
+
+fmart ("Change of Venue","Bill Kurtz","<TABLE width='100%'><tr><td><img src='mcc.jpg' width=504 height=308 hspace=9 align='right'><br>We have been moved from the Meeting Hall to the Multi-Cultural Center at Prusch Park.  After turning into the park from South King Road, take the first left to the parking lot for the Multi-Cultural Center.</P><P>Note that the Multi-Cultural Center does not have kitchen facilities.  If you are bringing snacks that require heating, you will have to bring your own heat source, (e.g. crock pot).</td></tr></TABLE>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

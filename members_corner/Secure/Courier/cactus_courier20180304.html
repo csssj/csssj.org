@@ -1,0 +1,354 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/4/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/4/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "4";
+var thisyear = "2018";
+var nextmonth = "April";
+var nextday = "8";
+var nextyear = "2018";
+var deadline = "March 30, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("March 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","Succulent Bonsai-A Different Approach","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2018","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Prepping Plants for the Show &amp; Sale","28-29 Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","49<sup>th</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+fmcal ("May 2018","6 or 13, Sunday - TBD","Field Trip to Ruth Bancroft Gardens","","","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2018","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Succulents from seeds","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Succulent Bonsai-A Different Approach</B><br>
+<br>
+<P>
+Our speaker Keith Taylor began collecting C&amp;S 1991 and creating unique containers to show off his specimens in 2010. He has developed a different style of staging by combining plant, pot, rocks and topdressing to create award winning compositions.
+</P>
+<P>
+Keith will bring plants from his collection and talk about how to combine these elements create eye catching presentations.   He will also demonstrate how to stage.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Epilantha</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Novelty or non-traditional plantings</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Bonsai succulent (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Sedum or sedum hybrid</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with O through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Can Club Members Sell Plants at Our Show and Sale?","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Some club members, especially the newer ones, may not be aware that they do not have to be a big vendor to sell plants or plant-related items at our upcoming sale in late April.  We have a couple of tables set aside for regular club members to sell up to 20 items to the public.  Here’s an excerpt from Peter’s recent message to previous users of the Members’ Table, reminding them of the rules.  If you want to join in, please get in touch with Peter immediately.  His contact information is given below:</P><P>We will again have a Sales Table for club members who would like to offer their plants or related items for sale during our Spring Show &amp; Sale April 27-29, 2018.</P><P>Here is a reminder what you will need to do to sell your plants:<br><TABLE cellspacing=7><tr><td valign='top'><img src='flowericon2.gif' width=15 height=14></td><td align='top'>Label your plant with its name.</td></tr><tr><td valign='top'><img src='flowericon2.gif' width=15 height=14></td><td align='top'>Label your plant with your Vendor Number and Price.  The minimum price is $2.  Only use whole or half dollar prices, such as $3, $4.50, or $8.</td></tr><tr><td valign='top'><img src='flowericon2.gif' width=15 height=14></td><td align='top'>Reply to Peter by mail (1118 Vienna Street, Livermore, CA 94550), by email (<a href='mailto:beiersdorfer@mac.com?Subject=Vendor%20Number'>beiersdorfer@mac.com</a>), or in person at the March 4, 2018, monthly meeting to obtain your vendor number.</td></tr></TABLE></P><P>If you like to participate, you will need to reply to Peter, by March 10 even you have received a vendor number from me in the past.  He will assign vendor numbers by March 11.</P><P>Remember, the club gets 25% of the sale price, so this is a good way to support our club and make space for new acquisitions.</P><P>Bring your plants/items on Friday, April 27, during the setup hours (4pm - 8 pm). As a vendor you will be asked to help with the sale. Please sign up for one of the many duties associated with the show and sale:  Security, assisting the cashiers, making boxes, watching over the plant hotel, etc.</td></tr></TABLE></center>");
+
+fmart ("Get your plants ready for the upcoming show!","Jaan Lepson","","<center><TABLE width='90%'><tr><td valign='top'>Our Spring Show and Sale will take place on April 27-29, and we encourage members to enter plants into the show. It's a great experience and there are chances to win prizes as well.</P><P>Here is a list of categories in which you can win:</P><P>Best Cactus: Novice, Advanced, and Open categories<br>Best Succulent: Novice, Advanced, and Open categories</P><P><TABLE cellpadding=0 cellspacing=0><tr><td valign='top'>Best in Class (Cacti):<br> &nbsp; &nbsp; <I>Cereinae</I><br> &nbsp; &nbsp; <I>Echinocactinae</I> (other than Mammillaria)<br> &nbsp; &nbsp; <I>Mammillaria</I><br> &nbsp; &nbsp; <I>Echinopsidinae</I> <br> &nbsp; &nbsp; <I>Opuntiaceae</I><br> &nbsp; &nbsp; Monstrose or crested</td><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td vaign='top'>Best in Class (Succulents)<br> &nbsp; &nbsp; <I>Aizoaceae</I><br> &nbsp; &nbsp; Aloes <br> &nbsp; &nbsp; <I>Asclepiadaceae</I> <br> &nbsp; &nbsp; <I>Asteraceae</I> (<I>Compositae</I>)<br> &nbsp; &nbsp; <I>Crassulaceae</I><br> &nbsp; &nbsp; Haworthias<br> &nbsp; &nbsp; <I>Euphorbiaceae</I><br> &nbsp; &nbsp; Monocotyledon (other than <I>Aloaceae</I>)</td></tr></TABLE>Other<br> &nbsp; &nbsp; Photography<br> &nbsp; &nbsp; Director/Chair’s award</P><P>Contact our new Show Co-Chairs, Svetlana Bellam (<a href='mailto:svetlanabellam@gmail.com?Subject=Show'>svetlanabellam@gmail.com</a>) and Susan Pi (<a href='mailto:susan@susanpi.com?Subject=Show'>susan@susanpi.com</a>), for more information.</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Last month, we had a wonderful turnout at our Expanded Board Meeting and will be having another Expanded Board Meeting just before the March general meeting.  At our next meeting, we will continue our discussions about how to structure our Show and Sale going forward.  Those requested to attend this meeting will receive a separate email a few days beforehand.</P><P>We also had a great speaker last time, Russell Wagner, who spoke on mesembs.  He likes plants with little bitty leaves!  He showed a variety of different mesembs and even sold some of them to the audience.  I was fascinated by the new, incredibly red lithops he is raising.  He is very selective about who he sells those to, as they currently cost several hundreds of dollars each.  In a few years, as these enter common cultivation, the price will come down to where the rest of us can afford to buy some.  I also found Russell’s information that Baby Toes like to grow in sand very timely, as I am just getting ready to transplant mine.  Thanks Russell!</P><P>Our March speaker will be Keith Taylor on how to bonsai succulents.  I don’t think we’ve ever had a speaker on this topic before, so it should prove interesting.  Keith also turns out to be a potter!  And word is he will be selling some of his work at the meeting, so bring your shopping cash.</P><P>Our April meeting will be a round table on how to prepare your plants for the Show and Sale.  This will be timely information for many of you.</P><P>I want to give a shout-out to Monica Moran, who is picking up much of the Program Chair responsibilities, including setting up a couple of field trips in the next few months.  We’ll look forward to hearing more from her about that!</td></tr></TABLE></center>");
+
+fmart ("Volunteer Opportunities","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'><B>TREASURER </B> -  Our previous longtime Treasurer has decided to step down, and we are in search of a replacement to oversee all financial matters in connection with the club.  Coaching is available from the previous treasurer.</P><P><B>Co-TREASURER for SALES </B>– This is a new position that involves handling all financial matters connected with the club’s twice-yearly plant sale.  This involves stocking the cash registers, removing the proceeds at the end of each day, and ensuring that each vendor is paid the correct portion of the sales.   It also involves filing quarterly sales tax statements/payments with the California State Board of Equalization.  Training is available from the previous Treasurer.</P><P><B>Co-TREASURER for INSURANCE</B> – This is a new position that involves handling all matters connected with the club’s insurance, including maintenance of membership in California Garden Clubs Inc, timely payment of insurance premiums, and acquisition of Certificates of Liability prior to each of our Sales.</td></tr></TABLE></center>");
+
+
+fmart ("About the March Presenter","","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('succulentbonsai2.jpg',1000,1000)><img src='succulentbonsai2.jpg' width=300 height=300 hspace=17 vspace=17 align='left' class='enl'></a><br><br>Keith Taylor began collecting caudiciform succulents in 1991, after seeing a large <I>Cyphostemma juttae</I> in the ground at a local botanical garden.  &quot;I was drawn to size and grotesque shape of the trunk&quot;.  The <I>Cyphostemma</I> he saw is also the first succulent he purchased and still is in his collection of more than 800 plants.  Keith prefers his succulents to look like habitat specimens rather than cultivated plants.  He grows them hard, meaning limited water, little to no feeding and hot sun to give them the look of collected plants.</P><P>His favorites include <I>Cyphostemma</I>, <I>Fockea</I>, <I>Fouquieria</I>, <I>Pachypodium</I>, <I>Pachycormus</I>, <I>Tylecodon</I>, <I>Othonna</I>, <I>Pelargonium</I>, Mesembs and Euphorbia.  Roughly 5% of his collection is tuberous rooted cacti, <I>Lophophora</I>, <I>Peniocereus</I>, <I>Turbinicarpus</I>, <I>Mammillaria</I>, <I>Leuchtenbergia</I>, and <I>Ariocarpus</I>.</td></tr><tr><td valign='top'><a href=javascript:poppic('succulentbonsai4.jpg',800,800)><img src='succulentbonsai4.jpg' width=300 height=300 hspace=17 vspace=17 align='right' class='enl'></a><br><br>In 2008, Keith began creating pots to show off his plants.  He believes the pot should compliment, not distract.  The main focus should be the succulent.  If the pot is too ornate, colorful, or shiny, it draws your eye toward the pot rather than the succulent.  Also proportion plays a roll.  The container needs to be the right width and depth to look balanced.  For example, if the succulent is placed in the center of the container surrounded by colorful stones it will look artificial and awkward. Rocks and topdressing complete the presentation.  His pottery is sought after by C&amp;S collectors as well as bonsai artists due to the natural look of the containers.</td></tr><tr><td valign='top'><a href=javascript:poppic('succulentbonsai6.jpg',800,800)><img src='succulentbonsai6.jpg' width=300 height=300 hspace=17 vspace=17 align='left' class='enl'></a><br><br>Keith has always had the &quot;eye&quot; for what looked good.  Whether it's in his profession as a Pedorthist (design and manufacture of footwear for medical purposes), photographer, cook or potter. He has also served as President of the Cactus and Succulent Society of Sacramento for seven years.</P><P>Keith sells his work at C&amp;S clubs and shows, bonsai clubs, Facebook, Instagram, and his website.  He accepts custom orders and ships worldwide.</td></tr><tr><td valign='top'><a href=javascript:poppic('succulentbonsai8.jpg',800,800)><img src='succulentbonsai8.jpg' width=300 height=300 hspace=77 vspace=17 align='right' class='enl'></a><br><br><br><br>Facebook <a href='https://www.facebook.com/groups/kitoi/' target='_blank'>https://www.facebook.com/groups/kitoi/</a><br>Instagram <a href='https://www.instagram.com/kitoi/' target='_blank'>https://www.instagram.com/kitoi/</a><br>Website <a href='http://potterybykitoi.weebly.com/' target='_blank'>http://potterybykitoi.weebly.com/</a></td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>In habitat, <I>Ariocarpus fissuratus</I> grow in and on limestone soil.  When it rains, the rain splashes calcium from the limestone onto the plants, where, after the rains, it dries.  This happens every time it rains, and all the plants, from smallest to largest, have that calcium layer on them.  In habitat, it is a part of life.  If you lived in habitat where the plants grow, you could build a planter box and fill it with soil without limestone in it, and the plants would grow green.  The planter box could be fifteen feet long and four to five feet wide and say at least three feet tall.  Tall enough so no splash from habitat limestone would get on the plants.  Now let's say that you transplanted fifty plants that are two inches or less in diameter and four that are four to five inches in diameter.  These plants would start to grow green, because they have no calcium being splashed on them.  The new tubercles would emerge green even on the large plants, and, in time, the calcium build up would be washed off the plants.</td></tr><tr><td valign='top'><a href=javascript:poppic('2ariocarpusfissuratus.jpg',998,666)><img src='2ariocarpusfissuratus.jpg' width=399 height=266 hspace=17 vspace=17 align='left' class='enl'></a><br><br>Even having been in cultivation for at least a dozen years, the plant is still covered in the calcium; the reason is not because it was not watered, but it was watered with alkaline water.  Alkaline water will not wash off or dissolve the calcium or mineral that is built up on the plant. The photo to the left shows a plant really loaded with calcium and especially where the water would stand till it dried especially on the flat areas of the tubercle. Again, in the growing point can be seen some new growth without the calcium build up on it.</P><P>This plant has another problem besides the layer of calcium on the plant body.  That is that the plant is or has been stretching for light.  This shows up quite well when the plants are seen in person.</td></tr><tr><td valign='top'><a href=javascript:poppic('6ariocarpusfissuratus.jpg',905,641)><img src='6ariocarpusfissuratus.jpg' width=398 height=282 hspace=27 vspace=17 align='right' class='enl'></a><br><br>The photo to the right is of another habitat collected plant.  This plant has been getting acidic water for years.  Note the bottom tubercle there in the front still has some habitat calcium on it.  In time, the acidic water will dissolve that and it will end up green like the rest of the tubercles.</P><P>Rain falls from several hundreds of feet to even a mile in the desert.  That rain hits and splatters the soil for several inches in all directions.  As they live in limestone soil that is splashed on the plants, the calcium remains there after the rains, and it is then baked on by the sun.  If, when I water the plants, I watered with the same force as the rain hits, I would blow all the soil out of the pots, but at least the calcium would be washed off the plants in short order.  Gentle watering with acidic water takes a good while to slowly dissolve the calcium on the plants. There may still be some calcium on the plant in the second photo, but it is nothing like those in the first photo.  The plants are the same age and were covered in the same amount of calcium build up.</td></tr><tr><td valign='top'><a href=javascript:poppic('7ariocarpusfissuratus.jpg',998,666)><img src='7ariocarpusfissuratus.jpg' width=399 height=266 hspace=17 vspace=17 align='left' class='enl'></a><br><br>I gave the plant in the first photo a larger pot and new soil so it will now grow along with my other plants.  The plant in the second photo and the other plants I have been growing for years are all mostly green.  I also have seedling <I>Ariocarpus fissuratus</I> I have grown from my own seed, and they are all dark green in color.  They have not been covered in mineral or calcium deposits, dark green is the natural color of the plants.  This is one of my seedlings; it is 5 cm in diameter and shows the normal color of an <I>Ariocarpus fissuratus</I> that has not been splashed with minerals.</td></tr><tr><td valign='top'>In cactus club meetings, I know it is stressed all the time that all desert plants (cacti and succulents) need all the light that you can give them to keep them compact and growing as natural looking as can be in cultivation.  I also know that all books on cacti stress the importance of good strong light.  Most speakers, when talking about growing cacti, stress the importance of good light.  When people buy plants at the shows and sales and ask me how to grow them, I tell them to acclimate the plant to where they are going to have it.  Then, depending on what plant it is, I will stress good light, but also, if the plant is a high elevation plant, I will point out that it needs afternoon shade, but that shade has to be bright shade.  I am not sure that anywhere in habitat a plant grows in 50 to 90% shade.  I do not know of any cactus plant that will grow in dark caves.  I have had people tell me that they have 70% shade cloth on the west side of their greenhouse.  As to why, I do not know, but several have said that 70% shade cloth is all they could find.</P><P>It has been eight years since we published the article on using acidic water.  I have people ask why their plants are not growing, and, when I ask if they are using acidic water, some answer that they did one or two times but do not have time. They will mix up water with fertilizer in it, but it is too much of a hassle to make it acid by adding vinegar or sodium bisulfate.  Keep in mind that all rain water is acidic, for Mother Nature knows what is good for her plants.  If you have <I>Ariocarpus</I> plants and like the look of a plant covered with mineral build up, then water them with alkaline water.  They will slowly get more mineral build up on them.  I used to allow the buildup to stay on some plants for a couple years, and then I would take a tool and flick thick flakes of buildup off the tubercles.  I had to allow the build up to get quite thick or else I could not get it off without damaging the tubercles.  The plant would then be green for several months, until the buildup got thick enough, then the plant's green color would not show through.  Now all the <I>Ariocarpus</I> are dark green, like they should be, and they are mineral free thanks to acidic water.</P><P>Keep in mind that all water companies are required by law to add certain chemicals to keep the water alkaline.  Many places keep the pH of the water at 8 to 8.5, and I have heard of a place or two that have the pH at 9.  The idea is to keep the water from eating up the pipes and also keep you from getting heavy metal poisoning.  If you water your plants by dip and pour, a sump pump from a 30 gallon garbage can or if you have a Dosatron or some other brand of mixer, it only takes a few minutes to make the water acidic.  I always shoot for a pH of 5.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:cre8vsucculents@gmail.com?Subject=Membership%20Badge">cre8vsucculents@gmail.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

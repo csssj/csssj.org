@@ -1,0 +1,356 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 8/6/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 8/6/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "August";
+var thisday = "6";
+var thisyear = "2017";
+var nextmonth = "September";
+var nextday = "10";
+var nextyear = "2017";
+var deadline = "September 1, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("August 2017","6, Sunday - 11:00am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Wendy Soneson - watercolor of succulents","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2017","10, Sunday - 11:00am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Russell Wagner - Mesemb family","29/30, Fri/Sat - 9:00am to 5:00pm","Succulent Gardens Field Trip - Castroville");
+
+document.write("<br><br>");
+
+fmcal ("October 2017","14-15, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm ","12th Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2017","5, Sunday - 11:00am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Peter Beiersdorfer, Namibian plants","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Wendy Soneson - Watercolor of Succulents</B><br>
+<br>
+<P>
+Cacti and succulents come in such a wide variety of shapes and colors and have such amazing flowers, that I’m sure many of you have taken photographs of your plants.  But have you ever considered stepping it up a level and painting pictures of them instead?  Would you like to know how to get started?
+</P>
+<P>
+Wendy Soneson has been teaching watercolor for 40 years in Boston and recently moved to the Bay Area.  She teaches classes at several locations including the Ruth Bancroft Garden in Walnut Creek, where the focus is succulents and cacti.  She had demonstrated the art in major museums and has shown her work in several places in the Bay Area.  The luminosity of watercolor is masterful in depicting nature, and Wendy hopes many will be inspired to try this delicate medium in the future.  She has a Masters degree in the Arts in Human Development from Lesley University. 
+</P>
+<P>
+More information about Wendy and her work can be found here:<br><br>
+<a href="https://www.facebook.com/SonesonStudios/" target="_blank">https://www.facebook.com/SonesonStudios/</a><br> 
+<a href="http://watercolorweekly.weebly.com/" target="_blank">http://watercolorweekly.weebly.com/</a>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Ariocarpus </I>and <I>Astrophytum</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulent Bulbs</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Echeverias – perfect for watercolors (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Plant Outside the Pot (non-traditional or novelty plantings)</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with H through P should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Wendy Soneson Painting","","","<center><a href=javascript:poppic('wendysonesonpainting.jpg',960,769)><img src='wendysonesonpainting.jpg' width=576 height=461></a></center>");
+
+fmart ("Spotlight Interview with Lloyd Binen","Asmita Deshpande","","Lloyd’s Cacti and Succulents collection started some 25 years ago when his wife, Joyce, started buying inexpensive succulents from grocery stores and placing them around the house.  He got interested in them, when she started pointing out details he had not noticed, their textures, shapes and patterns.  He now has a sizable collection of cacti and succulents.  His favorites cactus is <I>Alluaudia Procera</I>, and, among the succulents, he likes <I>Agave Parryi Truncata</I>, <I>Agave Attenuata</I>, <I>Aloe Striata</I>, and <I>Agave Victoriae-reginae</I>.</P><P>He joined our Cactus and Succulent Society just over a year and half ago, but he has been a regular attendant of the society’s sales for a very long time.  He has bought a lot of plants over the years through the sales.</P><P>Lloyd and his wife live in Saratoga and have a grown son who lives in Venice Beach, SoCal.  He has been a realtor since 1976.  His wife, Joyce, was a pottery teacher at community colleges and has made lovely pottery, some of which he has used for his garden.</P><P>Besides Cacti and Succulents, he also likes tending his Koi and walking his Jack Russell Terrier mix, Chase.  He still occasionally works as a realtor, but the majority of his time is spent taking care of his wife who was diagnosed with early-onset Alzheimer’s Disease eight years ago.  Whenever he gets a little time for himself, he likes to spend it in his gardens with his plants.  &quot;Fiddle-farting&quot; he calls it.</P><P>His message for the club is to keep up the good work and to have the growers more readily available to give information and answer questions about the plants they’re selling.");
+
+fmart ("The Prez Sez","Sonia Dyer","","I would like to take this opportunity to give a shout-out to Kathi Cambiano for her dedication to seeing to it that our meeting room is all cleaned up and passes Park Ranger inspection at the end of each meeting.  In addition, the last few months Dan Martinez and Monica Moran have been giving her a hand.</P><P>None of these people were even asked to do this.  They just jumped in and made themselves useful to the club.  What a great attitude!  Thanks to all of you for your service.  It is recognized and appreciated.");
+
+fmart ("Report on the July Meeting","Sonia Dyer","Wes and Joyce McPheeters","<center><TABLE width='100%'><tr><td align='center' width='34%'><a href=javascript:poppic('mcph0500.jpg',1007,674)><img src='mcph0500.jpg' width=302 height=202 hspace=11 vspace=11 class='enl'></a></td><td><img src='blank.gif' width=300></td><td align='center' width='34%'><a href=javascript:poppic('mcph0496.jpg',835,476)><img src='mcph0496.jpg' width=250 height=143 hspace=11 vspace=11 class='enl'></a></td></tr><tr><td></td><td valign='top'><TABLE cellpadding=17 border=7 bordercolor='#000066'><tr><td>In July we again had our ever-popular Country Store.   As usual, our club members have demonstrated once again why the San Jose club is known for having the most generous members of any succulent club in the Bay Area.  Donations of plants and other items were fantastic, and the crowd loved it!  This activity also brought in $356 for the club treasury!</td></tr></TABLE></td><td></td></tr><tr><td align='center'><a href=javascript:poppic('mcph0497.jpg',944,374)><img src='mcph0497.jpg' width=283 height=112 hspace=11 vspace=11 class='enl'></a></td><td></td><td align='center'><a href=javascript:poppic('mcph0498.jpg',1007,674)><img src='mcph0498.jpg' width=302 height=202 hspace=11 vspace=11 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('1mammillariaschumanniivglobosa.jpg',1011,674)><img src='1mammillariaschumanniivglobosa.jpg' width=404 height=270 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariaschumanniivglobosa.jpg',1011,674)><img src='2mammillariaschumanniivglobosa.jpg' width=404 height=270 hspace=17 vspace=17 align='right' class='enl'></a><br><I>Mammillaria schumannii v globosa</I></P><P>The photo to the left is the plant taken on the first of September.  There showing is some clusters of buds between the tubercles.  Besides the multiple buds, there is something else strange going on also, but I will get to that later.  The photo to the right shows an axil that looks like it was trying to make an offset and buds at the same time.  I have counted several times, and I get nine buds growing in that one axil.  Around that axil are axils that have the regular single bud growing.</td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariaschumanniivglobosa.jpg',692,819)><img src='5mammillariaschumanniivglobosa.jpg' width=277 height=328 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('6mammillariaschumanniivglobosa.jpg',1000,852)><img src='6mammillariaschumanniivglobosa.jpg' width=300 height=256 hspace=17 vspace=17 align='right' class='enl'></a><br>In the photo to the left is something else that, for me, is strange.  On the stem in the back is a small cluster of buds, but the strange thing is on the stem in the fore ground.  Looking, you can see normal growing single buds and no clusters showing up.  But look again.  Notice that there are two buds growing from areoles.  There is also one dead flower remains that also bloomed from an areole.  In all my 60+ years of growing cactus plants, I do not remember seeing Mammillaria plants blooming from an areole.  I am not an expert on Mammillaria, but I do not think that they are supposed to bloom from an areole; it has always been from the axil.  The photo to the right shows a bud growing from an areole.  There is no question about it that is growing from an areole!  The photo below also shows different buds that have grown from areoles.  I counted on this plant about ten buds that have grown from the areoles.  I have two multiheaded plants, and the other plant growing within 30 cm is a bit smaller than the one in the first photo above, and it is growing normally with buds only from the axil.  That is, no clusters of buds from the axils and no buds from the areoles.  In the photo below, there are three buds growing from areoles.  To me it looks like they are almost growing from under the spine cluster.  Each is a different size; the one at the bottom right is just showing above the areole.  At the base of the bud is wool from the areole; it is against the bud, showing that it is growing from the areole.  For anyone that knows Mammillaria, they know that flowers from an areole is not something that a Mammillaria does.  I sent the photos to a friend that had grown Mammillarias for most of his cactus growing life, and he said he had never seen anything like that before.  I figured if anyone would know he would, for he studies his plants very carefully and knows all of them like the back of his hand.<br><center><a href=javascript:poppic('8mammillariaschumanniivglobosa.jpg',1011,674)><img src='8mammillariaschumanniivglobosa.jpg' width=404 height=270 hspace=17 vspace=17 class='enl'></a></center></td></tr><tr><td valign='top'><a href=javascript:poppic('11mammillariaschumanniivglobosa.jpg',1011,674)><img src='11mammillariaschumanniivglobosa.jpg' width=303 height=202 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('12mammillariaschumanniivglobosa.jpg',1011,674)><img src='12mammillariaschumanniivglobosa.jpg' width=303 height=202 hspace=27 vspace=17 align='right' class='enl'></a>I went on the Web and all the photos I found of the plant, there was not a single one that had buds or flowers growing out of the areole.  I do not think my plant is monstrose but it sure is doing something that is, for me, strange.  Clusters of buds in the place of one and buds from the areoles on Mammillaria plants are just something I had never seen before.  I have not seen anything written about any Mammillaria that grows flowers from the areole.  These photos are of the plants with several clusters of flowers open.  Not all the buds in a cluster open at one time.  If they did, that would really make the clusters dense.  The photo to the left is a round cluster, and the photo to the right is of a long cluster.  Keep in mind that all the flowers in a cluster are from one axil.  Each of the clusters has eight flowers open from the one axil.</td></tr><tr><td valign='top'><a href=javascript:poppic('13mammillariaschumanniivglobosa.jpg',1007,853)><img src='13mammillariaschumanniivglobosa.jpg' width=403 height=341 hspace=27 vspace=17 align='left' class='enl'></a><br>The photo to the left shows a flower that is open and has grown out of the areole and not the axil.  Notice that the flower has even pushed several spines out of its way.  There is no question at all that the bud grew from out of the areole.</P><P>As all Mammillaria that I know of produce the flower buds from the axil.  I thought it would be of some interest to the people that are really into growing Mammillaria and know the right way the plants are supposed to grow and flower.  The friend mentioned above sent me a map showing that the habitat of <I>Mammillaria schumannii v globosa</I> is now all built up with houses, and the habitat has apparently been destroyed.  With Anderson and the NCL totally ignoring the plant, it will slowly fade off into the sunset.  At the present time, there are a few people that are trying to keep it going.</td></tr></TABLE></center>");
+
+fmart ("August 2002 Revisited: What's Bugging You","Jim Daniel","","July and August is the best time to take <I>Euphorbia</I> cuttings. You will need a few tools like a pair of rubberized dish washing gloves, a sharp cutting tool (or tools) such as a sharp pair of pruning sheers or a heavy butcher's knife. You will also need a bucket of tap water to coagulate the milky sap and a pair of glasses or goggle would be handy. Sneak up on your selected <I>Euphoria</I> and behead it. Plunge the cutting into the bucket of water for a minute or two. Place your cutting into a container of #2 horticultural perlite. Water it well and place it in your warmest spot out of the sun. Water twice a week until roots form, then transplant into your usual potting mix. The most difficult job is keeping the <I>Euphorbia</I> juice out of your eyes and off your skin. Some <I>Euphorbias</I> will blister your skin and all will make your eyes water, if you get the juice into them.  Gil Tegelberg recommended the juice of <I>Aeonium lindlyi</I>; he could squeeze 36 drops from a single leaf.  I have never had much luck with his cure.");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,308 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 10/2/2010">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/2/2010</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "2-3";
+var thisyear = "2010";
+var nextmonth = "November";
+var nextday = "7";
+var nextyear = "2010";
+var deadline = "October 29, 2010";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("October 2010","2-3, Sat 9am-5pm - Sun 10am-4pm","5<sup>th</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2010","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2010","4, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2011","9, Sunday - 10:30am to 12:00pm","Board Meeting","9, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2010","18-19, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br><font size='-1'>Contact Naomi Bloss at 831-722-1446</font>","","","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">5<sup>th</sup> Annual Fall Show and Sale</B><br>
+<br>
+<P>
+<B><font size=+1>Friday (October 1 2010):</B></font>
+<TABLE>
+<tr><td nospan>3:30pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">We can get into the school</td></tr>
+<tr><td nospan>3:30pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Set-up tables</td></tr>
+<tr><td nospan>5:00pm - 9:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Plants will be grouped by participant rather than by judged show categories.
+</P>
+<P>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points.
+</P>
+<P>
+<B><font size=+1>Saturday (October 2 2010): </B></font>
+<TABLE>
+<tr><td nospan>9:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+<B><font size=+1>Sunday (October 3 2010): </B></font>
+<TABLE>
+<tr><td nospan>10:00am - 4:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+There will be prizes for the plants that are most popular with our visitors.
+</P>
+<P>
+Please pick up show plants starting at 4:00pm.
+</P>
+<br>
+<P>
+<center>
+<img src="buchser.gif" width=434 height=259 alt=" Buchser Middle School, 1111 Bellomy Street, Santa Clara, CA" border=1>
+<br>
+<font size=-1>1111 Bellomy Street, Santa Clara</font>
+</center>
+</P>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Mammilaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulent Bulbs</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your oldest plant or the one that got you interested in the hobby (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Fall Bloomer</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through N should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+
+ -->
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Our 2010 Fall Show and Sale","Jaan Lepson","Our ever-popular Show and Sale is almost upon us - it will take place on October 1-3 and we need YOUR help to make it a success.  It's also our club's Golden Anniversary - 50 years since we were founded in 1960!</P<P>Here are some last minute announcements: </P><P>We need volunteers to help out on all three days.</P><P>On Friday afternoon and evening we need help setting up the tables, decorating the show tables, and staging plants.  Buchser Middle School will open to us at 3:30 on Friday and the tables are scheduled to be delivered between 4 and 5 pm.</P><P>On Saturday and Sunday we need help with security, cash registers, and boxing plants, and also with break-down on Sunday afternoon at 4 pm.  If you can find the time to help us out, please let Bill Gingras know via phone or email, or send an email via the CSSSJ web site.  You can also sign up at the show and sale. And don't forget, volunteers get $5 in Show Bucks which are valid for a year just in case you don't find something you just have to have this time around.</P><P>Remember, this is YOUR club and everyone is encouraged to bring in plants.  Not sure yet if you want to exhibit plants in the show?  Go ahead, it's easy!  You can find the information you need by clicking the <a href='http://www.csssj.org/members_corner/Secure/show_sale.html'>&quot;Show and Sale page&quot;</a> link on the CSSSJ home page.  We'll have plenty of entry cards available on Friday night.  You don't have to be a pro to show!</P><P>We still need more good, sturdy boxes for our customers to carry their purchases home - please bring in any boxes you may have.</P><P>The experiment continues!  If you've been growing one of the &quot;Red-Headed Irishmen&quot; (<I>Mammillaria spinosissima</I>) that were handed out at one of our meetings last year, please enter it in the show.  We'll have an area set aside especially for them.</P><P>The fall show is judged by People's Choice, and we will have more prize categories this year to be more in line with our Spring Show (yet another reason to enter a plant!).  In addition to the top three vote-getters among cacti and succulents, we will have awards for <I>Mammillaria</I>, Opuntioids, <I>Agavaceae/Aloeaceae</I> (New World / Old World counterparts), <I>Asclepidaceae</I>, <I>Crassulaceae</I>, <I>Euphorbiaceae</I>,  minature/low plants (no more than 2.5&quot; tall), Photographs and Crafts, and Sweepstakes (number of points divided by 25 or the number of plants entered, whichever is greater).");
+
+fmart("Cultivate Your Creative Side","Kathi Cambiano","At the April show and sale, we offered planting demonstrations at 10:30 and 2:30 on both days.  Tony Bassano, Alyene Daggett, Bill Gingras, and myself gave the demos, and I think everyone had fun.  I would really like to be able to offer the demos again for the October show and sale, and am looking for people that would like to help out.  Having two people to run each of the demos worked out great; and they lasted about 30 to 45 minutes.</P><P>For more information, call Kathi at 408-293-4887 or email <a href='mailto:cactuskathi-csssj@yahoo.com?Subject=Re:Cultivate%20Your%20Creative%20Side'>cactuskathi-csssj@yahoo.com</a>");
+
+fmart ("Sales Table for Club Members at our 5<sup>th</sup> Annual Fall Show &amp; Sale","Peter Beiersdorfer","By popular demand, we will again have a Sales Table for Club Members who would like to offer their plants for sale during our 5<sup>th</sup> Annual Fall Show &amp; Sale October 2 &amp; 3.</P><P>If you have nice plants to sell, here is what you will need to do.  Label your plant with its name and price.  The minimum price is $2.  Add a second, removable tag with your name and price.  This tag will be removed at the cash register, when your plant is sold and kept for tallying up the proceeds.  The club gets 30% of the sale price, so this is a good way to support our club and make space for new acquisitions.</P><P>The Members Table is for selling small quantities of plants.  Bring your plants on Friday during the setup hours.  If you have more than 20 plants to sell, please contact <a href='mailto:beiersdorfer@mac.com?Subject=Re:Club%20Members%20Sales%20Table'>Peter Beiersdorfer</a> before the Show &amp; Sale.  Also please remember that the plants must be free of disease and pests.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Standings as of September 2010:<br><TABLE width='100%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Tony Bassano",219);
+fminiadd ("Peter Beiersdorfer",150);
+fminiadd ("Chuck Breese",4);
+fminiadd ("Linda Delgado",10);
+fminiadd ("Evalyn Livermont",25);
+fminiadd ("Marilyn Moyer",48);
+fminiadd ("Maggie Palacek",29); 
+fminiadd ("Joel Parker",63);
+fminiadd ("Ellen Stubblefield",123);
+fminiadd ("Gary Stubblefield",105);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Bill Kurtz",42);
+fminiadd ("Bill Munkacsy",50);
+fmini ("Open");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Anaya",4);
+fminiadd ("Jeff Baumgartner",18); 
+fminiadd ("Kathi Cambiano",171);
+fminiadd ("Frances Emmanuel",2);
+fminiadd ("Byron Fan",128);
+fminiadd ("Joseph Hidalgo",150);
+fminiadd ("Jaan Lepson",142);
+fminiadd ("Susan McKuhen",25);
+fminiadd ("Milovan Milutin",12);
+fminiadd ("Loyd Monaco",50);
+fminiadd ("Alex Morgan",11);
+fminiadd ("Vicki Ortiz",11);
+fminiadd ("Janet Rollin",19);
+fminiadd ("Katia Romanova",13);
+fminiadd ("Rebecca Schoenenberger",3);
+fminiadd ("Joe Silva",30);
+fminiadd ("Bracey Tiede",3);
+fminiadd ("Dolores Wagner",6);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

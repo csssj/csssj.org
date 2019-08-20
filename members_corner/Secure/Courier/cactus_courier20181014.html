@@ -1,0 +1,372 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 10/14/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/14/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "14";
+var thisyear = "2018";
+var nextmonth = "November";
+var nextday = "4";
+var nextyear = "2018";
+var deadline = "October 26, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>"); 
+
+fmcal ("October 2018","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","Gardening With Native Plants and Succulents","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","Gasterias and Echeverias In Cultivation","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2018","1, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2019","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Gardening With Native Plants and Succulents</B><br>
+<br>
+<P>
+Rebecca Schoenenberger will discuss drought tolerant landscaping utilizing cacti, succulents and native plants.  She’ll review garden design principles, and will discuss how to best incorporate cacti/succulents into your own gardens.  Rebecca will be bringing some California native plants and succulents for sale at the meeting.
+</P>
+<P>
+Rebecca Schoenenberger is the owner, designer and builder of California Nativescapes.  Her educational background includes an Associate of Science in Park Management, and a Bachelor of Science in Environmental Studies.  She also has several years of experience in landscape design and maintenance, based on nature.  She has an extensive knowledge of native plants, including which plants will thrive in which locations.  Since 2011, Rebecca has been a volunteer Santa Clara County Master Gardener, and continues to improve her understanding of edible landscaping, using ecologically sound methods.
+</P>
+<P>
+<a href="http://www.calnativescapes.com" target="_blank">http://www.calnativescapes.com</a>
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cactus originating from Mexico</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Bulbous succulent plant</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What did you do with you new plant(s) from the Fall Show and Sale? (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Crassula plant</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with H through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Collection Up for Sale","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('bassano001b.jpg',1005,753)><img src='bassano001b.jpg' width=302 height=226 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('bassano003b.jpg',1005,753)><img src='bassano003b.jpg' width=302 height=226 hspace=17 vspace=17 align='right' class='enl'></a><br>Tony Bassano was an active member of CSS-SJ for many years.  He is retired now and has decided he no longer has the energy to give his collection the attention they deserve and is selling most of them at reasonable prices.  He has some unusual things in his collection, including several mature Leuchtenbergias, a rare red-flowering Opuntia from the Galapagos, and a 6 foot high Banyan Tree sapling that he has grown from seed.  He also has several orchids.</P><P>To reach Tony to make an appointment, please call him at either 408-295-1634 (home) or cell (408) 642-0135.  Tony lives in an apartment near downtown San Jose.</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'><B>The Show and Sale:</P><P></B>This year’s Fall Show and Sale was another success!  We never make as much in the Fall Sale as we do in the spring, but we did quite respectably well.  The customer turnout was steady and busy the whole time, but not crazy-busy like in the spring.<B><br></B><br>I want to give special thanks to Dan Martinez for taking on the Co-Treasurer for the Sale role this Fall.  He has even automated part of the process, and has good ideas for other improvements.</P><P>At the last several sales, the Plant Hotel has filled up on Friday night, leaving no space for outside customers’ plants on Saturday morning.  This time, we were able to open a cash register for an hour or so on Friday night, so some people could pay for the plants they’re buying and get them out of the Plant Hotel.  This worked well.  Thanks John Bloss and Roger Lane for bringing up one of the cash registers early.</P><P>At the end of this Fall’s Show and Sale, our Lost and Found box had a record number of items in it.  The owners have been identified for everything except an assortment of plastic milk crates in various sizes/colors.  These will be brought to the next club meeting to see if anyone claims them.  It helps to put your name on stuff.</P><P><B>Awards Voting:</P><P></B>At this December’s Holiday party, we will be giving out prizes of $100 in ShowBucks to a few individuals who have been singled out for their contributions -- within the last year -- towards making this Club successful.  This includes those who helped implement the Show and Sale, and otherwise.</P><P>As announced in a newsletter last spring, the first award will go to a person selected by the membership at large during the October general meeting.  A second person will be chosen by the voting members of the Board of Directors at its November Board Meeting, and a third person will be chosen by the Club President.  Special thanks go out to Joyce McPheeters and Monica Moran for creating the ballot to be used at the October meeting, and to Dan Martinez for agreeing to hand out the ballots at the meeting.</td></tr></TABLE></center>");
+
+fmart ("Mini Show","Bill Lemke","Allen Krever","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('minishow18091.jpg',622,980)><img src='minishow18091.jpg' width=218 height=343 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('minishow18092.jpg',1037,740)><img src='minishow18092.jpg' width=363 height=259 hspace=17 vspace=17 align='right' class='enl'></a><br><B>For October Mini Show</B><br><B>Cactus of the Month:</B>  Cactus originating from Mexico<br><B>Succulent of the Month: </B>Bulbous succulent plant<br><B>Something Special:</B> What did you do with you new plant(s) from the Fall Show and Sale?<br><B>Beginners Luck: </B>Crassula plant<br> <br><B>For November Mini Show</B><br><B>Cactus of the Month:</B>  Cactus originating from Central or South America<br><B>Succulent of the Month: </B> <I>Echeveria</I><br><B>Something Special:</B> Dudleya<br><B>Beginners Luck: </B>Sedum</td></tr><tr><td valign='top'><a href=javascript:poppic('minishow18096.jpg',622,980)><img src='minishow18096.jpg' width=218 height=343 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('minishow18097.jpg',622,980)><img src='minishow18097.jpg' width=218 height=343 hspace=17 vspace=17 align='right' class='enl'></a><br>Please have your plants on the correct tables with completely filled out forms by 12:30 PM so that the meeting can get started.</P><P>Remember that you can bring only 5 plants for the Mini Show.  </P><P>Please be prepared to say something about you plant if you win a category. This would be helpful and interesting to members.</td></tr><tr><td align='center'><font size='-1'>(Photographs are from the September Mini Show.  Ed.)</font></td></tr></TABLE></center>");
+
+fmart ("Sunshine Report ","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Well, we’ve had a couple of sad events this last month.  For those of you who didn’t hear during the Show and Sale, Terri Koike’s sister unexpectedly passed away following a long battle with an auto-immune disorder.  We’re all so sorry for your loss, Terri.</P><P>And former club member and board member Joel Parker has also unexpectedly passed away this month.  After he retired about two years ago, Joel and his wife moved to the Sacramento area, and he became very active in that area’s club.  There will be a condolence card available to sign at the October club meeting.</td></tr></TABLE></center>");
+
+fmart ("Food for the Club’s Fall Show &amp; Sale","Terri Koike  (Hospitality Chairperson)","","Another successful Club sale &amp; show event!  From the hospitality chair’s point of view, everything went very smoothly!  Starting with Friday’s set-up to Sunday’s take-down, I think everyone was satisfied with the food served.  Thank you to all the members who contributed food to our Fall event.  Warm thanks and appreciation go to:</P><TABLE><tr><td valign='top'>Joyce McPheeters<br>Judianne Ganschow<br>Sadie Heitman<br>Cecila Caday<br></td><td> &nbsp; &nbsp; &nbsp; <td valign='top'>Ellen Stubblefield<br>Loyd Monaco<br>Annie Wolf</td></tr></TABLE>Unknown member who brought 2 trays of Italian Roll-up sandwiches  (sorry I did not get your name!)</P><P>Loyd Monaco &amp; Glenn Koike for working the BBQ grills.</P><P>Your generosity is most appreciated by me &amp; the club!<br>(Apologies to anyone I may have forgotten.)</P><P>Food was free &amp; delicious:  Round Table pizza on set-up day, BBQ hamburger/hotdogs on Saturday, &amp; Una Mas -Mexican Food on Sunday.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('1mammillariamelaleuca.jpg',1011,674)><img src='1mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariamelaleuca.jpg',1011,674)><img src='2mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 align='right' class='enl'></a><br>In the older books you will find <I>Mammillaria melaleuca</I> listed under <I>Dolicothele melaleuca</I>.  These photos show the typical <I>Mammillaria melaleuca</I> plants.  Both are in 15 cm pans.  The plant in the photo to the left is trying to over grow the side of the pot.  The plant in the photo to the right has a little way to grow before needing a larger pot.  I will have to move the plant in the photo to the left into a 17.5 cm azalea pot.  The plants are not really fast growing, but, when they need a larger pot, they need it to stay looking good.  I also think they will need an azalea pot for they do have tap roots.  The photo below is the growing point of one of the stems.  It shows the network of spines and the colors of the spines.  It also shows something that is not supposed to be, and that is some of the areoles have two central spines.  The areoles are covered in fluffy wool; that will, in time, be washed away like the descriptions say.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('3mammillariamelaleuca.jpg',1011,674)><img src='3mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariamelaleuca.jpg',1011,675)><img src='5mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 align='left' class='enl'></a><br>The photo to the left shows the spine clusters.  It is easy to see that some areoles have two centrals.  A few days ago, I was moving plants around and discovered that I have five more of the plants than what I thought I had. A couple of the plants have three central spines.  Not at every areole, but enough so that I know I am not making a mistake. &quot;Melaleuca&quot; means black and white.  It is referring to the color of the radial spines.  I have plants that have the dark and almost white radial spines, but I also have a couple plants that have all dark radial spines and a couple that have all white radial spines.</td></tr><tr><td valign='top'>If the temperature is 98 to 100 F (36.5 to 37.7 C) in the shade it is 118 to 126 F (47.7 to 52 C), if we are suffering with temperatures of up to 110 F (43C) it is anywhere from130 to 136 F (54.5 to 57.7 C) in the hothouses.  With temperatures like this, it makes plants that do not get any warmer than about 90 F (32 C) at the most in habitat, do interesting things like grow extra spines to help shade the plant body.  I have seen plants grow spines two times longer than the spines it had in a more shaded area.  I suspect that this is what has happened to my plants, for I have found one that spent time in a very bright spot has three central spines and up to 15 radial spines on a good number of the areoles.</td></tr><tr><td valign='top'><a href=javascript:poppic('7mammillariamelaleuca.jpg',1004,725)><img src='7mammillariamelaleuca.jpg' width=351 height=254 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('8mammillariamelaleuca.jpg',1011,674)><img src='8mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 align='right' class='enl'></a><br>The flowers are 2.5 to 3 cm long and in diameter.  That is measuring the flowers on my plants.  The outer petals have a dark yellow midstripe.  (See the photo to the left.)  In the photo on the right, there is only a slight indication of the dark midstripe.  The inner petals are yellow with more color in the middle of the petal and fading to translucent yellow at the edges.  The filaments are a goldish yellow with some pink mixed in.  The style is yellowish pink and the stigma lobes are a very light green.  When the plants bloom, many times the plant throws a ring of flowers.  If the plant is a many headed plant, as in the photo below, it is kind of hard to see the individual rings of flowers for each head.  (The photo below is courtesy of Keith Flanagan of Overton England.)  The flowers have a wonderful perfume that can be detected several meters away, if the breeze is right.  The flowers last for several days and if the weather is cool it can be four or so days. If it is really hot the flowers may only last one day and part of the next day.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('9mammillariamelaleuca.jpg',1011,674)><img src='9mammillariamelaleuca.jpg' width=354 height=236 hspace=27 vspace=17 class='enl'></a></td></tr><tr><td valign='top'>The plants come from an elevation of from 1,300 to 2,000 meters [that is 4265 to 6561 feet].  Not all plants are created equal, and I have found that some plants get frost burn with a light frost, while others do not.  I have to think that the plants from the higher elevation are a bit more frost tolerant than those from the lower elevation.  Not knowing the elevation that seeds come from, it is best to protect the plants from any more than a degree or two of frost.  If you are not sure, then keep them above 34 F or 1.5 C.  Give good light, but, as they do not have dense spines, be careful not to burn the plants with too much sunlight.  A combination of high temperatures and strong sunlight can cook the plants or burn them enough that it can take years for the plant to outgrow it, if it ever does.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

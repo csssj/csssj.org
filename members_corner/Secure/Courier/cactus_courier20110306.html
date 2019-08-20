@@ -1,0 +1,280 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/6/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/6/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "6";
+var thisyear = "2011";
+var nextmonth = "April";
+var nextday = "2-3";
+var nextyear = "2011";
+var deadline = "March 25, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("March 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Pottery Exchange","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2011","2-3, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","42<sup>nd</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2011","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2011","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2011","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2010","18-19, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br><font size='-1'>Contact Naomi Bloss at 831-722-1446</font>","","","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Pottery Exchange</B><br>
+<br>
+<P>
+Kim Manfredi returns to deliver our completed pots. 
+</P>
+<P>	
+We will also have a &quot;White Elephant&quot; pot sale.  Everyone has some pots that just aren’t their style, but they could be exactly what someone else is looking for.  Do some Spring cleaning, and make someone’s day!  
+
+Kathi Cambiano will be demonstrating how to drill holes in pots during a portion of the meeting.  Bring safety goggles if you have them.
+	
+Instructions for the &quot;White Elephant&quot; pot sale: 
+<UL type="square">
+<li>Clear out any dirt from the pot</li>
+<li>Label your pot with your name and price</li>
+<li>Secure the label to the pot with tape</li>
+</UL>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Best use of unique container to complement a cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Bonsai !</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Best in plant staging  (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Mammilaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<TABLE border=5 width="95%"><tr><td>
+<TABLE border=1 cellpadding=7><tr><td>
+<font size="+2" color="#990000">Note: The meeting location has been changed from the Meeting Hall to the Multi-Cultural Center.<br>
+ &nbsp; &nbsp; <font size="-1">(See next to the last article for more information.)</font>
+</font>
+</td></tr></TABLE>
+</td></tr></TABLE>
+<br>
+</P>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Picture Pages Status","Rich Kroll","Due to the number of pictures submitted for the Cacti/Succulents page, these pages have been split into two separate pages, one for cacti and one for succulents.</P><P>Multiple members who have signed up under one email address may have multiple votes for a picture.  (Members are on the honor system to vote individually and not misappropriate the vote for someone else under their membership email address.)</P><P>Several pictures have been added in February.  Members are encouraged to return to the picture pages to see if there are any new ones for which they would like to vote.</P><P>Voting is up.  Twenty-eight members have voted for their favorite pictures.  This is still less than our target of 30 percent of the membership, but it is a great improvement.  If you have not visited the picture pages and voted for the pictures you like, please take a few minutes to do so.  You will be contributing to the quality and value of the content on our web site.");
+
+fmart ("Caro Desert Nursery<br>Annual Potters Sale &amp; Master Growers<br>Invitational Auction","","On March 19th, 2011, Caro Desert Nursery will be hosting the Annual Potters Sale &amp; Master Growers Invitational Auction.  Many of these potters create new and gorgeous pots over the fall and winter. Be among the first to see and buy their new creations.  The potters scheduled to be there: Joe Wujcik, Debbie &amp; Charlie Ball, Karenn Ohlinder, and Steve Pate.</P><P>This year there will be an Invitation Only, Master Grower Specimen Plant Auction.  A some of these Master Growers will be Vince Basta, Larry Grammer, Karen Ostler, Elton Roberts, Dave Tufenkian, Rene Caro and Petra Crist.</P><P>Saturday March 19th, 2011<br> &nbsp; &nbsp; &nbsp; Potters Sale &amp; Plant Viewing: 9:00 a.m.<br> &nbsp; &nbsp; &nbsp; Auction: 1:00 p.m.</P><P><center>Location: Caro Desert Nursery<br>9607 E. Avenue S12<br>Littlerock, CA 93543<br>Phone: 661-456-0787<br>Web Site: <a href='http://www.CaroDesert.com' target='blank'>www.CaroDesert.com</a><br>Email: <a href='mailto:PattyCC4@yahoo.com'>PattyCC4@yahoo.com</a></center>");
+
+fmart ("Addition to the Web Site","","A link has been added to the Mini Show standings page.  The new page contains the planned Mini Show categories for the whole year.  If any of these categories change due to the program for the meeting or other factors, this page will be updated.");
+
+fmart ("2011 Spring Show and Sale","Jaan Lepson","The 2011 Spring Show and Sale is approaching - it will take place on April 1-3 and the club needs everyone's help to make it a success.  We need volunteers to help out on all three days – there will be a sign-up sheet at the March meeting.  Even if you don’t sign up now, we can always use your help, and volunteers will receive Show Bucks.</P><P>Remember, this is YOUR club and everyone is encouraged to enter, even if you’ve never shown before.  There’s still plenty of time to get your plants ready.  We’ve also added more prize categories, including miniatures and crafts, plus there are prizes just for novices.  Even without a prize, it’s a lot of fun to show your plant!  Find out more at the &quot;Show and Sale page&quot; link on the CSSSJ home page.</P><P>Last, but not least, we need lots of good, sturdy boxes in various sizes for our customers to carry their purchases home.  Please start saving boxes to bring in to the sale – each box saves the club money by not having to buy one!");
+
+fmart ("Change of Venue","Bill Kurtz","<TABLE width='100%'><tr><td><img src='mcc.jpg' width=504 height=308 hspace=9 align='right'><br>We have been moved from the Meeting Hall to the Multi-Cultural Center at Prusch Park.  After turning into the park from South King Road, take the first left to the parking lot for the Multi-Cultural Center.</P><P>Note that the Multi-Cultural Center does not have kitchen facilities.  If you are bringing snacks that require heating, you will have to bring your own heat source, (e.g. crock pot).</td></tr></TABLE>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Standings as of February 2011:<br><TABLE width='100%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",50);
+fminiadd ("Linda Delgado",11);
+fminiadd ("Jaan Lepson",50);
+fminiadd ("Marilyn Moyer",5);
+fminiadd ("Joel Parker",11);
+fminiadd ("Ellen Stubblefield",32);
+fminiadd ("Gary Stubblefield",38);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Bill Munkacsy",48);
+fmini ("Open");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Anaya",12);
+fminiadd ("Kathi Cambiano",48);
+fminiadd ("Barbara Friedericks",25);
+fminiadd ("Joseph Hidalgo",50);
+fminiadd ("Terri Koike",31);
+fminiadd ("Alex Morgan",5);
+fminiadd ("Janet Rollin",21);
+fminiadd ("Diane Salewski",28);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

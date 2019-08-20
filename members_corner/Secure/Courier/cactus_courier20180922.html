@@ -1,0 +1,393 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 9/22/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 9/22/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "September";
+var thisday = "22-23";
+var thisyear = "2018";
+var nextmonth = "October";
+var nextday = "14";
+var nextyear = "2018";
+var deadline = "October 5, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>"); 
+
+fmcal ("September 2018","22-23, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm","13th Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2018","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2018","1, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2019","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">13th Annual Fall Show &amp; Sale</B><br>
+<br>
+<P>
+<font size="+1">Friday</font> <B>(September 21, 2018):</B><br>
+<TABLE>
+<tr><td valign="top" "nowrap">3:30pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">We can get into the school</td></tr>
+<tr><td valign="top" "nowrap">3:30pm – 5:00pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">Set-up tables</td></tr>
+<tr><td valign="top" "nowrap">6:30pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">All show plants should be available for staging</td></tr>
+<tr><td valign="top" "nowrap">6:30pm – 8:00pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points. (Note that everyone should be out of the school by 9:00pm at the latest every day.)
+</P>
+<P>
+<font size="+1">Saturday</font> <B>(September 22, 2018):</B><br>
+<TABLE>
+<tr><td valign="top" "nowrap">9:00am – 5:00pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+<font size="+1">Sunday</font> <B>(September 23, 2018):</B><BR>
+<TABLE>
+<tr><td valign="top" "nowrap">10:00am – 4:00pm</td><td> &nbsp; &nbsp; </td><td valign="top" "nowrap">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+There will be prizes for the plants that are most popular with our visitors.
+</P>
+<P>
+Please pick up show plants starting at 4:00pm. 
+</P>
+<br>
+<P>
+<center>
+<img src="petersonmiddle2.gif" width=530 height=325 border=1 vspace=5><br>
+<font size="-1">Peterson Middle School, 1380 Rosalia Avenue, Sunnyvale, CA, 94087-3795</font>
+</center>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grey Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grey Succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants for the Peoples Choice Show at the Fall Show and Sale (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Cactus or Succulent in Bloom</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through G should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Show and Sale Changes","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Since the last Cactus Courier newsletter went to press, the following important changes relating to the upcoming Show and Sale have occurred:</P><P><B>SHOW<br></B>The Co-Directors of the Show have decided to increase the number of pots awarded at this year’s Show to 24.  As previously stated in the last newsletter, this Fall there will be no categories, just a simple open People’s Choice.  The Show policy under the new Co-Directors continues to evolve, and you will be kept updated of future changes via the regular newsletter.</P><P><B>SALE<br></B>Peter Beiersdorfer tells me that small vendors (selling 20 or less items) currently do not use barcodes, and that this cannot be set up before the upcoming sale.  He has proposed a plan to implement barcoding for small vendors starting at next Spring’s Sale, and the Board agrees with this plan.  Regular vendors are still expected to barcode all their items for the upcoming Fall Sale.</P><P><B>SHOWBUCKS<br></B>The ShowBucks policy remains unchanged from that printed in the newsletter, however ShowBucks distribution will now be handled by Loyd Monaco.  Loyd plans to be there most of the time, but if you can’t find Loyd, his backup will be Kathi Cambiano.</P><P>As mentioned in the last newsletter, the paper Volunteer Signup List now gets transcribed into an online spreadsheet, accessible by club members who couldn’t make it to the club meetings, or who wish to sign up at the last minute.  People without computer access can still sign up on paper.  The person doing the transcribing reports that the handwriting of some of the people who signed up on the paper list is impossible to make out.  If you are a person, like me, who has terrible handwriting, check the online list (<a href='http://bit.ly/2NV6Fcy' target='_blank'>http://bit.ly/2NV6Fcy</a>).  If your name wasn’t transcribed, add it to the online list.  This is important because this list will be the primary reference used by those who are handing out ShowBucks.  Also for this reason an additional tab will be put on the online list to cover senior club members who handle special assignments that are not open to the general membership, to record that they are also eligible for ShowBucks.</P><P>If you have any questions about whether you are eligible for ShowBucks, see me.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>I have had <I>Mammillaria alamensis</I> since way back in my early days of my cactus collecting.  I do not know where I got the plant from or how long I have had it.  I dare say it has been around 40 years ago since I got it.  It was back in the days when it was a good species and not like today where the 'people in the know' have put it.  The plant was first collected by Howard Gentry in 1936 near Alamos, Sonora Mexico.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariaalamensis.jpg',998,665)><img src='1mammillariaalamensis.jpg' width=299 height=200 hspace=27 vspace=17 align='left' class='enl'></a><br>The photo to the left is of one of the plants I got many years ago.  As can be seen, it does make a cluster of slender cylindrical stems.  The plants have stood for many years without much attention.  They did not get repotted or have the dead flower remains removed.  They just got watered and fed on a regular basis.  As a result, the plant has a stem or two that are as tall as 41 cm. That is just over 16 inches tall.  It is a good thing that the plant has some hooked spines, or it would be laying over and would have been laying on other plants.  The hooks helped the stems to stand upright, for they hooked on hooks from other stems and so stood more or less upright.  If you notice the number of radial spines, you will see that it is more than the 9 called for in Craig's description.  Hunt says that the number of 9 radials is not always correct and it can be more.  I have seen plants grow more and longer spines, when given a very bright spot in a hot hothouse.  So if a plant does not have the exact number of spines, be it radials or centrals, I do not worry about it.  It is the same with the size of the flower.</td></tr><tr><td valign='top'><a href=javascript:poppic('2mammillariaalamensis.jpg',1091,849)><img src='2mammillariaalamensis.jpg' width=327 height=255 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('3mammillariaalamensis.jpg',1000,854)><img src='3mammillariaalamensis.jpg' width=300 height=256 hspace=27 vspace=17 align='right' class='enl'></a><br>The photo to the left is the upper side view of a stem, and the photo to the right is the growing point with the spine clusters looking like they are emerging from the inside the plant.  The centrals are very dark colored, when they are fresh and will later fade a bit to a lighter almost ashen brown.  This can be seen in the photo to the left, as the spines lower down the stem are lighter in color as seen in the photo above the central spines have an ashen color to them.</td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariaalamensis.jpg',998,665)><img src='5mammillariaalamensis.jpg' width=299 height=200 hspace=47 vspace=17 align='right' class='enl'></a><br>Near the top of the stem are buds that are not far from opening.  There is the pink of the inner petals pushing through the outer greenish petals.  If you look closely, you can see some buds that are still green.  The closer the buds get to opening, the more color the outer petals have.  They take on a pinkish color.  This shows up quite well in the photo to the right.  In the photo, an outer petal is loosening up so the flower can open.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('7mammillariaalamensis.jpg',998,665)><img src='7mammillariaalamensis.jpg' width=299 height=200 hspace=27 vspace=17 align='left' class='enl'></a><br>In the photo to the left, the flowers have just opened and are open wide but still have a little way to go to be open as wide as the flowers on the adjacent stem.  The flowers on either side of the center one show the filaments and the one on the right shows the style also.  The filaments and style are rose pink and not the color of the petals.  The stigma is green, and the flowers are 3.5 cm in diameter.  I measured several flowers, and they were right at 3.5 cm for all the flowers that had been open for more than one day.  The flower color is an intense fuchsia pink with a much darker center.  They may be somewhat like the flowers on <I>M. mazatlanensis</I>, but again they are different in many respects.</td></tr><tr><td valign='top'>My plants may not be a true <I>Mammillaria alamensis</I>, but I would guess that they are about as close as we are going to get in this day and age.  As no one seems to know exactly what <I>Mammillaria alamensis</I> looks like and do not know the flowers or the flower color, I am not going to change the name of the plants for anyone till they can prove beyond any shadow of doubt that it is some other Mammillaria!  I am happy to leave the name of <I>Mammillaria alamensis</I> on them.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

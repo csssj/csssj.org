@@ -1,0 +1,436 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 8/4/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 8/4/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "August";
+var thisday = "4";
+var thisyear = "2019";
+var nextmonth = "September";
+var nextday = "8";
+var nextyear = "2019";
+var deadline = "August 30, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("August 2019","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 1:00pm","Berkeley Botanical Garden Field Trip &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <Font size='+2' color='#000033'>OR</font>","4, Sunday 12:30pm to 3:00pm","CSSSJ Fall Show &amp; Sale Volunteering");
+
+document.write("<br><br>");
+
+fmcal ("September 2019","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Succulent Wreath Making Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2019","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Berkeley Botanical Garden Field Trip or<br>
+CSSSJ Fall Show &amp; Sale Volunteering</B><br>
+<br>
+<P>
+Our Sunday August 4th meeting will be a tour of the UC Berkeley Botanical Gardens led by Bryan Gim. He is their <I>Arid House, Cycad &amp; Palm Garden</I> specialist and has designed a succulent-specific tour of the gardens for us.
+</P>
+<P>
+The tour starts at 1:00pm and lasts about an hour.  (Plan to arrive at least 15 minutes earlier.  Tours start promptly.)  After the tour, members have until 5:00pm to check out the garden.
+</P>
+<P>
+Parking is limited.  So, carpool, if you can.  There is a $1.00/hour charge for parking.  It is recommended to purchase at least two hours.  If you are interested in carpooling, contact Monica Moran at <a href='mailto:gardenermon@gmail.com?Subject=Carpooling'>gardenermon@gmail.com</a>.  
+</P>
+<P>
+<B>Directions:</B><br>
+Highway 101 North<br>
+Interstate 80<br>
+University Avenue Exit toward hills until it dead ends at Oxford Street<br>
+Turn Left on Oxford Street and travel to the Second Stoplight<br>
+Turn Right on Hearst Avenue and travel to the Third Stoplight<br>
+Turn Right on Gayley/La Loma Road and travel to the First Stop Sign<br>
+Turn Left on Stadium Rim Way and travel to the Second Stop Sign<br>
+Turn Left on Centennial Drive (200 Centennial Drive)<br>
+Entrance is 3/4 mile up Centennial Drive on the right at Stoplight<br>
+The Parking lot entrance is just past the stoplight on the Left hand side<br>
+</P>
+<P>
+For more details, call (510) 642-7082.  The tour guide is available at: <a href='http://www.csssj.org/ucbgtourguide.pdf' target='_blank'>http://www.csssj.org/ucbgtourguide.pdf</a>
+</P>
+<br>
+<br>
+<br>
+<P>
+For those not attending the field trip to Berkeley Botanical Garden, we will be gathering at Prusch Park to discuss volunteer opportunities at the upcoming CSSSJ Fall show and sale.  We are implementing a few changes that we hope will make the experience better for our visitors.  If you would like to learn more about how you can help out, or learn more about our club please join us.
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Rebutia</I> or <I>Epithelantha</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Euphorbia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your new plant from the Spring Sale (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sedum</I> and <I>Sedum</I> hybrids</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members not going on the field trip and with last names starting with P through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Welcome New Members ","Sandy Carter","","<center><TABLE width='90%'><tr><td valign='top'><center>Please join us in welcoming them:</P><P> Shannon Badiee</P><P>Our active membership is now: 201</center></td></tr></TABLE></center>");
+
+fmart ("Water My Plants","Judy Goodrode","","<center><TABLE width='90%'><tr><td valign='top'>I am in need of someone who can water my plants, several times a year while I am traveling.  I live in the Cambrian area of San Jose.  Anyone interested email me at <a href='mailto:jgoodrode@comcast.net?Subject=Plant%20Watering'>jgoodrode@comcast.net</a>.  Thanks.</td></tr></TABLE>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings</B></center></P><P><B>Standings as of June 2019:</B></P><P><center><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Cecilia Caday",89);
+fminiadd ("Kathi Cambiano",100);
+// fminiadd ("Sonia Dyer",14);
+// fminiadd ("Bryan Fan",11);
+// fminiadd ("Joseph Hildago",31); 
+fminiadd ("Marilyn Hofman",15);
+fminiadd ("Terri Koike",40);
+fminiadd ("JoAn Lambert",21);
+fminiadd ("Jaan Lepson",10);
+fminiadd ("Susan McKuhen",20);
+fminiadd ("Loyd Monaco",24);
+// fminiadd ("Janet Stevenson",0);
+fminiadd ("Ellen Stubblefield",43);
+fminiadd ("Gary Stubblefield",50);
+// fminiadd ("Jacky Wilk",2);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",84);
+// fminiadd ("Harley Barber",0);
+fminiadd ("Bobbi Bornstein",33);
+fminiadd ("Manuela Burge",24);
+fminiadd ("Lanelle Faraj",29);
+fminiadd ("Nicole Faraj",31);
+fminiadd ("Judianne Ganschow",75);
+fminiadd ("Ellie Herrera",1);
+fminiadd ("Andrew Hazlett",4); 
+fminiadd ("Renu James",90);
+fminiadd ("Allen Krever",49);
+// fminiadd ("Catherine Lau",0);
+fminiadd ("Bill Lemke",25);
+fminiadd ("Dan Martinez",4);
+fminiadd ("Joyce McPheeters",61);
+// fminiadd ("Elinor McRae",5);
+// fminiadd ("Sherry Merrill",6);
+fminiadd ("Monica Moran",7);
+fminiadd ("Desiree Faraj Perez",36);
+// fminiadd ("Slava Sigal",3);
+// fminiadd ("Janet Sparks",0);
+fminiadd ("Keith Walker",6);
+// fminiadd ("Navi West",4);
+fminiadd ("Tanya Wieber",11);
+// fminiadd ("Annie Wolf",4);
+// fminiadd ("Mark Womack",25);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><I>Mammillaria nazasensis</I> SB 489 is a wonderful <I>Mammillaria</I>, even with its light pink flowers.  It will, in time, make a nice clump of about tennis ball size stems.  It does have those nice hooked spines that seem to say &quot;Stay and visit a while.&quot;  If you do not want to ruin the looks of the plant, you will carefully remove yourself from the hooks.  Many times when reaching for another plant, those hooks will reach out and snag your shirt sleeve, and then it is 'talk to yourself' or even 'call the plant names' time.  I try to keep any hooked-spined plants away from the edge of the table.  But I still get hooked up at times.  I have seen people in sweaters bend over a hooked-spined plant to reach a plant they think they want, and, when they straighten up, they will have a plant hanging from the sweater.  I remember one woman having three hooked-spined plants hanging from her sweater. <br> <br>The plants do not like alkaline water, and it took me a while to discover why they would not live for me.  I lost most of my plants to alkaline water.  That is really disgusting and also discouraging.  At the time, I did not know why they would only sit and slowly get smaller and smaller, until the spines were so close together you could not tell if the plant was still alive.  When they were hard as a rock, I knew it was time to give up on them and toss them.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillarianazasensis.jpg',1011,669)><img src='1mammillarianazasensis.jpg' width=354 height=234 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillarianazasensis.jpg',1011,669)><img src='2mammillarianazasensis.jpg' width=354 height=234 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left tells the entire story of the plant, stem, buds, flowers, spines and offsets.  The plant is about 8 cm tall and the main stem is 7 cm in diameter.  As can be seen, the plants are happy with acidic water, as they are growing, throwing buds, opening flowers and also growing offsets, all at the same time.  The photo to the right is of a nice clump that is 17.5 cm in diameter.  The three large stems are 6 cm x 6 cm.  It is time for the plant to go up into another pot that is about 5 cm larger in diameter.</td></tr><tr><td valign='top'><a href=javascript:poppic('3mammillarianazasensis.jpg',1011,669)><img src='3mammillarianazasensis.jpg' width=354 height=234 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left is of the offsets and shows the growing point and a ring of buds.  Whenever the plant bloomed for me, it always had a ring of flowers.  In the photos, all show the spines with the centrals sticking out quite a way above the radials and even above the flowers, when they are open.  To my eyes, the spines are pinkish with a touch of yellow; I fail to see any orange to them.  Maybe some will say they are tannish pink.  I also do not see that the spines are strongly pubescent; in fact, I see only a little pubescence to the spines.  Maybe that is just on my plants, but all the plants I have seen and had are all about the same with the same color of spines and with little or no pubescence.  I know that the look-a-like plant <I>Mammillaria pennispinosa</I> has pubescent spines, and the radials and centrals are pubescent.  In the photo to the right, I have to take the spines up to the size of a pencil to even see any pubescence on the new spines.  The photo also shows the growing point of the stem, and it is hard to figure where it is, as it is not depressed or concave.  So, it is not easy to tell where it is except for the smaller spines.  The photo also gives a good view of the two dozen flowers that are open.  Look inside the ring of flowers, and you can see several rings of buds waiting their turn to open.  I see at least three more rings of buds waiting their turn. <a href=javascript:poppic('4mammillarianazasensis.jpg',1011,669)><img src='4mammillarianazasensis.jpg' width=354 height=234 hspace=17 vspace=17 align='right' class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillarianazasensis.jpg',1011,669)><img src='5mammillarianazasensis.jpg' width=354 height=234 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left shows the central spines sticking up above the open flowers and looking like meerkats on sentry duty.  Here the flowers are close up, and the midstripe up the petals can be seen.  There is little difference in the outer midstripe and the inner midstripe.  The filaments and style are a light pink.  The stigma is super light pink to white.  With the flowers this close together, they do not open out wide but are still to over 1.5 cm in diameter.  They look white with a pinkish midstripe but, in fact, are light pink with a darker midstripe.  The pollen is a creamy yellow. </P><P>I keep the plants dry over the winter and am not in too much of a hurry in the spring time to water early, for the plant can decide to rebel and die.  Give good light but be careful not to sunburn the plant.  Yes even with the thick spines, it can get sunburned.  For good spine growth and good flowering, give it good, very bright light.  Give the plant a fast draining soil.</td></tr></TABLE></center>");
+
+fmart ("Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>Earlier this month, I had the privilege of attending, in San Luis Obispo, the 39th Biennial Convention of the Cactus and Succulent Society of America.  While that sounds like a daunting mouthful, the experience itself was equal parts enjoyable, rewarding, and inspiring.</P><P>The first day was devoted to field trips: my group had signed up for a visit to the spectacular beachside cliffs of Montaña del Oro.  We did get there, but not before we were &quot;hijacked&quot; by two professors from the California Polytechnic State University, who took us to the Elfin Forest first.</P><P>I'm glad they did. The Elfin Forest is amazing, and quite possibly unique.  It hosts a variety of interesting succulents, and combines several environmental factors -- being on a hilltop, having loose sand for soil, and receiving periodic salty sprays from the ocean -- to foster hardy, hunkered-down residents.  Indeed, its name comes from the low profile maintained by its occupants.  It hosts, among many other things, an oak tree with normal genes, one which would reach for the sky under ordinary circumstances but which has sprawled itself horizontally across the landscape instead.  I highly recommend visiting the site, if you're ever in the area.</P><P>After the Elfin Forest, our guides took us to Montaña del Oro, pointed out the spectacular geology of its cliffs, and tirelessly answered our questions about the plants, terrain, and anything else that came to mind.</P><P>One of them, Matt Ritter, turned out to be the author of a book about California plants, which I immediately bought a copy of.</P><P>The Elfin Forest: <a href='http://www.elfin-forest.org' target='_blank'>http://www.elfin-forest.org</a></P><P>Montaña del Oro: <a href='http://www.parks.ca.gov/?page_id=592' target='_blank'>http://www.parks.ca.gov/?page_id=592</a></P><P>California Plants: <a href='https://www.amazon.com/California-Plants-Guide-Iconic-Flora/dp/0999896008/ref' target='_blank'>https://www.amazon.com/California-Plants-Guide-Iconic-Flora/dp/0999896008/ref</a></P><P>The second through fourth days were devoted to presentations.  While I won't recap each one here -- see the link to the schedule, below -- Irwin Lightstone deserves, in my opinion, special recognition: not just for giving the first presentation, and therefore having to work his way through some issues with the AV gear, but for delivering immensely useful advice about photographing the plants we love in ways that capture their full beauty.</P><P>Sadly, one of his points regarded the double-edged sword of technology: virtually all smartphones, but also many recent cameras, use GPS to sense their exact location and embed that data into their photos.  This is ordinarily immensely useful, but it constitutes something you may want to strip out of the pictures before publishing them on-line, particularly if you're photographing something rare or endangered.</P><P>This tied into the convention's overall theme: conservation.  Most, if not all of the presentations talked in some way about species that grow in only one spot, or slowly, or both, and the threats posed to them by not just land development, but poaching.</P><P>It is, as they explained, an ongoing problem, and one we have to counter on multiple fronts: watching for and thwarting poachers; replanting poached plants when the thieves are caught in the act; learning to cultivate as many species as we can to reduce the profitability of poaching; and, finally, to ensure that our laws --- which differ from state to state and are sometimes authored with the best of intentions but incomplete understanding of the problem --- actually further the cause.</P><P>Even though the talk of poaching and the ongoing threats to rare species were in some ways daunting, the convention was, as I said, a deeply rewarding experience.  The next one will take place in Denver, in 2021, and I'm looking forward to attending it.</P><P>Schedule of Events: <a href='http://cssaconvention.com/cssa2019/2019_Schedule_of_Events.html' target='_blank'>http://cssaconvention.com/cssa2019/2019_Schedule_of_Events.html</a></P><P>One of the many things I learned at the convention was that the CSSA has a collection of videos from past conventions on-line.  They're not the easiest to find, but this link should take you to them:</P><P><a href='https://www.youtube.com/channel/UCFjuG0OSS64QWqzXVR1Sxjg/videos' target='_blank'>https://www.youtube.com/channel/UCFjuG0OSS64QWqzXVR1Sxjg/videos</a></P><P>On the Sunday after the convention, because I just hadn't seen enough presentations yet, I attended the meeting of our sibling organization, the Monterey Bay Area Cactus and Succulent Society.  There, the convention's master of ceremonies, Woody Minnich, gave not one, but two presentations regarding tours of South and Central America.</P><P>The Monterey Bay Area club is an extremely friendly group and has made me feel welcome every time I've visited: I encourage members who are interested to attend one of their meetings.</P><P>http://mbsucculent.org</P><P>Speaking of meetings, this coming Sunday, August the 4th, will be a split of sorts: we will have a field trip to UC Berkeley Botanical Gardens.  See elsewhere in this newsletter for the full details.</P><P>However, we also will be having a low-key meeting in the usual location, the Meeting Hall at Prusch Farms, to discuss plans for the Fall Show and Sale, which will take place September 21st and 22nd.  Those not going on the field trip but who would like to ask questions about, make suggestions for, or volunteer to help with the Show and Sale are invited to attend.</P><P>That's all for this month.  Thanks for sticking with me.  Next month's update should be shorter.  Probably.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:dfm@razorwind.org'>dfm@razorwind.org</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

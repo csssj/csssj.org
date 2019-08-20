@@ -1,0 +1,242 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/8/2007">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<TITLE>Cactus Courier - 7/8/2007</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "8";
+var thisyear = "2007";
+var nextmonth = "August";
+var nextday = "5";
+var nextyear = "2007";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Free</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Trade or Sell - Lost and Found</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("July 2007","8, Sunday - 10:00am to 12:00pm"," Trip to Ruth Bancroft Gardens.","8, Sunday - 12:00pm to 2:00pm","Barbecue at the Munkacsy's","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2007","5, Sunday - 10:30am to 12:00pm","Board Meeting.","5, Sunday - 12:30pm to 3:00pm","Naomi Bloss - Succulent Wreaths.","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2007","9, Sunday - 10:30am to 12:00pm","Board Meeting.","9, Sunday - 12:30pm to 3:00pm","Herb Fong  - Stanford Grounds and the Arizona Garden","","");
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("July 2007","28-29, Sat - Sun - 9:00am to 5:00pm","<center><I>Northern California C&amp;S Assn.</I><br>S.F. County Fair Building<br>9<sup>th</sup> &amp; Lincoln Way, Golden Gate Park<br>San Francisco, CA</center><br><font size='-2'>Contact Bill Kurtz for more information (408-243-3692)</font>","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Trip to Ruth Bancroft Gardens</B><br>
+<br>
+<P>
+We will be meeting at the Ruth Bancroft Gardens at 10:00am on July 8th.
+</P>
+<P>
+1500 Bancroft Road, Walnut Creek, CA, 94598<br>
+<a href="http://www.ruthbancroftgarden.org/index.html">http://www.ruthbancroftgarden.org/index.html</a>
+</P>
+<P>
+<B>From San Francisco/San Jose (South):</B><br>
+Take Highway 680 North and exit at the Ygnacio Valley Road exit. Turn right onto Ygnacio Valley Road and follow for 2 miles to Bancroft Road. Turn left onto Bancroft Road and The Garden is located on the right.
+</P>
+<img src="1500bancroft.gif" width=410 height=266 border=1 alt="1500 Bancroft Road">
+<P>
+<B class="leadhead">Barbecue at the Munkacsy's</B><br>
+<br>
+The tour of the gardens will be followed by a barbecue at the home of Bill and Karla Munkacsy, 300 Miranda Lane, Alamo, CA, 94507 (925-935-5213).  Plan to be there around 12:00 noon.  Bring utensils, drinks, cups, and side dishes to share with each other.
+</P>
+<!-- <br><br><br>
+<P>
+<font size="+1"><B>Plants of the Month for May:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Wooly <I>Mammillarias</I> and hooked-spined <I>Mammillarias</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Echeverias</I>, <I>Fouquieris</I> and <I>Pachycormus</I></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or sculpture</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Opuntia</I> or <I>Gasteria</I></td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with P through Z should bring a snack for the June meeting.</font></B>
+</P>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez'","Linda Delgado","In this day and age, we all know what to do to protect our selves from harsh weather: warm dry clothing and a scarf around the neck during the winter and sunscreen and a hat in the summer are the choice for many of us.  We take extra precautions, or we pay the price for our foolishness.</P><P>We all know to take extra care to protect our plants in the winter.  I cover my plants with clear 6 mil tarps to keep the frost from turning them to mush.  I put clear Christmas light under the tarps for added warmth.  Having an unexpected early frost can be devastating to a cactus garden and waiting until &quot;next weekend&quot; has been the ruin of many collections.</P><P>But what do we do to protect our plants in the summer?  I burned some plants many years ago and asked Jim Johnson what I could do about it.  His reply was &quot;You can feel real sorry.&quot;  In other words, you can treat it the same way that you would treat burnt popcorn: throw it out or make do.</P><P>Sunscreen isn't really much help for a plant, but using a sun screen may be.  Shade cloth will help protect your plants from direct sunlight.   Moving the plant to a less harsh area will work, if the plant is mobile.  (Not much chance, if the plant is in the ground.)  How about a large patio umbrella, when it looks like the plant is suffering?  Even leaning cardboard may help. Timing can be a factor, as well.  Maybe you shouldn't plant them at &quot;high noon&quot; in the middle of summer.  Springtime may give them time to adjust a little bit at a time.  Plan your garden so that they have time to get used to the hot sun a little bit at a time.</P><P>On Sunday we plan to go to Ruth Bancroft Garden  (http://www.ruthbancroftgarden.org/), where we will get an idea of how the professionals do it.  Come with questions for the Docents about their ways to handle the harsher weather.  Ask them about placement, care and propagation.  This is an excellent time to ask questions that may help you at home.  The cost of the tour will be paid by the club for club members.  The cost for non-club members is $7.00.  Contact me for more information.  (408-267-4816 or email to <a href='mailto:LDelgado@calwater.com'>LDelgado@calwater.com</a>, Ed.) </P><P><TABLE><tr><td valign='top' width='40%'><br><br>After the tour, we will be heading over to Bill Munkacsy's house for a BBQ and pot-luck lunch.  The club will provide the polish dogs and chicken.  Bill will show us how he runs his nursery.  I can't wait to see how he is able to get such beautiful plants to grow.</td><td><img src='300miranda2.gif' width=398 height=300 border=1 hspace=13 alt='300 Miranda Lane'></td></tr></TABLE></P><P>So, join us for an informative and fun weekend event.  And don't forget your hat and sunscreen or you may pay the price.");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE cellpadding=8><tr><td valign='top'><center><TABLE><tr><td><img src='echinomastus durangensis.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Echinomastus durangensis</I></font></td></tr></TABLE></center></td><td valign='top'><br><br>I have sent out photos of plants that are easy to grow, but here are a couple that are a bit more difficult to grow.  <I>Echinomastus durangensis</I> comes from Durango, Mexico.  <I>E. durangensis 'mapimiensis'</I> comes from Sierra Mapimi.  The biggest difference I see is in the spines.</td></tr><tr><td valign='top'><br>As with all <I>Echinomastus</I>, they need a porous soil that drains very well.  I keep mine in a cold house, and they have not shown any effects of any cold weather.  That is if they are kept very dry over the winter.  In time the plants can reach to 20 cm tall and about 10 cm in diameter.</td><td valign='top'><TABLE><tr><td><img src='echinomastus durangensis mapimiensis.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Echinomastus durangensis mapimiensis</I></font></td></tr></TABLE></center></td></tr></TABLE></center>");
+
+fminiadd ("Tony Bassano",0,50,35);
+fminiadd ("Peter Beierschor",0,0,37);
+fminiadd ("Chuck Breese",0,0,53);
+fminiadd ("Kathi Cambiano",0,0,69);
+fminiadd ("Heidi Carey",0,0,25);
+fminiadd ("Sandy Carter",0,0,25);
+fminiadd ("Alyene Daggett",0,0,25);
+fminiadd ("Linda Delgado",0,37,0);
+fminiadd ("Sonia Dyer",0,28,0);
+fminiadd ("Bill Gingras",0,66,0);
+fminiadd ("Judy Goodrode",0,25,0);
+fminiadd ("Bill Kurtz",20,0,0);
+fminiadd ("Roger Lane",0,100,0);
+fminiadd ("Jaan Lepson",0,0,39);
+fminiadd ("Bill Munkacsy",73,0,0);
+fminiadd ("Maggie Palecek",0,0,3);
+fminiadd ("Janet Rollin",0,0,42);
+fmini ("June 2007");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>

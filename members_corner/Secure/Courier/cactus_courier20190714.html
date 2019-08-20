@@ -1,0 +1,358 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/14/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/14/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "14";
+var thisyear = "2019";
+var nextmonth = "August";
+var nextday = "4";
+var nextyear = "2019";
+var deadline = "July 26, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("July 2019","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2019","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2019","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Country Store</B><br>
+<br>
+<P>
+If you have been to our Country Store before, you know that this is one of the most fun events of the season.  It is a great opportunity for you to share with your fellow members. (Bring plants that you think other members would enjoy, unless you are looking forward to taking them back home yourself.  If you bring desserts, make certain that they are individually wrapped.)
+</P>
+<P>
+Here is how it works.  First separate tables are set up for each category, cacti, succulents, associated items, and desserts.  Then we all buy tickets at five tickets for a dollar.  Members can use their tickets in whatever categories they like.  A board member for each table picks tickets, and each winning member in the order their ticket was selected gets their pick of what is on that table.  This is repeated until the Country Store is done or everyone dies laughing.
+</P>
+<P>
+No Mini Show is planned for this meeting because of the Country Store.  Of course, if you have something of particular interest, you are welcome to bring it.
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Rebutia</I> or <I>Epithelantha</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Euphorbia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your new plant from the Spring Sale (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sedum</I> and <I>Sedum</I> hybrids</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through O should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Welcome New Members ","Sandy Carter","","<center><TABLE width='90%'><tr><td valign='top'><center>Please join us in welcoming them:</P><P>Emily Liang<br>Mary-Anne Bosward &amp; Angela Borland<br>Dennis Oransky &amp; Erica Layton<br>Lee Zhao<br>Andrew Hazlett<br>Jared Zimmerman</P><P>Our active membership is now: 201</center></td></tr></TABLE></center>");
+
+fmart ("June Mini Show Winners","Allen Krever","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('1sedummixed.jpg',1060,810)><img src='1sedummixed.jpg' width=318 height=243 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2cereusforbesiispiralis.jpg',622,1000)><img src='2cereusforbesiispiralis.jpg' width=187 height=300 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>BEGINNERS LUCK </font><I>Sedum and Sedum hybrids</I><br></B>Sedum Mixed - Desiree Faraj<br></P><P><B><font size='+1'>SOMETHING SPECIAL </font><I>Plant from Spring Sale or Your Choice</I><br></B><B>Novice<br><I></B>Cereus forbesii</I> &quot;Spiralis&quot; - Lanelle Faraj</td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('3osculariadeltoides.jpg',1037,750)><img src='3osculariadeltoides.jpg' width=311 height=225 hspace=37 vspace=17 align='right' class='enl'></a><br><B>Advanced</B> (Tie for 1st Place)<br><I>Oscularia deltoides</I> - Kathi Cambiano<br><I>Gymnocalycium</I> - Terri Koike</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('4gymnocalycium.jpg',622,1000)><img src='4gymnocalycium.jpg' width=187 height=300 hspace=17 vspace=17 align='left' class='enl'></a><br><br><B><font size='+1'>SUCCULENTS </font><I>Euphorbia</I><br>Novice<br><I></B>Euphorbia anoplia</I> - Renu James<br><br><B>Advanced<br></B>Euphorbia - Cecilia Caday</td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('6euphorbia.jpg',1037,730)><img src='6euphorbia.jpg' width=311 height=219 hspace=17 vspace=17 align='right' class='enl'></a><a href=javascript:poppic('8rebutia.jpg',721,1000)><img src='8rebutia.jpg' width=216 height=300 hspace=37 vspace=17 align='right' class='enl'></a><br><br><B><font size='+1'>CACTUS </font><I>Rebutia</I> or <I>Epithelantha</I><br>Novice<br><I></B>Rebutia</I> - Svetlana Bellam</P><P><B>Advanced<br><I></B>Rebutia</I> - Kathi Cambiano</td></tr></TABLE></td></tr></TABLE></center>");
+
+fmart ("2019 Spring Show Awards ","Allen Krever","","<center><TABLE width='90%'><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('1ferocactustortulospinus.jpg',1037,750)><img src='1ferocactustortulospinus.jpg' width=311 height=225 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2browningiamicrosperma.jpg',622,1000)><img src='2browningiamicrosperma.jpg' width=187 height=300 hspace=47 vspace=17 align='right' class='enl'></a><br><B>Directors Choice<br></B>Richard Deming<br><I>Ferocactus tortulospinus <br></I><br><B>Best <I>Cereinae</I><br></B>Dennis West<br><I>Browningia microsperma</I></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('3echinocactusplatyacanthusfgrandis.jpg',1000,1000)><img src='3echinocactusplatyacanthusfgrandis.jpg' width=300 height=300 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B>Best <I>Echinocactinae</I> Other than <I>Mammillaria</I><br></B>Happy Growing<br><I>Echinocactus platyacanthus f. grandis</I></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('4mammillariatheresae.jpg',1037,750)><img src='4mammillariatheresae.jpg' width=311 height=225 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('5sulcorebutiaarenacea.jpg',633,1000)><img src='5sulcorebutiaarenacea.jpg' width=190 height=300 hspace=37 vspace=17 align='right' class='enl'></a><br><B>Best <I>Mammillaria</B></I><br>Elton Roberts<br><I>Mammillaria theresae<br></I><br><B>Best <I>Echinopsidinae</I><br></B>W. Munkacsy<br><I>Sulcorebutia arenacea</I></td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('6tephrocactusgeometricus2.jpg',1037,750)><img src='6tephrocactusgeometricus2.jpg' width=311 height=225 hspace=17 vspace=17 align='left' class='enl'></a><br><B>Best <I>Opuntioidea</I><br></B>Peter Beiersdorfer<br><I>Tephrocactus geometricus<br></I><br><B>Best Monstrose or Cristate Cactus<br></B>Ron Harris<br><I>Mammillaria </I>‘Fred’ <I>bocasana</I></td></tr><tr><td valign='top'><B>Novice Category<br></B>Renu James<br><I>Rebutia<br></I><br><B>Best Cactus Advanced Category<br></B>Ron Harris<br><I>Uebelmannia flavispina</I></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('12pachycormusdiscolor.jpg',757,1000)><img src='12pachycormusdiscolor.jpg' width=227 height=300 hspace=47 vspace=17 align='right' class='enl'></a><br><B>Best Cactus Open Category<br></B>William Munkacsy<br><I>Neoporteria krausii<br></I><br><B>Best Photography<br></B>Jaan L.<br><I>Euphorbia canariensis var. Los Gigantes, Tenerife<br></I><br><B>Best Succulent Open Category<br></B>Bloss<br><I>Pachycormus discolor</I></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('13aeoniumcrestata.jpg',1012,1000)><img src='13aeoniumcrestata.jpg' width=304 height=300 hspace=17 vspace=17 align='left' class='enl'></a><br><B>Best Succulent Novice Category<br></B>Svetlana Bellam<br><I>Aeonium crestata<br></I><br><B>Best Succulent Advanced Category<br></B>Roger Lane<br><I>Euphorbia gamkensis<br></I><br><B>Best <I>Aizoaceae</I><br></B>Bloss<br><I>Lithops bella</I><a href=javascript:poppic('15lithopsbella.jpg',1017,890)><img src='15lithopsbella.jpg' width=305 height=267 hspace=47 vspace=17 align='right' class='enl'></a></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('18tylecodonreticulatus.jpg',683,1000)><img src='18tylecodonreticulatus.jpg' width=205 height=300 hspace=27 vspace=17 align='right' class='enl'></a><br><B>Best Aloe<br></B>Roger Lane<br><I>Aloe</I> ‘Marsha Leyhew’</P><P><B>Best <I>Asclepiadaceae</I><br></B>Peter Beiersdorfer<br><I>Pseudolithos cubiformis<br></I><br><B>Best <I>Crassulaceae</I><br></B>Bloss<br><I>Tylecodon reticulatus<br></I><br><B>Best <I>Asteraceae</I><br></B>Peter Beiersdorfer<br><I>Senecio articulatus var. Globosus</I></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('20euphorbiafrancoisiivarcrassicaulis.jpg',1037,750)><img src='20euphorbiafrancoisiivarcrassicaulis.jpg' width=311 height=225 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('21haworthiahybrid.jpg',933,1000)><img src='21haworthiahybrid.jpg' width=280 height=300 hspace=27 vspace=17 align='right' class='enl'></a><br><B>Best <I>Euphorbiaceae</I><br></B>Roger Lane<br><I>Euphorbia francoisii  var. Crassicaulis<br></I><br><B>Best Haworthia<br></B>Jim Smith<br>Haworthia hybrid</td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td><a href=javascript:poppic('22sennameridionalis.jpg',622,1000)><img src='22sennameridionalis.jpg' width=187 height=300 hspace=37 vspace=17 align='right' class='enl'></a><br><B>Best Monocotyledon other than Aloe &amp; Haworthia<br></B>Gary &amp; Ellen Stubblefield<br><I>Senna meridionalis</I></td></tr></TABLE></td></tr></TABLE></center>");
+
+
+fmart ("Deutsch Cactus Garden Field Trip ","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('dcg583293747017083.jpg',1012,759)><img src='dcg583293747017083.jpg' width=304 height=228 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('dcg1090161.jpg',1000,1000)><img src='dcg1090161.jpg' width=300 height=300 hspace=37 vspace=17 align='right' class='enl'></a><br>Our May field trip took us to Fresno’s Deutsch Cactus Garden.  It is a lovely public garden next to the Discovery Center, where it has been located since 1995.  However, the beginnings of the garden started in 1930, when Fred and Perle Deutsch started this garden their backyard.  What the couple left to the City of Fresno is an extraordinary botanical legacy, which is comprised of about 250 different types of cacti.  Some of the highlights include a massive <I>Opuntia</I> tree, an extraordinary crested <I>Opuntia fulgida</I>, and the sole Saguaro from the original collection (which was in bloom).</td></tr><tr><td valign='top'><a href=javascript:poppic('dcg71121a.jpg',1007,753)><img src='dcg71121a.jpg' width=302 height=226 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('dcg71112b.jpg',736,984)><img src='dcg71112b.jpg' width=221 height=295 hspace=37 vspace=17 align='right' class='enl'></a><br>We were very fortunate to have a couple of the local Master Gardeners give us a tour of their demonstration garden, Garden of the Sun.  They were very kind to offer us some cuttings from their garden!  For more about the history about the garden: <a href='https://www.yumpu.com/en/document/read/5180022/the-deutsch-garden-fresno-cactus-and-succulent-society' target='_blank'>https://www.yumpu.com/en/document/read/5180022/the-deutsch-garden-fresno-cactus-and-succulent-society</a></td></tr><tr><td valign='top'><center><TABLE><tr><td><a href=javascript:poppic('dcg71112a.jpg',736,984)><img src='dcg71112a.jpg' width=221 height=295 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('dcg6452.jpg',1000,810)><img src='dcg6452.jpg' width=300 height=243 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('dcg71112c.jpg',1030,770)><img src='dcg71112c.jpg' width=309 height=231 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center></td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:dfm@razorwind.org'>dfm@razorwind.org</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

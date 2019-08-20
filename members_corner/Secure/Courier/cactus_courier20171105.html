@@ -1,0 +1,364 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/5/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/5/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "5";
+var thisyear = "2017";
+var nextmonth = "December";
+var nextday = "2";
+var nextyear = "2017";
+var deadline = "November 24, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("November 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting &nbsp; &nbsp; &nbsp; <font color='#CC0000'><B>(Note earlier start)</B></font>","5, Sunday - 12:30pm to 3:00pm","Succulent Adventures in Southern Namibia","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2017","2, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2018","7, Sunday - 11:00am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","How You Can Help The Club In Various Roles","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2018","4, Sunday - 11:00am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2018","4, Sunday - 11:00am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Succulent Adventures in Southern Namibia</B><br>
+<br>
+<P>
+Namibia is a country of exquisite beauty with fascinating, expansive landscapes and enthralling succulents, including many caudex forming plants.  Peter Beiersdorfer's talk will describe the sights and experiences during a three-week, self-guided trip to southern Namibia.  He will show plants photographed in habitat and hardly seen in presentations, such as <I>Othonna furcata</I>, <I>Pelargonium crassicaule</I>, <I>Avonia papyraceae</I>, <I>Cyphostemma bainsii</I>, <I>Adenia penchuelli</I>, and <I>Laryleachia cactiformis</I>. Spectacular wind-swept dunes in the Namib desert are host to the rare <I>Monsonia ignorata</I> and <I>Euphorbia namibensis</I>, while baobab-like <I>Moringa ovalifolia</I> and <I>Aloidendron dichotoma</I> dot the mountains.  The fog-swept coastal areas feature lava outcrops that are home to <I>Psammophora modesta</I>, and huge lichen fields.  Not to forget the amazing and wonderful <I>Welwitschia mirabilis</I>, some up to 1500 years old! 
+</P>
+<P>
+This is Peter's seventh trip to southern Africa.  He has grown cacti since moving to Livermore 25 years ago.  His passion for South African succulents started during his first visit to the area in 2003.  He is a recurrent speaker at the cactus and succulents clubs in northern California and a participant and contributor to their shows and sales.
+</P>
+<P>
+Peter will bring some of his plants for sale.
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Variegated Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Variegated Succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulents from Namibia (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>What did you get at the Show & Sale?</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through G should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Photographs from Namibia","","Peter Beiersdorfer and Jaan Lepson","<center><TABLE width='90%'><tr><td align='center'><a href=javascript:poppic('peter171026a.jpg',998,430)><img src='peter171026a.jpg' width=349 height=150 hspace=17 vspace=17 class='enl'></a></td><td align='center'><a href=javascript:poppic('mesembryanthemumguerichianum.jpg',800,605)><img src='mesembryanthemumguerichianum.jpg' width=280 height=212 hspace=17 vspace=17 class='enl'></a></td><td align='center'><a href=javascript:poppic('peter171026g.jpg',996,470)><img src='peter171026g.jpg' width=349 height=164 hspace=17 vspace=17 class='enl'></a></td </tr><tr><td align='center'><a href=javascript:poppic('sculptureandaloe.jpg',996,840)><img src='sculptureandaloe.jpg' width=349 height=294 hspace=17 vspace=17 class='enl'></a></td><td align='center'><a href=javascript:poppic('hoodiagordonii.jpg',990,820)><img src='hoodiagordonii.jpg' width=346 height=287 hspace=17 vspace=17 class='enl'></a></td><td align='center'><a href=javascript:poppic('acaciaerioloba.jpg',591,1000)><img src='acaciaerioloba.jpg' width=207 height=350 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Volunteer Opportunities!","Sonia Dyer","","<center><TABLE width='90%' cellspacing=17><tr><td valign='top' colspan=2>If you are interested in exploring the possibility of helping the club by volunteering in any of these positions, please contact club President Sonia Dyer at <a href='mailto:sonia.dyer@sbcglobal.net?Subject=CSSSJ%20Volunteering'>sonia.dyer@sbcglobal.net</a>.   We are currently pushing to distribute the work of running the club to a broader set of people, so current office holders don’t burn out.  It’s time to step forward!</td></tr><tr><td valign='top'></td><td valign='top'>Members of the Board of Directors are expected to attend most meetings of the Board, which are held at 11am on the same dates and place as club general meetings.  You will need to arrive on time and be good at keeping commitments.  You will be encouraged to volunteer to take on additional action items that come up, that you believe you can handle.</td></tr><tr><td valign='top' align='right' nowrap><B>Vice President -</B></td><td valign='top'>The Vice President’s primary responsibility is to fill in for the President, when the President is unavailable.   Excellent communications skills are a must.  You will have a voting position on the Board of Directors.</td></tr><tr><td valign='top' align='right' nowrap><B>Co-Treasurer -</B></td><td valign='top'>This person’s job will initially be to assist the current club Treasurer (Roger Lane) by receiving member dues payments from the Membership Chair and the President, and depositing them promptly into the club’s bank account.  Responsibilities have the potential to increase over time.   Being good at math is a must.  Excellent communications skills are a must, including email, voicemail, and snail mail.  You will have a voting position on the Board of Directors.  Coaching will be available from the current Treasurer (Roger Lane).</td></tr><tr><td valign='top' align='right' nowrap> <B>Associate Director -</B></td><td valign='top'>The primary responsibility of this position is to vote on actions proposed by the Board of Directors. You will be expected to attend most meetings of the Board.  You will be encouraged to voice your views on items under discussion.  Two fairly new club members have recently become Associate Directors, but we want more.  If you want to have a direct say in club policies, this is where to start.</td></tr><tr><td valign='top' align='right' nowrap> <B>Program Chair –</B></td><td valign='top'>This person arranges the presenters at our monthly general meetings, as well as several field trips per year.  Most of the work is done via email.  Good communication skills are a must.  Usually July is our annual Country Store, and December is our annual Holiday Party, at which no speakers are needed.  Our club sales are usually held in April and October, and there may or may not be general meetings with speakers those months as well.  Field trips are sometimes held in lieu of, and sometimes in addition to general monthly meetings requiring speakers.  Coaching is available from the current Program Chair (Sonia Dyer), along with suggested speakers and field trip ideas.  This person is expected to have programs lined up a minimum of 3 months in advance, and preferably for the whole coming year.  This is not as hard as it sounds, as it is easier to schedule a speaker 6 months from now, than to line one up on short notice.  The Program Schedule is emailed to the Newsletter Editor and all members of the Extended Board of Directors as it becomes known, so they can schedule their own work around the speaker’s topic.  The Program Chair reconfirms the next speaker’s availability each month, so appropriate action can be taken if there is a problem.   The Program Chair is responsible for having each speaker provide a paragraph or two and a photo to the Newsletter Editor for use on the Cactus Courier’s front page.  For the December Holiday Party, the Program Chair arranges the venue and its payment (or sees to it that another club member does so), arranges for a lead &quot;auctioneer&quot;, arranges for purchase of the many &quot;gift plants&quot; from our vendors, and makes sure advance information is available in the newsletter and online (web, instagram).  The Program Chair also writes an after-the-fact newsletter paragraph or two, with a picture or two, of what happened at each event, so people who couldn’t attend are brought up to speed on what they missed.  If this sounds like a lot of work, it is.  It’s possible this role can be subdivided into two or three pieces, depending on your comfort level.</td></tr><tr><td valign='top' align='right' nowrap> <B>Show Director -</B></td><td valign='top'>The nature of our club’s bi-annual Show in conjunction with our biannual Sale is currently under review by the Board of Directors, and the exact responsibilities of the new Show Director will be refined based on that.  If you have an interest in this position, you can speak up now and help define its description.  The next Show is expected to be held in approximately April of 2018.</td></tr><tr><td valign='top' align='right' nowrap><B>Volunteer Coordinator –</B></td><td valign='top'>This person lines up non-vendor club members to work at the bi-annual Show and Sale, usually held in April and October.  This is done via signup sheets available at general meetings, supplemented by articles in the club newsletter encouraging signups via email and phone.  This person maintains a list of who has signed up for what job, during which hours, on what day, and publishes it in the newsletter as a reminder to people of what they signed up for, and so they can see the holes where more help is needed.  A copy of the final list is posted on the wall behind the cash registers at each Sale for people to double check or add their name to.  A club member’s name should be on this list to be eligible to receive ShowBucks from the ShowBucks Manager (Roger Lane).  Coaching is available from the current holder of this position (Sonia Dyer).</td></tr><tr><td valign='top' align='right' nowrap><B>Publisher of Hardcopy<br>of Club Newsletter -</B></td><td valign='top'>The club newsletter (The Cactus Courier) is created by the Newsletter Editor, who also publishes the email version and posts it on the club web page.  This particular position involves copying and mailing out the hardcopy of the newsletter to the roughly 20 members who do not have email.  The hardcopy master is obtained from the editor, who also provides a page of labels addressed to the members who don’t have email.  The person holding this position has double-sided copies made and stapled, folds them in thirds, applies the address labels, and buys and applies first-class stamps and ‘sticky dots’ that hold them closed flat for the post office sorting machines, and puts them in the mail.   This procedure must be done monthly on a timely basis.  Expenses are reimbursed by the club Treasurer at the monthly meeting.  Coaching is available from the current performer of this role (Sonia Dyer), as well as from the Newsletter Editor (Rich Kroll).</td></tr></TABLE></center>");
+
+fmart ("Help a School Auction","","","<center><TABLE width='90%' cellspacing=17><tr><td>Washington Open Elementary needs a few succulent plant donations for the school auction event on Nov. 11th.  What they need most are a few colorful ones (e.g.: oranges and reds).  Contact Bes Elgohary at <a href='mailto:ebesma@gmail.com'>ebesma@gmail.com</a>, if you can help.</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%' cellspacing=17><tr><td>Well, club members, we have had yet another prosperous Sale this month.  Our Treasurer, Roger Lane, tells me that we brought in a bit more than in last year’s Fall Show.  This time the customer flow was pretty evenly steady both days, instead of our being mobbed by customers first thing Saturday morning like we were last April.  This time we had a third cash register present, which doubtless helped too.</P><P>Interaction with customers was encouraged by asking members to wear &quot;Ask Me&quot; tags, suggested by Kathi Cambiano, and made by Linda Delgado, as well as handling out Kathi’s cactus-themed stickers to the kids.  While handling out the Ask Me tags, I was struck by how many of our vendors were actually indistinguishable from the customers, because they weren’t wearing name tags, gardening aprons, or any other marker.</P><P>Kathi gave another of her great gardening talks to customers out on the patio, and lined up Katya Romanova and Ellen Stubblefield to give talks too!  Wonderful!  Spread the enthusiasm!</P><P>Once again, the food was scrumptious, thanks mainly to Terri Koike and Dan Martinez, plus all the great side dishes brought in by other club members, one of whom also brought in delightful pumpkin centerpieces for the tables.  Next time, for Friday-night pizza, we will try to include a low-cholesterol version, for those of you watching your diet.</P><P>Thanks again to all our vendors and non-vendor club members who worked hard to make the Show and Sale happen.  Special thanks go to Jaan Lepson, who has been managing the Show part of the house since before dirt was invented and did such a great job.  He has decided to step down from the Show Manager position, but will still be attending the Sale as a vendor.  Roger Lane has agreed to take up the ShowBucks Manager position, which Jaan was also handling.</P><P>Something came up during setup surprised me, and unfortunately needs to be mentioned.  One of our members, Tom Vincze, did a little personal shopping after setup.  He put a box in the Plant Hotel with his name on it, and containing 3 Haworthias he had picked out.  After eating pizza, he re-checked his box.  It was still there, but all 3 plants were GONE!  This is totally not OK!  This is a major breach of etiquette.  Hopefully this was just a case of a newbie not realizing that the Plant Hotel tables are not just another vendor setup.  When somebody puts a plant in the Plant Hotel, you can sniff it, you can look at the plant ID tag, but don’t pick it up, and don’t even touch it, much less take it!</P><P>On a lighter note, thanks go to Bill Lemke, who has stepped forward to pick up the Mini-Show Director role starting in January, from Therese McQuillen, who is planning to move away.  We’re still looking for an Assistant Mini-Show Manager to work with him, as discussed in last month’s newsletter.</P><P>Unfortunately, due to higher priority matters requiring my attention, I will not have time to finish setting up our tentatively planned January field trip by bus to Huntington Gardens in Southern California.   We may be able to reschedule it to coincide with one of Huntington’s summer plant sales.  In lieu of this January event, we will be having a regular general meeting on Sunday January 7 at the usual location.  However, the topic will be different than the usual succulent or cactus presentation.  Instead, we will be talking about how YOU can help the club in various roles.  (See Volunteer Opportunities article.)</P><P>A preliminary meeting to this is the Expanded Board Meeting being held just before the November general meeting.  If you have received a separate email invitation/agenda, please plan to attend.  If you can’t make it, please send your input to me via email.</td></tr></TABLE></center>");
+
+fmart ("Sunshine Report","Sonia Dyer","","<center><TABLE width='90%' cellspacing=17><tr><td>We understand that longtime club member Elton Roberts is currently recovering from back surgery (ouch!).  Thanks go to the club’s resident artist Kathi Cambiano for creating a handmade get-well card for folks at the show to sign.  Get well soon Elton!</td></tr></TABLE></center>");
+
+fmart ("Fall Show Report","Jaan Lepson","Jaan Lepson","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('astrophytum.jpg',1005,715)><img src='astrophytum.jpg' width=352 height=250 hspace=17 vspace=17 align='right' class='enl'></a><br>Our 12<sup>th</sup> annual Fall Show was held October 14-15 at Peterson Middle School, and it was great!  The Fall show is run as people’s choice, where the public is invited to vote for their favorite plants on Saturday.  The votes are then counted and tallied on Sunday for the prizes.  We had 277 entries and 3,589 votes counted.  And of course, many people mentioned how much they enjoyed the show.</P><P>When all the dots were counted and tallied, Peter Beiersdorfer emerged victorious for the Sweepstakes award, which is given to the exhibitor who had the most votes per plant (total votes divided by 25 or the number of entries, whichever is greater). Peter entered 34 items and had an average of 25.7 votes per entry.  Others who had more than 10 points for the sweepstakes were Naomi &amp; Lisa Bloss (16.0), Roger Lane (13.8) and David Calibo (11.7).</td></tr><tr><td valign='top'><a href=javascript:poppic('boophane.jpg',1020,725)><img src='boophane.jpg' width=357 height=254 hspace=17 vspace=17 align='left' class='enl'></a><br>For the overall awards, David Calibo took first place in succulents, with 124 votes for his exquisite <I>Boophane disticha</I>, while Peter Beiersdorfer was first in cacti with 85 votes for his <I>Trichocereus pachanoi</I> crest.  In second place for succulents was Roger Lane’s <I>Dioscorea elephantipes</I>, which received 98 points, and for cacti Peter’s <I>Austrocylindopuntia subulata</I> crest with 69 votes.  Peter also took third place for both categories with 81 votes for his <I>Haemanthus albiflos</I> and 60 points for his monstrose <I>Cereus forbesii</I> with a huge red fruit.</td></tr><tr><td valign='top'><a href=javascript:poppic('planterfall2017.jpg',823,1000)><img src='planterfall2017.jpg' width=288 height=350 hspace=17 vspace=17 align='right' class='enl'></a><br>There were 14 category awards, which are listed in order of popularity;</P><P><TABLE><tr><td align='right' valign='top' nowrap><B>Bulbs: </B></td><td valign='top'><I>Boophane disticha</I> (124), David Calibo</td></tr><tr><td align='right' valign='top' nowrap><B>Caudiciforms:</B></td><td valign='top'><I>Dioscorea elephantipes</I> (98), Roger Lane</td></tr><tr><td align='right' valign='top' nowrap><B>Opuntioids:</B></td><td valign='top'><I>Austrocylindopuntia </I>subulata crest (69), Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><B>Mesembs:</B></td><td valign='top'><I>Lithops hookeri</I> v. <I>marginata</I> (57), Naomi &amp; Lisa Bloss</td></tr><tr><td align='right' valign='top' nowrap><I><B>Asclepiadaceae</B></I><B>:</B></td><td valign='top'><I>Pseudolithos cubiformis</I> (52), Debbie Ellis</td></tr><tr><td align='right' valign='top' nowrap><I><B>Crassulaceae</B></I><B>:</B></td><td valign='top'><I>Gratoveria amethorum</I> (43), Linda McNally</td></tr><tr><td align='right' valign='top' nowrap><I><B>Euphorbiaceae</B></I><B>:</B></td><td valign='top'><I>Euphorbia decaryi</I> (41), Bill Gingras</td></tr><tr><td align='right' valign='top' nowrap><B>Mixed planter:</B></td><td valign='top'>Namibian scene (37), Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><I><B>Mammillaria</B></I><B>:</B></td><td valign='top'><I>Mammillaria schwartzii</I> (34), Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><I><B>Haworthia</B></I><B>:</B></td><td valign='top'><I>Haworthia truncata</I> (33), Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><I><B>Asteraceae</B></I><B>:</B></td><td valign='top'><I>Othonna cyclophylla </I>(32), Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><B>Photographs:</B></td><td valign='top'>Tangled <I>Dudleya</I> (19), Kathi Cambiano</td></tr><tr><td align='right' valign='top' nowrap><I><B>Agave</B></I> (tie)<B>:</B></td><td valign='top'><I>Agave utahensis</I> (19) and <I>Agave victoria-reginae</I> (19), both by Peter Beiersdorfer</td></tr><tr><td align='right' valign='top' nowrap><B>California native:</B></td><td valign='top'><I>Ferocactus cylindraceus</I>, Peter Beiersdorfer<I></td></tr><tr><td align='right' valign='top' nowrap><B>Notocactus:</B></td><td valign='top'><I>Notocactus leninghausii</I> (8), Jaan Lepson</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('pseudolithos.jpg',831,985)><img src='pseudolithos.jpg' width=291 height=345 hspace=17 vspace=17 align='left' class='enl'></a><br>Finally, the Directors’ Choice award goes to the plant with the most points belonging to someone who did not win any of the categories, which was Ellen and Gary Stubblefield’s <I>Echeveria</I> ‘Mexican Giant’ with 39 votes.</P><P>I have asked our webmaster to place a PDF of the scoring on the club website should anyone wish to check out the voting.</P><P>As always, I extend a huge &quot;Thank you&quot; to everyone who helped make the show a success: those who helped with set up, staging, door security and membership table, counting, and tear down. And of course, to everyone who brought in their wonderful plants to share!  Finally, I’d like to extend special thanks to our Club President, Sonia Dyer for her tireless efforts to encourage members to volunteer their time to make it all happen successfully.</td></tr></TABLE></center>");
+
+fmart ("Thank You","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>I want to give a big thank you to all that sent me get well wishes.  I hope to be able to go to the San Jose Christmas party; by that time I hope the restrictions on all kinds of activities is lifted by then. </td></tr></TABLE></center>");
+
+fmart ("Spotlight Interview with Loreen Borelli","Asmita Deshpande","","<center><TABLE width='90%'><tr><td valign='top'>Loreen is a potter.  Monterey Bay Cactus and Succulent Society invited her for her pots, and Loreen got interested in Succulents.  She is now an active participant in the Monterey Bay society.  At one of their meetings, she met Peter Beiersdorfer, and he invited her to show and sell her pottery at San Jose Cactus and Succulent Society.  She has been a member of our society for two years and sold her pottery at our show for as many years.</P><P>She has a small collection of succulents and says that she likes succulents over cacti.  Her favorites are Haworthias and Jades. She likes Jades because they are simple and Haworthias because they are catchy.</P><P>Loreen started making pottery as a hobby, because she finds it very relaxing and now she has been doing it for ten years. Besides pottery she likes to read and travel.</P><P>Loreen lives with her husband Russ, her dog, Daisy, and cat, Tuscan, in Aptos.  She retired as a fire captain.</P><P>She would like to thank our society for making her feel welcome.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'>Around 30 years ago I got an <I>Aztekium ritteri</I> that was a nice looking clump of six heads, as I remember.  I do not remember where I got it from or who sold it to me.  Looking back to those days, I have to feel sorry for the plant, and, in fact, all my plants.  When I moved here, all my plants stopped growing and went into a sulk.  It took me several years to discover that it was the alkaline water we have here.  Where I had lived for years, we had acidic water, and I did not know anything about any kind of difference in water.  That little clump of <I>Aztekium ritteri</I> just sat there and slowly turned into a fossil.  The price to replace it was way too much, and besides you could not find the plants in clumps anymore.  Some years later, I found a grafted plant and bought it.  After that plant had grown and made offsets, I figured that I would take an offset and root it down.  I tried taking several offsets to root, but all they did was die.  I think there was a combination of two things that worked against me; one was the alkaline water and the second was the size of the offset.  Since taking an offset to root down did not work, I did not want to lose a good size head.  When I took the offsets they were only about 1 cm in diameter, the first one failed and sometime later the second one failed also.  I figured that is enough, it will not work.  That was many years ago and since then, I have grafted quite a few heads but did not want to take the chance of losing a head by setting it down to root or see if it would root.</td></tr><tr><td valign='top'><a href=javascript:poppic('3aztekiumritteri.jpg',998,665)><img src='3aztekiumritteri.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><br>That grafted plant that I got many years ago has grown into a plant of many heads.  I have not grafted any for many years, so I decided it was time to take a few heads off and graft them.  That worked nice, and all the grafts took.  Then I decided on taking several heads and trying to root them.  I decided to take large heads this time, as the small ones failed before.  I took two heads that are 4.5 cm in diameter figuring I would give them a try.</td></tr><tr><td valign='top'>I have talked to several people that say that they have <I>Aztekium ritteri</I> on its own roots, and that they put it down to root and it did root.  Like <I>Ariocarpus</I>, the <I>Aztekium ritteri</I> has the reputation of super slow growth.  I have had to up pot quite a few of my <I>Ariocarpus</I> into larger pots, since they seem to grow to another pot size in something like three to five years.  I am sure that <I>Aztekium ritteri</I> would not be that way, even if it were growing just fine, as it is a much smaller type of plant.  The clump I had all those many years ago was maybe 12 cm in diameter; I am sure it was no larger than that.  In habitat, the plants do not grow much taller than about 3 cm tall, and, for the largest of plants, no larger than about 5 to 6 cm in diameter.  The clump I had, the offsets grew out of the side of the plant and were on the same level as the main head.  In cultivation on grafts, the plants grow a lot different from those in habitat.</td></tr><tr><td valign='top'><a href=javascript:poppic('4aztekiumritteri.jpg',998,665)><img src='4aztekiumritteri.jpg' width=299 height=200 hspace=17 vspace=17 align='right' class='enl'></a><br>The plant in the photo to the right is typical of a grafted plant that has been grafted for several years.  In time, the main head will be almost covered by offsets that are to 4.5 cm in diameter as is my large grafted plant.  It has now been about three months, and the heads that I removed from my large grafted plant look to have rooted, as they are still green and looking good. The heads were only about 2 cm tall and were 4.5 cm in diameter, so the heads, as planted, are only about 1.5 cm tall.  If the plants are as slow growing, as it has shown itself to be, it will take several years for the heads to show any change in size height wise.  I am just really happy that they are staying green, for that shows me that they have rooted down or I hope they have.</td></tr><tr><td valign='top'><a href=javascript:poppic('1aztekiumritteri.jpg',999,746)><img src='1aztekiumritteri.jpg' width=300 height=224 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left shows what the plants look like with the tubercles that look like they are stacked one on another.  Seen at the end of the tubercle is the areole still with some of the wool even on the old areoles.  In the growing point can be seen the wool and also the 1 to 3 mm long horn colored spines.  These spines are more or less straight when first they appear, but, in time, they curl and twist.  On the two ribs on the left side can be seen the spines that are still attached, and they curl and make a circle others are only hooked.</td></tr><tr><td valign='top'><a href=javascript:poppic('7aztekiumritteri.jpg',998,665)><img src='7aztekiumritteri.jpg' width=299 height=200 hspace=17 vspace=17 align='right' class='enl'></a><br>The flowers grow from the growing point of the plant.  I know the descriptions say that the flower is white, but the flower here is light pink.</td></tr><tr><td valign='top'><a href=javascript:poppic('5aztekiumritteri.jpg',908,851)><img src='5aztekiumritteri.jpg' width=272 height=255 hspace=17 vspace=17 align='left' class='enl'></a><br>For many people the only way they can have an <I>Aztekium ritteri</I> is on a graft.  The plants that were given to me are grafted on <I>Stenocereus griseus</I>.  When I graft plants I use <I>Trichocereus spachianus</I>.  Other people use <I>Harrisia</I>, <I>Myrtillocactus</I>, and many other plants, and then there are those colorful <I>Gymnocalycium</I> that are grafted on <I>Hylocereus undatus</I>.  When grafting there is one thing to be considered: is the graft stock hardy?  I have seen quite a few plants tossed, because the graft stock was killed by a freeze. <I> Stenocereus griseus</I> is a good graft stock, if it is kept above freezing, for it cannot really take much of a frost. <I> Hylocereus</I> is strictly a tropical plant, and if you have a graft on it, it has to be kept above about 38F. <I> Myrtillocactus</I> had been used as a graft stock for many years, but it is not really all that good either.  The reason is that it too freezes quite easy, but its problem is it wakes up late in the growing season.  The main problem with <I>Trichocereus spachianus</I> is the spine clusters.  On the good side is that it can take many degrees of frost.  I have it growing outside where it has been for years.  It has taken temperatures down to 15F and showing no signs of frost burn. It also takes temperatures to 125F and more.</P><P>Like <I>Ariocarpus</I>, <I>Aztekium</I> do not like alkaline water.  To grow and be healthy, they had to have acidic water.  The soil needs to be fast draining.  I give the plants the same light as I do my <I>Ariocarpus</I>, so as bright as I can without burning them.  Keep then dry over the winter and do not be watering too early in the spring.  If you have <I>Aztekium ritteri</I> on its own roots, keep it above freezing.  If it is grafted on a hardy stock, the plant will have some antifreeze from graft stock, like <I>Trichocereus spachianus</I>.  If grafted on some of the other stock, then keep the plants at least above 36F.  If grafted on <I>Hylocereus undatus</I> keep at least at 40F+.</td></tr></TABLE>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:cre8vsucculents@gmail.com?Subject=Membership%20Badge">cre8vsucculents@gmail.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

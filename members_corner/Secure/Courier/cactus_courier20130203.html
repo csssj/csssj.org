@@ -1,0 +1,302 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/3/2013">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/3/2013</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "3";
+var thisyear = "2013";
+var nextmonth = "March";
+var nextday = "3";
+var nextyear = "2013";
+var deadline = "February 22, 2013";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February 2013","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:00pm to 2:30pm","Growing and propagating South African bulbs","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2013","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2013","20-21, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","44<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2013","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("April 2013","27-28, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Contact Naomi Bloss for details 831-722-1446","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Growing and propagating South African bulbs</B><br>
+<br>
+<P>
+Do you like bulbs?  Ernesto Sandoval, director of the UC Davis Botanical Conservatory, will be talking about his experience growing South African bulbs.  Come see pretty pictures of these photogenic flowers and learn about their diversity in both foliage and flower as well as their horticultural needs and some of the reasons why South Africa has so many of them!
+</P>
+<P>
+Also, Ernesto will be bringing bulbs and other succulent beauties to purchase for your benefit and that of the Botanical Conservatory.  <I>Nerine</I>, <I>Lachenallia</I>, <I>Albuca</I>, <I>Cyrtanthus</I> and an assortment of other bulbs including a few California natives will be available.  Nearly all of these species are quite suitable for and tested in Northern California, especially San Jose!  On the less common side of succulents Mr. Sandoval will also bring less common succulents from South Africa and elsewhere such as <I>Pseudolithos migiurtinus</I>, <I>P. cubiformis</I>, <I>Whitesloana crassa</I>!, <I>Dorstenia gigas</I>, <I>Dendrosicyos socotrana</I>, <I>Euphorbia millotti</I>, a variety of <I>Haworthia</I> and an other interesting plants.
+</P>
+<P>
+Every quarter at UC Davis, a new set of interns gain a better understanding of how and why plants grow and react the way that they do from Mr. Sandoval.  Using minimal scientific words and lots of analogies, he relates the people and the plant worlds to each other.
+</P>
+<P>
+Ernesto grew up in the fast paced &quot;Mow, Blow, and Go!&quot; landscaping business of his father and other close relatives.  His interest in Biology took him to UC Davis.  A tour during his Freshman year at the Conservatory introduced him to his future passion.  At and because of the Conservatory, he discovered plants beyond turf grass and foundation plants, especially succulents and drought tolerant plants -- including natives.  To fill a void felt from his container intensive Conservatory work, he started doing more in-ground growing in his own and others' personal gardens.
+</P>
+<br>
+<br>
+<P>
+There will be no Mini Show for the February meeting.
+</P>
+<!-- 
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Ferocactus</I> or <I>Mammilaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Dudleya</I> of Baja</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>New Acquisitions (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>What's in Bloom?</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+ -->
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Notice: February Meeting Time Change","","<font size='+2'><B>Because of the Super Bowl, the February meeting will start a half hour earlier at 12:00 noon and there will be no Mini Show.</B></font>");
+
+fmart ("South African Bulbs","","<TABLE width='100%'><tr><td width=338 align='center'><img src='lachenaliabulbifera.jpg' width=338 height=500></td><td valign='middle' align='center'><br><br><br>Photographs by Ernesto Sandoval</td><td width=338 align='center'><img src='hesperantha.cucullata.jpg' width=320 height=520></td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE width='100%'><tr><td valign='top'><img src='cochemiea maritima pl.jpg' width=320 height=280 hspace=17 align='left'><br>Central Baja California, Mexico is home to <I>Cochemiea maritima</I>.  It grows on very rocky ground and hangs down from cracks in huge rocks.  For me, this plant blooms most of the winter.  It starts about the first to mid November and will bloom till about spring.  Flowers are 4 cm long and 2 cm across.  As you know the plants in habitat grow a bit differently than in cultivation.  In habitat, the stems are to 7 cm in diameter.  My plants have stems 5 cm across and, so far, about 23 cm tall.  I use to keep the plant in a heated hothouse, but for the last 6 or 7 years it has been in a cold house.  It has not shown any effects from having survived temperatures well below freezing.  They were kept dry over the winter.  They are in a fast draining soil, and they get watered along with the rest of the plants in that house.<br><br><img src='cochemiea maritima.jpg' width=320 height=280 hspace=77 align='center'></td></tr></TABLE>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Standings as of January 2013</P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Kathi Cambiano",25);
+fminiadd ("Bill Munkacsy",25);
+fminiadd ("Marilyn Moyer",15);
+fminiadd ("Maggie Palacek",4);
+fminiadd ("Joel Parker",19);
+fminiadd ("Ellen Stubblefield",21);
+fminiadd ("Gary Stubblefield",25);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Janice Coleman",14);
+fminiadd ("Alyene Daggett",2);
+fminiadd ("Marilyn Hofman",5); 
+fminiadd ("Terri Koike",18);
+fminiadd ("Alex Morgan",15);
+fminiadd ("Janet Rollin",3);
+fminiadd ("Diane Salewski",20);
+fminiadd ("Joe Silva",3);
+fminiadd ("Janet Stevenson",2);
+fminiadd ("Jacky Wilk",5);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P><br>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.</center>
+
+</P>
+
+</BODY>
+</HTML>
+

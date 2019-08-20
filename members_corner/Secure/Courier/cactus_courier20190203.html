@@ -1,0 +1,367 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/3/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/3/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "3";
+var thisyear = "2019";
+var nextmonth = "March";
+var nextday = "3";
+var nextyear = "2019";
+var deadline = "February 22, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 2:00pm","Bill Munkacsy - Basic Care and Cultivation","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Succulent Watercolor Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2019","27-28, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","50<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2019","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Basic Care and Cultivation</B><br>
+<br>
+<P>
+Bill Munkacsy will discuss the Care and Cultivation of cacti with two new special updates.
+<OL>
+<li>Climate including temperature change</li>
+<li>Water needs</li>
+<li>Sunlight</li>
+<li>Fertilization</li>
+<li>Growing media</li>
+<li>Propagation including new seed method</li>
+<li>Potting, up-potting, and new soil mixture</li>
+</OL>
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Gymnocalycium</I> and/or <I>Mammillaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Aloe</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your cactus planted for the April Show (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Blooming Succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through G should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("The Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>Amongst the biggest club-related news of last month was the announcement by Harry’s Hofbrauhaus of its imminent closure. This, of course, means that we’ll have to find a new venue for the Holiday Banquet at the end of the year.  We’ve already started both the search for said venue and attendant planning around related issues — in particular, dining.  If the new location we wind up choosing isn’t a restaurant, we’ll have to decide whether we want to have the event catered, organize a potluck, or find some other means of feeding ourselves.  While we have a couple of possible venues and dining options already in our sights, member suggestions are welcome.</P><P>Still on the subject of the Holiday Banquet, the board decided at last month’s meeting to see about revising some of the event’s logistics, regardless of the ultimate venue.  In particular, we’re going to switch to an RSVP model and charge a modest registration fee, in order to get a better estimation of actual attendance.  We’re also going to consolidate various bits of event administration — issuance of auction paddles, distribution of gift plants, renewal of membership, etc. — and make them part of everyone’s initial check-in.  The hope and intention is to streamline the entire process, leaving more time for the auctions and gift exchanges.  Details will follow as we formalize the plans and protocols.</P><P>In keeping with longstanding tradition, the February meeting will coincide with the Super Bowl, as a result of which, in order that members may get home in time to catch the entire game, the meeting will be ending an hour earlier than usual.</td></tr></TABLE></center>");
+
+fmart ("Spotlight Interview with David Calibo","Asmita Deshpande","","<center><TABLE width='90%'><tr><td valign='top'>David got into succulents because of Aeonium Sunburst.  He likes all variegated plants and liked Aeonium Sunburst, because of it and got into more succulents and cacti.</P><P>He doesn’t have any particular favorite, but may be it is Aeonium Sunburst after all.</P><P>He is a vendor at our society’s sale and became a member in 2009, as he wanted to sell at our show.  He grows mostly succulents and a few cacti, as weather in Pacifica is more suitable to succulents than cacti.</P><P>David lives in Pacifica with his wife and two daughters.  He works for a landscaping company and grows succulents and cacti as a side business.  He enjoys outdoor sports and activities like hiking.</P><P>His message to the members is to make use of society’s website, books, and other amenities and enjoy succulents and cacti.</td></tr></TABLE></center>");
+
+fmart ("Mini Show News","Bill Lemke","","<center><TABLE cellspacing=0 cellpadding=0><tr><td valign='top' align='center' nowrap><B>MARCH 2019</B></td></tr><tr><td valign='top'><B>Cactus of the Month:</B><br> &nbsp; &nbsp; &nbsp; Cactus in bloom<br><B>Succulent of the Month:</B><br> &nbsp; &nbsp; &nbsp; Agave<br><B>Something Special:</B> <br> &nbsp; &nbsp; &nbsp; Interesting plant worthy of painting<br> &nbsp; &nbsp; &nbsp; (water color artist is our speaker) or your choice<br><B>Beginners Luck</B><br> &nbsp; &nbsp; &nbsp; Mixed planting</td></tr></TABLE></center>");
+
+fmart ("Courier Contributor Award","Rich Kroll","","<center><TABLE width='90%'><tr><td valign='top'>For the next five years, a new award will be presented at the Holiday Extravaganza.  The member making the most valuable contribution to the newsletter will receive 20 Showbucks and a certificate of appreciation.  At the end of each year, the newsletter editor will select a contributor to be honored with the Courier Contributor Award.  (Obviously the editor is excluded from consideration.)</P><P>So, please make it difficult for me to choose between all the members who have made contributions to the success of our club's newsletter.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden ","Elton Roberts ","","<center><TABLE width='90%'><tr><td valign='top'>I have had <I>Mammillaria baxteriana</I> for at least thirty years, maybe a few years longer.  I just do not remember.  The plant does not have a large, fancy flower, but it does flower quite a few times a season.  That season, here in California, is from about mid-March to mid to end of October.  When it blooms, it can be an entire ring of light yellow flowers, or it may be only a couple flowers.  I have very seldom seen the plant for sale on any sale bench, and I have not seen the plant being shown in a show.  I guess it is not all that glamorous of a plant.  I grew a whole bunch from seed many years ago and some died, and I still have maybe a half dozen plants from that batch from many years ago.  I have taken plants to the sales and brought them back so many times that I have about given up on hauling them to a sale.</P><P><I>Mammillaria baxteriana</I> was named by Gates as <I>Neomammillaria</I> in 1934, and Boedeker changed it to <I>Mammillaria</I> in 1935. </P><P>None of my plants are reaching the 15 cm in diameter that the descriptions call for. I have to wonder if that is for a plant that has branched dichotomously, for any single stemmed plant that I have seen or read about are only 9 to about 12 cm in diameter for full grown plants.  So I have still not seen a plant single headed or two headed that is 15 cm in diameter. </P><P>Maybe way back in the 1930s, there may have been plants in habitat that were to 15 cm in diameter.  I have not been to its habitat but am sure in my mind that John Pilbeam has been.  In his description, he has the diameter of the plant as only 10 cm.  I know that most of the descriptions in the NCL are copied from the original or some other description and without any personal knowledge of growing the plants.</td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariabaxteriana.jpg',998,665)><img src='5mammillariabaxteriana.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('6mammillariabaxteriana.jpg',998,665)><img src='6mammillariabaxteriana.jpg' width=299 height=200 hspace=17 vspace=31 align='right' class='enl'></a><br>The photo to the left is the growing point of the plant; there can be seen the dark brown to almost black of the young central spines.  The areoles are covered in white wool, and the radial spines are semi-translucent white with dark tips.  The photo to the right is a close up of the spines down away from the growing point.  Notice the central spines are not straight but have a slight curve to them.  The radial spines are also a bit different from the description.  They are not all straight, some have a good curve and some are even a bit twisted.  Some have dark tips, and others do not have a dark tip.  On this plant, the radial spines are not white but are more a very light pinkish.  At this stage, the plant still has white wool in the axils, and this can persist even when the plant is quite old.</td></tr><tr><td valign='top'><br>There is quite a bit less wool on the areoles, and, at times, it will mostly fall out.  I find it interesting that there is near the top of the photo (above, right) a tubercle that has two areoles on it.  I count something like 23 radial spines and 3 centrals.  Just below and to the right of that tubercle is another one that is also a bit monstrose, for it has 20 radial spines and 3 central spines.  To the right of that tubercle is another that has 4 central spines and 18 radial spines.  I mention these tubercles because most of them have one central and 10 to 12 radial spines.</td></tr><tr><td valign='top'><a href=javascript:poppic('7mammillariabaxteriana.jpg',998,665)><img src='7mammillariabaxteriana.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('8mammillariabaxteriana.jpg',998,663)><img src='8mammillariabaxteriana.jpg' width=299 height=199 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left shows flowers from the shoulder of the plant and a seed pod here and there.  The photo to the right shows a lot of seed pods.  I know that I am color blind, but, to me, I see red seed pods.  I do not see seed pods that are purple red or that are purplish-red.  Even when I take the pods up to 18 cm long on the monitor, I see no purple in the seed pods.  Maybe I have the wrong plants that have the wrong color of seed pods.  When I read the oldest description that I have in any book, it says that the seed pods are clavate and red.  (Clavate = club shaped.  In the booklet Glossary of the Botanic Terms used in describing Flowering Plants by R. L. Heinig, the meaning of the word clavate is 'club-shaped; slender below and thickened gradually upward.')  When I look at the photo to the right, I see a lot of clavate, or club shaped seed pods, that are red.  I do not see any purple stage anywhere in the life span of the seed pods.</td></tr><tr><td valign='top'><a href=javascript:poppic('10mammillariabaxteriana.jpg',998,665)><img src='10mammillariabaxteriana.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('11mammillariabaxteriana.jpg',998,665)><img src='11mammillariabaxteriana.jpg' width=299 height=200 hspace=17 vspace=31 align='right' class='enl'></a><br>The photo to the left is a close up of a flower and also of a bud just opening to the left of the wide open flower.  On the opening bud, the outer petals are easy to see and the brownish midstripe is quite wide.  Looking close at the flowers that are wide open, the midstripe looks to me to be rose color and on a petal or two dark enough to be dark rose color.  The midstripe fades as it goes down the petal and then is gone about 2/3 of the way down the petal.  The center of the flower is greenish, as are the filaments; see the photo to the right also.  The pollen is light yellow, the stigma is greenish, and the style is greenish also but looks like it may have a touch of pink to it.  I did not measure the flowers but will have to go along with the description saying that they are to 2 cm in diameter.</td></tr><tr><td valign='top'><br>The habitat of <I>Mammillaria baxteriana</I> is near the tip of Baja California south; as such the plants get lots of sunshine.  Baja California is not very wide, and so its temperatures are kind of governed by the waters around it.  Now if you are from England and you go to say Cabo San Lucas in July when the average temperature is 87 F or 30 C; it is declared very hot weather.  If you live in Phoenix Arizona 87 F or 30 C is mostly called a fairly cool day.  But if you are in Cabo San Lucas in March when the average temperature is 70 F or 21 C then it is declared wonderful weather.  Many people in Phoenix would be wearing a sweater or light jacket at 70 F.  I have my plants where they have endured temperatures to 135 F or 57 C.  They have lived through temperatures down to 15 F or -9.5 C.</P><P>I keep the plants dry over the winter, and they have not shown any bad reaction to 15 F or -9.5 C.  They probably do not like it any more than they like the 135 F or 57 C in the summer.  In the summer, I have all doors and windows open for air flow, and, in the winter, I have everything shut down except for blower fans that keep the air moving.</P><P>I give my plants my regular potting soil.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:dfm@razorwind.org'>dfm@razorwind.org</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

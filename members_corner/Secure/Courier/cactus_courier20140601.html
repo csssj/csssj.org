@@ -1,0 +1,270 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/1/2014">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/1/2014</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "1";
+var thisyear = "2014";
+var nextmonth = "July";
+var nextday = "13";
+var nextyear = "2014";
+var deadline = "July 4, 2014";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("June 2014","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","All About Euphorbias - Naomi Bloss","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2014","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2014","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2014","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","27-28, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm ","9th Annual Fall Show &amp; Sale");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2014","19-20, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Contact Naomi Bloss for details 831-722-1446","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">All About Euphorbias - Naomi Bloss</B><br>
+<br>
+<P>
+This month’s speaker will be Naomi Bloss.  She will be speaking on the subject of Euphorbias.  The topics will include their cultivation, propagation, origins, and a general overview of the genus.  This presentation will be highly visual and your general questions will be welcomed on this fascinating genus.  Naomi will also be bringing plants for sale.
+</P>
+<br>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Hairy Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulent Bulbs (<I>Albuca</I>, <I>Boweia</I>, etc.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Euphorbia</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalanchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><font size="+2" color="#FF0000">Note</font><font size="+1"> that the meeting will be in the Meeting Hall this month<br> and not in the Multi-Cultural building.</font></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("July Program - Country Store","Loyd Monaco","Next month's club function will be the annual Country Store.  I know this is an exciting time and event for one and all.  Please remember to prepare plants and other items to bring as donations for the raffle tables.  For those who are new to this event or as a friendly reminder, the tables are divided into these categories: Cactus table, Succulent table, Snack and Goodies table, and Miscellaneous table.  The Miscellaneous table is for items such as Gardening books, pots, and miscellaneous cactus and succulent themed items.  So remember to gather your extra items, things you no longer use, or anything you wish to donate and bring them to the Country Store.</P><P>If you have any questions, please feel free to contact me at 408-250-7095 or <a href='mailto:loyd.monaco@yahoo.com?Subject=Country%20Store'>loyd.monaco@yahoo.com</a>.");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'> The seed pods of the <I>Mesembryanthema</I> family have compartments and fast opening lids with seed in a substance that has to dissolve to release them.  Along with this I am sure that you have read of germination inhibitors that Mother Nature covers or adds to the seed cover.  It seems like, even in the same seed pod, that the seed have differing amounts of this inhibitor.  This is so that not all the seed will germinate at the first small rain and die off, because it is not enough to keep them alive.  Some seed will germinate at the first rain, and some will have to be though many rains before they will germinate.  Lots of cactus seed will be in or on the soil for years, until the conditions are right for germination.</P><P>Some cactus that bloom in the fall, like <I>Ariocarpus</I>, will not put much life into growing seed pods until the next spring, so the seed will get dispersed before the summer thunderstorms.  These storms are their primary source of water.  The seed pods ripen in time for some to germinate in these rains.  When you grow lots of plants from seed, you can, at times, get quite frustrated trying to know what kind of care the seed needs to germinate.</td></tr><tr><td valign='top'><img src='tephrocactus geometricus.jpg' width=320 height=280 hspace=17 vspace=7 align='left'><br>I am now finding another strange thing that some cacti do to keep all the seed from trying to germinate at the same time.  On the <I>Tephrocactus geometricus</I> in the photo, notice that there are 7 seed pods.  That is a bit less than half of the seed pods that that plant produced this year.  I have 4 of the plants that bloomed, were pollinated, and set seed pods.  For one plant, it was its first year blooming, and it had only one flower.  It set one seed pod.  That seed pod ripened and dried out and fell off the plant.  The other 3 plants each set between 5 and 18 seed pods.  Now the strange thing is that just over half of the pods on each plant ripened and dried out.  The rest have ripened or turned red and have stayed that way.  After turning red, the seed pods then dry out and fall off the plants in only a few days to several weeks.</td></tr><tr><td valign='top'>All the plants bloomed about the same time and over several weeks.  Yet some seed pods have not dried out so as to release the seed.  As I have been waiting for these seed pods to dry and come off or fall off at a touch, I remembered that last year the same thing happened.  What I am thinking is that Mother Nature is again doing something here to make sure that seed gets dispersed at different times and at different seasons also.  She is delaying the ripening of almost half of the pods, so the seed will be dispersed at a different time of the year.  The first round of pods dried out and fell or dropped at a touch by about mid September, as I remember.  Why are seed pods developed at the same time as the rest not drying out and dropping off until mid spring?  I am convinced that it is another way the plants are guaranteeing that seed will have a chance to germinate at a different season of the year.</P><P>This year I have had several <I>Tephrocactus alexanderi</I> and the variety <I>bruchii</I> bloom together so I could get seed.  The same thing happened with the seed pods.  Having noticed this two years in a row, I will have to watch other plants to see if others do the same thing.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

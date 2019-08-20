@@ -1,0 +1,246 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 12/14/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 12/14/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "December";
+var thisday = "14";
+var thisyear = "2008";
+var nextmonth = "January";
+var nextday = "4";
+var nextyear = "2009";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("December 2008","14, Sunday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2009","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","Elton Roberts - Electric Cactus Acid Test","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","Valentines Day Party and Pot luck","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2009","4-5, Sat - 9:00am to 5:00 pm & Sun - 10:00am to 4:00pm","39<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2008","26-27, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA<br>Contact Bill Munkacsy 925-935-5213</font>","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Annual Holiday Extravaganza</B><br>
+<br>
+<P>
+This year's Holiday Banquet will be held on December 14, 2008, from 11:00am to 3:00pm at Harry's Hofbrau.  The restaurant is located at 390 Saratoga Avenue near Kiely Boulevard.  Their number is 408-243-0434.
+</P>
+<P>
+<center><img src="harryshoffbrau.gif" width=417 height=292 alt="390 Saratoga Avenue" border=2></center>
+</P>
+<P>
+Everyone who brings a plant puts it on the center table for the plant exchange.  A club officer will select the best plant which will be added to the auction plants.  The person who brought that plant is the first to select from the exchange.  Whoever brought the plant the first person picked picks next, and so forth until all the plants have been taken.  When all the plants are gone, the last person selects a plant from the gift plants.
+</P>
+<P>
+There will be two categories of plants for the auction: plants under $20 and plants over $20.  For the plants under $20 the first person bidding $20 will get the plant.  The auction in this area will be silent; there will be a card next to the plant in which people will bid on the plant.  When time is up, only the top three bidders will be able to bid on the plant. Again the first person to bid $20 will get the plant.  This will be explained at the dinner so don't worry if you don't understand it now.  The plants over $20 will be handled the same way; only on both categories there will be a minimum bid that will be listed and bidding will start from the minimum bid.  Members can bring in their own plants for the auction.  If you are interested, contact Bill Munkacsy at 925-935-5213.
+</P>
+<P>
+Members who renew at or before the December meeting will participate in a special plant raffle.
+</P>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for November:</font>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or a late bloomer</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or something that you think is a &quot;Fat Plant&quot;</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or a plant that is pretty in the Winter</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Christmas Cactus</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with N through Z should bring a snack for the November meeting.</font></B>
+</P>
+ -->
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='neolloydia conoidea grandiflora.jpg' width=320 height=280 hspace=8 align='left'><br><I>Neolloydia conoidea</I> and form <I>grandiflora</I> is another plant that you do not see too very often in collections.  It is a very nice plant that does not get out of control or grow very big.  The plant in the photo is somewhere in the neighborhood of 35 years old.  It is about 15 to 18 cm across.  I have a plant that is older, and it is about 25 cm across.   I have never had any problems growing these plants.</td></tr><tr><td valign='top'><img src='neolloydia conoidea grandiflora2.jpg' width=320 height=280 hspace=8 align='right'><br>The stems are from 4 or 5 cm across on younger plants to 8 cm in diameter on old plants.  The stems are to about 11 cm tall on average plants, but on my very old plant some are to 23 cm long.  The flower is to 6 cm across and smaller on <I>N. conoidea</I>.  Radial spines are white turning gray in age.  The central spines are very dark color probably black.  On my plants, they number from one on some plants to 3 even 4 at times on other plants.   Home habitat is Texas and on down into Mexico.</td></tr></TABLE>");
+
+fmart ("New Section","Rich Kroll","In this month's issue of the Courier, we have included a new section, &quot;Members Speak Up&quot;.  In this article, Joseph Hidalgo provides some pictures of his plants and asks the membership a question about plant care.  If any member would like to respond to his question, publish their own pictures, make a comment about our hobby, or ask their own question, we will publish it under the &quot;Members Speak Up&quot; title.</P><P>To contribute to this section, simply send your thoughts to the email or regular mail address for the Courier.");
+
+fmart ("Our November Meeting","Peter Beiersdorfer","<TABLE><tr><td valign='top'><img src='jaan081114b.jpg' width=340 height=269 hspace=8 align='left' vspace=8><br>Our November meeting was a fun-filled get-together.  Barbara Coelho from the Fresno Cactus and Succulent Society showed us impressive slides of some really nice specimens of &quot;fat plants&quot; - caudiciforms and pachycauls.  Many members brought one or more fat plants to the mini show, and even our speaker, who is a judge of cacti and succulents, was impressed by how nice the plants were.  In fact, the tables reserved for the mini show were close to overflowing with wonderful plants, including several blooming cacti and African succulents.  Other tables were overflowing with the pots we made during our September pottery workshop under the direction of Kathy Hendig.  The pots looked great and it was a real treat to see so many different shapes and styles.</td></tr><tr><td valign='top'><img src='jaan081114a.jpg' width=400 height=231 hspace=8 align='right' vspace=8><br> Sonja and Peter introduced a new feature for our upcoming meetings: The WhatIzIt Table.  Everybody has some plant they don't know what it is.  Starting in January, we will have our first &quot;WhatIzIt Table&quot;.  Bring your favorite unknown  plant, and we will pool our collective wisdom trying to identify it.</P><P>I am sure the meeting was enjoyed by all.  My mother certainly got a big kick out of being there and meeting everyone.  She sends her greetings.</P><P><font size='-1'><B>Photographs by Jaan Lepson</B></font></td></tr></TABLE>");
+
+      fmart ("Members Speak Up","Joseph Hidalgo","<TABLE><tr><td valign='top' colspan=2><img src='hidalgo0919.jpg' width=270 height=360 hspace=8 align='left' vspace=8><br>When Literature about Southern African plants reads, winter rainfall, summer dormant what exactly do they mean?  Is the writer writing from the perspective of the South African where Santa comes on a surfboard, with suntan lotion and the heat, or is the writer speaking of our Northern hemisphere climate?  This is very confusing to me as I would hate to give something water only to rot it from wet feet.</P><P><img src='hidalgo0906.jpg' width=240 height=247 hspace=8 align='right' vspace=8> I started a website in my spare time, and it is 98% cacti and succulents.  I gave the CSSSJ a plug.  Some pictures from our show and sale are up, with names of our club member to whom the plants belonged to.  <a href='http://mysteriesofnature.net' target='blanka'>http://mysteriesofnature.net</a></td></tr><tr><td valign='top' align='right'>Photos: &nbsp; </td><td>Left: <I>Tylecodon leucothrix</I> a summer dormant plant, booming with growth after our first rainstorm.<br>Right: <I>Euphorbia obesa</I> blooming with seedpods.</td></tr></TABLE>");
+
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

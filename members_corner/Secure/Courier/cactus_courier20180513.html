@@ -1,0 +1,364 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/13/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 5/13/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "13";
+var thisyear = "2018";
+var nextmonth = "June";
+var nextday = "3";
+var nextyear = "2018";
+var deadline = "May 25, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("May 2018","13, Sunday - 12:00noon to 3:00pm","Field Trip to Ruth Bancroft Gardens","","","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2018","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Succulents from seeds","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2018","8, Sunday - 12:30pm to 3:00pm","Field Trip to Evergreen Farm","","","","");
+
+document.write("<br><br>"); 
+
+fmcal ("August 2018","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2018","9, Sunday - 10:30am to 12:00pm","Board Meeting","9, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Field Trip to Ruth Bancroft Gardens</B><br>
+<br>
+<P>
+In 1971, a walnut orchard was cleared and offered to the owner's wife, Ruth Bancroft, so that she could expand her gardens.  An Aeonium introduced Ruth to succulents.  As it has for many of us, this burgeoned into a lifelong enthrallment with succulent plants.  Ruth Bancroft passed away recently at the age of 109, but her gardens survive as a testament to her spirit and love of horticulture.
+</P>
+<P>
+Today, the Ruth Bancroft gardens are home to a variety of cacti and succulents.
+</P>
+<P>
+And that original Aeonium?  It still grows in the Ruth Bancroft Gardens.
+</P>
+<P>
+The tour will start at noon, but show up 10 to 15 minutes early so that the club can know how many admissions to pay for.
+</P>
+<br>
+<br>
+<P>
+<center>(See the "May Program" article in this issue for more information.)</center> 
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your cactus prepped for Best of Show</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your succulent prepped for Best of Show</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Dish or mixed planiting (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Your best plant</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("May Program","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>In lieu of our regular May meeting, we will be having a field trip to Ruth Bancroft Gardens at 1552 Bancroft Road in Walnut Creek.  This will happen on Sunday May 13, from noon to 3.  You are asked to arrive 10-15 minutes early so we can get a headcount.   Members’ admission will be paid for by the club.  Since the 13th turns out to be Mother’s Day, admission for your mother or significant other will also be included.</P><P>Ruth Bancroft started planting this garden on her estate in 1972.  Among her favorite kinds of plants were cactus and succulents, and her plants have grown into something magnificent!  Ruth passed away recently, at over 100 years old.  The garden’s Curator is Brian Kemble, who occasionally gives presentations to our club.  They have added a plant nursery, where you can purchase many of the species represented in the garden, some of which are quite unusual.  The nursery is open until 4:00PM.  Bring your sunhat, water bottle, and camera.</P><P>Here’s the Bancroft Garden website: <a href='http://www.ruthbancroftgarden.org/rbgarden/pages/visit.html' target='_blank'>www.ruthbancroftgarden.org/rbgarden/pages/visit.html</a></P><P>Here’s a map: <a href='http://www.csssj.org/bancroftmap1.html' target='_blank'>www.csssj.org/bancroftmap1.html</a></P><P>From San Jose, drive north on 680, exit at Treat Blvd.  Turn right.  Go about 1 mile, then turn right onto Bancroft Rd.  Make a U-turn at Stratton Rd.  The Ruth Bancroft Garden will be on your right.  <B>NOTE:</B>  While their new Visitor’s Center is under construction, their regular entrance has been closed off.  You will need to park on either Banbury Rd or Stratton Rd, which are the residential streets immediately before and after the Gardens.  The new, temporary entrance is a very unassuming-looking driveway off of Bancroft Road (see this Google street view picture of what it looks like: <a href='http://www.csssj.org/bancroftmap2.html' target='_blank'>www.csssj.org/bancroftmap2.html</a>)</P><P>There is no restaurant at Bancroft Gardens, but here is a list of local suggested eating places, as well as other things to do in the area:  <a href='http://www.ruthbancroftgarden.org/rbgarden/pages/localattractions.html' target='_blank'>www.ruthbancroftgarden.org/rbgarden/pages/localattractions.html</a></P><P>Ruth Bancroft Gardens also publishes an informative monthly newsletter.  If you’d like to sign up, go here:  <a href='http://www.csssj.org/bancroftsignup.html' target='_blank'>www.csssj.org/bancroftsignup.html</a></td></tr></TABLE></center>");
+
+fmart ("Spring Show","Svetlana Bellam","Allen Krever","<center><TABLE width='90%'><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('s2018crowd.jpg',1034,598)><img src='s2018crowd.jpg' width=310 height=179 hspace=17 vspace=17 align='left' class='enl'></a><br><br> We had 183 entries  entered in  the spring  show including some photographs.<br>open categories - 92<br>advance -115<br>novice - 66</td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('euphorbiabougheyi.jpg',622,980)><img src='euphorbiabougheyi.jpg' width=187 height=294 hspace=17 vspace=17 align='right' class='enl'></a><br><br><br><TABLE><tr><td valign='top' align='right'><B>Best Cactus - Novice:</B></td><td valign='top'>Annie Wolf - <I>Tephrocactus papyracanthus</I></td></tr><tr><td valign='top' align='right'><B>Best Cactus  - Advance:</B></td><td valign='top'>Richard Deming - <I>Mammillaria parkinsonii</I></td></tr><tr><td valign='top' align='right'><B>Best Cactus - Open:</B></td><td valign='top'>W. Makay - <I>Astrophytum</I> 'Super Kabuto'</td></tr><tr><td valign='top' align='right'><B>Best Succulent - Novice:</B></td><td valign='top'>Annie Wolf - <I>Euphorbia bougheyi</I></td></tr><tr><td valign='top' align='right'><B>Best Succulent - Advance:</B></td><td valign='top'>Rodger lane - <I>Pachypodium densiflorum brevicalyx</I><br>Deborah Ellis - <I>Pseudolithos migiurtinus cubiformis</I></td></tr><tr><td valign='top' align='right'><B>Best Succulent - Open:</B></td><td valign='top'>Joseph Hidalgo</td></tr></TABLE></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('mammillariaperbella.jpg',1037,730)><img src='mammillariaperbella.jpg' width=311 height=219 hspace=17 vspace=17 align='left' class='enl'></a><br><br><B>Best in Class (Cactus)</B><br><TABLE><tr><td valign='top' align='right'><B>Cereinae:</B></td><td valign='top'>Peter Beierdorfer - <I>Trichocereus camarguerisis</I></td></tr><tr><td valign='top' align='right'><B>Echinocaetinae( other than maillaria):</B></td><td valign='top'>Elton Roberts - <I>Thelocactus phymatothelas</I></td></tr><tr><td valign='top' align='right'><B>Mammillaria:</B></td><td valign='top'>Deborah Ellis - <I>Mammillaria hahniana</I>  'Superba&quot; </td></tr><tr><td valign='top' align='right'><B>Echinopsidinae:</B></td><td valign='top'>Dennis West - <I>Denmoza rhodacantha</I></td></tr><tr><td valign='top' align='right'><B>Opuntiaccae:</B></td><td valign='top'>Elton Roberts - <I>Puna clavarioides</I></td></tr><tr><td valign='top' align='right'><B>Monstrose or crested:</B></td><td valign='top'>Annie Wolf - <I>Mammillaria perbella</I></td></tr></TABLE></td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('raphionacmezeyheri.jpg',1036,805)><img src='raphionacmezeyheri.jpg' width=311 height=242 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B>Best in Class (Succulents)</B><br><TABLE><tr><td valign='top' align='right'><B>Aizoaceae:</B></td><td valign='top'>Bloss - <I>Conophytum ratum</I></td></tr><tr><td valign='top' align='right'><B>Aloes:</B></td><td valign='top'>Gardner Homes-David Calibo - <I>Aloe castilloniae</I></td></tr><tr><td valign='top' align='right'><B>Asclepiadaceae:</B></td><td valign='top'>Joseph Hidalgo - <I>Raphionacme zeyheri<br></I></td></tr><tr><td valign='top' align='right'><B>Asteraceae( Compositae):</B></td><td valign='top'>Peter Beierdorfer - <I>Senecio articulatus</I></td></tr><tr><td valign='top' align='right'><B>Crassulaceae:</B></td><td valign='top'>Svetlana Bellam - <I>Aeonium cristata</I></td></tr><tr><td valign='top' align='right'><B>Howarthias:</B></td><td valign='top'>S. Verkler</td></tr><tr><td valign='top' align='right'><B>Euphorbiaccae:</B></td><td valign='top'>Annie Wolf - <I>Euphorbia decaryi</I></td></tr><tr><td valign='top' align='right'><B>Monocotyledon( othr than Aloaceae):</B></td><td valign='top'>Richard Rowe - <I>Bromeliaceae dyckia</I> 'Keswick Hybrid'</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('echinopsis.jpg',800,1000)><img src='echinopsis.jpg' width=240 height=300 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B>OTHER</B><br><TABLE><tr><td valign='top' align='right'><B>Photography:</B></td><td valign='top'>Jaan Lepsen - Euphorbia Landscape</td></tr><tr><td valign='top' align='right'><B>Directors/ Chair's award:</B></td><td valign='top'>Cecilia Caday - <I>Echinopsis</I></td></tr><tr><td valign='top' align='right'><B>Sweepstakes:</B></td><td valign='top'>Peter Beierdorfer</td></tr></TABLE><a href=javascript:poppic('thelocactusphymatothelas.jpg',1008,700)><img src='thelocactusphymatothelas.jpg' width=302 height=210 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('astrophytumsuperkabuto.jpg',1011,840)><img src='astrophytumsuperkabuto.jpg' width=303 height=252 hspace=17 vspace=17 align='right' class='enl'></a></td></tr></TABLE></td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Well I think our recent Spring Show &amp; Sale can be summarized in a single word:  Yowsaa!!!</P><P>This time we blew all our previous sales records completely out of the water!  This was totally a team effort, and the results show it.  Thanks to everyone who helped out.  And lots of people DID help out.</P><P>There were hundreds of people already in line at the door before we opened on Saturday morning, and there was another shorter line waiting to get in on Sunday morning as well.  The whole sales floor was packed elbow-to-elbow, and still people kept coming.  And then people formed a very long line at the cash registers.  Oddly enough, the customers didn’t gripe about it, because the line actually was moving, and people seemed to just be so very pleased with the plants they found.  From 9:00am Saturday until 1:30pm, it was intense, before it calmed down to just plain steady busy.</P><P>Still, I don’t like to make people wait in a long line to give us their money.  It’s not good for business.  We’re already using all three of NorCal’s cash registers, plus the Square credit card readers Roger Lane added in his NorCal role (we can now take Apple Pay, too!).  The cash register operators gave me several inputs for ways to make the line go faster, the most significant of which was that several of our vendors did NOT have bar codes on their plants, making it necessary to perform five or six additional steps by hand for every one of their plants that was sold, instead of zip-and-you’re-done with the barcode readers.  Vendors #42 and #118, you know who you are.  Plan ahead next time and get your barcodes.</P><P>Several folks also made suggestions for ways to entertain and distract the customers when the line does get long.  A suggestion was made to take a bowl of wrapped candies or cut up fruit up and down the line.  Another suggestion was to have our Plant Information people troll the line for folks who have questions about the plants they picked out.  This time we had some of our experts sitting at an Information Desk, but frankly people aren’t going to give up their spot in line to go find the Information Desk, and if they wait to ask the cash register operators that just slows the whole line down.  Perhaps we’ll add a new volunteer position for this.</P><P>Another suggestion was to let Friday-night early-bird shoppers actually pay for the plants they picked out on Friday night, instead of having to wait until Saturday when the cash registers open.  This would allow vendors to fill their other-wise empty vehicles with something, when they go home on Friday night.  It would also be a boon to the Plant Hotel, because lately we’ve been filling it up on Friday night, before the show even opens, leaving no space for the regular customers to use on Saturday morning.  We’ll look into the possibility of having the cash registers open for an hour or so on Friday night in the future.  </P><P>On the Show side, Roger Lane and Svetlana Bellum did a wonderful job as our new Co-Directors, and they have ideas for ways to make more improvements.  We had a lot more novices enter plants this time, and a 9-year old boy won a first place ribbon.  Kathi Cambiano took pictures of him and several other enthusiastic kids to publish on our social media feeds (with parental permission).  It’s great when we see a new generation get involved, and perhaps we can find more ways to encourage parents and teachers to encourage their kids to love plants.</P><P>As usual, Terri Koike and her crew (Glenn Koike, Loyd Monaco, etc) did a fantastic job of feeding us, and thanks to Linda Delgado for bringing in donuts for those with the breakfast munchies.  </P><P>Many contributions and much effort were put in by so many club members, it’s impossible to list them all.  Keep up the good work!  Please send your other ideas for improvements to me at sonia.dyer@sbcglobal.net, and they will be discussed by the Board.</P><P>PS- Someone left a black sweater behind at the Sale on Sunday.  It has a white spider embroidered on it.  Contact me if it’s yours.</td></tr></TABLE></center>");
+
+fmart ("Food for the Club’s Show &amp; Sale Weekend, Spring 2018","Terri Koike (Hospitality Chairperson)","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2018sands001.jpg',480,640)><img src='2018sands001.jpg' width=226 height=301 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2018sands002.jpg',480,640)><img src='2018sands002.jpg' width=226 height=301 hspace=17 vspace=17 align='right' class='enl'></a><br>I think a feast was had by all at the Club’s recent Show &amp; Sale event.  Round Table Pizza for those members who helped with set-up, an old fashion BBQ on Saturday, and Una Mas Mexican food on Sunday.  I want to thank all the members who contributed food items for this event.  For the first time, (this was my 7th meal coverage for Show &amp; Sale), there was a tremendous outpouring of members who contributed with salads, fruits, chips, desserts &amp; even roasted chickens!  (which unfortunately we were unable to serve).  The effort made by all helped to make our meal gathering great &amp; delicious!  Warm thanks and appreciation go to:<br><center><TABLE><tr><td valign='top'>Joyce McPheeters<br>Tanya Wieber<br>Annie Wolf<br>Cecilia &amp; Ed Caday<br> JoAn Lambert<br>Elizabeth Judge<br>Linda Delgado</td><td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td><td valign='top'>Bill Lemke<br>Manuela Burge<br>Alexandra Chong<br>Peter Beiersdorfer<br>Elton Roberts<br>Judy Ganschow</td></tr></TABLE>Loyd Monaco, David Sparks, &amp; Glenn Koike for working the BBQ grills!</center></td></tr><tr><td>Apologies to whoever brought the wonderful almond cake on set-up night, which got devoured up.  I forgot to get your name &amp; would love to get your recipe.  Also, to whoever brought the yummy homemade zucchini bread, donuts, the extra tub of potato salad for the BBQ, and for whoever else I may have forgotten to mention.  Your generosity is most appreciated by me &amp; the Club!</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

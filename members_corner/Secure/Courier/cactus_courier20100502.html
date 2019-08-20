@@ -1,0 +1,249 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/2/2010">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 5/2/2010</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "2";
+var thisyear = "2010";
+var nextmonth = "June";
+var nextday = "13";
+var nextyear = "2010";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("May 2010","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Trip to Namibia","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2010","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","Peter Beiersdorfer &amp; Jaan Lepson - <br>Illustrated Talk on Trip to South Africa","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2010","11, Sunday - 10:30am to 12:00pm","Board Meeting","11, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2010","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2010","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2010","24-25, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Ernesto Sandoval - Trip to Namibia</B><br>
+<br>
+<P>
+Mr. Sandoval has been the curator of the UC Davis Botanical Conservatory for many years.  He has made presentations to our club on several occasions.  Mr. Sandoval has amassed a tremendous spectrum of experience cultivating, photographing plants, and traveling to areas in southern Africa.
+</P>
+<P>
+This time, he will be taking us to Namibia, the home of the Namib, considered one of the oldest deserts in the world.  The arid lands of Namibia are the natural habitat for a variety of wild flowers and succulent plants including <I>Lithops</I>.
+</P>
+<P>
+Mr. Sandoval will be bringing rare plants from the conservatory for sale.
+</P>
+ 
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Back from the Dead! (Rescues, salvages, and nursed back to health.  Please bring a BEFORE photo, if available, to accompany your entries.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Back from the Dead! (Rescues, salvages, and nursed back to health.  Please bring a BEFORE photo, if available, to accompany your entries.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulents from South Africa and Namibia</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Going Fishin' (fish hook cactus)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("2010 Spring Show Wrap-up","Bill Gingras","I'd definitely say that the 2010 CSSSJ show was a smashing success.  Despite some perceived problems, such as the lousy weather and shrinking show space coupled with increasing entries, we dealt with such problems as they popped up, and put on a brilliant show.</P><P>I want to give thanks to all the volunteers who made this year's show such a success.  They are (in no particular order); Sonia Dyer, Kathi Cambiano, Alex Morgan, Pam Saunders, Ron Harris, Leona Harris, Joel Parker, Antony Fan, Byron Fan, Oliver Silva, Richard Deming, Joseph Hidalgo, Chuck Rosenberg, Carol Anaya, Jeff Baumgartner, Dolores Wagner, Jaan Lepson, Peter Beiersdorfer, Janet Rollin, Tony Bassano, Sandy Carter, Roger Lane, Kate Romanova, Susan McKuhen, Ralph McKuhen, Naomi Bloss, Alyene Daggett, Bill Kurtz, and Shelley Shostak (Whew!!!).</P><P>If I misspelled your name above or below or left you off the list, I apologize.  Also, if you are not a vendor and volunteered at least two hours at the show and/or sale but got no Show Bucks, feel free to hit me up for some.  They're good for a year, so you can use them at the Fall Show and Sale.</P><P>Let's also honor the entrants!  Gone seem to be the days when the majority of entrants were the vendors.  We've been seeing growth in non-vendor club members entering plants in the show for quite a few shows now.  Check out the list of entrants (again, in no particular order); Joel Parker, Richard Deming, Roger Lane, Peter Beiersdorfer, Deek Dittrich, Ron Harris, Tony Bassano, Byron Fan, Sonia Dyer, Kathi Cambiano, Jeff Baumgartner, Jaan Lepson, Bill Munkacsy, Elton Roberts, Patty Caro, Alex Rigg, Don Cravalho, Ellen and Gary Stubblefield, Frank and Naomi Bloss, Gardner's Home, Oliver Silva, Joseph Hidalgo, Jim Boehmke, Shelley Shostak, and Rui Machado (again, apologies for any misspellings or omissions).  That's quite a list!</P><P>Now, on to our winners. Congratulations to:<font size='-4'><br> &nbsp;<br></font><TABLE><tr><td width='10%'> &nbsp;<td nowrap align='right'>Sweepstakes </td><td>-</td><td nowrap> Frank and Naomi Bloss</td><td></td></tr><td></td><td nowrap align='right'> Best Novice Cactus </td><td>-</td><td nowrap> Jeff Baumgartner -  <I>Mammillaria hahniana superba</I></td></tr><td></td><td nowrap align='right'> Best Novice Succulent </td><td>-</td><td nowrap> Joseph Hidalgo - <I>Adromischus marianiae halli</I></td></tr><td></td><td nowrap align='right'> Best Advanced Cactus </td><td>-</td><td nowrap> Ron Harris - <I>Notocactus magnificus</I></td></tr><td></td><td nowrap align='right'> Best Advanced Succulent </td><td>-</td><td nowrap> Peter Beiersdorfer - <I>Adromischus marianiae herrei</I></td></tr><td></td><td nowrap align='right'> Best Open Cactus </td><td>-</td><td nowrap> Bill Munkacsy - <I>Mammillaria schwartzii</I></td></tr><td></td><td nowrap align='right'> Best Open Succulent </td><td>-</td><td nowrap> Bill Munkacsy - <I>Gastrolea &quot;Green Ice&quot;</I></td></tr><td></td><td nowrap align='right'> Best <I>Ariocarpus</I> </td><td>-</td><td nowrap> Bill Munkacsy - <I>Ariocarpus fissuratus</I></td></tr><td></td><td nowrap align='right'> Best <I>Cereinae</I></td><td>-</td><td nowrap> Elton Roberts - <I>Echinocereus pulchellus ssp. weinbergii</I></td></tr><td></td><td nowrap align='right'> Best <I>Crassulacae</I> </td><td>-</td><td nowrap> Peter Beiersdorfer - <I>Adromischus marianiae herrei</I></td></tr><td></td><td nowrap align='right'> Best <I>Echinocactinae</I> </td><td>-</td><td nowrap> Bill Munkacsy - <I>Echinocactus polycephalus</I></td></tr><td></td><td nowrap align='right'> Best <I>Euphorbiaceae</I> </td><td>-</td><td nowrap> Frank and Naomi Bloss - <I>Euphorbia millotii</I></td></tr><td></td><td nowrap align='right'> Best <I>Mammillaria</I> </td><td>-</td><td nowrap> Bill Munkacsy - <I>Mammillaria schwartzii</I></td></tr><td></td><td nowrap align='right'> Best <I>Aizoaceae</I> </td><td>-</td><td nowrap> Frank and Naomi Bloss - <I>Lithops peersii</I></td></tr><td></td><td nowrap align='right'> Best Monocotyledon </td><td>-</td><td nowrap> Bill Munkacsy - <I>Gastrolea &quot;Green Ice&quot;</I></td></tr><td></td><td nowrap align='right'> Best <I>Opuntiaceae</I> </td><td>-</td><td nowrap> Elton Roberts - <I>Corynopuntia bulbispina</I></td></tr><td></td><td nowrap align='right'> Best Photography</td><td>-</td><td nowrap> Kathi Cambiano - <I>Peniocereus gregii</I></td></tr></TABLE><P>We had 200 succulent entries, 113 cacti entries, and 11 other entries that either didn't fit into the other categories or I couldn't determine.  Add them together and you get 324 entries.  Wow!</P><P>Last but certainly not Least, I want to give a special thanks to the other two cohorts that put together and manage the show with me; Jaan Lepson and Peter Beiersdorfer.</P><P>Start now thinking about entering plants in the Fall Show.  Let's make that one a smashing success too.");
+
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='coryphantha tripugionacantha l1464 spn.jpg' width=320 height=280 hspace=13 align='left' vspace=10> While wandering around in the area of San Juan Capistrano, Zacatecas Alfred Lau discovered <I>Coryphantha tripugionacantha</I>.  I figure that most of you have not seen this plant, since it is not all that common in collections.  So I have added a more or less close up of the spines.  This shows the 3 strong recurving spines that inspired the plants name.  All the spines are a bit curved, but the centrals have a wonderful curve.  Some hug the body without touching the body.  The radial spines are a lot less curved, white with a dark tip.  They are to 15 mm long.  The central spines are light underneath and colored above.  The color is reddish brown, pinkish red brown to a purple-black.  Some have dark tips.  They are to 22 mm long.  My largest plant is 13 cm in diameter and 11 cm tall, that is the one in the photo.  The flower is to 7.5 cm in diameter. </td></tr><tr><td><img src='coryphantha tripugionacantha l1464b.jpg' width=320 height=280 hspace=13 align='right' vspace=10><br><br>This is October 10, and the plants are still blooming.  This is the 4th or 5th time this season.  They usually start blooming around the first of July.  They still have some buds to open.  The number of flowers are 1 to 3 at a time so far.   Keep dry over the winter time, otherwise they are treated just like the rest of the plants.</td></tr></td></tr></TABLE>");
+
+fmclass ("Buy","","","","","","","Sell","Top Dressing and Pots","Retha Long has top dressing and some pots for sale.  If interested call her at 209-392-3530.  Her address is 16194 Bryant Avenue, Dos Palos, CA, 93620.  Please call first to make sure she is going to be home.","","","","");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

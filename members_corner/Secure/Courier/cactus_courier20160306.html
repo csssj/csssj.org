@@ -1,0 +1,280 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/6/2016">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/6/2016</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "6";
+var thisyear = "2016";
+var nextmonth = "April";
+var nextday = "2-3";
+var nextyear = "2016";
+var deadline = "March 25, 2016";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("March 2016","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Naomi Bloss - Staging for Shows","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2016","2-3, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","47<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2016","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Tom Vincze - Exploring Madagascar","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2016","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Ellen Stubblefield - Windowboxes","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2016","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<TABLE cellspacing=13 cellpadding=13 border=5 bordercolor='#FF0000'><tr><td><font color='#990000' size='+1'><center><B>Note that the dates for the Spring Show and Sale have changed.</B></center></font></td></tr></TABLE><br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+// document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Naomi Bloss - Staging for Shows</B>
+</P>
+Noami Bloss has been a standout at succulent plant shows for quite a few years. She regularly earns top honors. She will share some of her knowledge, experience, and presentation tips. If you want to improve your show standing or just want to learn how to show off your plants to their best advantage, this is the program for you.
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I>Cleistocactus</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I> Tylecodon/Cotyledon</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> Show off your best in plant staging (or your choice) </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1> <I>Haworthia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("A memorable day at the Huntington Botanical Garden","Jaan Lepson and Peter Beiersdorfer","<center><TABLE width='90%'><tr><td valign='top'><img src='160127gardens.jpg' width=327 height=423 hspace=17 vspace=17 align='left'><br><br>Each year the Cactus and Succulent Society of America hosts the Desert Forum at the Huntington Botanical Garden. Members of CSSA affiliate cactus and succulent clubs, such as our own CSSSJ are invited free of cost.  Attendees get early admission to the grounds and the desert conservatory, with docents stationed there and in the desert garden areas to answer questions.  The Desert Forum was held this year on January 16, and we decided to check it out after reading about it in the newsletter of the Fresno club. </P><P>After signing in at the registration table (open 9-10 am), our club badges gave us free entry to the gardens The entry fee at the Huntington usually is $25 a person so the two of us saved $50!  On a Saturday the garden does not open to the public until 10:30 am, and for the early hours the gardens were empty and dotted only with fellow succulentophiles.  We headed for the greenhouse, where there was free coffee, donuts, and mixed nuts – and a large crowd, as the picture shows.</td></tr><tr><td valign='top'><img src='160127conservatory.jpg' width=486 height=317 hspace=17 vspace=17 align='right'><br>From 11 am to 1 pm, there was a smorgasbord of plants for sale at the teaching greenhouse, and Peter couldn’t resist the offerings of Haworthias, winter-growing bulbs, senecios, euphorbias, and mesembs.  The sale was also popular with many other club members, and many boxes of plants were piling up in the hold area to be loaded into the buses organized by their respective clubs. Club members then had the entire afternoon to spend in the gardens, the many museums, cafes, and gift shop that are available on the roughly 120 acre grounds.</P><P>It was a trip worth the drive from Livermore.  We got early admission, refreshments, an opportunity to buy plants, and hang out with folks who share the same passion. Oh, and did we mention it’s free? :D<br><img src='160127lithops.jpg' width=604 height=380 hspace=17 vspace=17 align='left'><img src='160127conophytums.jpg ' width=608 height=440 hspace=17 vspace=17 align='right'></td></tr></TABLE></center>");
+
+
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='thelocactus lausseri -1.jpg' width=500 height=425 hspace=17 vspace=17 align='right'><br><I>Thelocactus lausseri</I> was discovered in 1986.  It is described as being to 8 cm in diameter and 10 cm tall.  I guess that they must get a bit larger in cultivation.  I got seed not too long after the plants were described, and my largest plant is now 11 cm in diameter and 20 cm tall.  That is not counting the spines.  Add the spines and the plant is them 21 cm in diameter and 15 cm tall.</td></tr><tr><td valign='top'><img src='thelocactus lausseri.jpg' width=500 height=425 hspace=17 vspace=17 align='left'><br>The thing that makes this plant a bit different from the rest of the <I>Thelocactus</I> is the flower color.  It is like a candy cane, whitish to light pink with the darker mid stripe.  The flowers are to 4 cm across.  Here it is the middle of January and this plant has 3 flowers open.  So far I see no other <I>T. lausseri</I> with flowers open.  I know they bloom most of the summer and late into fall, but this is the first time I remember them blooming in dead of winter.  With the red and white spines, this plant is a wonderful addition to any collection.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

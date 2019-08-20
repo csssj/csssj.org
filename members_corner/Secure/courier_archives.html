@@ -1,0 +1,462 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<meta name="author" content="Bill Gingras">
+<meta name="description" content="CSSSJ">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<title>Cactus and Succulent Society of San Jose</title>
+
+<SCRIPT Language="JavaScript">
+// <!-- 
+//
+// arrays of years, descriptions, and links
+//
+var yrlst = new Array();
+var yrs = new Array();
+var yre = new Array();
+var descs = new Array();
+var lnks = new Array();
+//
+
+var sb = 1;
+var sc = 0;
+var minyr = 100000;
+var maxyr = 0;
+var curryr = 0;
+//
+// Fill in arrays
+//
+addntr ("Courier/cactus_courier20021103.html","November",2002); 
+addntr ("Courier/cactus_courier20021201.html","December",2002);
+addntr ("Courier/cactus_courier20030105.html","January",2003); 
+addntr ("Courier/cactus_courier20030202.html","February",2003); 
+addntr ("Courier/cactus_courier20030302.html","March",2003); 
+addntr ("Courier/cactus_courier20030405.html","April",2003); 
+addntr ("Courier/cactus_courier20030504.html","May",2003); 
+addntr ("Courier/cactus_courier20030601.html","June",2003); 
+addntr ("Courier/cactus_courier20030713.html","July",2003); 
+addntr ("Courier/cactus_courier20030803.html","August",2003); 
+addntr ("Courier/cactus_courier20030907.html","September",2003); 
+addntr ("Courier/cactus_courier20031012.html","October",2003); 
+addntr ("Courier/cactus_courier20031102.html","November",2003); 
+addntr ("Courier/cactus_courier20031207.html","December",2003);
+addntr ("Courier/cactus_courier20040104.html","January",2004); 
+addntr ("Courier/cactus_courier20040208.html","February",2004); 
+addntr ("Courier/cactus_courier20040307.html","March",2004); 
+addntr ("Courier/cactus_courier20040403.html","April",2004); 
+addntr ("Courier/cactus_courier20040502.html","May",2004); 
+addntr ("Courier/cactus_courier20040606.html","June",2004); 
+addntr ("Courier/cactus_courier20040711.html","July",2004); 
+addntr ("Courier/cactus_courier20040808.html","August",2004); 
+addntr ("Courier/cactus_courier20040912.html","September",2004); 
+addntr ("Courier/cactus_courier20041010.html","October",2004); 
+addntr ("Courier/cactus_courier20041107.html","November",2004); 
+addntr ("Courier/cactus_courier20041205.html","December",2004);
+addntr ("Courier/cactus_courier20050109.html","January",2005); 
+addntr ("Courier/cactus_courier20050206.html","February",2005); 
+addntr ("Courier/cactus_courier20050306.html","March",2005); 
+addntr ("Courier/cactus_courier20050402.html","April",2005); 
+addntr ("Courier/cactus_courier20050508.html","May",2005); 
+addntr ("Courier/cactus_courier20050605.html","June",2005); 
+addntr ("Courier/cactus_courier20050710.html","July",2005); 
+addntr ("Courier/cactus_courier20050807.html","August",2005); 
+addntr ("Courier/cactus_courier20050911.html","September",2005); 
+addntr ("Courier/cactus_courier20051009.html","October",2005);
+addntr ("Courier/cactus_courier20051106.html","November",2005);
+addntr ("Courier/cactus_courier20051211.html","December",2005);
+addntr ("Courier/cactus_courier20060108.html","January",2006); 
+addntr ("Courier/cactus_courier20060205.html","February",2006);
+addntr ("Courier/cactus_courier20060305.html","March",2006);
+addntr ("Courier/cactus_courier20060401.html","April",2006);
+addntr ("Courier/cactus_courier20060507.html","May",2006);
+addntr ("Courier/cactus_courier20060611.html","June",2006);
+addntr ("Courier/cactus_courier20060709.html","July",2006);
+addntr ("Courier/cactus_courier20060806.html","August",2006);
+addntr ("Courier/cactus_courier20060910.html","September",2006);
+addntr ("Courier/cactus_courier20061007.html","October",2006);
+addntr ("Courier/cactus_courier20061105.html","November",2006);
+addntr ("Courier/cactus_courier20061203.html","December",2006);
+addntr ("Courier/cactus_courier20070107.html","January",2007);
+addntr ("Courier/cactus_courier20070204.html","February",2007);
+addntr ("Courier/cactus_courier20070304.html","March",2007);
+addntr ("Courier/cactus_courier20070414.html","April",2007);
+addntr ("Courier/cactus_courier20070506.html","May",2007);
+addntr ("Courier/cactus_courier20070610.html","June",2007);
+addntr ("Courier/cactus_courier20070708.html","July",2007);
+addntr ("Courier/cactus_courier20070805.html","August",2007);
+addntr ("Courier/cactus_courier20070909.html","September",2007);
+addntr ("Courier/cactus_courier20071006.html","October",2007);
+addntr ("Courier/cactus_courier20071104.html","November",2007);
+addntr ("Courier/cactus_courier20071209.html","December",2007);
+addntr ("Courier/cactus_courier20080106.html","January",2008);
+addntr ("Courier/cactus_courier20080203.html","February",2008);
+addntr ("Courier/cactus_courier20080302.html","March",2008);
+addntr ("Courier/cactus_courier20080412.html","April",2008);
+addntr ("Courier/cactus_courier20080504.html","May",2008);
+addntr ("Courier/cactus_courier20080601.html","June",2008);
+addntr ("Courier/cactus_courier20080713.html","July",2008);
+addntr ("Courier/cactus_courier20080803.html","August",2008);
+addntr ("Courier/cactus_courier20080907.html","September",2008);
+addntr ("Courier/cactus_courier20081004.html","October",2008);
+addntr ("Courier/cactus_courier20081102.html","November",2008);
+addntr ("Courier/cactus_courier20081214.html","December",2008);
+addntr ("Courier/cactus_courier20090104.html","January",2009);
+addntr ("Courier/cactus_courier20090201.html","February",2009);
+addntr ("Courier/cactus_courier20090301.html","March",2009);
+addntr ("Courier/cactus_courier20090404.html","April",2009);
+addntr ("Courier/cactus_courier20090503.html","May",2009);
+addntr ("Courier/cactus_courier20090607.html","June",2009);
+addntr ("Courier/cactus_courier20090712.html","July",2009);
+addntr ("Courier/cactus_courier20090802.html","August",2009);
+addntr ("Courier/cactus_courier20090913.html","September",2009);
+addntr ("Courier/cactus_courier20091003.html","October",2009);
+addntr ("Courier/cactus_courier20091101.html","November",2009);
+addntr ("Courier/cactus_courier20091205.html","December",2009);
+addntr ("Courier/cactus_courier20100110.html","January",2010);
+addntr ("Courier/cactus_courier20100207.html","February",2010);
+addntr ("Courier/cactus_courier20100307.html","March",2010);
+addntr ("Courier/cactus_courier20100410.html","April",2010);
+addntr ("Courier/cactus_courier20100502.html","May",2010);
+addntr ("Courier/cactus_courier20100613.html","June",2010);
+addntr ("Courier/cactus_courier20100711.html","July",2010);
+addntr ("Courier/cactus_courier20100801.html","August",2010);
+addntr ("Courier/cactus_courier20100912.html","September",2010);
+addntr ("Courier/cactus_courier20101002.html","October",2010);
+addntr ("Courier/cactus_courier20101107.html","November",2010);
+addntr ("Courier/cactus_courier20101204.html","December",2010);
+addntr ("Courier/cactus_courier20110109.html","January",2011);
+addntr ("Courier/cactus_courier20110206.html","February",2011);
+addntr ("Courier/cactus_courier20110306.html","March",2011);
+addntr ("Courier/cactus_courier20110402.html","April",2011);
+addntr ("Courier/cactus_courier20110501.html","May",2011);
+addntr ("Courier/cactus_courier20110605.html","June",2011);
+addntr ("Courier/cactus_courier20110710.html","July",2011);
+addntr ("Courier/cactus_courier20110807.html","August",2011);
+addntr ("Courier/cactus_courier20110911.html","September",2011);
+addntr ("Courier/cactus_courier20111001.html","October",2011);
+addntr ("Courier/cactus_courier20111106.html","November",2011);
+addntr ("Courier/cactus_courier20111203.html","December",2011);
+addntr ("Courier/cactus_courier20120108.html","January",2012);
+addntr ("Courier/cactus_courier20120205.html","February",2012);
+addntr ("Courier/cactus_courier20120304.html","March",2012);
+addntr ("Courier/cactus_courier20120401.html","April",2012);
+addntr ("Courier/cactus_courier20120506.html","May",2012);
+addntr ("Courier/cactus_courier20120603.html","June",2012);
+addntr ("Courier/cactus_courier20120701.html","July",2012);
+addntr ("Courier/cactus_courier20120805.html","August",2012);
+addntr ("Courier/cactus_courier20120909.html","September",2012);
+addntr ("Courier/cactus_courier20120929.html","Fall Show",2012);
+addntr ("Courier/cactus_courier20121104.html","November",2012);
+addntr ("Courier/cactus_courier20121201.html","December",2012);
+addntr ("Courier/cactus_courier20130106.html","January",2013);
+addntr ("Courier/cactus_courier20130203.html","February",2013);
+addntr ("Courier/cactus_courier20130303.html","March",2013);
+addntr ("Courier/cactus_courier20130420.html","April",2013);
+addntr ("Courier/cactus_courier20130511.html","May",2013);
+addntr ("Courier/cactus_courier20130602.html","June",2013);
+addntr ("Courier/cactus_courier20130707.html","July",2013);
+addntr ("Courier/cactus_courier20130804.html","August",2013);
+addntr ("Courier/cactus_courier20130908.html","September",2013);
+addntr ("Courier/cactus_courier20131012.html","October",2013);
+addntr ("Courier/cactus_courier20131103.html","November",2013);
+addntr ("Courier/cactus_courier20131207.html","December",2013);
+addntr ("Courier/cactus_courier20140105.html","January",2014);
+addntr ("Courier/cactus_courier20140202.html","February",2014);
+addntr ("Courier/cactus_courier20140302.html","March",2014);
+addntr ("Courier/cactus_courier20140405.html","April",2014);
+addntr ("Courier/cactus_courier20140517.html","May",2014);
+addntr ("Courier/cactus_courier20140601.html","June",2014);
+addntr ("Courier/cactus_courier20140713.html","July",2014);
+addntr ("Courier/cactus_courier20140810.html","August",2014);
+addntr ("Courier/cactus_courier20140907.html","September",2014);
+addntr ("Courier/cactus_courier20140927.html","Fall Show",2014);
+addntr ("Courier/cactus_courier20141102.html","November",2014);
+addntr ("Courier/cactus_courier20141206.html","December",2014);
+addntr ("Courier/cactus_courier20150104.html","January",2015);
+addntr ("Courier/cactus_courier20150201.html","February",2015);
+addntr ("Courier/cactus_courier20150301.html","March",2015);
+addntr ("Courier/cactus_courier20150314.html","Spring Show",2015);
+addntr ("Courier/cactus_courier20150412.html","April",2015);
+addntr ("Courier/cactus_courier20150510.html","May",2015);
+addntr ("Courier/cactus_courier20150607.html","June",2015);
+addntr ("Courier/cactus_courier20150712.html","July",2015);
+addntr ("Courier/cactus_courier20150816.html","August",2015);
+addntr ("Courier/cactus_courier20150913.html","September",2015);
+addntr ("Courier/cactus_courier20151003.html","October",2015);
+addntr ("Courier/cactus_courier20151101.html","November",2015);
+addntr ("Courier/cactus_courier20151205.html","December",2015);
+addntr ("Courier/cactus_courier20160103.html","January",2016);
+addntr ("Courier/cactus_courier20160207.html","February",2016);
+addntr ("Courier/cactus_courier20160306.html","March",2016);
+addntr ("Courier/cactus_courier20160402.html","April",2016);
+addntr ("Courier/cactus_courier20160508.html","May",2016);
+addntr ("Courier/cactus_courier20160605.html","June",2016);
+addntr ("Courier/cactus_courier20160710.html","July",2016);
+addntr ("Courier/cactus_courier20160814.html","August",2016);
+addntr ("Courier/cactus_courier20160904.html","September",2016);
+addntr ("Courier/cactus_courier20161008.html","October",2016);
+addntr ("Courier/cactus_courier20161106.html","November",2016);
+addntr ("Courier/cactus_courier20161203.html","December",2016);
+addntr ("Courier/cactus_courier20170108.html","January",2017);
+addntr ("Courier/cactus_courier20170205.html","February",2017);
+addntr ("Courier/cactus_courier20170305.html","March",2017);
+addntr ("Courier/cactus_courier20170402.html","April",2017);
+addntr ("Courier/cactus_courier20170429.html","Spring Show",2017);
+addntr ("Courier/cactus_courier20170513.html","May",2017);
+addntr ("Courier/cactus_courier20170604.html","June",2017);
+addntr ("Courier/cactus_courier20170709.html","July",2017);
+addntr ("Courier/cactus_courier20170806.html","August",2017);
+addntr ("Courier/cactus_courier20170910.html","September",2017);
+addntr ("Courier/cactus_courier20170929.html","Field Trip",2017);
+addntr ("Courier/cactus_courier20171014.html","October",2017);
+addntr ("Courier/cactus_courier20171105.html","November",2017);
+addntr ("Courier/cactus_courier20171202.html","December",2017);
+addntr ("Courier/cactus_courier20180107.html","January",2018);
+addntr ("Courier/cactus_courier20180204.html","February",2018);
+addntr ("Courier/cactus_courier20180304.html","March",2018);
+addntr ("Courier/cactus_courier20180408.html","April",2018);
+addntr ("Courier/cactus_courier20180428.html","Spring Show",2018);
+addntr ("Courier/cactus_courier20180513.html","May",2018);
+addntr ("Courier/cactus_courier20180603.html","June",2018);
+addntr ("Courier/cactus_courier20180708.html","July",2018);
+addntr ("Courier/cactus_courier20180805.html","August",2018);
+addntr ("Courier/cactus_courier20180909.html","September",2018);
+addntr ("Courier/cactus_courier20180922.html","Fall Show",2018);
+addntr ("Courier/cactus_courier20181014.html","October",2018);
+addntr ("Courier/cactus_courier20181104.html","November",2018);
+addntr ("Courier/cactus_courier20181201.html","December",2018);
+addntr ("Courier/cactus_courier20190106.html","January",2019);
+addntr ("Courier/cactus_courier20190203.html","February",2019);
+addntr ("Courier/cactus_courier20190303.html","March",2019);
+addntr ("Courier/cactus_courier20190407.html","April",2019);
+addntr ("Courier/cactus_courier20190427.html","Spring Show",2019);
+addntr ("Courier/cactus_courier20190505.html","May",2019);
+addntr ("Courier/cactus_courier20190602.html","June",2019);
+addntr ("Courier/cactus_courier20190714.html","July",2019);
+addntr ("Courier/cactus_courier20190804.html","August",2019);
+//
+// Get year requested
+//
+var temploc=document.location.href;
+var seldat = 0;
+var templen = temploc.length;
+var temptxt = temploc.substring(templen-5,templen-4);
+if (temptxt == "?") seldat=temploc.substring(templen-4,templen);
+curryr = parseInt(seldat);
+if (curryr == 0) {curryr = maxyr;};
+//
+function addntr (hrf,dsc,yr)
+{
+//
+//  add an entry to the table
+//
+if (yrs[yr] === undefined)
+   {yrs[yr] = sb;
+    yrlst[sc] = yr;
+    sc = sc + 1;
+    if (yr > maxyr) maxyr = yr;
+    if (yr < minyr) minyr = yr;}; 
+yre[yr] = sb;
+descs[sb] = dsc;
+lnks[sb] = hrf;
+sb = sb + 1;
+};
+//
+function yrmenu ()
+{
+//
+//  build the menu
+//
+document.write ("<center><B>Select the Year<br>for the Last Column</B><br><input type='image' src='larrow.gif' width=46 height=37 onclick='yrmenud()'></input><input type='button' id='yrsel' name='yrsel' value='" + curryr + "' class='yrbutton'></input><input type='image' src='rarrow.gif' width=46 height=37 onclick='yrmenuu()'></input></center>");
+document.close();
+};
+//
+function yrmenud ()
+{
+//
+//  year down
+//
+curryr = parseInt(curryr) - 1;
+if (curryr < minyr) curryr = minyr;
+document.getElementById("yrsel").value=curryr;
+chgyr();
+};
+//
+function yrmenuu ()
+{
+//
+//  year up
+//
+curryr = parseInt(curryr) + 1;
+if (curryr > maxyr) curryr = maxyr;
+document.getElementById("yrsel").value=curryr;
+chgyr();
+};
+//
+function enty (yr)
+{
+//
+//  format a year
+//
+var tempyr = parseInt(yr);
+var temps = yrs[tempyr];
+var tempe = yre[tempyr];
+for (var i = temps; i <= tempe; i++)
+   {document.write("<a href='" + lnks[i] + "' target=_blank>" + descs[i] + "</a><br>");};
+};
+//
+function chgyr ()
+{
+
+var tempval = "courier_archives.html?" + document.getElementById("yrsel").value;
+document.location.href=tempval;
+};
+//
+// -->
+</SCRIPT>
+
+
+<style>
+<!--
+A:link.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:active.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:visited.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:hover.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#FFCC33}
+A:link.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:active.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:visited.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#FFCC33}
+th {color:#339900;font-size:24pt}
+h1 {color:#000099;font-size:28pt}
+.yrbutton {
+  border: 3px solid black;
+  padding: 8px 6px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+ /* cursor: pointer; */
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+ -->
+</style>
+</head>
+
+<body bgcolor="white" leftmargin="0" rightmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=95>&nbsp;</td>
+<td bgcolor=#339966 height=95 width=60 valign="middle" align="middle"><img src="../../graphics/csssj-logo.gif" border="0"></td>
+<td bgcolor=#339966 height=95 colspan=4 valign="middle" align="left"><font face="Arial" color="black" size="6"><b>Cactus &amp; Succulent Society of San Jose</b></font></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="left"><a href="../../index.html" class="navmain" title="Returns to the CSSSJ Homepage">CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width="100%" align="right"><a href="../../welcome_visitors/welcome-index.html" class="navmain" title="Information about the CSSSJ and the hobby.">&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11"><b>&nbsp;&nbsp;&nbsp;Member's&nbsp;Corner&nbsp;&nbsp;&nbsp;</b></font></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../links_of_interest/links-index.html" class="navmain" title="Links of interest to cactus and succulent enthusiasts.">&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../pictures/index.html" class="navmain" title="Pictures of Cacti and Succulents.">&nbsp;&nbsp;&nbsp;Picture&nbsp;Albums&nbsp;&nbsp;</a></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td bgcolor=#339966 height=10 align="right" colspan=5 bgcolor=#339966>
+<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Newsletter</font> - 
+<a href="mini_show.html" class="navpanel" title="Find out who is winning the points in our monthly Mini Shows.">Mini&nbsp;Show&nbsp;Standings</a> - 
+<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> - 
+<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> - 
+<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> - 
+<!-- <a href="name_badges.html" class="navpanel" title="...add information here">Name&nbsp;Badge&nbsp;Order&nbsp;Form</a> - -->
+<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> - 
+<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> - 
+<a href="bylaws.html" class="navpanel" title="View the club's constitution and bylaws.">Constitution</a>
+</td>
+</tr>
+</TABLE>
+
+<table cellpadding=10>
+<tr>
+<td>
+<!-- INSERT MAIN PANEL CONTENT BELOW THIS LINE -->
+<!-- ***************************************** -->
+
+<font face="arial">
+
+<br>
+
+<TABLE width="100%"><tr><td nowrap><h1>Newsletter Archives</h1></td><td nowrap> &nbsp; &nbsp; &nbsp; <td align="right" nowrap>
+
+<Script language="Javascript">
+yrmenu();
+</Script>
+
+</td></tr></TABLE>
+
+<br>
+
+<P>
+Click on a link below to view the Cactus Courier for that month:
+</P>
+
+<TABLE>
+
+<Script language="Javascript">
+if (seldat == 0) seldat = parseInt(maxyr);
+var yr1 = seldat-4;
+var yr2 = seldat-3;
+var yr3 = seldat-2;
+var yr4 = seldat-1;
+//
+document.write("<tr>");
+if (yre[parseInt(yr1)] > 0) {document.write("<th>" + yr1 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr2)] > 0) {document.write("<th>" + yr2 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr3)] > 0) {document.write("<th>" + yr3 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr4)] > 0) {document.write("<th>" + yr4 + "</th><th> &nbsp; &nbsp; </th>");};
+document.write("<th>" + seldat + "</th></tr>");
+document.write("<tr><td valign='top'>");
+if (yre[parseInt(yr1)] > 0)
+   {enty (yr1);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+if (yre[parseInt(yr2)] > 0)
+   {enty (yr2);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+if (yre[parseInt(yr3)] > 0)
+  {enty (yr3);
+   document.write("</td><td> &nbsp;</td>");
+   document.write("<td valign='top'>");};
+if (yre[parseInt(yr4)] > 0)
+   {enty (yr4);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+enty (seldat);
+document.write("</td></tr>");
+
+document.close();
+</Script>
+
+</TABLE>
+</P>
+<br>
+
+</font>
+
+<!-- ***************************************** -->
+<!-- INSERT MAIN PANEL CONTENT ABOVE THIS LINE -->
+
+<hr>
+<i>Send questions or comments to the CSSSJ Webmaster:</i> <a href="mailto:webmaster@csssj.org">webmaster@csssj.org</a>
+<hr>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+

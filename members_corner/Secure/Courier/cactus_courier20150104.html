@@ -1,0 +1,311 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 1/4/2015">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 1/4/2015</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "January";
+var thisday = "4";
+var thisyear = "2015";
+var nextmonth = "February";
+var nextday = "1";
+var nextyear = "2015";
+var deadline = "January 23, 2015";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("January 2015","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","Rare succulents of the Knersvlakte quartz field","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2015","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2015","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2015","11-12, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","46<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Rare succulents of the Knersvlakte quartz field</B><br>
+<br>
+<P>
+Russell Wagner has been a member of the San Francisco Succulent and Cactus Society since 1997 and served as editor of the <I>Cactus and Succulent</I> journal for seven years.  He has an 800 square foot greenhouse in West Oakland where he cultivates a wide variety of rare seed-grown succulents that thrive in our winter-rainfall climate.  Russell is also the proprietor of Little Sphaeroid Press, a company established to produce fine books about succulent plants.  Their first title in Steven Hammer’s &quot;Mesembs&quot; series was released in 2013. 
+</P>
+<P>
+Russell is this month’s featured grower.  He will bring for sale a number of rare mesembs, small winter-rainfall bulbs, and other unusual plants not normally seen.  Russell is known for his depth of knowledge on succulent cultivation, so feel free to ask him just how he grows these special plants.
+</P>
+<p>
+<center>(Continued below.)</center>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Anything from South Africa or Namibia (except for <I>Crassula</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Crassulaceae from South Africa and Namibia</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Stapeliads: <I>Huernia</I>, <I>Stapelia</I>, <I>Piaranthus</I>, etc.  (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Shake some winter blues: Succulents with blue, blue-gray, or blue-green leaves</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with H through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><B>The meeting will be held in the Meeting Hall</B></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("More About Russell Wagner's Presentation","","Mesemb specialist and explorer Russell Wagner has visited the quartz fields of South Africa’s Knersvlakte on each of his four visits to the world’s succulent paradise.  But one of his trips, a brief two-week tour in late April and early May of this year, was dedicated to hunting down and photographing every species of <I>Argyroderma</I>, one of the famous living stones that calls this region home. </P><P>Argyroderma, literally <I>silver skin</I>, is a small genus of plants resembling <I>Lithops</I>, at least superficially.  Unlike lithops, argys are never patterned, windowed, or flat-topped.  Instead, the leaves tend to be alabaster smooth, round-topped and keeled (meaning there’s an angled protrusion across the back of the leaf), and with a typically gaping mouth.  Some are rather suggestively named (<I>Argyroderma testiculare</I>!), and at least one has finger-like leaves (<I>A. fissum</I>).  They can be alternately single-headed or clumping and even form small shrubs.  In the resting season, the plants can become alarming wrinkled and soft, at which time they take on a range of ruddy hues.  But when turgid, they are rock hard and may even split if overwatered. </P><P>Argys are extremely easy to grow from seed, producing their first leaf pair within about six weeks of sowing, and they flower usually by year three.  What the plants lack in leaf variation, they make up for in flower color.  Russell found populations that flowered in yellow, white, pink, and purple, and visited a few special spot where a range of flower colors co-exist.  By traveling at the time of peak flowering, he was able to gather some very special photos for Steven Hammer’s next book in the Little Sphaeroid press &quot;Mesembs&quot; series, which he will share at this month’s meeting.</P><P>Join us on the 4<sup>th</sup> of January for a presentation that will reveal not only one of the most coveted of mesemb groups, but also a range of other mesembs (<I>Dicrocaulon</I>, <I>Monilaria</I>, <I>Lithops</I>).");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B>Final standings for 2014</B><br><br></P><P><TABLE width='75%'><tr><td valign='top' align='center'><H4>Advanced</H4></td><td valign='top' align='center'><H4>Novice</H4></td></tr><tr><td valign='top' align='center'><TABLE cellpadding=4><tr><td valign='top' align='center'><font color='0000CC'><B>Ellen Stubblefield in first with 129 points</B></font></td></tr><tr><td valign='top' align='center'><font color='CC0000'><B>Peter Beiersdorfer in second with 126 points</B></font></td></tr><tr><td valign='top' align='center'><font color='CCCC00'><B>Kathi Cambiano in third with 118 points</B></font></td></tr></TABLE></td><td valign='top' align='center'><TABLE cellpadding=4><tr><td valign='top' align='center'><font color='0000CC'><B>Terri Koike in first with 113 points</B></font></td></tr><td valign='top' align='center'><font color='CC0000'><B>Alex Morgan in second with 59 points</B></font></td></tr><td valign='top' align='center'><font color='CCCC00'><B>Cecilia Caday in third with 50 points</B></font></td></tr></TABLE></td></tr></TABLE></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("<font color='CC0000'>Peter Beiersdorfer</font>",126);
+fminiadd ("<font color='CCCC00'>Kathi Cambiano</font>",118);
+fminiadd ("Joseph Hidalgo",29); 
+fminiadd ("Jaan Lepson",116);
+fminiadd ("Loyd Monaco",5);
+fminiadd ("Joel Parker",71);
+fminiadd ("<font color='0000CC'>Ellen Stubblefield</font>",129);
+fminiadd ("Gary Stubblefield",65);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("<font color='CCCC00'>Cecilia Caday</font>",50);
+fminiadd ("Sonia Dyer ",7);
+fminiadd ("Marilyn Hofman",25);
+fminiadd ("Tom Hofman",13); 
+fminiadd ("<font color='0000CC'>Terri Koike</font>",113);
+fminiadd ("Joan Lambert",22);
+fminiadd ("Wendy Levine",18);
+fminiadd ("Susan McKuhen",13);
+fminiadd ("Therese McQuillan",35);
+fminiadd ("Lois McPherson",20);
+fminiadd ("<font color='CC0000'>Alex Morgan</font>",59);
+fminiadd ("Janet Rollin",1);
+fminiadd ("Diane Salewski",35);
+fminiadd ("Ross Smith",2); 
+fminiadd ("Janet Stevenson",16);
+fminiadd ("Jacky Wilk",19);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='crassula corymbulosa pagoda village.jpg' width=400 height=340 hspace=17 vspace=17 align='left'><br><I>Crassula corymbulosa</I> is quite interesting in that besides the 4 square shape of the plant, there is a fine light fringe around each leaf.  This fringe is made of minute translucent teeth.  If you look closely, you can see them on the head on the left side of the plant.  These teeth look like very tiny curved glass rods that are sharpened on the end.  They are backward facing. There is a very small space between each tooth, and they are very evenly spaced.</td></tr><tr><td valign='top'><img src='crassula marchandii.jpg' width=400 height=340 hspace=17 vspace=17 align='right'><br><I>Crassula marchandii</I> is another one that I call 'a 4 square plant'.  It too has a quite interesting surface on the leaves.  Even though it shows up as green, under the strong glass, it looks like it has glass dust on it.  This is of differing sizes; some so small as to be even hard to see under the strong glass.  Some can be seen in the photo as the pin point light dots on the plant.</td></tr><tr><td valign='top'>Both plants make nice compact clumps of square headed stems.  <I>C. corymbulosa</I> looks kind of like a village in Old Japan. (That is when the plant is a bit bigger.)  Thus the common name 'Pagoda Village'. The flower clumps are not much to look at.  They are on the ends of thin stringy stems.  The flowers are 1 mm of less across.  You have to look closely to see the individual flower.</td></tr></TABLE></center>");
+
+fmart ("Strut Your Stuff at the Mini Shows!","Therese McQuillan","Thanks to Kathi Cambiano for all her hard work running our Mini Shows.  I'm looking forward to running this year's shows, and I hope you're all ready to bring in your entries!</P><P>A few items and tips for entering plants:<TABLE cellspacing=13><tr><td><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>CSSSJ members who win at least 10 points by the end of 2015 can choose a plant at the Holiday Party.  And the top three winners in each exhibitor category (Advanced and Novice) win beautiful pots!</td></tr><tr><td><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Entering plants is a terrific opportunity for newer members to learn how to show plants before our next show and sale. </td></tr><tr><td><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>If you win the most points in a category, be prepared to talk about your fabulous plant! </td></tr><tr><td><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Don't miss out on getting valuable votes.  Arrive with your plants by the time the meeting begins at 12:30pm, because voting will be underway. </td></tr><tr><td><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Each member can enter a maximum of five (5) plants to show each month. </td></tr></TABLE></P><P>If you've been a CSSSJ member for more than 5 years, then you're in the Advanced category.</P><P>If you have ideas for the Mini Shows, send email to <a href='mailto:tmcq01@att.net?Subject=Mini%20Show'>tmcq01@att.net</a>.  For more info on the Mini Shows, see:  <a href='http://www.csssj.org/members_corner/Secure/mini_show_rules.html'>http://www.csssj.org/members_corner/Secure/mini_show_rules.html</a>.");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

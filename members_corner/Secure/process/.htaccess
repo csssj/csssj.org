@@ -1,0 +1,4 @@
+AuthUserFile /home/csssj.org/public_html/members_corner/Secure/process/.htpasswd
+AuthType Basic
+AuthName "Board"
+require user boardmem

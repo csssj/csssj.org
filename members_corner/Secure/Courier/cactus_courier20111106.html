@@ -1,0 +1,234 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/6/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/6/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "6";
+var thisyear = "2011";
+var nextmonth = "December";
+var nextday = "3";
+var nextyear = "2011";
+var deadline = "November 25, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+
+fmcal ("November 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Plant Hormones","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2011","3, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2012","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Paul Heiple - Mesemb's and More","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2012","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2012","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2011","17-18 Sat-Sun - 9:00am to 5:00pm","Monterey Bay Area Cactus &amp; Succulent Society<br>Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br>Contact Naomi Bloss at 831-722-1446","","","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Ernesto Sandoval - Plant Hormones</B><br>
+<br>
+<P>
+Ernesto Sandoval will be presenting a program about plant hormones and how they contribute to better growth and propagation.  There will be a friendly and not too technical explanation of why plants do what they do.  Members should bring any questions they have about their plants to this interactive discussion.
+</P>
+<P>
+Mr. Sandoval will bring an amazing assortment of South African bulbs for sale including both <I>Albuca</I> and <I>Cyrtanthus spiralis</I>, several species of <I>Babiana</I>, <I>Gladiolus</I>, and <I>Lachenallia</I>, and even native bulbs such as <I>Dichelostemma</I> and <I>Brodiaea</I>.  Included will be some of the more traditional succulents, such as a few types of <I>Gasteria</I> and <I>Haworthia</I>, <I>Euphorbia millotti</I> from Madagascar, <I>Aloe ramossissima</I>, <I>A. hereroensis</I>, <I>A. marlothii</I>, <I>A. krapohliana</I>, <I>A. humilis</I>, as well as a few Agave species, <I>Dorstenia gigas</I> and <I>Dendrosicyos socotrana</I>.
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cacti from Mexico</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Crassula</I> (<I>Adromischus</I>, <I>Cotyledon</I>, <I>Tylecodon</I>, <I>Kalanchoe</I>, etc.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Thinking outside the pot, planting in rock, wood or driftwood (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Gasteria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show Ideas","Kathi Cambiano","Do you have ideas for next year's Mini Shows?  In order to have all ideas ready for voting at the holiday party, they will need to be submitted by November 20.  Please email your ideas to Kathi Cambiano at <a href='mailto:creativesucculents@yahoo.com?Subject=Mini%20Show%20Ideas'>creativesucculents@yahoo.com</a> or phone to 408-293-4887. ");
+
+fmart ("2011 Fall Show","Jaan Lepson","<TABLE width='100%'><tr><td valign='top'><img src='overview1110.jpg' hspace=14 align='left' width=400 height=268><br>The Club’s 2011 Fall Show and Sale was held on Oct. 1-2 at Buchser Middle School.  Although the sales were a bit down over last year (perhaps due to the economy), the show was a big success.  Several club members entered plants for the first time - congratulations to you all!  Our exhibitors brought in GREAT plants - it was a really tough choice which to vote for, even with a dozen dots.  We had 18 prize categories, and, as usual, our prizes were nice show pots in a variety of designs purchased from our vendors - Kim Manfredi, Steve Pate, and Joseph Hidalgo (with Thomas Arakawa). In the end, eleven exhibitors won prizes.<P>There was a huge battle for the Sweepstakes, which is calculated by the number of points divided by 25 or the number of entries, whichever is greater.  When the dust settled, Naomi Bloss won with a mean score of 15.7 votes per plant, while Peter Beiersdorfer followed with a score 14.2.  The top-scoring plant and the 1st place succulent was Naomi Bloss’s huge <I>Operculicarya</I> with a sea of 90 multicolored dots, while the top cactus was Peter Beiersdorfer’s large cristate <I>Opuntia subulata</I> (which also won for best Opuntioid).  In second place were Bill Gingras’s <I>Deuterocohnia brevifolia</I> with 85 votes and Bill Munkacsy’s impressive <I>Sulcorebutia</I> collection with 79 points.  Rounding out the top three overall awards were Lisa Bloss’s multicolored ‘Polyp’ <I>Gymnocalycium-Myrtillocactus chimera</I> (which not a hybrid, but a plant composed of tissue from two different species) with 76 points, and Peter Beiersdorfer’s large flowering <I>Crassula falcata</I> (commonly called “propellor plant”), which also took top honors for <I>Crassulaceae</I>.</td></tr><tr><td valign='top'><img src='faucaria.jpg' hspace=14 vspace=7 align='right' width=394 height=340><br>We also had 8 other prize categories, listed here in order of vote total.  The high score for <I>Euphorbiaceae</I> went to Diane Salewski, who garnered 40 points for her first-time entry (see, you don’t have to be a pro to win!) with <I>Euphorbia enopla</I>. <I>Aloeaceae</I>/<I>Agavaceae</I> (for an old World / New World comparison), was won by Peter Beiersdorfer’s <I>Aloe aristata</I> with 30 votes, while Joseph Hidalgo swept the Photography/Crafts division with 26 votes for his pot collection.  Alex Riggs won the mixed planting with 25 points for her lava rock dish garden, and we had a tie for best <I>Mammillaria</I>, with Marilyn Moyer’s <I>M. masselina</I> and Lisa Bloss’s <I>M. bocasana</I> ‘Fred’ both garnering 23 votes.  In the Mesemb category, Naomi Bloss’s large <I>Mestoklema tubirosa</I> came on top with 21 votes.  The final two categories were Caudiciform, which was a tie between Naomi Bloss’s yellow-flowered <I>Uncarina roeoesliana</I> and Marilyn Moyer’s <I>Pachypodium barnii</I>, while Ellen and Gary Stubblefield’s <I>Ceropegia ampliata</I> was the top-scoring <I>Asclepiadaceae</I> with 17 votes.</td></tr><tr><td valign='top'><img src='espostoa lanata.jpg' hspace=14 align='left' width=359 height=280><br>Finally, our Directors’ Award is given to the plant with the highest score belonging to an exhibitor who did not win any prize category.  This went to Bud ‘n’ Ev, whose <I>Espostoa lanata</I> crest garnered 40 votes.<P>In order to provide variety so that the show doesn’t get too predictable, I plan to drop the two or three lowest-scoring categories (total votes, not just for the winner) next time to add new categories, including a geographical one.  Please let me know if you have any suggestions for categories!</P><P>Thank you to everyone who helped make the show a success, exhibitors and volunteers alike!</td></tr></TABLE>");
+
+fmart ("Prez Sez","Loyd Monaco","I wish to take a minute to thank everyone for all their hard work that made this year’s fall show and sale a success.  I can’t name everyone by name, but you should all be proud of your hard work.  Thank You!</P><P>Ever want to take a more involved roll in the club, but don’t have the time to serve on the board or hold an office?  Have you considered a temporary committee position?  We are always looking for committee participants.  If you would like to serve on a committee, please feel free to contact me.  We can always use volunteers!</P><P>I would also like to remind everyone that the Holiday gathering is quickly approaching.  I look forward to seeing everyone there.");
+
+fmart ("They're up - now what?","Peter Beiersdorfer","<TABLE width='100%'><tr><td valign='top'><img src='seedlings1.jpg' hspace=14 align='left' width=345 height=280><br>If you attended the seed-growing session in September, you probably by now have many little seedlings - and may be wondering what to do next.  You have probably already eased your seedlings out of the protective, humid atmosphere that was needed for germination.  If not, you will need to do so by opening up and slowly removing the protective cover.<P>The hardest part for your seedlings is to survive the first winter.  The more light they can get the better.  However, as during germination, avoid direct sun light, unless you can be sure the seedlings won't burn and desiccate.  I have placed mine in sun light during November, December, and January - first for an hour or so, later for longer.  But in the evening they have to come back to their shelter, because the nights get cold; or dew forms, which tends to rot the little plants.  Also watch out for birds - the jays and Mourning Doves seem to love tender, fresh shoots.  Having tired of shuttling my seedlings back and forth, I tend to leave them in a sheltered but bright, dry place.  If the place is cool at night, the plants know that they need to be dormant.</td></tr><tr><td valign='top'><img src='seedlings2.jpg' hspace=14 align='right' width=334 height=282><br>Young cacti (and most other seedlings) tend to be rather forgiving when watered frequently, even though later in life they would rot, if given the same amount of water.  But as always, water only when dry so that fungus does not spread and algae don't form.  Remember that the plants are likely to go dormant during winter and need water only to avoid desiccation; they do not need water for growth.<P>If you place your plants indoors and under bright lights, they continue growing.  Then it helps to water with 1/4 strength fertilizer.  Cut back on watering and fertilizer, if they start stretching (&quot;etiolating&quot;).  This means they grow too fast and probably don't have enough light for the amount of food and water they receive.</P><P>As the days lengthen and warm up in early spring, it will be time to increase watering, as the young plants come out of dormancy and begin their next growth spurt.  They can grow quite a bit, until the next dormancy period, which may occur during the heat of summer.</P><P>Good luck with your seedlings - and you might just get hooked the way I did!</td></tr></TABLE>");
+
+document.close();
+
+</SCRIPT>
+
+<center>To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.</center>
+
+</P>
+
+</BODY>
+</HTML>
+

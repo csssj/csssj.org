@@ -1,0 +1,303 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 9/8/2013">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 9/8/2013</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "September";
+var thisday = "8";
+var thisyear = "2013";
+var nextmonth = "October";
+var nextday = "12-13";
+var nextyear = "2013";
+var deadline = "October 4, 2013";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("September 2013","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Walker Young - Trip to Madagascar","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2013","12-13, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm","8<sup>th</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2013","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+
+document.write("<br><br>");
+
+fmcal ("December 2013","7, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("September 2013","14-15, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Call (831) 758-6645","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Walker Young - Trip to Madagascar</B><br>
+<br>
+<P>
+Walker Young works as Assistant Curator at The Ruth Bancroft Garden in Walnut Creek.  In addition to managing the private collection and propagating plants for use in the garden, he does detailed plantings and naturalistic rock work throughout the garden.  Prior to his involvement with TRBG, he received a B.A. in History at UCLA and worked as an English teacher in Santiago, Chile.
+</P>
+<P>
+Mr. Young traveled to Madagascar in the fall of 2012 with Brian Kemble, Kelly Griffin, and Jeremy Spath.  It was a whirlwind tour focusing on the island's amazing Aloes.  During the three week trip, the group covered more than 4500 kilometers, crisscrossing Madagascar's central highlands and arid southwest.  Highlights included locating a large population of the highly-endangered <I>Aloe suzannae</I>, as well as visiting a number of newly described taxa including <I>Aloe castilloniae</I>, <I>Aloe pachydactylos</I> and <I>Aloe erythrophylla var. major</I>.  In addition to several dozen Aloe species, the group saw five species of <I>Adansonia</I>, a dozen different <I>Pachypodiums</I>, and too many other oddballs to list.  These ranged from tiny <I>Ceropegias</I> and <I>Pepperomias</I> to massive <I>Delonix</I> and Moringa trees.  
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cacti of the U. S.</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Mesembs</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Agave</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Opuntia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart("2013 Fall Show and Sale","Jaan Lepson","The Cactus and Succulent Society of San Jose’s 8<sup>th</sup> Annual Fall Show and Sale will take place this year on October 12 -13 at Peterson Middle School.  As is traditional, our fall show is the popular People’s Choice, where club members and the public get to vote for their favorite plants.  YOU get to be the judge!</P><P>We will need volunteers to help with the set-up and staging on Friday afternoon/evening (Oct. 11), show security on Saturday and Sunday, and counting the votes Sunday morning.  Staging for the fall show is easier than the spring, since we don’t have to arrange plants by category, but just spread them out to look good.  In order to have enough time to count the votes so we can have the awards by lunch time on Sunday, this year the voting will only be active on Saturday – come early so that your vote is counted!</P><P>Each year I drop the plant prize with the fewest votes (bye-bye <I>Geranaceae</I>!) to bring in a new category and also change the geographical category.  This year, I am splitting up the <I>Agavaceae/Aloaceae</I> into <I>Agavaceae</I>, <I>Aloe</I>, and <I>Haworthia</I>.  Our geographic category this year will be the Arabian Peninsula and its associated islands (Socotra, Abd al Kuri, etc.).  This area is home to some great <I>Aloes</I> and <I>Senecios</I>, as well as <I>Caralummas</I>, <I>Adeniums</I>, and of course, the fabulous <I>Dorstenia gigas</I> and <I>Dendrocycios socotranus</I>, among others.  </P><P>Here is a list of the prizes for this year:</P><P><B>Sweepstakes:</B> total votes divided by the number of plants entered or 25, whichever is greater.</P><P>1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup> place <B>Cactus</B><br>1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup> place <B>Succulent</B></P><P><I><B>Agavaceae<br>Aloe<br>Euphorbiaceae<br>Crassulaceae<br>Haworthia<br>Mammillaria</B></I><br><B><I>Mesembryanthemaceae</I><br>Mixed Plantings<br><I>Opuntioids</I><br>Geographical:</B> Arabian Peninsula and Socotra Archipelago<br><B>Photography</B></P><P><B>Directors’ Award:</B> to the plant with the most points belonging to an exhibitor who did not win any of the above categories.</P><P>As always, I am looking for suggestions for new show categories.  Let me know if you think some of the current categories are stale or if you think there is an awesome category I keep overlooking.");
+
+fmart ("August Mini Show Winners","Kathi Cambiano","<center><TABLE cellpadding=13 border=1><tr><th width='33%'><font size='+1'>Category</font></th><th width='33%'><font size='+1'>Novice</font></th><th width='33%'><font size='+1'>Advanced</font></th></tr><tr><td valign='top' align='right'>Beginners Luck</td><td valign='top'>Alex Morgan</td><td valign='top'>N/A</td></tr><tr><td valign='top' align='right'>Cactus: <I>Gymnocalycium</I></td><td valign='top'>Terri Koike</td><td valign='top'>Ellen Stubblefield</td></tr><tr><td valign='top' align='right'>Succulent: <I>Haworthia</I></td><td valign='top'>TIE: Jo An Lambert and Diane Salewski</td><td valign='top'>Kathi Cambiano</td></tr><tr><td valign='top' align='right'>Something Special: <I>Echeveria</I> (or your choice)</td><td valign='top'>TIE: Cecilia Caday and Diane Salewski</td><td valign='top'>Kathi Cambiano</td></tr></TABLE></center>");
+
+fmart ("Boxes and Plants at our 8th Annual Fall Show &amp; Sale","Peter Beiersdorfer","Our 8<sup>th</sup> Annual Fall Show &amp; Sale is coming up soon.  Vendors often bring different plants in the fall than in the spring, as the winter growing plants come out of dormancy.  It is always interesting to see what's new.  The show is also different in the fall, because it will be judged by you and the public.  As before, there are also opportunities to help with the sale and to sell plants yourself, so please read on. </P><P>We again will need boxes of any size.  A box will be worth a nickel - a dime if it can be cut in half so that both sides can be used to carry out plants or pots.  Bring them to the show &amp; sale and fill out the sign-up sheet with your name and how many boxes you brought.  The sign-up sheet will be available at the cash register area.  The total amount will be added to any other ShowBucks you will have earned that day.  I know some of you brought boxes last time, but did not yet get your show bucks for them yet.  You will get them this time.  If not, please let me, Jaan Lepson, or Bill Gingras know.</P><P>We will again have sales tables set up for Club Members who would like to offer a few of their plants for sale.</P><P>Members will sell their plants using the system we initiated two years ago.  This means that every member who wants to sell plants must have a Vendor Number.  Specifically, label your plant with the Vendor Number and Price.  The minimum price is $2.  Use only whole or half dollar amounts for your prices, such as $3 or $4.50.  Bring your plants on Friday, October 11, during the setup hours.  Remember - plants must be free of disease and pests.</P><P>The Members' Sales Tables are for selling less than 20 plants.  If you have more plants to sell, please contact me by email (<a href='mailto:beiersdorfer@mac.com?Subject=CSSSJ%20Sale'>beiersdorfer@mac.com</a>) or postal mail well ahead of the Show &amp; Sale (no later than September 6).  Also, please contact me to obtain your vendor number.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Standings as of August 2013</P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Kathi Cambiano",100);
+fminiadd ("Jaan Lepson",25);
+fminiadd ("Marilyn Moyer",15);
+fminiadd ("Bill Munkacsy",25);
+fminiadd ("Maggie Palacek",4);
+fminiadd ("Joel Parker",19);
+fminiadd ("Ellen Stubblefield",71);
+fminiadd ("Gary Stubblefield",67);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Cecilia Caday",45);
+fminiadd ("Janice Coleman",14);
+fminiadd ("Alyene Daggett",2);
+fminiadd ("Marilyn Hofman",26); 
+fminiadd ("Terri Koike",64);
+fminiadd ("Joan Lambert",21);
+fminiadd ("Therese McQuillan",34);
+fminiadd ("Lois McPherson",31);
+fminiadd ("Loyd Monaco",25); 
+fminiadd ("Alex Morgan",60);
+fminiadd ("Janet Rollin",3);
+fminiadd ("Diane Salewski",70);
+fminiadd ("Joe Silva",3);
+fminiadd ("Ross Smith",6); 
+fminiadd ("Janet Stevenson",15);
+fminiadd ("Jacky Wilk",11);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

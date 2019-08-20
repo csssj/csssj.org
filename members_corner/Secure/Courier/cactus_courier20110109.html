@@ -1,0 +1,291 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 1/9/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 1/9/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "January";
+var thisday = "9";
+var thisyear = "2011";
+var nextmonth = "February";
+var nextday = "6";
+var nextyear = "2011";
+var deadline = "January 28, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("January 2011","9, Sunday - 10:30am to 12:00pm","Board Meeting","9, Sunday - 12:30pm to 3:00pm","Clay Fun with Kim Manfredi - Part 1","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Clay Fun with Kim Manfredi - Part 2","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2011","2-3, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","42<sup>nd</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2011","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2010","18-19, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br><font size='-1'>Contact Naomi Bloss at 831-722-1446</font>","","","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Clay Fun with Kim Manfredi</B><br>
+<br>
+<P>
+At the January meeting, ceramic artist, Kim Manfredi, will be teaching us how to hand-build our own pots.  She will be providing clay and a limited amount of tools.  If you plan on participating, please bring the following to the meeting:
+</P>
+<P>
+<OL>
+<li>Rolling pin</li>
+<li>Canvas type cloth to go under the clay on the table (to prevent sticking)</li>
+<li>Forms on which to drape the clay (such as a bowl)</li>
+<li>Textures to impress in the clay</li>
+<li>Small sharp knife (with a point)</li>
+<li>Cup for water</li>
+<li>Box to carry your pots</li>
+<li>Small old towel is helpful</li>
+<li>Clean-up sponge</li>
+</OL>
+</P>
+<P>
+The cost for the activity will be $10 per person, which includes clay, glaze, and firing fees.  The Board has agreed to cover the cost of the activity for current club members.  
+</P>
+<P>
+In order to help us plan for the activity, please contact Kathi Cambiano (408-293-4887 or <a href="mailto:cactuskathi-csssj@yahoo.com?Subject=Clay%20Fun">cactuskathi-csssj@yahoo.com</a>) by January 5  to reserve your spot today.
+</P>
+<P>
+<I>Kim will return in February with our fired pots for a glazing demo/activity.</I>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Any cactus in bloom</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Pelargonium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>If you could have only ONE plant ...what would it be? (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Dish Gardens</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez","","Happy New Year!</P><P>I hope you all had a WONDERFUL holiday season, and here is hoping the new year is full of peace and prosperity for all.</P><P>I wanted to take a minute to introduce myself and tell you a little about myself.  I am a second generation Santa Claran.  Both of my parents were born and raised in this valley.  I get the love of plants from both of my parents and previous generations.</P><P>I raise cactus for the sheer joy of it.  I love taking care of plants and losing myself in them.</P><P>I look forward to this year as president of the cactus society and interacting with all of you.</P><P>Regards,<br>Loyd Monaco");
+
+fmart ("2010 Holiday Extravaganza","Jaan Lepson","<center><img src='jaan1101.jpg' width=800 height=160 vspace=0></center><br>The club held its annual Holiday Extravaganza at Harry's Hofbräu on December 4th.  About 60 club members gathered from near and far (Judy Goodrode all the way from Tucson) to enjoy good company, good plants, and good food.  The women were dressed in their seasonal finery, while the men were....well, men.  But I think most of us at least had matching socks!  Harry's servings sizes were typically large - luckily Elton Roberts got some doggie bag containers for us.  But there is always room to eat some of the chocolates decorating the tables.</P><P>After lunch, the mini-show winners received prize pots, while the runners-ups got to choose a gift plant.  We then had our holiday exchange, with Marilyn Moyers's <I>Dorstenia gigas</I> being chosen for the auction table, giving Marilyn first choice in the exchange (she took the walnuts!).  Before the auction, we voted for the club's new officers, who received a unanimous endorsement - President Lloyd Monaco, Vice-President Alex Morgan, Treasurer Roger Lane, Secretary Joseph Hidalgo, and Associates Kathi Cambiano, Sonia Dyer, and Joel Parker.  Linda Delgado will become Past President and Honorary Succulent Queen (or should be), while Bill Kurtz is Board Member Emeritus.</P><P>The auction tables groaned under the weight of the plants offered up for sale, which were divided between the $20 and under, and the over $20 groups.  Some even had to overflow onto the floor.  Bill Munkacsy headed the auction, with the help of Peter Beiersdorfer and Jaan Lepson to show the plants around the room and Karla Munkacsy to keep the ledger.  Once again, the priciest plant was a monstrose <I>Eulychnea castanea</I> offered by Elton, which went for around $140 (congratulations!).  Finally, once all the plants had been auctioned off, we finished the party with the members' raffle, giving us all a change to select a plant from those brought in by Elton, Bill, and Naomi Bloss.</P><P>A good time was had by all, and we already look forward to next year.");
+
+fmart ("Picture Pages Status","Rich Kroll","Our picture pages have been up for about a month.  In that time, we have had three people submit pictures (2% of membership), and eight people voted on those pictures (5% of membership).  We will need more participation than this in the future to make our picture pages a success.  Even if you do not have any pictures to submit, at least take a look at the pictures on the pages and vote for the ones you like.  (If you have any difficulty submitting or voting for pictures, let me know at <a href='mailto:rkroll@aol.com?Subject=Picture%20Pages'>rkroll@aol.com</a>.)");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Final Standings for 2010:</P><P><font size='+1'><font color='#0000CC'>Coming in first is Tony Bassano with 236 points.</font><br><font color='#CC0000'>Second goes to Kathi Cambiano with 188 points.</font><br><font color='#CCCC00'>Peter Beiersdorfer and Joseph Hidalgo come in tied for third with 175 points.</font></font><br><TABLE width='100%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("<font color='#0000CC'>Tony Bassano</font>",236);
+fminiadd ("<font color='#CCCC00'>Peter Beiersdorfer</font>",175);
+fminiadd ("Chuck Breese",4);
+fminiadd ("Linda Delgado",10);
+fminiadd ("Evalyn Livermont",25);
+fminiadd ("Marilyn Moyer",48);
+fminiadd ("Maggie Palacek",29); 
+fminiadd ("Joel Parker",81);
+fminiadd ("Ellen Stubblefield",136);
+fminiadd ("Gary Stubblefield",130);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Bill Kurtz",42);
+fminiadd ("Bill Munkacsy",50);
+fmini ("Open");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Anaya",4);
+fminiadd ("Jeff Baumgartner",18); 
+fminiadd ("<font color='#CC0000'>Kathi Cambiano</font>",188);
+fminiadd ("Frances Emmanuel",2);
+fminiadd ("Byron Fan",128);
+fminiadd ("<font color='#CCCC00'>Joseph Hidalgo</font>",175);
+fminiadd ("Jaan Lepson",167);
+fminiadd ("Susan McKuhen",25);
+fminiadd ("Milovan Milutin",12);
+fminiadd ("Loyd Monaco",70);
+fminiadd ("Alex Morgan",27);
+fminiadd ("Vicki Ortiz",11);
+fminiadd ("Janet Rollin",19);
+fminiadd ("Katia Romanova",13);
+fminiadd ("Rebecca Schoenenberger",3);
+fminiadd ("Joe Silva",40);
+fminiadd ("Bracey Tiede",3);
+fminiadd ("Tony Vitarelli",2);
+fminiadd ("Dolores Wagner",15);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

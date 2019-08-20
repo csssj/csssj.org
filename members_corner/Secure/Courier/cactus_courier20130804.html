@@ -1,0 +1,275 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 8/4/2013">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 8/4/2013</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "August";
+var thisday = "4";
+var thisyear = "2013";
+var nextmonth = "September";
+var nextday = "8";
+var nextyear = "2013";
+var deadline = "August 30, 2013";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("August 2013","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","Naomi Bloss - Wreath Making","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2013","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Walker Young - Trip to Madagascar","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2013","??-??, Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm","8<sup>th</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2013","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+
+document.write("<br><br>");
+
+fmcal ("December 2013","7, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2013","27-28, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Contact Naomi Bloss for details 831-722-1446","","");
+
+// document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Naomi Bloss - Wreath Making</B><br>
+<br>
+<P>
+Naomi Bloss is back by popular demand to present her workshop on making wreaths and other hangings.  We have enjoyed her programs in the past and hope our many new members will take this opportunity to learn from an expert.
+
+This is a hands-on program with equipment, cuttings, etc. supplied at a nominal cost of $20.00 per participant.  (Finished wreaths start at $45.00 at the UCSC Arboretum's gift shop.)  Bring extra cuttings of your own to personalize your work of art.
+</P>
+<P>
+If you are not ready to construct a wreath, come see a master at work.
+</P>
+<P>
+Also, the Blosses will be bringing many of their outstanding plants for sale.
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Gymnocalycium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Haworthia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Echeveria</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sansevieria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart("Dormancy in Cactus Plants","Elton Roberts","The theory is that, if the night time temperatures stay above about 62 degrees, the plants go dormant.  That is their stoma do not open so the plants can breathe, and so they save water and their internal machine mostly shuts down.  In short, they go dormant and so do not even take on water.  Now, if the temperature stays over that 62 for several months, then the plant will show it by not growing and usually shrinking some or a lot.  When you see your plant shrinking, the more you want to get the plant growing again, since you do not know why it is shrinking.  Many times you kill it with kindness by over watering or even repotting several times.  After studying the plants for many years here is the conclusion I have come to.</P><P>As you know, plants come from different elevations.  If you take plants from a high elevation and put it in the sun and heat of Ripon (where I live), the plant can burn and refuse to grow.  I believe that the elevation that a plant grows in its natural habitat determines its ability to take the heat around here.  By the same token, I believe the elevation a plant comes from also determines the temperatures at which the plants go dormant.  You cannot really tell when plants that come from Death Valley or the low desert about Yuma, Blithe, El Centro or hot west Texas and such places go dormant.  But you may learn that plants from say 6,000 feet or higher are dormant, when you keep watering them, and they refuse to grow or they rot*.  When a dormant plant gets watered too often or too many times, the roots rot and many times it rots the plant.  Yet, in the spring and fall, you can pour the water to them.  Why?  It is the night time temperatures that determine at what temperature plants go dormant.  Low elevation plants grow where night time temperatures can be 75 degrees F or over for much of the summer. They may not go dormant unless the night time temperature stays above 80 degrees.  It is hard to tell when these plants go dormant unless you have a very powerful microscope and could watch the stoma open and at what temperature.  Now you take a plant from 11,000 feet.  It never gets much above 50 degrees in the day time and about every night it freezes.   How can anyone say that it goes dormant, when the night time temperature drops below 60?  It is foolishness to think a plant from that elevation will go dormant if the temperature stays above 60.  I have seen that some of the plants that we love go dormant, when the night time temperatures get above about 50 degrees.  Some plants like <I>Rebutia</I> and <I>Sulcorebutia</I> are quite high elevation plants.  Take <I>Rebutia mundensis</I> [= <I>pygmaea</I> according to the NCL].  It grows at elevations of 11,500 feet to 14,100 feet.  At those elevations, the sun can burn the hide off you, yet the temperature is only maybe 40 degrees F at the most.  I have seen these plants growing really well here in the winter with freezing and below temperatures.  But when the nights warm up, some plants just go dormant and nothing you can do will make them grow.  Well I should not say there is nothing you can do to make them grow, for there is.  Clear a shelf in your refrigerator or freezer and put the plants in there every evening.  Take them out each day at dawn, and you will find that you can keep them growing all summer.  Make sure that the temperature wherever you put them goes down to at least 32 F or 0 C or a bit lower and below.  Just do not put them where the sun will burn them for the day times.</P><P>If every cactus plant grew at the very same elevation, then they would all go dormant at the same nighttime temperature, say 62 degrees.  But they do not grow at anything like the same elevation, so they go dormant at different temperatures.  Many years ago, I worked at a cactus nursery. They got some fairly high elevation <I>Turbinicarpus</I> plants in.  The plants grew quite well in the early spring and then stopped.  I was told to water the plants, because they were getting smaller and smaller.  I was watering them, and then about half rotted off.  I cut the rot off and dried them and potted them.  That stopped the rot, and those grew roots but did not grow any larger.  They shrank only so much and no more.  I kept an eye on all of them (there were maybe 50 plants) and managed to not rot any more off.  I cut down the watering without telling the boss.  Come fall with nights in the low 50s, the plants took off growing and grew till mid-winter. They again went dormant for the short time of winter, and, as the nights warmed up and the days grew longer, the plants came alive and were some of the first to bloom in the late winter months, like mid-February to end of March.  They also grew to twice their size before.  Up to that time, that was the best lesson I got on plants and the different temperatures, when they go dormant.  It was not at or above 60 or 62 degrees but around 45 to maybe 48 degrees.  Many of the high elevation South American <I>Tephrocactus</I> and other <I>Opuntia</I> grow where the temperature only reaches about 50 degrees on a hot day and at night, most summer nights, the temperature drops to or below freezing.  On the Tephro, it is hard to tell when they are dormant, but if you keep watering them and the ball joints shrink some, you will know they are dormant.  When fall and early winter arrives with cool night temperatures, they come out of dormancy and will grow.  Many cactus plants are this way.  They will grow in the late winter and spring and do nothing all summer but maybe bloom, then, come fall, they come alive again and will grow.  It is then that they prepare themselves for the spring blooming and growing season.</P><P>Now put it this way, the plants breathe only at night.  So it is not really the daytime temperatures that regulate when a plant goes dormant, but only the night time ones.  If you were to find a place to live where the night time temperatures always fell to 36 degrees, then your plants would grow all summer, even it the day time temperatures got to 115 degrees every day.  I live in land from San Francisco, and so we get the delta breezes quite a bit of the time.  If I wake in the morning and the temperature is say 55 degrees, I know it is not really going to get much above 90 days.  If the overnight temperature is 65 or over, I know that it is going to be a day with temperatures of over 100 and may be even up to 110.  The 110 is not the temperature that tells me if the plants are dormant or not, but that night time temperature.  If you go 100 miles south from here, you come to the Fresno area, and there they do not get the delta breeze, and so the plants will be dormant for much more of the summer than here.  Down at Vista, next to the ocean in southern California, they get the coastal weather, and cacti and succulents seldom go dormant from nights that are too warm.  They have just about the perfect growing weather.  It also happens to be where there are a lot of whole sale nurseries. </P><P>When I mention that a certain plant needs afternoon shade, it is usually a high elevation plant or one that grows close to the ocean.  One of the best ways of killing a high elevation plant is to give it morning shade and afternoon sunshine.  With the Web and all the books available now, there is not a lot of reason that people should not know the kind of growing conditions and elevation a plant grows in.</P><P>* Many people do not realize that the plants will go dormant other than in the winter.");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='strombocactus disciformis pl.jpg' width=320 height=280 hspace=17 align='left'><br> From the Mexican states of Queretaro and Hidalgo comes <I>Strombocactus disciformis</I>.  The plant would probably be quite rare in habitat except for the fact that it grows on very steep mountain sides.  These steep mountain sides are cliff-like and of loose limestone.</P><P>The plant's tubercles are quite hard.  At the end of each tubercle, there is a fluff of wool and up to four spines.  The spines are to 22 mm long and in habitat usually fall off in a year or two.  In cultivation, they can stay on a lot longer.  The white flowers are 3.5 to 4 cm across.  The seed pods are barrel shaped, and, when ripe, they split from bottom to top.  There can be one to four splits.  The dust like seed just falls out of the splits, and it is spread around by the wind and rain.</td></tr><tr><td valign='top'><img src='strombocactus disciformis.jpg' width=320 height=280 hspace=17 align='right'><br>The plant in the photo is now about 15 years old from seed.  It took 3 years to grow it to about the size of a pea.  It is easy to get the seed to germinate, but, from there on, it is guessing game as to if they are going to make it or all die off.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

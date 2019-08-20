@@ -1,0 +1,250 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/4/2007">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<TITLE>Cactus Courier - 3/4/2007</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "4";
+var thisyear = "2007";
+var nextmonth = "April";
+var nextday = "14-15";
+var nextyear = "2007";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Free</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Trade or Sell - Lost and Found</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+function fmini (mon,names,opoints,apoints,npoints)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var cnt = 0;
+var stpos = 0;
+var ndpos = 0;
+var txt = names;
+   while (stpos <= txt.length)
+      {ndpos = txt.indexOf(",",stpos);
+      if (ndpos == -1) ndpos = txt.length;
+      mininms[cnt] = txt.substring(stpos,ndpos);
+            stpos = ndpos + 1;
+            cnt = cnt + 1;}
+var cnt2 = 0;
+txt = opoints;
+stpos = 0;
+while (stpos <= txt.length)
+      {ndpos = txt.indexOf(",",stpos);
+      if (ndpos == -1) ndpos = txt.length;
+      miniopts[cnt2] = txt.substring(stpos,ndpos); 
+            stpos = ndpos + 1;
+            cnt2 = cnt2 + 1;}
+cnt2 = 0;
+txt = apoints;
+stpos = 0;
+while (stpos <= txt.length)
+      {ndpos = txt.indexOf(",",stpos);
+      if (ndpos == -1) ndpos = txt.length;
+      miniapts[cnt2] = txt.substring(stpos,ndpos);  
+            stpos = ndpos + 1; 
+            cnt2 = cnt2 + 1;}
+cnt2 = 0;
+txt = npoints;
+stpos = 0;
+while (stpos <= txt.length)
+      {ndpos = txt.indexOf(",",stpos);
+      if (ndpos == -1) ndpos = txt.length;
+      mininpts[cnt2] = txt.substring(stpos,ndpos);  
+            stpos = ndpos + 1; 
+            cnt2 = cnt2 + 1;}
+var tot = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < cnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("March 2007","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","Naomi Bloss - Argentina Trip Continued.","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2007","14-15, Sat - 9am - 5pm  Sun - 10am - 4pm","Annual Show and Sale.","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2007","6, Sunday - 10:30am to 12:00pm","Board Meeting.","6, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2007","10, Sunday - 10:30am to 12:00pm","Board Meeting.","10, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2007","8, Sunday - 10:30am to 12:00pm","Board Meeting.","8, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2006","16-17, Sat-Sun - 9:00am to 5:00pm","<center>Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.</center></P><P>It will be held at the Jardins de San Juan restaurant.<br><br><font size=-2>Contact Naomi Bloss at 831-722-1446 for more details.</font>");
+
+document.close();
+</SCRIPT>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Naomi Bloss - Trip to Argentina Continued</B><br>
+<br>
+<P>
+Now that Naomi and Frank Bloss have taken us through northern Argentina, they are going to move south toward Patagonia.  Climates and vegetation are much different there.  Native cacti include <I>Opuntia</I>, <I>Echinopsis</I>, <I>Neoporteria</I>, and <I>Gymnocalicium</I>.
+</P>
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for March:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Brazilian native (<I>Discocactus</I>, <I>Melocactus</I>, <I>Uebelmannia</I>, ect.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter blooming <I>Crassulaceae</I></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or hanging plants</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Melocactus</I> or <I>Echeveria</I></td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with G through M should bring a snack for the February meeting.</font></B>
+</P>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez'","Linda Delgado","Have you ever come up with a plan or an idea that seemed really great at the time, but for some reason just didn't work out the way that you wanted it to?  Unfortunately, I've done this more than one time.  Usually it's not something that will matter to anyone other than me, but sometimes it can have monumental repercussions.  Well, not really monumental, but seemingly monumental at the time.</P><P>Let's take a look at the time that I thought it would be really fun for my whole family (parents, brothers, sisters, children, aunts, uncles and cousins) to take a trip to Lake Tahoe together.  I thought that it would be fun to camp there.  We were a camping family when I grew up, so this would be really fun for everyone.  None of us had been camping for quite some time, so we had to replace a lot of our equipment.  I forgot that not all of us really liked camping.  I didn't anticipate my sister-in-law wearing a t-shirt that said &quot;I'm on vacation, so you can all go to H***.&quot;  I forgot what it was like to camp, when it rained and with children.  I forgot that sometimes having fun takes a lot of work.</P><P>Then there was the time that I decided that I would make a commitment to volunteer at a community event at least one day of every week for a year.  I didn't take into account that weekends were when I did house work.  I didn't think about family functions like birthdays and holidays.  I forgot that I often work on Saturdays.  It made for a long and tiring year.  I also felt a lot of pride after the year was over.</P><P>Then there is this year.  I have stated that our club is what we all do for fun.  If it isn't fun, why would we do it?  I forgot that there are a lot of jobs that need to get done that might not be all that fun.  I forgot that there are outside commitments that all of us have.  I didn't take into account all of the little things in life that need to be taken care of that can get in the way of the &quot;fun&quot; things that we all want to be involved in.  Once again, I wasn't thinking things all the way through.</P><P>Our show and sale is just around the corner.  There are a lot of jobs that will need to be filled in order for the show and sale to run smoothly.  If we all work together and think it all the way through, we can help make this the most successful show and sale the club has ever had.  Of course there will be things that we don't take into consideration.  There may be times that we get frustrated and upset, but in the end we will look back and say that it was a lot of work, but that we all had fun with our friends doing what we all love to do.</P><P>Nobody is alone in this.  We are a club with so many different skills and strengths and personalities.  Step forward and share your talents.  Rope your friends and family into it.  This just might be one of my better ideas, and if it isn't, let's not make it have monumental repercussions.");
+
+fmclass ("Clay Pots for Free","Bill Kurtz has over a hundred 3&quot; to 12&quot; standard clay pots and orchid clay pots that are available for free.  Contact Bill at 408-243-3692 to make arrangements.  Desperate - will deliver.<br>","","","","","Place your Ad Here","If you have anything to give away, trade, sell, or for the lost and found, send your ad by email to <a href='mailto:classified@csssj.org'>classified@csssj.org</a> or regular mail to CSSSJ Classified, 5833 Blossom Avenue, San Jose, CA, 95123.");
+
+fmini ("February 2007","Tony Bassano,Chuck Breese,Kathi Cambiano, Heidi Carey,Linda Delgado,Bill Gingras,Roger Lane,Bill Munkacsy,Janet Rollin","0,0,0,0,0,0,0,48,0","0,0,0,0,12,25,25,0,0","23,28,25,25,0,0,0,0,25");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE cellpadding=8><tr><td valign='top'><center><TABLE><tr><td><img src='cumulopuntia boliviana.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Cumulopuntia boliviana</I></font></td></tr></TABLE></center></td><td valign='top'><br><br>Two more members of the South American <I>Opuntia</I> family.   From Bolivia comes <I>Cumulopuntia boliviana</I> (seems reasonable).  There are several forms of <I>C. boliviana</I>.  This one had bloomed from a very small plant.  Some do not bloom until it is about a 15 cm in diameter clump. This plant is hardly 7 cm across and this is the 2nd year that it has bloomed.</td></tr><td valign='top'><br><br>I like to think of <I>Cumulopuntia rossiana</I> as a pile of rejected marbles.  They just didn't come out quite round.  Add a few spines to them, and you have a pile of green spiny rejected marbles.  It is a very nice plant.  You can see in the photo the heads and see what I mean.  The plants in both pots are <I>C. rossiana</I>.  <I>C. rossiana</I> comes from Argentina.  A very good plant for any collection.</td><td valign='top'><TABLE><tr><td><img src='cumulopuntia rossiana.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Cumulopuntia rossiana</I></font></td></tr></TABLE></center></td></tr><td colspan=2>Both of these plants like a cool dry rest over winter.  They bloom regularly over the summer.</td></TABLE></center>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>

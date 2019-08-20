@@ -1,0 +1,279 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/11/2010">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/11/2010</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "11";
+var thisyear = "2010";
+var nextmonth = "August";
+var nextday = "1";
+var nextyear = "2010";
+var deadline = "July 23, 2010";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("July 2010","11, Sunday - 10:30am to 12:00pm","Board Meeting","11, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2010","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","Brian Kemble - Echeverias","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2010","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2010","2-3, Sat 9am-5pm - Sun 10am-4pm","5<sup>th</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2010","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+// document.write("<br><br>");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2010","24-25, Sat/Sun 9am to 5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Country Store</B><br>
+<br>
+<P>
+If you have been to our Country Store before, you know that this is one of the most fun events of the season.  It is a great opportunity for you to share with your fellow members. (Bring plants that you think other members would enjoy, unless you are looking forward to taking them back home yourself.  If you bring desserts, make certain that they are individually wrapped.)
+</P>
+<P>
+Here is how it works.  First separate tables are set up for each category, cacti, succulents, associated items, and desserts.  Then we all buy tickets at five tickets for a dollar.  Members can use their tickets in whatever categories they like.  A board member for each table picks tickets, and each winning member in the order their ticket was selected gets their pick of what is on that table.  This is repeated until the Country Store is done or everyone dies laughing.
+</P>
+<P>
+No MiniShow is planned for this meeting because of the Country Store.  Of course, if you have something of particular interest, you are welcome to bring it.
+</P>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Succulent Imposters (<I>Ariocarpus</I>, <I>Obregonia</I>, <I>Epiphyllum</I>, etc.)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cactus Imposters (Euphorbias) and Rock Mimics (&quot;Living Stones&quot;)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your Weirdest Looking Plants (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Ugly Ducklings</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+ -->
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart("Mini Show Survey for July 2010","","<OL><li><B>In the last five months, how many times have you entered the mini shows at the meetings?</B></P><P><TABLE cellspacing=30><tr><td>None</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr></TABLE><br><br></li><li><B>If you answered &quot;none&quot;, why have you not participated?</B><br><br><br><br><br><br><br></li><li><B>Given our limited space at the meetings, what do you consider a <I>reasonable</I> number of entries per person? </B></P><P><TABLE cellspacing=30><tr><td>2</td><td>3</td><td>4</td><td>5</td></tr></TABLE><br><br></li><li><B>Do you like the idea of voting for a list of Mini Show topics for the following year’s lineup at the Holiday Party? </B></P><P><TABLE cellspacing=30><tr><td>Yes</td><td>No</td></tr></TABLE><br><br></li><li><B>Do you have any suggestions for future Mini Show topics?  Please list below.</B><br><br><br><br><br><br><br></li></OL></P><P><B><I>You may either bring this to the July meeting or email to: <a href='mailto:cactuskathi-csssj@yahoo.com?Subject=Mini%20Show%20Survey%202010'>cactuskathi-csssj@yahoo.com</a><br><br>or you can mail this to: K. Cambiano, 1032 Cherry Avenue, San Jose, CA 95125</I></B></P><br><P><center>(Members who would like to participate in this survey online can do so <a href='http://www.csssj.org/members_corner/Secure/mssurvey1007.html'>here</a> -  ed.)</center>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE width='100%'><tr><td valign='top'><img src='mammillaria theresae.jpg' width=320 height=280 hspace=17 align='left'>This wonderful plant comes from the state of Durango Mexico at around 2,200 meters elevation.  <I>Mammillaria theresae</I> was described in late 1960s.  It make quite a stir in the cactus world for also described in the late 1960 were <I>Mammillaria saboae</I>, <I>M. haudeana</I> and <I>M. goldii</I>.  In habitat, <I>M. theresae</I> is described as being solitary or only making a small clump of only a few heads.  In cultivation though, it makes some impressive clumps in time.  The plant is slow growing, and it will take some years to grow a plant 15 cm across.  My largest plant is 20 cm across, and I see that I got it in 1988.  I will have to guess that it was a single head at that time.  The plant in the photo is that plant.  The one that is flowering is a grafted plant and so is not a typical looking plant.  It does have several heads that are not blown up and quite long.  In cultivation, the heads can be to about 6 cm tall and 2.5 cm in diameter.  Flower is to about 3 to 3.5 cm in diameter.  The spines are all radial and petable.  I have 2 plants that some one grafted in years past, and these do not stand up as they get some size to them.  The body also gets to, (so far) 14 cm long and to 6 cm diameter.  The grafted plants do not seem to bloom any better than plants on their own roots.</P><P>Since the plants are shallow rooted I keep them in shallow pots.  You do not want to go any deeper than about 3 cm deeper than the roots.  If you do, you take a good chance in rotting the plant.  It is the same with the other plants mentioned above. The soil should be fast draining.  I keep the plants dry over the winter.</td></tr></TABLE>");
+
+fminiadd ("Tony Bassano",0,172,0);
+fminiadd ("Jeff Baumgartner",0,0,6); 
+fminiadd ("Peter Beiersdorfer",0,100,0);
+fminiadd ("Chuck Breese",0,4,0);
+fminiadd ("Kathi Cambiano",0,0,122);
+fminiadd ("Linda Delgado",0,3,0);
+fminiadd ("Byron Fan",0,0,84);
+fminiadd ("Joseph Hidalgo",0,0,100);
+fminiadd ("Bill Kurtz",37,0,0);
+fminiadd ("Jaan Lepson",0,0,100);
+fminiadd ("Susan McKuhen",0,0,25);
+fminiadd ("Milovan Milutin",0,0,5);
+fminiadd ("Marilyn Moyer",0,48,0);
+fminiadd ("Bill Munkacsy",50,0,0);
+fminiadd ("Vicki Ortiz",0,0,11);
+fminiadd ("Maggie Palacek",0,12,0); 
+fminiadd ("Joel Parker",0,63,0);
+fminiadd ("Janet Rollin",0,0,19);
+fminiadd ("Katia Romanova",0,0,13);
+fminiadd ("Joe Silva",0,0,30);
+fminiadd ("Ellen Stubblefield",0,86,0);
+fminiadd ("Gary Stubblefield",0,92,0);
+fminiadd ("Bracey Tiede",0,0,3); 
+
+fmini ("<TABLE><tr><td nowrap valign='top'>Standings as of June 2010:</td></tr></TABLE>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

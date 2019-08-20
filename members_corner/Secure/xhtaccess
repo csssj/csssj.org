@@ -1,0 +1,8 @@
+AuthUserFile /home/csssj.org/.htmaster.#/passwds.htpasswd
+AuthGroupFile /dev/null
+AuthName "Members"
+AuthType Basic
+
+<Limit GET>
+require user bgingras wbriggs jgoodrode bkurtz lhabib rsouthwell bmunkacsy scarter rkroll mwaters jparker lwaters sargnigmot csssj
+</Limit>

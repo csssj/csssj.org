@@ -1,0 +1,300 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<meta name="description" content="CSSSJ">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<title>Cactus and Succulent Society of San Jose</title>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var minicnt = 0;
+var minitot = 0;
+var miniinf = new Array();
+var mnthtot = new Array(12);
+//
+//
+function reset ()
+{
+minicnt = 0;
+mnthtot[0] = 0;
+mnthtot[1] = 0;
+mnthtot[2] = 0;
+mnthtot[3] = 0;
+mnthtot[4] = 0;
+mnthtot[5] = 0;
+mnthtot[6] = 0;
+mnthtot[7] = 0;
+mnthtot[8] = 0;
+mnthtot[9] = 0;
+mnthtot[10] = 0;
+mnthtot[11] = 0;
+}
+//
+function fminiadd (txt)
+{
+miniinf[minicnt] = txt;
+minicnt = minicnt + 1;
+}
+//
+//
+function fmini ()
+{
+var optot = 0;
+var tot = 0;
+var mnth = new Array(12);
+//
+document.write("<P><Table cellpadding=3 border=3><tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td><td align='center' valign='middle'><img src='jan.gif' width=82 height=26></td><td align='center' valign='middle'><img src='feb.gif' width=82 height=26></td><td align='center' valign='middle'><img src='mar.gif' width=82 height=26></td><td align='center' valign='middle'><img src='apr.gif' width=82 height=26></td><td align='center' valign='middle'><img src='may.gif' width=82 height=26></td><td align='center' valign='middle'><img src='jun.gif' width=82 height=26></td><td align='center' valign='middle'><img src='aug.gif' width=82 height=26></td><td align='center' valign='middle'><img src='sep.gif' width=82 height=26></td><td align='center' valign='middle'><img src='nov.gif' width=82 height=26></td><td &nbsp; </td><td align='center' valign='middle'><img src='tot.gif' width=82 height=26></td></tr>");
+var mnthcnt = 9;
+for (var i = 0; i < minicnt; i++)
+  {var itot = 0;
+   var txt = miniinf[i];
+   var stpos = 0;
+   var ndpos = txt.indexOf("#",stpos);
+   if (ndpos != -1)
+      {var iname = txt.substring(0,ndpos);
+      if (iname.substring(0,1) == "1")
+         {iname = "<font color='0000CC'><B>" + iname.substring(1,iname.length) + "</B></font>";}
+      if (iname.substring(0,1) == "2")
+         {iname = "<font color='CC0000'><B>" + iname.substring(1,iname.length) + "</B></font>";}
+      if (iname.substring(0,1) == "3")
+         {iname = "<font color='CCCC00'><B>" + iname.substring(1,iname.length) + "</B></font>";}
+      stpos = ndpos + 1;
+      var mncnt = 0;
+      mnth[0] = 0;
+      mnth[1] = 0;
+      mnth[2] = 0;
+      mnth[3] = 0;
+      mnth[4] = 0;
+      mnth[5] = 0;
+      mnth[6] = 0;
+      mnth[7] = 0;
+      mnth[8] = 0;
+      mnth[9] = 0;
+      mnth[10] = 0;
+      mnth[11] = 0;
+      while (stpos <= txt.length)
+         {ndpos = txt.indexOf("#",stpos);
+         if (ndpos == -1) ndpos = txt.length;
+         mnth[mncnt] = txt.substring(stpos,ndpos);
+         stpos = ndpos + 1;
+         itot = itot + parseInt(mnth[mncnt]);
+         minitot = minitot + parseInt(mnth[mncnt]);
+         mnthtot[mncnt] = mnthtot[mncnt] + parseInt(mnth[mncnt]);
+         tot = tot + parseInt(mnth[mncnt]);
+         mncnt = mncnt + 1;};
+ 
+
+        document.write("<tr><td align='right' nowrap>" + iname + "</td>");
+       for (var j = 0; j < mnthcnt; j++)
+         {if (mnth[j] > 0) document.write("<td align='center'> " + mnth[j] + " </td>")
+         else document.write("<td align='center'> &nbsp; </td>");}
+      };
+   document.write("<td> &nbsp; </td><td align='center'>" + String(itot) + "</td></tr>");
+   };
+document.write("<tr><td align='right' nowrap><font size=+1><B>Totals:</B></font></td>");
+for (var k = 0; k < mnthcnt; k++)
+      {if (mnthtot[k] > 0) document.write("<td align='center'> <B>" + String(mnthtot[k]) + "</B> </td>")
+      else document.write("<td align='center'> &nbsp; </td>");}
+document.write("<td> &nbsp; </td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P>");
+}
+//
+// -->
+</SCRIPT>
+
+
+<style>
+<!--
+A:link.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:active.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:visited.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:hover.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#FFCC33}
+A:link.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:active.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:visited.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#FFCC33}
+th {color:#339900; font-size:24pt}
+h1 {color:#000099; font-size:28pt}
+h2 {color:#990066; font-size:20pt}
+h3 {color:#009966; font-size:18pt}
+h4 {color:#006666; font-size:18pt}
+-->
+</style>
+</head>
+
+<body bgcolor="white" leftmargin="0" rightmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=95>&nbsp;</td>
+<td bgcolor=#339966 height=95 width=60 valign="middle" align="middle"><img src="../../graphics/csssj-logo.gif" border="0"></td>
+<td bgcolor=#339966 height=95 colspan=4 valign="middle" align="left"><font face="Arial" color="black" size="6"><b>Cactus &amp; Succulent Society of San Jose</b></font></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="left"><a href="../../index.html" class="navmain" title="Returns to the CSSSJ Homepage">CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width="100%" align="right"><a href="../../welcome_visitors/welcome-index.html" class="navmain" title="Information about the CSSSJ and the hobby.">&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11"><b>&nbsp;&nbsp;&nbsp;Member's&nbsp;Corner&nbsp;&nbsp;&nbsp;</b></font></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../links_of_interest/links-index.html" class="navmain" title="Links of interest to cactus and succulent enthusiasts.">&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../pictures/index.html" class="navmain" title="Pictures of Cacti and Succulents.">&nbsp;&nbsp;&nbsp;Picture&nbsp;Albums&nbsp;&nbsp;</a></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td bgcolor=#339966 height=10 align="right" colspan=5 bgcolor=#339966>
+<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> - 
+<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Mini&nbsp;Show&nbsp;Standings</font> - 
+<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> - 
+<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> - 
+<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> - 
+<!-- <a href="name_badges.html" class="navpanel" title="...add information here">Name&nbsp;Badge&nbsp;Order&nbsp;Form</a> - -->
+<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> - 
+<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> - 
+<a href="bylaws.html" class="navpanel" title="View the club's constitution and bylaws.">Constitution</a>
+</td>
+</tr>
+</table>
+
+<br>
+<center>
+<TABLE width="90%">
+<tr><td><H1>Mini Show</H1></td>
+<td align="right"><font size="+2"><!-- <a href="mini_show_cats2015.html">2015 Categories</a> --> &nbsp; &nbsp; &nbsp; 
+<a href="mini_show_rules.html">Rules</a></font></td></tr>
+<tr><td valign="top"><B> &nbsp; &nbsp; <!-- Members:</B> Take the <a href="mssurvey1007.html"> Mini Show Survey</a> --></td>
+<td align="right"><font size="+1">
+<TABLE><tr>
+<td valign="top">
+<a href="mini_show2015.html">2015 Results</a><br>
+<a href="mini_show2014.html">2014 Results</a><br>
+<a href="mini_show2013.html">2013 Results</a><br>
+<a href="mini_show2012.html">2012 Results</a><br>
+<a href="mini_show2011.html">2011 Results</a>
+</td>
+<td> &nbsp; </td>
+<td valign="top">
+<a href="mini_show2010.html">2010 Results</a><br>
+<a href="mini_show2009.html">2009 Results</a><br>
+<a href="mini_show2008.html">2008 Results</a><br>
+<a href="mini_show2007.html">2007 Results</a>
+</td></TABLE>
+</font></td></tr>
+
+</TABLE>
+<br>
+<br>
+<H2>Final Standings for 2016</H2>
+</P>
+<P>
+<TABLE width="75%">
+<tr><td valign="top" align="center"><H3>Advanced</H3></td><td valign="top" align="center"><H3>Novice</H3></td></tr>
+<tr>
+<td valign="top" align="center">
+<TABLE cellpadding=4><tr>
+<td valign="top" align="center"><font color="0000CC"><B>First is Joel Parker with 91 points.</B></font></td></tr>
+<tr><td valign="top" align="center"><font color="CC0000"><B>Second is a tie between Kathi Cambiano<br>and Ellen Stubblefield with 75 points.</B></font></td></tr>
+<tr><td valign="top" align="center"><font color="CCCC00"><B>Third is Terri Koike with 64 points.</B></font></td></tr>
+</TABLE>
+</td>
+<td valign="top" align="center">
+<TABLE cellpadding=4><tr>
+<td valign="top" align="center"><font color="0000CC"><B>First is Therese McQuillan with 154 points.</B></font></td></tr>
+<td valign="top" align="center"><font color="CC0000"><B>Second is Cecilia Caday with 130 points.</B></font></td></tr>
+<td valign="top" align="center"><font color="CCCC00"><B>Third is JoAn Lambert with 91 points.</B></font></td></tr>
+</TABLE>
+</td>
+</tr>
+</TABLE>
+</P>
+<br>
+<br>
+<P>
+<H3>Advanced</H3>
+
+<TABLE>
+<tr><td>
+<SCRIPT Language="JavaScript">
+//
+reset ();
+
+fminiadd("Peter Beiersdorfer#25#0#0#0#0#0#0#0#0");
+fminiadd("<font color='CC0000'>Kathi Cambiano</font>#0#0#0#0#25#25#0#25#0");
+fminiadd("Joseph Hidalgo#16#0#22#0#0#0#25#0#0");
+fminiadd("<font color='CCCC00'>Terri Koike</font>#7#0#5#0#18#11#0#9#14");
+fminiadd("Jaan Lepson#16#0#0#0#0#0#0#0#0");
+fminiadd("Susan McKuhen#0#0#0#0#0#14#0#0#25");
+fminiadd("Loyd Monaco#0#0#0#0#0#13#0#0#6");
+fminiadd("<font color='0000CC'>Joel Parker</font>#15#0#24#0#25#0#19#0#8");
+fminiadd("Janet Stevenson#0#0#8#0#0#0#0#0#19");
+fminiadd("<font color='CC0000'>Ellen Stubblefield</font>#25#0#0#0#0#0#25#0#25");
+fminiadd("Gary Stubblefield#0#0#0#0#0#0#10#0#5");
+fminiadd("Jacky Wilk#0#0#5#0#0#0#5#0#0");
+fmini ();
+//
+</SCRIPT>
+</td></tr>
+<tr><td>
+<br>
+<br>
+<center>
+<H3>Novice</H3>
+
+<SCRIPT Language="JavaScript">
+//
+reset ();
+fminiadd("Carol Barber#0#0#1#0#0#0#0#0#0");
+fminiadd("Harley Barber#0#0#0#0#0#19#0#0#0");
+fminiadd("Manuela Burge#0#0#9#0#0#0#0#0#0");
+fminiadd("<font color='CC0000'>Cecilia Caday</font>#0#0#25#0#25#9#25#25#21");
+fminiadd("Claudia Damiani#10#0#0#0#0#20#0#0#0");
+fminiadd("Jeannie Echenique#7#0#0#0#0#0#0#0#0");
+fminiadd("Marilyn Hofman#2#0#14#0#0#0#25#0#0");
+fminiadd("<font color='CCCC00'>JoAn Lambert</font>#16#0#0#0#25#25#25#0#0");
+fminiadd("Bill Lemke#0#0#0#0#0#0#0#0#25");
+fminiadd("Wendy Levine#7#0#0#0#3#0#0#0#25");
+fminiadd("Joyce McPheeters#0#0#0#0#0#8#3#4#9");
+fminiadd("Wes McPheeters#0#0#0#0#0#0#0#3#0");
+fminiadd("Lois McPherson#0#0#0#0#0#0#7#0#0");
+fminiadd("<font color='0000CC'>Therese McQuillan</font>#16#0#25#0#25#25#25#25#13");
+fminiadd("Sherry Merrill#3#0#0#0#0#0#0#0#11");
+fminiadd("Monica Moran#0#0#0#0#0#0#0#0#13");
+fminiadd("Diane Salewski#25#0#0#0#0#0#0#0#0");
+fminiadd("Bronislava Sigal#0#0#0#0#0#0#1#9#0");
+fminiadd("Ross Smith#3#0#0#0#0#0#3#0#0");
+
+fmini ();
+//
+document.write("<br><P><font size='+1'>Total points for all classes: <B>" + String(minitot) + "</B></font></P>");
+
+document.close();
+
+</SCRIPT>
+</center>
+</td></tr>
+</TABLE>
+<br>
+<br>
+</center>
+<!-- ***************************************** -->
+<!-- INSERT MAIN PANEL CONTENT ABOVE THIS LINE -->
+
+<hr>
+<i>Send questions or comments to the CSSSJ Webmaster:</i> <a href="mailto:webmaster@csssj.org">webmaster@csssj.org</a>
+<hr>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+</table>
+
+</body>
+</html>
+

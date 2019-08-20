@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/13/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/13/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "13";
+var thisyear = "2008";
+var nextmonth = "August";
+var nextday = "3";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("July 2008","13, Sunday - 10:30am to 12:00pm","Board Meeting.","13, Sunday - 12:30pm to 3:00pm","Overcoming Judge Dread","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2008","3, Sunday - 10:30am to 12:00pm","Board Meeting.","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2008","7, Sunday - 10:30am to 12:00pm","Board Meeting.","7, Sunday - 12:30pm to 3:00pm","Kathy Hendig - Pottery Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2008","4-5, Sat 9am-5pm - Sun - 10am to 4pm","3<sup>rd</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("July 2008","26-27, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA<br>Contact Bill Munkacsy 925-935-5213</font>","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><font size="-1"><B> Note the change in the dates for the Spring Show and Sale </B></font></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Overcoming Judge Dread</B><br>
+<br>
+<P>
+Do you dread facing the verdict at judged shows?  Would you like to know what goes through the mind of a judge when they evaluate your plants?
+</P>
+<P>
+Well, here is your chance to find out.  The July program is a presentation from Jon Dixon, an experienced cactus show judge.  You will get the opportunity to hear how they score plants, pottings, and overall presentation.  Find out how you can improve your showings and win those Best-in-Show prizes.
+</P>
+<P>
+Members are encouraged to bring a show quality plant for the Mini Show which will be judged by the membership and Mr. Dixon.  (Extra bonus points and other incentives will be given for this special Mini Show.)  This is your chance to find out why your favorite plant did or did not take its category at previous shows and to find out how to win at your next showing.
+</P>
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for July:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Any show quality cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Any show quality succulent</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Any show quality cactus or succulent</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Any plant you would want to enter in a show.</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>We will be having a potluck at the July meeting.</font></B>
+</P>
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez'","Linda Delgado","Sometimes I stop and wonder how long it has been since I watered my beloved plants.  Has it been a week, a month or several months?  Do I still have my beloved plants, or do I have pots full of dirt and a thing that looks like it came from an excavation site?</P><P>All of us have had a teacher, parent or friend that seemed to be able to do it all.  They have a career, family and social life with what seems to be total ease.  They never worry about something to wear the next day, because their laundry is always washed and put away.  They don’t have to worry that that funny noise coming from the car may be something really serious, because they always have the car tuned up right on or before it is due.  And lord knows that they never have to worry about friends stopping by without warning and having to suffer the embarrassment of a filthy house.</P><P>I make it a game: just how many things can I balance before I end up in a nut house?  Then I just have to laugh, because it seems that I’m already in a nut house.  And then it really hits me that I’m not alone and that a lot of us feel the same exact way.  I never seem to catch up with what I have to do, before I add more items to the list.</P><P>So I take a deep breath and try to relax.  My plants will be fine.  After all, they are cactus, and they come from areas that often don’t see rain for entire seasons.  My house will be fine, and my friends and family will understand, and call before they stop by the next time.</P><P>After all, life is just a game.  And I’m playing it to win.");
+
+fmart ("June 1 Meeting Notes","Peter Beiersdorfer","<TABLE><tr><td><img src='meeting080601.jpg' width=457 height=324 align='right' hspace=5>For our meeting on June 1 2008 we took a tour of Stanford's Arizona Garden.  Christy Smith, the Volunteer Coordinator of the Arizona Garden Restoration Project, showed us around and identified scores of plants for us.  She also gave us a quick history of the garden and its restoration during the past decade.</P><P>Volunteers can join Christy every third Saturday of the month.  Come at any time between 9 am and 5 pm for as little as an hour or all day.  No appointment or talent necessary.  But for more information call her at 650-723-7459 or send email to christy.smith@stanford.edu.</td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td><img src='echinocactus polycephalus.jpg' width=320 height=280 hspace=16 vspace=0 align='left'>Polycephalus = many heads.  In the <I>Echinocactus</I> family, this applies for most of the rest of the family are single headed.  If the others do throw heads, it is offsets and these are from the plant side.  <I>Echinocactus polycephalus</I> makes some huge clumps.  I have seen some clumps to well over a meter across.  I have not counted the heads, so am not sure how many to a good sizes clump.  Some of these clumps can be to almost a meter tall.  I have to assume that E. F. Anderson never saw the plants for himself, since he says that the plants seldom make clumps over 30 heads and only to 24 inches tall.  One place to see lots of fantastic clumps is north of Pahump Nevada along highway 160.    There are also some very large clumps just east of Shoshone, California.  The flowers are not all that large, only 5 to 6 cm across.  The seed pods are usually hidden in dense wool.  When the desert rodents have been after the seed, they bite off the heavy spines and leave big puffs of white wool all over the tops of the plant heads.  Usually there is a 10 to 14 mm hole in the seed pod and most to all the seed is gone. </td></tr></TABLE>");
+
+fmart ("Bloss Family Faces Fire","Frank Bloss","We were allowed a brief visit to our property at noon today and found the house entirely intact!  The firefighters were able to deploy a fire engine to defend the perimeter created by our driveway which loops around the house and left a protected space on the inside which was completely untouched by the fire.  The shadehouse below the driveway was destroyed.  Naomi lost her entire Aloe collection.  The greenhouses appeared to be OK.  There is no electric power.  The rest of our property below the greenhouses to the east, down to Buena Vista Drive, looks like a moonscape, except for skeletons of charred Eucalyptus trees with light grey ash covering the ground.</P><P>We are extremely lucky, because we left yesterday about two minutes after we noticed the smoke and flames heading our way.  We threw grandkids and dogs in our green VW Eurovan - and nothing else.  By the time we exited our driveway onto Trabing Road, it was already covered in flames.  Afterwards we were told by a source in the county building that  a structure at our address had burned to the ground.  Fortunately that turned out to be only our barn!  We wrongly assumed the message had referred to our house.</P><P>Thank you people for pulling for us.  There were still some flames burning a few feet uphill of our fence to the west.  We hope to be allowed home soon, perhaps even tomorrow.  By the way, the registers and ancillary equipment are safe and sound in our living room exactly as I had left them.  PG&E trucks are on Trabing Road trying to fix downed power lines, transformers, etc.");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

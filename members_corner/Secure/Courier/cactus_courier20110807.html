@@ -1,0 +1,270 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 8/7/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 8/7/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "August";
+var thisday = "7";
+var thisyear = "2011";
+var nextmonth = "September";
+var nextday = "11";
+var nextyear = "2011";
+var deadline = "September 2, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("August 2011","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","Show and Tell:  What have you done with your Raffle plants or Country Store &quot;booty&quot;?","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2011","11, Sunday - 10:30am to 12:00pm","Board Meeting","11, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2011","1-2, Sat 9:00am to 5:00pm - Sun 10:am to 4:00pm","6<sup>th</sup> Annual Fall Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2011","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("September 2011","17-18 Sat-Sun - 9:00am to 5:00pm","Monterey Bay Area Cactus &amp; Succulent Society<br>Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA<br><br>Contact Naomi Bloss at 831-722-1446","","","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">What have you done with your Raffle plants
+or Country Store &quot;booty&quot;?</B><br>
+<br>
+<P>
+<img src="august2011.jpg" width=262 height=216 align="left" hspace=11>Whether you came to the most recent Country Store event or a previous one, you usually go home with an odd mix of plants and pots.  And what about those raffle plants that are given out at the meetings?  They will be a part of this program too!  This month's program is an opportunity to show fellow club members how you’ve creatively put together what you’ve received.  If you are unsure of what to do with your plants and pots, feel free to bring them in to the meeting and ask for suggestions.  I guarantee that you’ll go home with plenty of ideas by the end of the meeting.
+</P>
+ 
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants that are a source of food or medicine</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants that are a source of food or medicine</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What you did with your Raffle/Country Store plants? (or your choice)<br><br>(The only rule for this category is to improve upon what you received. If you want to enter the mini show, don’t bring the plant back in the same plastic pot that it came in.   Be creative, experiment, and have fun!)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Echeverias</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a potluck at the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<!-- 
+<P>
+<TABLE border=5 width="95%"><tr><td>
+<TABLE border=1 cellpadding=17><tr><td>
+<font size="+2" color="#990000">Note: The meeting location has been changed from the Meeting Hall to the Multi-Cultural Center. 
+</font>
+</td></tr></TABLE>
+</td></tr></TABLE>
+<br>
+</P>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show Update","Kathi Cambiano","At the July meeting, members were polled about the whether to change the entry limits per person for the mini show.  The majority of members voted to increase the maximum entries per person to 5, from the previous limit of 3.  This change will take effect at the August meeting.");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE width='100%'><tr> &nbsp; <td valign='top'><img src='ariocarpus kotschubeyanus pl.jpg' width=320 height=280 hspace=17 align='left'><br>In 1976, some one measured the area that <I>Ariocarpus kotschubeyanus</I> grows in.  The habitats covered some 600 kilometers long.  This is in silty flood plains in the Mexican states of Coahuila and Queretaro.  During the rainy season the plants can be covered with several cm of water.  If we tried to treat our plants like that, they would just rot off.  In the dry season, the silt blows and covers the plants.  The plants are very seldom above soil level, unless the soil has been washed away.</td></tr><tr><td><img src='ariocarpus kotschubeyanus.jpg' width=320 height=280 hspace=17 align='right'> &nbsp; <br>Plants, to 8 cm across, seldom show above soil level.  A long tap root means you have to grow it in a pot just deep enough to accommodate the root.  Soil must drain quickly.  Flowers are to 4.5 cm across pinkish-magenta to white.  The plants bloom in the fall, mostly in October and November.  From seed, the plants are slow but fun to grow.  It can take 12 or so years to get a good looking plant up to 3 cm across.</td></tr></TABLE>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P>Standings as of June 2011:<br><TABLE width='100%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",96);
+fminiadd ("Linda Delgado",30);
+fminiadd ("Jaan Lepson",79);
+fminiadd ("Marilyn Moyer",5);
+fminiadd ("Joel Parker",64);
+fminiadd ("Ellen Stubblefield",82);
+fminiadd ("Gary Stubblefield",76);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Bill Munkacsy",73);
+fmini ("Open");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Anaya",12);
+fminiadd ("Jeff Baumgartner",3);
+fminiadd ("Kathi Cambiano",122);
+fminiadd ("Sonia Dyer",17);
+fminiadd ("Barbara Friedericks",25);
+fminiadd ("Joseph Hidalgo",125);
+fminiadd ("Terri Koike",58);
+fminiadd ("Lois McPherson",10); 
+fminiadd ("Loyd Monaco",27);
+fminiadd ("Alex Morgan",28);
+fminiadd ("Janet Rollin",24);
+fminiadd ("Alexei Romanova",14);
+fminiadd ("Katia Romanova",12);
+fminiadd ("Diane Salewski",28);
+fminiadd ("Dolores Wagner",10);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></P><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.</center>
+
+</P>
+
+</BODY>
+</HTML>
+

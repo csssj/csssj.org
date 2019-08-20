@@ -1,0 +1,346 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 1/8/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 1/8/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "January";
+var thisday = "8";
+var thisyear = "2017";
+var nextmonth = "February";
+var nextday = "5";
+var nextyear = "2017";
+var deadline = "January 27, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("January 2017","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+document.write("<br><br>");
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead"> Succulent Liveforevers:<br>
+Conservation and new <I>Dudleya</I> species</B><br>
+<br>
+<P>
+The stunningly white, beautiful Anthony’s Liveforever is one of the uncommon to rare plants Stephen McCabe will feature in his talk about the many species of rare Liveforevers.  The Liveforevers are succulent plants with the name <I>Dudleya, </I>named after a professor with the last name of Dudley.  Stephen will also talk about the new species he just named, which may have gotten the most publicity worldwide of any new succulent, ever! <I>Dudleya hendrixii</I> was mentioned on websites for TV, radio, and the print media throughout the world with coverage in Time magazine, AP, the Washington Post, Miami Herald, NPR, and the BBC.  It was covered in such distant places as Russia, Jakarta, Singapore, Finland, and Brazil.  It didn’t hurt that it is rare and endangered, was named after Jimi Hendrix, and that Stephen had never-seen-before photos he took of Jimi, when Stephen was 15 years old.
+
+Stephen has been studying Dudleyas since 1983 and will be naming more new species.
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Mammillaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Gasteria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Dudleyas (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>What's blooming?</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Dudleya Photograph","","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('dudleyahendrixii.jpg',765,613)><img src='dudleyahendrixii.jpg' width=405 height=325 hspace=17 vspace=17 class='enl'></a><br><I>Dudleya hendrixii</I> in cultivation. Photo by Stephen McCabe, University of California Santa Cruz Arboretum, AP.</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","Happy New Year to all!  I look forward to another wonderful year with the San Jose Cactus and Succulent Society, this time as club President.  Many thanks to my predecessor Linda Delgado, for picking up the presidency the last two years, and for advising me in the two years to come.</P><P>Please send me your inputs about what you’d like to see the club do in the coming year.  The inputs I’ve received so far from several people are to have a day trip some time in the spring and to have the club attain status as a 501(c)(3) Non-Profit organization.   Send me an email at sonia.dyer@sbcglobal.net and let me know your thoughts.  This is YOUR club.  We need YOUR input and participation.");
+
+fmart ("Articles Revisited ","Rich Kroll","At the Holiday Party, it was noted that I have been the editor of the Cactus Courier for 15 years.  How things have changed and stayed the same over that time.  So it occurred to me to start a new feature in the newsletter.  As space permits, an article from the meeting 15 years ago will be republished.  I hope this will give our newer members insight into what was going on with the club back then.  Sounds like fun, doesn't it?");
+
+fmart ("January 2002 Revisited: What's Bugging You?","Jim Daniel","The names of Cactus &amp; other Succulents are bugging me.   With about 5000 Cacti &amp; 35000 other Succulents, you would think we could all agree on names.  In the 1940's &amp; 1950's, Curt Backeberg separated all the Cactus into different categories based on their differences.  Then along came David Hunt &amp; his cohorts and lumped them into categories based on their similarities.  What once were Doliocothele, Mamillopsis &amp; Cochemia are all lumped into Mammilaria now.  If the generic name did not accept them, then the generic name was changed to accept them.</P><P>If you like to enter plants in shows, you should know that any legal name that plant has had is legal in any show.  A legal name is one which has been published in a book or journal.</P><P>Most Cacti &amp; other Succulents are easily identified by picture books or those familiar with the plants.  However there are hybrids natural or man-made that are difficult to place names on.  With field collecting now a no-no, it is difficult to get pure seed.  A few years back, I became interested in collecting Pre-Columbian Indian Pottery.  There was an interesting Effigy pot I liked, but the fellow offering it for sale said it was an Opossum.  I thought it was a bear and said so.  He reckoned that if I bought the pot, I could call it a bear.  So I did &amp; I do.  If you do not like the name on your Succulent, call it any name you like.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B>Final standings for 2016</B><br><br></P><P><TABLE width='75%'><tr><td valign='top' align='center'><H4>Advanced</H4></td><td valign='top' align='center'><H4>Novice</H4></td></tr><tr><td valign='top' align='center'><TABLE cellpadding=4><tr><td valign='top' align='center'><font color='0000CC'><B>Joel Parker in first with 91 points</B></font></td></tr><tr><td valign='top' align='center'><font color='CC0000'><B>Second is a tie between Kathi Cambiano<br>and Ellen Stubblefield with 75 points</B></font></td></tr><tr><td valign='top' align='center'><font color='CCCC00'><B>Terri Koike in third with 64 points</B></font></td></tr></TABLE></td><td valign='top' align='center'><TABLE cellpadding=4><tr><td valign='top' align='center'><font color='0000CC'><B>Therese McQuillan in first with 154 points</B></font></td></tr><td valign='top' align='center'><font color='CC0000'><B>Cecilia Caday in second with 130 points</B></font></td></tr><td valign='top' align='center'><font color='CCCC00'><B>JoAn Lambert in third with 91 points</B></font></td></tr></TABLE></td></tr></TABLE></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("<font color='CC0000'>Kathi Cambiano</font>",75);
+fminiadd ("Joseph Hidalgo",63);
+fminiadd ("<font color='CCCC00'>Terri Koike</font>",64);
+fminiadd ("Jaan Lepson",16);
+fminiadd ("Susan McKuhen",39);
+fminiadd ("Loyd Monaco",19);
+fminiadd ("<font color='0000CC'>Joel Parker</font>",91);
+fminiadd ("Janet Stevenson",27);
+fminiadd ("<font color='CC0000'>Ellen Stubblefield</font>",75);
+fminiadd ("Gary Stubblefield",15);
+fminiadd ("Jacky Wilk",10);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Barber",1);
+fminiadd ("Harley Barber",19);
+fminiadd ("Manuela Burge",9);
+fminiadd ("<font color='CC0000'>Cecilia Caday</font>",130);
+fminiadd ("Claudia Damiani",30);
+fminiadd ("Jeannie Echenique",7);
+fminiadd ("Marilyn Hofman",41);
+fminiadd ("<font color='CCCC00'>JoAn Lambert</font>",91);
+fminiadd ("Bill Lemke",25);
+fminiadd ("Wendy Levine",35);
+fminiadd ("Joyce McPheeters",24);
+fminiadd ("Wes McPheeters",3);
+fminiadd ("Lois McPherson",7);
+fminiadd ("<font color='0000CC'>Therese McQuillan</font>",154);
+fminiadd ("Sherry Merrill",14);
+fminiadd ("Monica Moran",13); 
+fminiadd ("Diane Salewski",25);
+fminiadd ("Bronislava Sigal",10);
+fminiadd ("Ross Smith",6);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><I>Mammillaria pectinifera</I> has always had a reputation of being a difficult plant to grow or keep alive in cultivation.  In John Pilbeam's 1999 Mammillaria book on page 214, we find some comments on the plant.  &quot;It is one of the most difficult to grow in cultivation.&quot;  A few sentences later the reason is shown in the line saying;  &quot;The addition of some limestone chippings in the potting mixture (up to 50%) should help in cultivation, but in any case an open mixture with plenty of grit of similar material is essential.&quot; In England, where Mr. Pilbeam lives, a gritty soil may be necessary for the roots to dry soon enough, but the adding of limestone is a no no as far as I am concerned.  I have stated many times that alkaline conditions for growing is not good for the plants.  The only time the plants grow in habitat is when it rains, for the rain is acidic.  As long as the water in the soil is still acidic the plants take it on, but as the bicarbonate in the soil neutralizes the acidity the plants shut down again.</td></tr><tr><td valign='top'><a href=javascript:poppic('mammillariapectinifera.jpg',879,880)><img src='mammillariapectinifera.jpg' width=404 height=405 hspace=17 vspace=17 align='left' class='enl'></a><br>People try to emulate the conditions in the deserts where the plants grow; hot houses for heat and to protect the plants from winter rains and also to keep the plants warm.  Another thing they do is to add lime to the soil mix or add limestone chips so the plants can have all the lime like in habitat.  But the one thing they do not try to emulate is the acidic rain conditions and the nitrogen in the rain water.  I am not sure how many times I have read that the plants should be given little to no nitrogen.</P><P>The plant to the left is 6 cm tall and 5.5 cm in diameter. If this plant had been raised on alkaline water or had limestone added at the rate of 50% of the mix, the plant would have died long time ago. In my alkaline years of watering I lost quite a few plants but since the plants are getting acidic water all of them look good.</P><P><I>M. pectinifera</I>, body simple, globose to short cylindric, under 4 cm diameter, with latex; roots fibrous; axils naked; spines 20 - 40, under 5 mm, appressed, pectinate or radiating, white; flower 15 mm, yellow; fruit oblong, 6 mm; seed more or less circular, about 1 mm, black-brown, testa-cell boundaries raised with undulations.  I may have over done it giving four descriptions but it is strange to see the difference in the plant flower color. The number of spines remains the same in each description.</td></tr><tr><td valign='top'><a href=javascript:poppic('mammillariapectinferatop.jpg',1108,900)><img src='mammillariapectinferatop.jpg' width=499 height=405 hspace=17 vspace=17 align='right' class='enl'></a><br>The flower is 2.2 cm across.  The upper half of each petal looks to be almost white with a pink midstripe.  The center of the flower is shell pink. The filaments are also shell pink the style is also the same color and the stigma is pinkish cream in color. The anthers are pinkish yellow.  I have been growing the plants for many years, and I myself have never seen a yellow flowering plant of <I>M. pectinifera</I> as stated is several of the descriptions.  Every <I>Mammillaria pectinifera</I> that I have ever seen flowering has flowers 2 to 3 cm in diameter, and they are whitish to shell pink.  I have gone on the web and typed in <I>Mammillaria pectinifera</I>, and all the flowers on the plants are whitish to shell pink.  But there are some yellow flowering plants shown but they are not <I>M. pectinifera</I> but <I>M. solisioides</I>!</td></tr><tr><td valign='top'><a href=javascript:poppic('mammillariapectiniferaflowers.jpg',879,900)><img src='mammillariapectiniferaflowers.jpg' width=396 height=405 hspace=17 vspace=17 align='left' class='enl'></a><br>I keep the plants dry over the winter.  I have them in my regular soil mix.  Since getting rid of the limestone and changing from alkaline water to acidic water, the plants have grown very well.  Give a good watering and then allow the soil to dry before watering again.  I give the plants good light with a little shading for the afternoon heat.  The white spines reflect most of the heat back away from the body, and the bright light keeps the plants growing good with nice dense spines.  The habitat of the plants is at about 6,200 feet elevation. I have not had any problems with the plants taking temperatures down to 35F. as long as the soil is kept dry.</td></tr></TABLE></center>");
+
+
+fmart ("Holiday Extravaganza 2016","Sonia Dyer","<center><TABLE width='90%'><tr><td valign='top'>We had a great turn out at this year’s Holiday Extravaganza at Harry’s Hofbrau and had to have extra tables set up to accommodate everybody who attended.</P><P>Many thanks go out to those who helped organize the party, and to those who brought plants.</P><P>Special thanks to Loyd Monaco for his work in running much of the meeting, including giving special presentations to Joel Parker as a Life Member, Terri and Glenn Koike for their selfless work in providing hospitality at our club meetings and sales, and to Peter Biersdorfer and Jaan Lepson for their tireless efforts to produce our highly successful biannual Show and Sale.</P><P>We were also fortunate to have Bill Munkascy step forward again to serve as our auctioneer, something for which he has a special talent.</P><P>And many thanks to Jaan Lepson for serving as the party photographer, to capture our enjoyment of plants and good friends. Jaan’s work appears below.</td></tr><tr><td valign='top' ><TABLE><tr><td align='center'><a href=javascript:poppic('2016he01.jpg',882,898)> <img src='2016he01.jpg' width=397 height=404 hspace=17 vspace=17 class='enl'></a></td><td align='center'><font size='-1'>Checking out the auction plants</font></td><td align='center'><a href=javascript:poppic('2016he02.jpg',960,620)><img src='2016he02.jpg' width=403 height=260 hspace=17 vspace=17 align='right' class='enl'></a></td></tr></TABLE></td></tr><tr><td valign='top' ><TABLE><tr><td align='center' valign='top'><br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href=javascript:poppic('2016he07.jpg',623,900)><img src='2016he07.jpg' width=280 height=405 hspace=17 vspace=17 class='enl'></a></td><td align='center'><TABLE><tr><td align='center' valign='top' colspan=2><a href=javascript:poppic('2016he04.jpg',960,850)><img src='2016he04.jpg' width=422 height=374 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td align='center' valign='bottom'><a href=javascript:poppic('2016he08.jpg',972,730)><img src='2016he08.jpg' width=428 height=321 hspace=10 vspace=17 class='enl'></a></td><td align='center' valign='top'><a href=javascript:poppic('2016he05.jpg',882,860)><img src='2016he05.jpg' width=388 height=378 hspace=17 vspace=17 class='enl'></a><br><br><br></td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

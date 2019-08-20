@@ -1,0 +1,276 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/12/2015">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/12/2015</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "12";
+var thisyear = "2015";
+var nextmonth = "May";
+var nextday = "10";
+var nextyear = "2015";
+var deadline = "May 1, 2015";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April 2015","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","Methods of Succulent propagation at the UC Davis Botanical Conservatory","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2015","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2015","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+
+fmcal ("July 2015","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<TABLE cellspacing=13 cellpadding=13 border=5 bordercolor='#FF0000'><tr><td><font color='#990000' size='+1'><center><B>Note that the dates for the Spring Show and Sale have changed.</B></center></font></td></tr></TABLE><br><br>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+// document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Methods of Succulent propagation at the UC Davis Botanical Conservatory</B><br>
+<br>
+<P>
+This month's presentation is a brief tour of the techniques used at the UC Davis Botanical Conservatory to propagate a variety of succulent plants from seed and from stems, leaves, and rarely roots.  Techniques for better seed germination and methods of vegetative propagation such as a variety of stem cuttings, leaf cuttings, grafting and air layering will be discussed.  
+</P>
+<p>
+The presenter is Ernesto Sandoval.  He has been wondering and seeking questions as to why plants grow and look the way that they do for a long time.  Now he explains and interprets the world of plants to a variety of ages and experiences.  He regularly lectures to a variety of western Garden Clubs throughout the year and particularly to Succulent Clubs throughout the State and elsewhere.  He describes himself as a "Jose of All Plants, Master of None."  Ernesto thoroughly enjoys helping others, and gardeners in particular, to understand why and how plants do what they do.
+</P>
+<P>
+He earned a degree in Botany and worked from student weeder/waterer to Director over the last 23 years.  Several of his favorite garden projects involved converting lawns and water loving landscapes to drought tolerant and diversity filled gardens.  He loves the technical language of Botany but prefers to relate information in more understandable methods of communication. By helping people to understand the workings of plants he hopes to help us better understand how and why our plants do what they do and how we can maximize their growth with less effort.
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Monstrose and crested cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Monstrose and crested succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Bring in a cactus or succulent that you want to learn how to propagate (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Mammalaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><B>The meeting will be held in the Multi-Cultural Building</B></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("46<sup>th</sup> Annual Spring Show and Sale","Jaan Lepson","<center><TABLE width='90%'><tr><td valign='top'>The 46<sup>th</sup> Annual Spring Show and Sale was held this year on March 14-15 at Peterson Middle School.  Although several weeks earlier than usual, the record hot temperatures that weekend made it feel like summer, and crowds were steady throughout the weekend.</P><P>Once again, the showdown for the coveted Sweepstakes prize, representing the highest average score per plant, was between Peter Beiersdorfer and Naomi Bloss.  And this was the closest year yet in the competition: just a single point separated Peter and Naomi.  Peter scored 95 points with 26 plants while Naomi had 94 points with 23 plants, which was adjusted to the minimum of 25 for the purpose of scoring.  Once the math was done, Naomi came out on top with a mean score of 3.72 points per plant, while Peter had 3.65 points per plant.  Congratulations to them both!</td></tr><tr><td valign='top'><img src='mammillariaschwarzii.jpg' width=400 height=282 hspace=17 vspace=17 align='right'><br><font size='+1'><B>The other prize winners were:</B></font><br><br><B>Best Cactus, Novice:</B> <I>Frailea asteroides</I>, Janet Stevenson<br><B>Best Succulent, Novice:</B> <I>Euphorbia suzannae</I>, Terri Koike<br><br><B>Best Cactus, Advanced:</B> <I>Mammillaria schwarzii</I>, Peter Beiersdorfer<br><B>Best Succulent, Advanced:</B> <I>Adromischus marianiae v. herrei</I>, Peter Beiersdorfer<br><br><B>Best Cactus, Open:</B> <I>Echinocereus albispinus</I>, Bill Munkacsy<br><B>Best Succulent, Open:</B> <I>Aloe x &quot;Baby Grand&quot;</I>, Gregg DeChirico</td></tr><tr><td valign='top'><img src='adromischusmarianiaev.herrei.jpg' width=400 height=307 hspace=17 vspace=17 align='left'><br><br><B>Best Cereinae:</B> <I>Echinocereus albispinus</I>, Bill Munkacsy<br><B>Best Echinopsidinae:</B> <I>Sulcorebutia rauschii</I>, Bill Munkacsy<br><B>Best Echinocactinae:</B> <I>Strombocactus disciformis</I>, Elton Roberts<br><B>Best Mammillaria:</B> <I>Mammillaria humboldtii</I>, Elton Roberts<br><B>Best Opuntioidea:</B> <I>Puna clavaroides</I>, Elton Roberts<br><B>Best monstrose or cristate cactus:</B> <I>Mammillaria bocasana ‘Fred’</I>, Lisa Bloss<br><br><img src='punaclavaroides.jpg' width=500 height=298 hspace=37 vspace=27 align='bottom'></td></tr><tr><td valign='top'><img src='haworthiatruncata.jpg' width=400 height=254 hspace=17 vspace=17 align='left'><br><br><B>Best Aloe:</B> <I>Aloe pictifolia x krapohliana</I>, Jim Smith<br><B>Best Haworthia:</B> <I>Haworthia truncata</I>, Peter Beiersdorfer</td></tr><tr><td valign='top'><img src='agavevictoria-reginaewhite.jpg' width=400 height=307 hspace=17 vspace=17 align='right'><br><br><B>Best Monocotyledon other than Aloe or Haworthia:</B><I> Agave victoria-regina ‘White’</I>, Leona Harris<br><B>Best Aizoaceae (Mesembryanthemaceae):</B> Lithops, Naomi Bloss<br><B>Best Asclepiadaceae:</B> <I>Pseudolithos cubiformis</I>, Naomi Bloss<br><B>Best Asteraceae (Compositaceae):</B> <I>Senecio scaposus v. addoensis</I>, Bud ‘n Ev<br><B>Best Crassulaceae:</B> <I>Crassula barklyi</I>, Peter Beiersdorfer<br><B>Best Euphorbiaceae:</B> <I>Euphorbia woodii</I>, Naomi Bloss</td></tr><tr><td valign='top'><img src='senecioscaposusv.addoensis.jpg' width=400 height=305 hspace=17 vspace=17 align='left'><br><br><B>Best Photography:</B> <I>Crossyne flava</I>, Jaan Lepson<br><br><B>Directors’ Choice:</B> <I>Raphionacme zeyheri</I>, Roger Lane<br><br><img src='crassulabarklyi.jpg' width=460 height=347 hspace=57 vspace=27 align='bottom'></tr></td><tr><td valign='top'>Once again, many thanks to all the volunteers to helped with set-up, staging, clerking, security, and tear-down.  The show would not have been possible without your help!<br><br>And on a final note, if anyone worked two hours or more at the show and sale, but did not get any showbucks, please let me know!</td></tr></TABLE></center>");
+
+fmart ("Items Left Behind","Terri Koike","<TABLE width='90%'><tr><td valign='top'><img src='img_3823c.jpg' width=333 height=500 hspace=17 vspace=17 align='left'>These items were left behind at the recent Cactus &amp; Succulent sale &amp; show.  I will bring these items to our monthly meetings until someone claims them.</td></tr></TABLE>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club vice president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

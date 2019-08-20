@@ -1,0 +1,349 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/2/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/2/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "2";
+var thisyear = "2017";
+var nextmonth = "Show &amp; Sale";
+var nextday = "29-30";
+var nextyear = "2017";
+var deadline = "April 21, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April 2017","2, Sunday - 11:00am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","Show &amp; Sale Prep Roundtable","29-30, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","48<sup>th</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+fmcal ("May 2017","14, Sunday - 11:00am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2017","4, Sunday - 11:00am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Show &amp; Sale Prep Roundtable</B><br>
+<br>
+<P>
+Our April meeting will start with an unusual hands-on practice session with Kathi Cambiano on how to use your smartphone or tablet to access the club’s new Facebook and Instagram pages.  Be sure to bring your devices, preferably with both apps already installed.  If you need directions for how to do that, please see the directions in last month’s issue.  If you already know this stuff, come prepared to assist your neighbors.
+</P>
+<P>
+This will be followed by a Show & Sales roundtable led by Loyd Monaco.  Have you ever thought of selling some of your plants on the “member-table” at the sale?  Or perhaps you have a few spectacular specimen plants you would like to see win a prize in the Show?  Come prepared to ask your questions, and share your experiences.
+</P>
+<br>
+<br>
+<P>
+There will not be a Mini Show at this meeting.
+</P>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your oldest cacti</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter Growers</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Aloes (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>What's the plant that got you started with cacti or succulents?</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("The Prez Sez","Sonia Dyer","","As most of you know, our Spring Show and Sale is coming up at the end of April.  The Spring Show is more complex than the one in fall, because it is a formally judged show.  We need two club members to volunteer to be clerks, to help the judges as they’re choosing the best plants.  The clerks would work with the judges from 8AM Saturday morning until the judging is done (usually about 10AM).  We also need five club members to volunteer to help Jaan Lepson arrange the show plants in the right order on Friday evening, from about 5PM until about 8PM.  There’s free pizza on Friday night and lunch on Saturday and Sunday.  Please bring a side-dish or dessert to accompany lunch.</P><P>Everyone who volunteers at least two hours gets $10 in free &quot;show-bucks&quot; to spend at the show.  We will have sign-up sheets at the next regular club meeting for all positions, including the above, as well as register-assistants, door security, and plant hotel, or you can send me an email at <a href='mailto:sonia.dyer@sbcglobal.net?Subject=Show%20%26%20Sale%20Volunteer'>sonia.dyer@sbcglobal.net</a>.</P><P>We also need everyone to bring with them cardboard boxes that our customers can use, as well as old newspapers that can be used as packing material.  Newspapers are getting harder to come by.</P><P>We have also been asked to provide succulent and cactus cuttings to help a local school, Valle Vista Elementary School in San Jose.  A non-profit called San Jose Project is hosting a beautification day and they are hoping to plant some low maintenance hardy plants in areas around this school and to involve/educate students on how to care for plants.  The beautification day activities are scheduled for April 1, which is coming up fast.  If you can spare cuttings to help them out, please contact Sarah Hur at <a href='mailto:sarine@fractalflora.com?Subject=San%20Jose%20Project'>sarine@fractalflora.com</a> or 408 834-9460 to arrange drop-off or pick-up.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B> Standings as of March 2017:</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Kathi Cambiano",25);
+fminiadd ("Debbie Ellis",3);
+fminiadd ("Terri Koike",11);
+fminiadd ("Jaan Lepson",24);
+fminiadd ("Susan McKuhen",25);
+fminiadd ("Therese McQuillan",21);
+fminiadd ("Loyd Monaco",35);
+fminiadd ("Ellen Stubblefield",44);
+fminiadd ("Gary Stubblefield",30);
+fminiadd ("Jacky Wilk",16);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Manuela Burge",12);
+fminiadd ("Cecilia Caday",25);
+fminiadd ("Judianne Ganschow",25);
+fminiadd ("JoAnn Lambert",9);
+fminiadd ("Catherine Lau",9);
+fminiadd ("Bill Lemke",4);
+fminiadd ("Joyce McPheeters",19);
+fminiadd ("Monica Moran",40);
+fminiadd ("Slava Sigal",6);
+fminiadd ("Ross Smith",2);
+fminiadd ("Janet Sparks",25);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+
+fmart ("March 2017 Mini Show","Therese McQuillan","Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'>We had another great turnout for our March 2017 meeting, and the Mini Show benefited.  Two newcomers, Judianne Ganschow and Janet Sparks, won in two categories.  Thanks to everyone who participated this month.</P><P>If you have ideas for plant categories, drop a note to <a href='mailto:tmcq01@att.net?Subject=Mini%20Show%20Categories'>tmcq01@att.net</a>.  And check out our Mini Show rules at: <a href='http://www.csssj.org/members_corner/Secure/mini_show_rules.html' target='_blank'>http://www.csssj.org/members_corner/Secure/mini_show_rules.html</a>.<br><br></td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0358.jpg',870,990)><img src='mcph0358.jpg' width=348 height=396 hspace=17 vspace=17 class='enl' align='right'></a><br>Here's the list of winners and a few photos for March.</P><br><P><font size='+2'><B>Something Special:</B> <I> Aloes (or your choice)</I></font></P><P><B>Advanced: </B><I>Aloe Haworthioides x Descoingsii</I>: Loyd Monaco</P><P><B>Novice: <I></B> Aloe Attenuata</I>: Janet Sparks (shown on the right)</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0363.jpg',938,970)><img src='mcph0363.jpg' width=375 height=388 hspace=17 vspace=17 class='enl' align='left'></a><br><font size='+2'><B>Cactus:</B> <I>Your oldest cactus</I></font></P><P><B>Advanced:</B>  Barrel cactus:  Gary Stubblefield</P><P><B>Novice:</B> <I> Mammillaria Klissingiana</I>: Janet Sparks (shown on the left)</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0331.jpg',992,750)><img src='mcph0331.jpg' width=397 height=300 hspace=17 vspace=17 class='enl' align='left'><a href=javascript:poppic('mcph0365.jpg',624,990)><img src='mcph0365.jpg' width=250 height=396 hspace=17 vspace=17 class='enl' align='right'></a><br><font size='+2'><B>Succulents: </B><I>Winter growers</I></font></P><P><B>Advanced:</B>  Dudleya: Jacky Wilk (shown on the left)</P><P><B>Novice:</B>  Senecio: Judianne Ganschow (shown on the right)</td></tr><tr><td valign='top'><font size='+2'><B>Beginner's Luck:</B> <I>What plant got you started?</font></I>  (Tie)</P><P><I>Lithops fulviceps</I>: Judianne Ganschow </P><P><I>Sedum Dendroideum</I>: Cecilia Caday</td></tr></TABLE></center>");
+
+fmart ("Spotlight Interview with Elton Roberts","Asmita Deshpande","Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('mcph0175.jpg',778,987)><img src='mcph0175.jpg' width=311 height=395 hspace=17 vspace=17 class='enl' align='left'></a><br>As a kid, Elton Roberts often went to Anza Borrego Dessert and fell in love with it.  He loved its flora.  Then, when he was around twelve, he had his first couple of cacti plants.  At first, he liked only cacti, but now he likes some succulents.  Cacti are still his favorites, and it is very hot to grow succulents where he lives (in Ripon, CA).  He says he thought about this, and he likes all cacti and cannot say he likes one kind more over others.  He has about 2,500 different varieties collected over sixty-four years.</P><P>For our society, he writes articles about how he grows his plants, and his methods are different from what you find in books. He was a President of Norcal (a Cactus and Succulent Society which does not exist anymore) and President of Stockton Cactus and Succulent Society.  He sells his plants at our society shows under his own name.</P><P>Roberts used to be a gold miner and has been disabled for last 42 years. He has a large family spread all over this country and includes four children, eighteen grandchildren and nine or ten great grand children. His one hobby is taking care of his plants, which includes seven hot houses and ten outside tables.</P><P>His message for the society members is to take good care of their plants.</td></tr></TABLE></center>");
+
+fmart ("March 2002 Revisited:What's Bugging You?","Jim Daniel","","What bugs me is the soil mixes we all use to plant our Cactus and Succulents in.  Everybody has a different recipe they follow.  I have seen cactus growing on mountaintops on Limestone rocks like <I>Agave victoria-reginae</I>.  I have seen them growing in dry lakebeds that were sometimes under water like <I>Ariocarpus kotschobeyanus</I> and <I>Porfiria schwartzii</I> (<I>Mammilaria cohulensis</I>).  The majority of Cactus grow on the slopes of mountains or on small hills.</P><P>I stopped at a small nursery outside of White City, NM.  It was located at a trailer house out in the desert.  The plants were in tin cans and all native to the region.  They were potted in desert soil in full sun, no shade, on barbecue tables.  One table had a hand written sign, plants one dollar each.  One had a sign, two dollars each, and so on.  His sales method was the honor system.  At least he had all the plants in the same soil mix.</P><P>You can't formulate a mix that fits all plants, so we formulate a mix that fits most plants.  The big advantage in having a standard mix is they all dry out at the same time (depending on pot size).");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2mammillariamainiae.jpg',957,848)><img src='2mammillariamainiae.jpg' width=345 height=305 hspace=17 vspace=17 align='right' class='enl'></a><br>I believe it was 1985 when I saw my first <I>Mammillaria mainiae</I>. The cactus nursery I was working got an order of plants from the wholesale nursery and there was a tray of 25 plants.  All the plants were about 7 cm in diameter and something like 5 cm tall.  The thing that impressed me is that every one of the plants was in full bloom.  Each plant had a ring of flowers circling it, and they were really beautiful flowers.  Seeing a whole tray of 25 plants all in bloom was something I have not forgotten, it impressed me so much.  I have not seen a sight like that since, since I have not seen another tray of <I>Mammillaria mainiae</I> in bloom.  I have seen the plants in flower many times and every time I declare them beautiful.</td></tr><tr><td valign='top'><a href=javascript:poppic('4mammillariamainiae.jpg',998,665)><img src='4mammillariamainiae.jpg' width=399 height=266 hspace=17 vspace=17 align='left' class='enl'></a><br>My large plant was one that the owner got at the same time as the tray of plants.  This was a plant in a 15 cm pot; it had 5 to 7 stems on it.  I do not remember any more how many it was, as it has been too many years.  But anyway it was a very nice flowering plant.  For about the next two years I watched as the plant slowly got smaller and looked worse and worse.  He had two of the plants that were multi-stemmed.  One was smaller than the other.  I watched over time as the smaller plant died.  I asked the owner if I could take the last one home and try to save it.  He refused for quite a while, but, as it got to looking like it was going to die, he let me take it.  At the time, I had pH balanced fertilizer so the plants were getting acidic water and fed at the same time, and so the plant perked up before very long.  In the first year, it got back to looking like it did, when I first saw it.  For several years, it grew right well and bloomed each year.  In time, I put it in a 20.5 cm bulb pan.  It has stayed in that pot for at least 20 years now.  It has not been moved in at least 15 years, but I noticed that, over the alkaline years, the plant suffered quite badly and got to looking quite awful again.  Several of the oldest stems died.  I wanted to try to get the plant healthy again before deciding what to do with it.  I saw that the plant was doing a lot better and starting to look good again except for the dead stems.  I managed to get the plant off the bench without getting too many hooks in me and my clothes.  I have taken the dead stems off and the rest of the plant had to be taken apart.  Several of the stems rotted at the base and then rooted again.  Those can be potted now, but others have to be cut and restarted.  It is a shame to have to take it apart, but the plant had stems lying in all directions.  Only one stem out of about 9 was standing upright.  It is just time to start the plant over again.</td></tr><tr><td valign='top'><a href=javascript:poppic('10mammillariamainiae.jpg',998,665)><img src='10mammillariamainiae.jpg' width=349 height=233 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('7mammillariamainiae.jpg',1075,847)><img src='7mammillariamainiae.jpg' width=387 height=305 hspace=17 vspace=17 align='right' class='enl'></a><br>Habitat for the plant is from very southern part of Arizona south a couple hundred miles to northern part of the Mexican state of Sinaloa.  I have not had any problems with the plant other than the alkaline water.  Giving acid water the plant grows just fine and blooms ever year.  I give the plants as much bright sunlight as the hothouse lets in and lots of summer heat.  They have been at 134F [56.66 C] without any problems.  I have the plants in my regular soil mix.  I keep the plants dry over the winter and have never had any problem with the cold.  The plants have endured temperatures down to 15 F [-9.44C].  When placing the plant in the greenhouse make sure that it is away from the edge of the bench or it will hook you.</td></tr></TABLE></center>");
+
+fmart ("<TABLE><tr><td><img src=' welcomecactus.gif' width=77 height=121></td><td valign='bottom'><center><B class='arthead'>WELCOME NEW MEMBERS</B></center></td><td><img src=' welcomecactus2.gif' width=77 height=121></td></tr></TABLE>","","","<center>A few new members have joined us recently.</P><P>Please join us in welcoming them:</P><P>Michael Robinson<br>Tanya Wieber</center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

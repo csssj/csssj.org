@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/6/2007">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<TITLE>Cactus Courier - 5/6/2007</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "6";
+var thisyear = "2007";
+var nextmonth = "June";
+var nextday = "10";
+var nextyear = "2007";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Free</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Trade or Sell - Lost and Found</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("May 2007","6, Sunday - 10:30am to 12:00pm","Board Meeting.","6, Sunday - 12:30pm to 3:00pm","Plants Bought at the Sale.","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2007","10, Sunday - 10:30am to 12:00pm","Board Meeting.","10, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2007","8, Sunday - 10:30am to 12:00pm","Board Meeting.","8, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("May 2007","5-6","<font size='-2'>Sunset Succulent Society Show &amp; Sale. Culver City, California. Contact Info: 310-822-1783.<br><br>Sacramento C&amp;S Show and Sale, Sacramento Garden Center.</font>","19-20","<font size='-2'>Carmichael C&amp;S Society Annual Show and Sale  Contact: Gerri Wigglesworth: 916-366-1842<br><br>Fresno Cactus &amp; Succulent Society Show and Sale.</font>","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Plants Bought at the Sale</B><br>
+<br>
+<P>
+Every one of us cannot resist that particular plant calling to us from the sale tables at the Show and Sale.  If we could, we would not be members of this club.  This meeting is going to be all about sharing with your fellow members the allure that drew you to that special plant.  Maybe you know precisely why that cactus or succulent called to you; maybe you do not have a clue.   Sharing the experience with the rest of the club may just be the thing that will give you an insight into your own thought processes.  In any case, bring that plant with you to the meeting, and we can all revel in our good fortune and exquisite taste.
+</P>
+<br><br><br>
+<P>
+<font size="+1"><B>Plants of the Month for May:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants bought at the Sale</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants bought at the Sale</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants bought at the Sale</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Plants bought at the Sale</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>We will be having a POTLUCK for the May meeting.</font></B>
+</P>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("38<sup>th</sup> Annual Show and Sale Wrap-Up","Bill Gingras"," Our 38th Annual Spring Show and Sale was absolutely awesome. Despite such setbacks as the rain, cold, lack of parking, and absence of Bill K, this was the biggest show and sale that I can remember, both in sales and in competition.  Judy and I thank all of the volunteers who stepped in to help keep everything running smoothly, and all of the exhibitors.</P><P><TABLE><tr><td nowrap valign='top'><B>THE WINNERS: &nbsp; </B></td><td nowrap><B>Sweepstakes</B> - Bill Muncacsy<br><B>Best <I>Euphorbia</I></B> - Frank & Naomi Bloss - <I>Euphorbia millotii</I><br><B>Best Monocot</B> - Anne Shein - <I>Hawarthia badia x beukmanii</I><br><B>Best <I>Aizoaceae</I></B> - Jim Smith - <I>Sceletium rigidum</I><br><B>Best <I>Crassulaceae</I></B> - Anne Shein- <I>Sedum hernandezii</I><br><B>Best <I>Ariocarpus</I></B> - Bill Munkacsy - <I>Ariocarpus retusus furfuraceous</I><br><B>Best <I>Cereinae</I></B>- Bill Munkacsy - <I>Echinocereus pectinatus </I><br><B>Best <I>Echinocactinae</I></B> - Bill Munkacsy - <I>Echinocactus polycephalus</I><br><B>Best <I>Mammillaria</I></B> - Bill Munkacsy - <I>Mammillaria hahniana</I><br><B>Best <I>Opuntiaceae</I></B> - Elton Roberts - <I>Tephrocactus alexanderi v. geometricus D1F319</I><br><B>Best Cactus: Novice Class</B> - Jaan Lepson - <I>Mammillaria zeilmannianus</I> crest<br><B>Best Cactus: Advanced Class</B> - Ron Harris - <I>Ferocactus glaucescens</I><br><B>Best Cactus: Open Class</B> - Bill Munkcacsy - <I>Notocactus scopa</I><br><B>Best Succulent: Novice Class</B> - Anthony Bassano - <I>Euphorbia bupleurifolia</I><br><B>Best Succulent: Advanced Class</B> - Roger Lane - <I>Pachypodium rosalatum v. gracilis</I><br><B>Best Succulent: Open Class</B> - Anne Shein - <I>Lomatophylum rostratum</I><br><B>Best Photography</B> - Rich Kroll - Color Flowers (<I>Parodia mairanana v. atra</I>)</td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE cellpadding=8><tr><td valign='top'><center><TABLE><tr><td><img src='pterocactus valentinii1.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Pterocactus valentinii</I></font></td></tr></TABLE></center></td><td valign='top'><br><br> From the southern area of Argentina <I>P. valentinii</I> needs to have fresh air and as cool an area in the collection as possible.  Still with as much light as possible.  The plant grows from a large tuberous root.  Like all the <I>Pterocactus</I> the root can be as much as 90% of the plant.  I have to assume that in habitat the joints or the plant are blown away as they detach quite easy. Like a lot of the <I>Opuntia</I>, propagation is from joints being blown around by the wind.</td></tr><td valign='top'><br><br>In cultivation, the plant gets to about 5 cm tall, and I have managed to get one plant to 14 or 15 cm across.  The plant joints are covered with white soft spines.  The flowers are to about 2.5 cm across when open wide.  Keep dry over the winter.  I give regular watering and feeding during the growing season.  A great plant for any collection as it does not need to be kept warm over winter.  It does not take much room.</td><td valign='top'><TABLE><tr><td><img src=' pterocactus valentinii2.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Pterocactus valentinii</I></font></td></tr></TABLE></center></td></tr></TABLE></center>");
+
+fmart ("Prez Sez'","Linda Delgado","Have you ever had a really bad day that made you want to go back to bed, pull the covers over your head, and just close your eyes and sleep until it all goes away?  Days like this happen, and the difference between giving into despair and overcoming it may be within your reach, if you just make the effort.</P><P>When my kids were teenagers, I had many days when I thought that I had made the biggest mistake of my life to become a parent.  One time it was so bad that I decided that I needed to get away for a while or I would be on the six o'clock news.  I got about a block away from my house and found a quarter on the ground.  A couple more blocks, and I saw a humming bird nest in a tree that had a baby humming bird in it.  Stepping away from my problems for a few minutes turned a disastrous day into one of my favorite days.</P><P>I lived in a rented house for 27 years.  I reared my children, planted a cactus garden, and had two dogs.  This house was my home, and I thought that I had it all.  Then my landlord passed away, and his children told me that I had 30 days to get out.  I was devastated.  This event gave me the incentive to get out and buy a house.  Although it didn't turn out to be the house of my dreams, it did show me that I could do it and that I could overcome the feeling that I was at loose ends.  It was up to me to make my way.</P><P>My children are the loves of my life.  At 38 and 36, they still live with me and Roy has given me the daughter of my heart with Lyndsey.  Jim is probably my best friend in the world, and I enjoy spending time with him.  But sometimes I need to get away and enjoy the company of people that share some of my &quot;outside&quot; interests.  The Cactus and Succulent  Society of San Jose has been a place that I can step away from the trials and tribulations of everyday life.  It is a place where I can go and share my love of plants, my thirst for knowledge, and my joy in having friends that share my interests.</P><P>So, the next time that you think your day may end up being beyond perfect, step away and see what lies on the other side of the block.  Enjoy the world around you and share your joy with your friends.  Make the effort to be a part of the world that we live in instead of just being an observer.  There are many opportunities in our club and our world.  You just have to make the effort.");
+
+fmart ("Bill Kurtz Fell","Rich Kroll","By now most of us have heard that Bill fell and broke his hip.  It is hard not to notice Bill's absence.  It seems as if whenever this club has a success, Bill had something to do with the planning, execution, or logistics.  I am editing this month's newsletter without Bill's help.  That is a first for me.  Bill has always been there making certain that I do not fail or telling me not to obsess over the mistakes I make.  That made editing the newsletter a lot easier for me.  I will be glad when he gets back to being the Curmudgeon that Enabled Christmas.");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>

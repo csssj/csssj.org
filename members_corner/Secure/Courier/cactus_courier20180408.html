@@ -1,0 +1,395 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/8/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/8/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "8";
+var thisyear = "2018";
+var nextmonth = "Show &amp; Sale";
+var nextday = "28-29";
+var nextyear = "2018";
+var deadline = "April 20, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April 2018","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Prepping Plants for the Show &amp; Sale","28-29 Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","49<sup>th</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+fmcal ("May 2018","13, Sunday - 8:00am to 3:00pm","Field Trip to Ruth Bancroft Gardens","","","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2018","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Succulents from seeds","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Prepping Plants for the Show &amp; Sale</B><br>
+<br>
+<P>
+April’s program will be a round table on preparing your plants for the Spring Show and Sale, led by Roger Lane, who has many years experience on a variety of aspects of showing plants at different venues.  Please come prepared to ask lots of questions – especially you novices.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your cactus prepped for Best of Show</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your succulent prepped for Best of Show</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Dish or mixed planting (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Your best plant</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Hurray for our volunteers, who help make this club successful!  Here are some of the newly filled positions:</P><P>I would like to give a shout-out to JoAn Lambert, who has recently stepped up to take over copying and mailing out the hardcopies of the newsletter to those members who don’t have internet access.  She’s doing a great job on this.  Thanks JoAn!</P><P>Another hurray for Bobbi Bornstein, who is taking over the Volunteer Coordinator task of keeping track of who signed up to do what at the next Show &amp; Sale.  See her list elsewhere in this newsletter.  Take a look and remind yourself of what you’ve already signed up for, and if you still haven’t signed up, take a look at the areas where we’re still thin on volunteers.  Contact Bobbi to sign up, or add your name to her list at the April general meeting.  Remember the incentives you get for volunteering, reviewed later in this article.</P><P>Our hospitality chair Terri Koike is also keeping track of who promised to bring which side dish for lunch on Sat/Sun at the Show &amp; Sale.  That way we don’t end up with multiple people bringing the same thing, and Terri can see where the holes are.  Contact Terri if you’re not already on her list.  ALL club members are welcome to eat lunch with us on Sat/Sun, whether you’re volunteering or not.</P><P>Another shout-out to Dan Martinez, who has offered to begin to tackle the BIG task of Co-Treasurer for Sales, as defined in last month’s Courier.  Sonia Dyer and Roger Lane will be helping bring Dan up to speed.</p><P>We’re still looking for someone to perform the Co-Treasurer for Insurance job, as defined in last month’s Courier.</P><P>And hurray for Svetlana Bellam and Roger Lane for picking up the ball for managing the Show aspect of our Show and Sale.  Roger has also previously agreed to handle the dispensing of ShowBucks.</P><P>-------------------</P><P>Our annual Spring Show and Sale is coming up the last weekend in April.   It will again be held at Peterson Middle School on Rosalia St in Sunnyvale.  There will be a map on our web site and in our next newsletter, showing where it is, in case you haven’t been there before.   We will be setting up on Friday April 27 (tables are supposed to be delivered between 3:30-4:30pm), and the Sale will be Sat and Sun, April 28-29.   Teardown will be 5-7pm on Sunday, and we particularly need more helpers for that, since everyone will already be tired and ready to go home.  The more helping hands we have, the faster we’re done and outta-there.  See separate listing on &quot;Volunteering for the Show and Sale&quot; created by Bobbi Bornstein later in this newsletter.</P><P>As usual, our membership chair Sandy Carter, will distribute the new Club Roster in April.  I’m not sure if she will be bringing them to the regular April general meeting, but they will be available at the Show &amp; Sale in late April for sure.  Some will also be available from me at subsequent regular club meetings.  Make sure your info in it is correct, especially if you’re new, or if your information has changed in the last year.</P><P>Previous Show Director Jaan Lepson reported last time there were surprisingly few Newbies entering plants in the Show.  Give it a shot this time!  It isn’t hard to enter, and you might find yourself taking home several nice ribbons or even a pot in the Novice Category.  If you’re a beginner, you won’t be competing against more experienced people.   If you’ve already been showing off your plants in our monthly mini-shows, it will be a piece of cake!  Contact Svetlana Bellam or Roger Lane if you want to give it a try.  ALL show plants must be brought in on Friday evening to be registered, NOT on Saturday morning, as professional judging will already be underway.</P><P>Policy Changes:</P><P>One policy change with respect to non-member early-bird shoppers should be noted.  The October 2017 sale was the last sale in which non-member early-bird shoppers were allowed.   Some customers had become accustomed to showing up well before the sale actually opened.  In the past, they had been allowed to come in and browse even though some vendors were still setting up, with the understanding that they can’t pay for anything until after official starting time, and the cash registers are open for business.  Unfortunately word got around among the customers to the point that it became a problem.</P><P>The club’s Board of Directors agreed last fall with Peter Beiersdorfer’s request that this early-bird practice be stopped for non-club members, which we will do starting in our Spring 2018 Sale.  This also matches the policy used at the San Francisco club’s show, which keeps their doors locked until the sale officially opens.  Last time, I chatted with the non-club early-birds as they arrived, and made them aware of this upcoming change, so they would not be taken by surprise.  They will also no longer have the option of joining our club on the spot to get early-shopping privileges.  Starting with this spring, the reminder postcards sent out to non-member customers also say &quot;No Early-Birds!&quot;, as will our web site and social media pages.<?P><P>Early-bird shopping is still allowed for pre-existing club members.  One of the benefits of club membership are that you are allowed to come in one hour before official opening time on Saturday and Sunday morning, to do a little private shopping before the big crowd arrives.  Some of the vendors will still be finishing their setup on Saturday morning – stay out of their way!  You will have to put your selections in the Plant Hotel until the Sale opens, as the cash registers will not be available before then.</P><P>What about Friday evening early-bird shopping for club members?  This is still available, but continues to ONLY be available to those helping with setup.  Do NOT show up after setup is done, just to do first-choice early-bird shopping, and eat free pizza!   These rewards are expressly for those who help with setup.  If you see someone violating this policy, confront them about it, or tell me, and I’ll confront them myself.</P><P>At the last board meeting, it was decide to retain the existing PostCard discount policy, as reviewed in one of last fall’s newsletters before the Fall Show.  In short, the ONLY reason postcards (and equivalent emails) are sent out is to inform non-club member former customers about our next show date, to get them to come back.  The postcards contain a very small discount as an incentive to get these people to attend.  People who already are club members are expected to get their information from the club newsletter, and to make use of the other types of incentives available to club members.  If someone on this PostCard mailing list joins the club, it may take a while to prune their names off the list.  If they still get one of these postcards, the club will still honor it, as it’s the club’s fault their name is still on the list.</P><P>Also at the last Board Meeting, the subject of revising the ShowBucks policy was partially addressed.   It was decided that the distribution of ShowBucks will be made more generous on Saturday and Sunday.  Non-vendor club members will now receive $10 in ShowBucks for every TWO hours they volunteer on Saturday, and ANOTHER $10 in ShowBucks for every TWO hours they volunteer on Sunday, including teardown.  On the other hand, it was decided that the folks who volunteer to help at Friday’s setup, already get the primo bennies of first-choice early-bird shopping, as well as free pizza to thank them for their labors, and that they would not also receive ShowBucks on top of that.  Small-time vendors who sell less than 20 items on the membership table are still eligible for ShowBucks for Saturday and Sunday.  We will try this new policy at the Spring Show &amp; Sale, and see how it works out.  If you have objections to this revised policy, you are welcome to voice them at a future Board Meeting, or via email to a current Board Member.</P><P>The Board of Directors is still working on a decision about how vendors should be rewarded for the time they put in helping during the show and sale, doing the necessary jobs like door security and running the cash registers.  The contract vendors sign in order to sell at our sale includes their agreement to the following requirements:</P><P>Vendors will be assigned work duties (cash register operation, sales security, plant hotel, box prepping.) based on the total number of tables allocated.  Each table requires one hour of work.  A duty list will be made and posted by the cash register. Volunteers from among CSSSJ will also be on hand to assist.  All club members participate strictly on a volunteer basis and are not compensated for their duties.  Non-vendor substitutes for work duties are not allowed.</P><P>Vendors are expected to assist in the setup and breakdown of the Show &amp; Sales area.</P><P>Show &amp; Sales chairs will provide leadership and work with vendors to ensure that the show/sale setup, breakdown, and cleanup are done in compliance with the Peterson Middle School requirements.  Volunteers from the CSSSJ will also be on hand to assist.</P><>P>In other words, vendors are already required to put in time helping as part of their contract.  However, it is recognized that some people who are vendors put in far more time than the average vendor does, both before and during the Show &amp; Sale, and the Board agrees they should be rewarded.  There is also the question of how to reward club members who are not vendors who put in lots of time before and during the show and sale to make it successful.  The Board agrees that these people should also be rewarded in some way for their hard work.</P><P>The topics in the above paragraph will be the primary items of discussion at the next Board Meeting, to be held 10:30am-noon before the April general meeting.   All club members who have an interest in this topic are welcome to attend and contribute their inputs, but keep in mind that only official Board Members have a vote on the final decisions.</P><P>One thing to look forward to at the April general meeting is that club member and popular potter Joseph Hidalgo will be bringing a variety of his unusual and artistic pots for sale.  His prices are reasonable, so bring cash or check to stock up at this great opportunity, especially if you have a mind to enter plants in the Spring Show.</P><P>And last, but not least, put Sunday May 13th on your calendar.  In lieu of our regular monthly meeting in May, we will be having a field trip to Ruth Bancroft Gardens in Walnut Creek.  Monica Moran, who recently took over as Program Chair, needs to know in advance how many people plan to attend, so let her know if you expect to be there.  Parking is limited, so arrange carpools on your own if you can.  They’ve added a plant sales area since last time I was there, so bring your camera, a sun hat, a water bottle, and some spending money.   Monica has requested that their Curator Brian Kemble be one of our tour guides, if he is available.  Also check out the Bancroft Garden web site, and you may also be interested in signing up for their monthly newsletter.  Let’s see what’s growing at this great spot before the weather gets hot!</td></tr></TABLE></center>");
+
+fmart ("Welcome New Members","Sandy Carter","","<center><TABLE width='90%'><tr><td valign='top' colspan=3 align='center'>Please join us in welcoming them:<br><br></td></tr><tr><td valign='top' align='center'>Svetlana Bellam<br>Rebekah Carlson<br>Janice Chen<br>Jason Chin &amp; Sammi Kam<br>Alex Hermes</td><td valign='top' align='center'> Allen Krever &amp; Bobbi Bornstein<br>John & Jackie Link<br>Elly McRae<br>Angela Pferdt<br>Arlene Rose<br>Lars Rosengreen</td><td valign='top' align='center'>Irene Shapiro<br>Ren You<br>Jeff &amp; Annie Wolf<br>Mark &amp; Maggie Womack<br>Domingo &amp; Liliana Ramos</td></tr><tr><td valign='top' align='center' colspan=3><br>Our active membership is now: 206</td></tr></TABLE></center>");
+
+
+fmart ("Free Plants","","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('maleski01.jpg',998,563)><img src='maleski01.jpg' width=299 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('maleski02.jpg',574,773)><img src='maleski02.jpg' width=224 height=301 hspace=17 vspace=17 align='right' class='enl'></a><br><br>A lady in Los Gatos can no longer move or care for some large potted cacti on her deck.  The deck is going to be replaced soon.  She would like to give these plants to someone who would appreciated them.  If interested, contact Janet Maleski at <a href='mailto:jmaleski3@gmail.com'>jmaleski3@gmail.com</a>.</td></tr></TABLE></center>");
+
+fmart ("March Mini Show Winners","Bill Lemke","Allen Krever and Bill Lemke","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('ak1515.jpg',1021,980)><img src='ak1515.jpg ' width=306 height=294 hspace=17 vspace=17 align='left' class='enl'></a><br><br><B>Cactus: <I>Epilantha</I></B></P><P><B> &nbsp; &nbsp;  Advanced:</B> Peter Beiersdorfer - <I>Epithelantha micromeris</I><br> &nbsp; &nbsp; <B>Novice:</B> Svetlanna Belllam - <I>Epithelantha</I> </td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('ak1513.jpg',631,990)><img src='ak1513.jpg' width=189 height=297 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B>Succulent: Novelty or non-traditional plantings</P><P> &nbsp; &nbsp; Advanced: </B>Cecelia Caday<br> &nbsp; &nbsp; <B>Novice:</B> Svetlanna Bellam - Pink Coral Euphorbia</td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('ak1512.jpg',1000,1000)><img src='ak1512.jpg' width=300 height=300 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('ak1509.jpg',809,740)><img src='ak1509.jpg' width=243 height=222 hspace=27 vspace=17 align='right' class='enl'></a><br><br><B>Something Special: Bonsai succulent (or your choice)</P><P> &nbsp; &nbsp; Advanced:</B> Jaan Lepson - <I>Turbincarpus valdeziamis</I><br> &nbsp; &nbsp; <B>Novice:</B> (tie)<br> &nbsp; &nbsp; &nbsp; &nbsp; Svetlana Bellam - <I>Ficus microcappa</I><br> &nbsp; &nbsp; &nbsp; &nbsp; Renu James-<I>Echeveria aggavoides </I>&quot;Lipstick&quot;</td></tr></TABLE></td></tr><tr><td valign='top'><TABLE><tr><td valign='top'><a href=javascript:poppic('sedumhintonii.jpg',936,670)><img src='sedumhintonii.jpg' width=281 height=201 hspace=27 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('sedumfirestorm.jpg',1008,800)><img src='sedumfirestorm.jpg' width=302 height=240 hspace=27 vspace=17 align='right' class='enl'></a><br><br><B>Beginners Luck: Sedum or sedum hybrid</B></P><P> &nbsp; &nbsp;  (tie)<br>  &nbsp; &nbsp; Bill Lemke - <I>Sedum hintonii</I><br> &nbsp; &nbsp; Allen Krever - <I>Sedum adolfii </I>&quot;Firestorm&quot; </td></tr></TABLE></td></tr><tr><td valign='top'>Members are encouraged to bring in plants for the Mini Shows. Members can see what and how others grow cacti and succulents and the vast variety of plants that are species or hybrids. Our knowledge in increased and our passion for plants partially satisfied. Hopefully ENVY will not be an issue.</td></tr></TABLE></center>");
+
+fmart ("March Mini Show","Bill Lemke","","<center><TABLE width='90%'><tr><td valign='top'>The plants brought in for display were nice.  Sorry that the cactus category was so restrictive, but I had intended to include &quot;or small cactus&quot; as the category.  It would be appreciated if Mini Show plants were on the tables by 12:15. There is little time to vote etc. before the meeting.</P><P>Here is a reminder on the Mini Show Tips:<br><TABLE cellspacing=7><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Each CSSSJ member can enter a maximum of five (5) plants to show each month.</td></tr><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>If you receive the most points in a category, be prepared to talk about your fabulous plant!</td></tr><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Entering plants is a terrific opportunity to learn how to show plants before our next show and sale.</td></tr><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Top three winners in each category (Advanced and Novice) win beautiful pots at the December Holiday Party.</td></tr><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Members who receive at least 10 points by the end of the year can choose a plant at the December Holiday Party.</td></tr><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Don't miss out on getting valuable votes. It's helpful if you arrive with your plants before or when the meeting begins at 12:30 pm.</td></tr></TABLE></P><P>Also, if you've been CSSSJ member for more than 5 years, then you're in the Advanced category.</P><P>If you have ideas for the Mini Shows, send email to: <a href='mailto:gardenerbill1@aol.com?Subject=Mini%20Show'>gardenerbill1@aol.com</a></P><P> For more info on the Mini Shows, check out:  <a href='http://www.csssj.org/members_corner/Secure/mini_show_rules.html'>http://www.csssj.org/members_corner/Secure/mini_show_rules.html</a></P><P>Want to find a plant from a specific country? Try these links:<br> &nbsp; &nbsp; &nbsp; <a href='http://cactiguide.com/region_search/' target='_blank'>http://cactiguide.com/region_search/</a><br> &nbsp; &nbsp; &nbsp; <a href='http://cactiguide.com/distribution/' target='_blank'>http://cactiguide.com/distribution/</a></td></tr></TABLE></center>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings<br></B><B>by Bill Lemke</B></center></P><P><B>Standings as of March 2018:</B></P><P><center><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Cecilia Caday",22);
+fminiadd ("Kathi Cambiano",43);
+fminiadd ("Sonia Dyer",14);
+fminiadd ("Joseph Hildago",16); 
+// fminiadd ("Marilyn Hofman",0);
+fminiadd ("Terri Koike",11);
+fminiadd ("JoAnn Lambert",13);
+fminiadd ("Jaan Lepson",25);
+// fminiadd ("Susan McKuhen",0);
+fminiadd ("Loyd Monaco",14);
+// fminiadd ("Janet Stevenson",0);
+fminiadd ("Ellen Stubblefield",25);
+fminiadd ("Gary Stubblefield",12);
+fminiadd ("Jacky Wilk",2);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",36);
+// fminiadd ("Harley Barber",0);
+// fminiadd ("Manuela Burge",0);
+fminiadd ("Judianne Ganschow",25);
+fminiadd ("Renu James",21);
+fminiadd ("Allen Krever",15);
+// fminiadd ("Catherine Lau",0);
+fminiadd ("Bill Lemke",48);
+fminiadd ("Dan Martinez",7);
+fminiadd ("Joyce McPheeters",19);
+fminiadd ("Elinor McRae",5);
+fminiadd ("Sherry Merrill",6);
+fminiadd ("Monica Moran",13);
+fminiadd ("Susan Pi",9);
+fminiadd ("Slava Sigal",3);
+// fminiadd ("Janet Sparks",0);
+fminiadd ("Navi West",4);
+fminiadd ("Annie Wolf",4);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+fmart ("Volunteering for the Show and Sale","Bobbi Bornstein","","<center><TABLE width='90%'><tr><td valign='top' align='center'><font size='+2'><B>Fri. Apr 27,2018</B></font><br><br></td><td valign='top' align='center'><font size='+2'><B>Sat. Apr 28,2018</B></font><br><br></td><td valign='top' align='center'><font size='+2'><B>Sun. Apr 29,2018</B></font><br><br></td></tr><tr><td valign='top' align='center'><B>Set up  3:30pm-8pm</B><br>Terri Koike<br>Cecilia &amp; Edwin Caday<br>Bill Lemke<br>Dan Martinez<br>Joyce &amp; Wes McPheeters<br>Monica Moran<br>Janet Stevenson<br>Jacky Wilk<br>Mark Womack</td><td valign='top' align='center'><B>Door Security</B><br>10am-noon Wes McPheeters<br>12pm-2pm  Joe Langolon<br>12pm-4pm  Tanya Wiebeer</P><P><B>Plant  Hotel</B><br>var  Bill Lemke<br>10am-noon Joyce McPheeters<br>1pm-3pm    JoAn Lambert<br>Anytime  Mark Womack<br>noon Dan Martinez</P><P><B>Register Assistants</B><br>10am-noon  Open<br>After noon  Cecilia Caday<br>noon-? Monica Moran<br>noon-? Annie Wolf</P><P><B>Clerks (help judges)</B><br>8am-10am  Jaan Lepson<br>8am-10am  Weiran Liu<br>8am-10am  Shiming Huang<br>8am-10am  Asmita Deshpande</td><td valign='top' align='center'><B>Door Security</B><br>10am-noon Mark Womack<br>12pm-2pm  Joe Langolon<br>2pm-4pm    Weiran Liu</P><P><B>Plant  Hotel</B><br>All Day Dan Martinez<br>10am-noon  Open<br>12pm-2pm   Bobbi Bornstein<br>2pm-4pm     Open</P><P><B>Register Assistants</B><br>All Day Monica Moran<br>???? Cecilia Caday<br>10am-noon  Bobbi Bornstein<br>12pm-2pm   Open<br>2pm-4pm     Open</P><P><B>Tear Done &amp; Cleanup</B><br>4-6pm   Dan Martinez<br>4-6pm  Monica Moran<br>4-6pm Cecilia &amp;Edwin Caday</td></tr></TABLE></center>");
+
+fmart ("Report on the March Meeting","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Our March meeting was a presentation by Keith Taylor of the Sacramento Club on how to bonsai succulents.  I don’t think we’ve ever had a presentation on this topic before, and it was a very popular subject judging from how full the room was.</P><P>Keith brought a number of examples of his award-winning work, including his first one with a VERY large caudex, which now weighs a whopping 150 lb!  I was particularly struck by the gracefulness of the poses of many of his plants, and it gave me good ideas on what to do with some of my plants that have taken it upon themselves to grow in a curved shape.</P><P>Keith emphasizes matching the pot to the plant, and setting the plant off-center in the pot.  Pots with multiple plants should be grouped in 3s or 5s, or some other odd number.  The pot should not outshine the plant.</P><P>Keith is also a very talented potter, and brought some of his unusual pieces for sale, which was a rare opportunity to purchase some of this work.  Some of his pots looked like tree bark, some looked like molten lava,  some were very colorful.</P><P>Everyone left impressed, and with great ideas for their next repotting project.  Thanks Keith!</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:cre8vsucculents@gmail.com?Subject=Membership%20Badge">cre8vsucculents@gmail.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

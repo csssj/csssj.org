@@ -1,0 +1,243 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/10/2007">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/10/2007</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "10";
+var thisyear = "2007";
+var nextmonth = "July";
+var nextday = "8";
+var nextyear = "2007";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Free</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Trade or Sell - Lost and Found</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("June 2007","10, Sunday - 10:30am to 12:00pm","Board Meeting.","10, Sunday - 12:30pm to 3:00pm","Container Planting Hands-on Demo.","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2007","8, Sunday - 10:30am to 12:00pm","Board Meeting.","8, Sunday - 12:30pm to 3:00pm","Trip to Ruth Bancroft Gardens.","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2007","5, Sunday - 10:30am to 12:00pm","Board Meeting.","5, Sunday - 12:30pm to 3:00pm","TBD.","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2007","9, Sunday - 10:30am to 12:00pm","Board Meeting.","9, Sunday - 12:30pm to 3:00pm","Herb Fong  - Stanford Grounds and the Arizona Garden","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2007","6-7, Sat - 9am - 5pm  Sun - 10am - 4pm","2<sup>nd</sup> Annual Fall Show &amp; Sale","","","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("May 2007","5-6","<font size='-2'>Sunset Succulent Society Show &amp; Sale. Culver City, California. Contact Info: 310-822-1783.<br><br>Sacramento C&amp;S Show and Sale, Sacramento Garden Center.</font>","19-20","<font size='-2'>Carmichael C&amp;S Society Annual Show and Sale  Contact: Gerri Wigglesworth: 916-366-1842<br><br>Fresno Cactus &amp; Succulent Society Show and Sale.</font>","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Container Planting Hands-on Demo</B><br>
+<br>
+<P>
+Linda Delgado will present a program on container gardens and novelty containers for gifts and decorations.  This will be a hands-on event with containers and cuttings provided.  Feel free to bring cuttings to share.
+</P>
+<P>
+Marjorie of Newstone Products, Inc. will bring her Rock Art Planters for sale
+</P>
+<br><br><br>
+<P>
+<font size="+1"><B>Plants of the Month for June:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Wooly <I>Mammillarias</I> and hooked-spined <I>Mammillarias</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Echeverias</I>, <I>Fouquieris</I> and <I>Pachycormus</I></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or sculpture</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Opuntia</I> or <I>Gasteria</I></td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with P through Z should bring a snack for the June meeting.</font></B>
+</P>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez'","Linda Delgado","Have you ever looked up the work &quot;<I>society</I>&quot; in the dictionary?  It says &quot;people working together for a common purpose; companionship.&quot;  &quot;<I>Support Group</I>&quot;, on the other hand, is  &quot;a group of people who provide each other moral support, information, and advise on problems related to some shared characteristic or experience.&quot;  Sometime we get the two mixed up.  They are awfully close in definition and both could easily fit into what we have.</P><P>Our society works together for a common purpose and companionship.  I like the way that sounds.  Our common purpose is to promote and explore the word of cactus and succulents.  We do this through the companionship of people that share this interest.  We meet monthly for the common purpose of sharing our joys and sorrows.</P><P>Our support group holds our hands when we experience a freeze and lose a number of our plants.  They share their ideas on the growth and development of our plants.  And, they totally understand this compulsion to accumulate more and more plants than the rest of the world finds to be within normal bounds.</P><P>The members of our society work together to make the club more enjoyable for everyone by bringing in interesting plants, participating in events and sharing their thoughts and ideas.  Our support group understands when we aren't able to be &quot;hands-on&quot; every month.</P><P>In short, our society acts as a support group when needed.  We are there for each other, even when it isn't convenient.  We call each other to say &quot;hi&quot;, if we haven't seen each other for a while or if we feel that our call might be needed.  We ask if we can help each other get to an event, when we aren't able to make it on their own.  And most importantly, we never forget that without each other we are just &quot;that strange plant person.&quot;");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE cellpadding=8><tr><td valign='top'><center><TABLE><tr><td><img src='echinofossulocactus erectocentrus 1.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Echinofossulocactus erectocentrus</I></font></td></tr></TABLE></center></td><td valign='top'><br><br><I>Echinofossulocactus</I> or <I>Stenocactus</I> as some of you are use to calling them come from Mexico.  This being from northern Mexico down to about central Mexico.  There is a lot of confusion as to what plants are what.  I do not think you will find any one that really agrees with any one else on the classification of the plants.  About the only one there is not much arguing about is <I>E. coptonogonus</I>.  The reason is that it stands out so well with its few ribs and short blade like spines.  <I>E. erectocentrus</I> is so named as most plants with that name have a quite long, flat erect central spine.  Again though so do many other members of the family that go under a different name.  As for <I>E. phyllacanthus</I> it has more needle like spines.</td></tr><tr><td></td><td valign='top'><TABLE><tr><td><img src='echinofossulocactus phyllacanthus.jpg' width=320 height=240 hspace=0></td></tr><tr><td align='center'><font size=-2 color='#6699CC'><I>Echinofossulocactus phyllacanthus</I></font></td></tr></TABLE></center></td></tr><tr><td valign='top' colspan=2>All the plants in this family seem to be easy to grow.  Some can make quite nice sized clumps.  Others (for me) make a nice big single head.</td></tr></TABLE></center>");
+
+fminiadd ("Tony Bassano",0,25,35);
+fminiadd ("Peter Beierschor",0,0,12);
+fminiadd ("Chuck Breese",0,0,53);
+fminiadd ("Kathi Cambiano",0,0,50);
+fminiadd ("Heidi Carey",0,0,25);
+fminiadd ("Sandy Carter",0,0,25);
+fminiadd ("Alyene Daggett",0,0,25);
+fminiadd ("Linda Delgado",0,37,0);
+fminiadd ("Sonia Dyer",0,25,0);
+fminiadd ("Bill Gingras",0,66,0);
+fminiadd ("Judy Goodrode",0,25,0);
+fminiadd ("Bill Kurtz",20,0,0);
+fminiadd ("Roger Lane",0,75,0);
+fminiadd ("Jaan Lepson",0,0,14);
+fminiadd ("Bill Munkacsy",48,0,0);
+fminiadd ("Maggie Palecek",0,0,3);
+fminiadd ("Janet Rollin",0,0,25);
+fmini ("May 2007");
+
+fmart ("Faces of the 38<sup>th</sup> Annual Spring Show &amp; Sale","","<center><img src='breeze070424.jpg' width=560 height=373 border=0><br><br><font size='-1'>Photographs by Chuck Breese.</font></center>");
+
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>

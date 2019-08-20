@@ -1,0 +1,278 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/1/2009">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/1/2009</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "1";
+var thisyear = "2009";
+var nextmonth = "March";
+var nextday = "1";
+var nextyear = "2009";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("February 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","Valentines Day Party and Pot luck","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","Mark Muradian - Travel to Bolivia","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2009","4-5, Sat - 9:00am to 5:00 pm & Sun - 10:00am to 4:00pm","39<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2009","3, Sunday - 10:30am to 12:00pm","Board Meeting.","3, Sunday - 12:30pm to 3:00pm","Brian Kemble","","");
+
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2008","26-27, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA<br>Contact Bill Munkacsy 925-935-5213</font>","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+<P>
+<B class=snacks>We will be having a potluck at the February meeting.</font></B>
+</P>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Valentines Day Party and Pot Luck</B><br>
+<br>
+<P>
+<center><font size="+1"><B>Steal a Gift</B></font></center>
+</P>
+<P>
+Everyone who wants to participate brings a gift in a plain brown bag. 
+</P>
+<P>
+This gift should be…
+<TABLE>
+<tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>No more than $10.00 in cost</td></tr>
+<tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>Suitable for a man or a woman</td></tr>
+<tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>Something to do with gardening/cactus/succulents</td></tr>
+<TABLE>
+</P>
+<br>
+<P>
+The gift is placed on a table.  (Do not label it with your name.  Part of the fun is in not knowing who brought what.)
+</P>
+<P>
+After lunch, we will pass around a hat with numbers in it.  Participants will choose a number and that will represent their turn to choose a gift.
+</P>
+<P>
+Number 1 will choose first and open that gift.  Number 2 may choose a new gift or steal the gift from number 1.  If number 2 chose a new gift, that gift is opened.  If number 2 steals a gift, number 1 chooses a new gift. Gifts cannot be stolen back from the person who stole it from you.
+</P>
+<P>
+This will go on until everyone has opened or stolen a gift.  A gift can only be stolen 3 times.  If your gift is stolen, you open a new gift or steal from someone else.  Everyone who brings a gift ends up with a gift.
+</P>
+<P>
+If you choose not to participate you can still come and enjoy watching the exchange.
+</P>
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for February:</font>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>A plant that has red or pink spines or blooms red or pink</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>A plant that looks like a valentine or blooms red or pink</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Anything in bloom or your choice</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>A plant that you fell in love with or your choice</td></tr>
+</TABLE>
+</P>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with A through F should bring a snack for the January meeting.</font></B>
+</P>
+ -->
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='sulcorebutia taratensis.jpg' width=320 height=280 hspace=13 align='left' vspace=5>From Bolivia South America comes a wonderful family of plants.  These are the <I>Sulcorebutia</I>.  The latest book that some people think is Gods final word has put <I>Sulcorebutia</I> under <I>Rebutia</I> along with <I>Weingartia</I>.  Those that are Sulco. collectors will not fall for nor accept that placement.  These plants are quite easy to care for.  If kept dry over winter, most can take temperatures in to the teens.  At 16° F,. I lost a couple plants.  Sulcos, as collectors like to call the plants, start blooming quite early in the spring and continue till late fall.  This is not a continuous blooming, but if you have a lot of different species then you have flowers on some plant about all season long.  In the heat of summer here where I live, the plants go dormant if the night time temperatures stay above about 60°F.  When the night temperatures drop again and the plants come out of dormancy, they then put on another show.  Here in the central valley, I give the plants lots of fresh air and some shading from the summer sun. </td></tr><tr><td valign='top'><img src='sulcorebutia steinbachii v krainziana.jpg' width=320 height=280 hspace=13 align='right' vspace=5><br>Sulco flowers range from white through a dark velvet red.  They add a real splash of color wherever they are placed.  This can happen 3 to 5 or so times a season.   Sulcos are nice plants for a small green house, because they will take some years to fill a 6 inch pan.  Most of the plants have heads under 6 cm in diameter.  There are those that have heads to about 14 cm across.  One of the best known Sulcos is <I>rauschii</I>.</td></tr></TABLE>");
+
+fmart ("WhatIzIt Table","Jaan Lepson","January's program was headlined by popular seller and CSSA's Master Grower, Elton Roberts, who gave an informative and entertaining presentation on acidity and watering.  I had always assumed that rainwater is neutral (pH 7), but Elton gave us handouts of rainfall acidity in the US, and I was surprised to see that rainwater is actually naturally slightly acidic (pH 5-5.5).  In contrast, city water is treated to be alkaline (ph 8-8.5), which binds to the nutrients in the soil and makes it harder for plants to grow.  In the wild, many cacti and succulents grow in alkaline soils, but the water they get from rain is acidic.  Elton demonstrated how to measure pH values, enlisting Judy as his lovely assistant, and showed us how to bring the pH value to that of rain water by using vinegar or citric acid.  As a bonus, Elton had small pH kits for sale, which a number of us bought to play with at home.</P><P>We also debuted the &quot;Whatizit&quot; feature, where we share our knowledge to try to identify members' mystery plants.  Although a few remained incognito, Elton and others identified several of our plants.  Finally, the mini show was reorganized, which made it easier to sort and rate the entries.");
+
+fmart ("2009-2010 Officers and Committee Chairs","","<center><br><font size='+1'><B>Officers</B></font><P><I>President</I> - Linda Delgado<br><I>Vice President</I> - Chuck Breese<br><I>Treasurer</I> - Roger Lane<br><I>Secretary</I> - Sandy Carter<br><I>Associate</I> - Alyene Daggett<br><I>Associate</I> - Tony Bassano<br><I>Associate</I> - Kathi Cambiano / Sonia Dyer (Split one position)<br><I>Past President</I> - Bill Munkacsy<br><I>Board Member Emeritus</I> - Bill Kurtz</P><br><P><font size='+1'><B>Committee Chairs</B></font></P><P><I>Affiliate Representative</I> - Carole Keeton<br><I>Annual Sale</I> - Chuck Breese / Bill Munkacsy<br><I>Annual Show</I> - Bill Gingras/ Peter Beiersdorfer &amp; Jaan Lepson<br><I>Door Prizes and Raffle</I> - Bill Kurtz<br><I>Hospitality</I> - <I>Open</I><br><I>Librarian</I> - Linda Delgado<br><I>Mini-Show</I> - Linda Delgado, Bill Munkacsy &amp; Kathi Cambiano<br><I>Newsletter Editor</I> - Rich Kroll<br><I>Newsletter Staff:</I> Joan &amp; Bill Kurtz<br><I>Program</I> - Bill Kurtz<br><I>Membership</I> - Sandy Carter<br><I>Questions: We have questions</I> - Chuck Breese &amp; Peter Beiersdorfer</center>");
+
+fminiadd ("Tony Bassano",0,25,0);
+fminiadd ("Peter Beiersdorfer",0,18,0);
+fminiadd ("Chuck Breese",0,0,0);
+fminiadd ("Kathi Cambiano",0,0,16);
+fminiadd ("Heidi Carey",0,0,0);
+fminiadd ("Linda Delgado",0,0,0);
+fminiadd ("Bill Gingras",0,0,0);
+fminiadd ("Joseph Hidalyo",0,0,25);
+fminiadd ("Bill Kurtz",0,0,0);
+fminiadd ("Roger Lane",0,0,0);
+fminiadd ("Jaan Lepson",0,0,18);
+fminiadd ("Bill Munkascy",25,0,0);
+fminiadd ("Maggie Palecek",0,0,0);
+fminiadd ("Janet Rollin",0,0,11);
+fminiadd ("Ellen Stubblefield",0,14,0);
+fminiadd ("Gary Stubblefield",0,4,0);
+
+fmini ("Mini Show standings as of January 2009:");
+
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

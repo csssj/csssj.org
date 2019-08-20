@@ -1,0 +1,323 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/7/2015">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/7/2015</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "7";
+var thisyear = "2015";
+var nextmonth = "July";
+var nextday = "12";
+var nextyear = "2015";
+var deadline = "July 3, 2015";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("June 2015","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","Joseph Hidalgo - Adromischus","","");
+
+document.write("<br><br>");
+
+
+fmcal ("July 2015","12, Sunday - 10:30am to 12:00pm","Board Meeting","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2015","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2015","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<TABLE cellspacing=13 cellpadding=13 border=5 bordercolor='#FF0000'><tr><td><font color='#990000' size='+1'><center><B>Note that the dates for the Spring Show and Sale have changed.</B></center></font></td></tr></TABLE><br><br>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+// document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Joseph Hidalgo - Adromischus</B><br>
+<br>
+<P>
+<img src='adro filicaulis.jpg' width=400 height=305 hspace=17 vspace=17 align='left'>Joseph has been growing xerophytes since 1989 and has been an active club member for over a decade.  Over the years, his interest has peaked and waned with different genera.  He has extensively grown many species of <I>Lithops</I>, <I>Pelargonium</I>, <I>Othonna</I>, <I>Tylecodon</I>, <I>Conophytum</I>, <I>Pachypodium</I>, <I>Haworthia</I>, <I>Gasteria</I>, as well as many asclepiads, african bulbs, pachycauls and caudiciforms.  Many from seed.  As well as being a plant geek, He is also a sought-after potter.
+</P>
+<P>
+The Genera <I>Adromischus</I> is part of the family <I>Crassulaceae</I> which contains many popular plants in succulent collections.  Some members in this vast plant tribe include <I>Echeveria</I>, <I>Kalanchoe</I>, <I>Sedum</I>, <I>Dudleya</I>, <I>Crassula</I>, and <I>Cotyledon</I> among others.  Some of Mr. Hidalgo's all-time favorite plants are in this family, namely species of <I>Tylecodon</I> and <I>Adromischus</I>. <I>Adromischus</I> are all from Southern Africa.  Plant fanatics collect them for their shapes, markings, and compact habit.
+</P>
+<P>
+He will be bringing hand-crafted pots for sale.
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Parodia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Portalaca</I> or <I>Portulacari</I> (<I>Portulacaceae</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Adromischus</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Cacti or Succulents from Brazil or Bolivia</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><B>The meeting will be held in the Meeting Hall</B></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Adromischus","","<center><TABLE width='90%'><tr><td valign='top'>Here are some more photographs from the June presenter, Joseph Hidalgo:</P><P><center><TABLE><tr><td><img src='adro halli.jpg' width=400 height=380 hspace=17 vspace=17></td><td><img src='pottery4.jpg' width=400 height=267 hspace=17 vspace=17></td><td><img src='adro1.jpg' width=300 height=490 hspace=17 vspace=17></td></tr></TABLE></td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='kalanchoe synsepala.jpg' width=400 height=340 hspace=17 vspace=17 align='right'><br><I>Kalanchoe synsepala</I> comes form Madagascar.  It is a wide leafed plant that is quite variable in leaf shape.  Being from Madagascar, it needs to be kept above freezing over the winter.  In a hanging pot, the plant sends out shoots that form plantlets at the end.  If left on, these will get to about 10 or more cm across and send out roots.  In habitat, these shoots root, and the plant spreads.  The flower heads are to about 5 to 7 cm across.  The flowers them selves are only about 7 or 8 mm across.  My plants have flowers from white to off white to a delicate pink.</td></tr><tr><td valign='top'><img src='kalanchoe synsepala p-fl.jpg' width=400 height=340 hspace=17 vspace=17 align='left'><img src='kalanchoe synsepala w-fl.jpg' width=400 height=340 hspace=17 vspace=17 align='right'><br>Some years ago soon after getting several plants going, I entered the hothouse, and there was a sweet smell.  I searched for weeks to find what the smell was coming from.  Finally after maybe a month, I happened to look up and saw <I>K. synsepala</I> in bloom.  I took a smell and that was where the sweet smell was coming from.</td></tr></TABLE></center>");
+
+
+fmart ("Help!","Rich Kroll","<center><TABLE width='90%'><tr><td valign='top'><img src='rlk2811.jpg' width=300 height=294 hspace=17 vspace=17 align='left'><br>I have a large and beautiful specimen of <I>Ferocactus gracilis</I>.  It has vibrant flowers and is free flowering.  As you can see from the picture, I have a problem.  The primary column is falling over.  What I would like to do is remove this column without losing the pups and without damaging the plants around it.  I am asking the members of the club to help me do this.  In exchange, I am offering the primary column.  Even cut off at a quarter of its length, it would be the start of an impressive planting.  (This was the size of the plant, when I first got it.)  Contact me at 408-281-1290 or email to <a href='mailto:rkroll@aol.com?Subject=Ferocactus'>rkroll@aol.com</a>.</td></tr></TABLE></center>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B> Standings as of May 2015:</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",100);
+fminiadd ("Kathi Cambiano",114);
+fminiadd ("Linda Delgado",25);
+fminiadd ("Debbie Ellis",21);
+fminiadd ("Joseph Hidalgo",50); 
+fminiadd ("Jaan Lepson",125);
+fminiadd ("Loyd Monaco",75);
+fminiadd ("Joel Parker",20);
+fminiadd ("Ellen Stubblefield",100);
+fminiadd ("Gary Stubblefield",70);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Barber",5);
+fminiadd ("Harley Barber",10);
+fminiadd ("Manuela Burge",37);
+fminiadd ("Cecilia Caday",51);
+fminiadd ("Alice Caperton",10);
+fminiadd ("Claudia Damiani",38);
+fminiadd ("Marilyn Hofman",7);
+fminiadd ("Tom Hofman",12);
+fminiadd ("Terri Koike",95);
+fminiadd ("Joan Lambert",60);
+fminiadd ("Wendy Levine",97);
+fminiadd ("Susan McKuhen",11);
+fminiadd ("Lois McPherson",25);
+fminiadd ("Therese McQuillan",112);
+fminiadd ("Sherry Merrill",23);
+fminiadd ("Alex Morgan",25);
+fminiadd ("Michael Murphy",11);
+fminiadd ("Katya Romanova",20);
+fminiadd ("Diane Salewski",10);
+fminiadd ("Ross Smith",16);
+fminiadd ("Janet Stevenson",27);
+fminiadd ("Jacky Wilk",6)
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club vice president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

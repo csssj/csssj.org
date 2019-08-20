@@ -1,0 +1,249 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 9/7/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 9/7/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "September";
+var thisday = "7";
+var thisyear = "2008";
+var nextmonth = "October";
+var nextday = "4-5";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("September 2008","7, Sunday - 10:30am to 12:00pm","Board Meeting.","7, Sunday - 12:30pm to 3:00pm","Kathy Hendig - Pottery Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2008","4-5, Sat 9am-5pm - Sun - 10am to 4pm","3<sup>rd</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2008","2, Sunday - 10:30am to 12:00pm","Board Meeting.","2, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2008","14, Sunday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2008","26-27, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA<br>Contact Bill Munkacsy 925-935-5213</font>","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><font size="-1"><B> Note the change in the dates for the Spring Show and Sale </B></font></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Kathy Hendig - Pottery Workshop</B><br>
+<br>
+<P>
+For the cactus and succulent planter demonstration, members will need to bring some supplies in order to make their own cactus/succulent planter.
+</P>
+<P>
+Please bring the following:
+<OL>
+<li>A bowl or other container that is a suitable shape for a planter.  It will be used as a support for the clay.
+<li>A towel.</li>
+<li>A piece of cloth to work on.</li>
+<li>A small plastic container for water.</li>
+<li>A knife and fork.</li>
+<li>A small sponge.</li>
+<li>Anything that might make as interesting texture or design on the clay.</li>
+</OL>
+</P>
+<P>
+I will be bringing the clay and some of my tools, etc.  I will do a short demonstration on the coil, slab, and pinch hand building techniques.  I’m looking forward to seeing everyone.  Please come prepared to have fun!  
+</P>
+<P>
+(Note that there is a $10.00 charge to cover the cost of the materials provided by the presenter and the cost of firing your planter.)
+</P>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for September:</font>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants native to Chile (<I>Copiapoa, Eulychnia, Trichocereus</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>South American Succulents (<I>Dykias, Echeverias</I>)</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or something educational</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Dish Garden</td></tr>
+</TABLE>
+</P>
+<br>
+<P>
+<B class=snacks>Members with last names starting with G through M should bring a snack for the September meeting.</font></B>
+</P>
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='sulcorebutia vanbaelii.jpg' width=320 height=280 hspace=16 vspace=0 align='left'></td><td align='top'> From Bolivia, a couple very bright flowering plants to brighten any day.  Even if it is dull and overcast or raining.  The names have disappeared under <I>Sulcorebutia krugeri</I>.  I think as <I>ssp. hoffmannii</I>.  I kind of liked the names that are given here. The plants are easy growing and just need to be protected from the heat of the Central Valley where I live.  Some shade, and they grow with out any problems.  I keep them dry over the winter.  They clump quite nicely although <I>vanbaelii</I> is a lot slower than <I>bicolor</I>.<br><img src='sulcorebutia bicolor.jpg' width=320 height=280 hspace=16 vspace=9 align='left'></td></tr></TABLE>");
+
+fmart ("Bill Kurtz in Recovery","Rich Kroll","I am sorry to have to report that Bill Kurtz fell a couple of weeks ago.  He broke a bone and underwent surgery at El Camino Hospital.  Since then, he has been transferred to the Manor Care rehabilitation facility.  The last time I talked with him, he was doing well and was in good spirits.  Please send get well cards or flowers to his home at 1700 Jeffery Court, Santa Clara, CA, 95051.");
+
+fmart ("Overcoming Judge Dread","Peter Beiersdorfer","<img src='peter0800819.jpg' width=238 height=253 vspace=5 hspace=5 align='left'>Overcoming judge dread was the topic of our meeting on July 13.  Jon Dixon, an experienced cactus and succulent show judge, came to our meeting and explained how judges score plants.  He told us about presentation, potting, and culture.  Here are some of the points he mentioned that raise or lower the score of a show plant.</P><P><TABLE><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>Improve the appearance of a plant by removing old flower stalks, dry leaves, or damaged parts.  On a caudiciform, this may mean removing the above-ground rootlets.  Remove debris from the pot.</td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>Some plants benefit from taking off extraneous leaves or branches to give the plant a &quot;thrifty&quot; appearance.</td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>The size of the pot should be proportionate - don't have a pot that is too large compared to the plant; try to avoid overly decorative pots.  Center the plant. </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>Add decorative mulch or top dressing. </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td valign='top'>A tag with the plant's name is okay, but remove price tags and nursery labels.</td></tr></TABLE></P><P>Jon emphasized that the most important aspect in judging a plant is how well the plant has been grown - &quot;good culture&quot; is paramount.  For example, the plant's color tells the judge about its exposure to light - too much, too little, or just right.  A fast growing plant may imply vigor.  Although blooming is not to be considered, it also shows good culture and may give a few extra points.  Harder to grow plants may get more attention by judges, even if they have a few more blemishes.  And most judges have a special place in their heart for plants that they were not able to grow themselves.</P><P>Our next show and sale is coming up soon October 4 &amp; 5. This is a great opportunity to pick a plant you think shows &quot;good culture,&quot; to spiff it up a bit, and enter it in the show.");
+
+document.write ("<TABLE><tr><td valign='top'>");
+
+fmart ("Photos from Home","Kathi Cambiano","This is a new series of articles suggested by Kathi Cambiano.  Many of us have plants that are inconvenient or impossible to bring to meetings or shows for a variety of reasons.  Members are encouraged to send descriptions and pictures of such plants to csssj@ckart.com for publication in the Courier.</P><P>This first article comes from Kathi Cambiano:</P><P>This is my &quot;U-Turn Plant&quot;.  This plant has hung over the side of the pot until it hit the cement and now has begun to go back in the direction that it came from.");
+
+document.write ("</td><td valign='top'><img src='courier080907.jpg' width=254 height=435 vspace=5 hspace=13></td></tr></TABLE>");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

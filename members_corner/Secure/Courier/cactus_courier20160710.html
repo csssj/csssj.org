@@ -1,0 +1,342 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/10/2016">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/10/2016</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "10";
+var thisyear = "2016";
+var nextmonth = "August";
+var nextday = "14";
+var nextyear = "2016";
+var deadline = "August 5, 2016";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resize=yes,menubar=no,location=no,titlebar=no";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("July 2016","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2016","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2016","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2016","8-9 Sat 9:00am to 5:00pm - Sun 10:00am to 4:00pm ","11th Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2016","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<TABLE cellspacing=13 cellpadding=13 border=5 bordercolor='#FF0000'><tr><td><font color='#990000' size='+1'><center><B>Note that the dates for the Spring Show and Sale have changed.</B></center></font></td></tr></TABLE><br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+// document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Country Store</B><br>
+<br>
+</P>
+If you have been to our Country Store before, you know that this is one of the most fun events of the season.  It is a great opportunity for you to share with your fellow members. (Bring plants that you think other members would enjoy, unless you are looking forward to taking them back home yourself.  If you bring desserts, make certain that they are individually wrapped.)
+</P>
+<P>
+Here is how it works.  First separate tables are set up for each category, cacti, succulents, associated items, and desserts.  Then we all buy tickets at five tickets for a dollar.  Members can use their tickets in whatever categories they like.  A board member for each table picks tickets, and each winning member in the order their ticket was selected gets their pick of what is on that table.  This is repeated until the Country Store is done or everyone dies laughing.
+</P>
+<P>
+No MiniShow is planned for this meeting because of the Country Store.  Of course, if you have something of particular interest, you are welcome to bring it.
+</P>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I>Ferocactus</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I>Peperomia</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> Will this look good in a windowbox? Anything hanging*, tall, full, or colorful, e.g., <I>Senecio</I>, <I>Sedum</I>, <I>Crassula</I>, <I>Aeonium</I>, rat tail cactus, etc (or your choice)<br>
+<br>
+<font size="-2">* Make sure you bring something to support your hanging plant.</font> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Variety is the spice of life – variegated cacti or succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Volunteer Opportunities","Sonia Dyer","<B>&quot;Spotlight&quot; Columnist</B> - &quot;Spotlight&quot; is a new frequent column for our newsletter that focuses on one of our club members, so we can all get to know each other better.  The articles can include information on how the person got into cactus/succulents, what their favorites are, how long they've been in the club, any special contributions they make to the club, what their other hobbies are, their families, what they do for a living, and any other information they'd like to share.  The person can be interviewed in person, by phone, or by email.  A photo should be included, either provided by the person being interviewed, or snapped by arrangement with the Club Photographers (Wes and Joyce McPheeters at <a href='mailto:jom0110@yahoo.com?Subject=CSSSJ%20Photos'>jom0110@yahoo.com</a>).   The article and photo would be forwarded by email by the Columnist to the Newsletter Editor, Rich Kroll, at <a href='mailto:rkroll@aol.com?Subject=Column'>rkroll@aol.com</a>.</P><P>If you enjoy people and are interested in helping the club by volunteering for this position, please contact the Club Secretary Sonia Dyer at <a href='mailto:sonia.dyer@sbcglobal.net?Subject=Columnist'>sonia.dyer@sbcglobal.net</a>.");
+
+fmart ("Club Photographers","Rich Kroll","<TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('mcph0019.jpg',1020,700)><img src='mcph0019.jpg' width=408 height=280 hspace=17 vspace=17 align='left' class='enl'></a><br>Wes and Joyce McPheeters have volunteered to be our club's photographers.  They will be taking pictures at meetings and events.  Please help them in any way you can.  Providing them with information about the people and plants they are photographing would be great.  We are still in the process of working out how the club will make use of their work.  If members have suggestions, send them to me at <a href='mailto:webmaster@csssj.org?Subject=Photo%20Suggestion'>webmaster@csssj.org</a>.</td></tr></TABLE>");
+
+fmart ("<TABLE><tr><td><img src=' welcomecactus.gif' width=77 height=121></td><td valign='bottom'><center><B class='arthead'>WELCOME NEW MEMBERS</B><br><B>by Sandy Carter</B></center></td><td><img src=' welcomecactus2.gif' width=77 height=121></td></tr></TABLE>","","<center>Quite a few new members have joined us recently.</P></P>Please join us in welcoming them:</P><P>Byron Fan<br>Diane Halpern<br>Joseph Langdon<br>Monica Monack<br>Ed Primeau<br>Bronislava Sigal</P><P>Our membership is now: 174</center>");
+
+
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td>There are quite a few plants that have 'hair'.  The hair is just modified or different kinds of spines.  I will have to say that, if I had to jam my hand in some spines, I would want it to be of the hair kind.  Spines have several uses for the plant.  Besides helping keep some critters at bay, the spines also shade the plant.  The spines also help cut down the amount of evaporation that takes place by cooling the plant and cutting down the amount of air that assists evaporation.  For those that love growing the plants, it also helps us handle the plants with care.  Most of the people I know handle the plants, as it is too much of an effort to find the tongs.  With tongs you also can damage the plant, if you are not real careful.  It is also too much of a hassle to roll up some news paper for every plant repotted.  So with a gentle hand we work with the plants.</td></tr><tr><td valign='top'><a href=javascript:poppic('oreocereuscelsianus.jpg',640,520)><img src='oreocereuscelsianus.jpg' width=320 height=260 hspace=17 vspace=17 align='left' class='enl'></a><br><br>In the photos, we have, from South America in the high Andes, <I>Oreocereus celsianus</I>.  Some forms have hair to 15 cm long. Some have red hair that fades to a lighter color.  With acclamation and planted out in spring of early summer, most <I>Oreocereus</I> can grow out side and take temperatures below frost levels.</td></tr><tr><td valign='top'><a href=javascript:poppic('sulcorebutiaseniliskk2005sgerocephala.jpg',640,520)><img src='sulcorebutiaseniliskk2005sgerocephala.jpg' width=320 height=260 hspace=17 vspace=17 align='right' class='enl'></a><br><br>The other plant is <I>Sulcorebutia senilis</I> KK2005.  In Europe, the plant also goes under the name <I>Sulcorebutia gerocephala</I>. The hair is to 3 cm long.  It is dense enough that, from a distance of a few feet, the plant looks like some kind of animal laying there. I keep it outside in the open but covered house. It takes the cold quite nice like.</td></tr></TABLE></center>");
+
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B> Standings as of June 2016:</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Kathi Cambiano",50);
+fminiadd ("Joseph Hidalgo",38);
+fminiadd ("Terri Koike",41);
+fminiadd ("Jaan Lepson",16);
+fminiadd ("Susan McKuhen",14);
+fminiadd ("Loyd Monaco",13);
+fminiadd ("Joel Parker",64);
+fminiadd ("Janet Stevenson",8);
+fminiadd ("Ellen Stubblefield",25);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Barber",1);
+fminiadd ("Harley Barber",19);
+fminiadd ("Manuela Burge",9);
+fminiadd ("Cecilia Caday",59);
+fminiadd ("Claudia Damiani",30);
+fminiadd ("Jeannie Echenique",7);
+fminiadd ("Marilyn Hofman",16);
+fminiadd ("JoAn Lambert",66);
+fminiadd ("Wendy Levine",10);
+fminiadd ("Joyce McPheeters",8);
+fminiadd ("Therese McQuillan",91);
+fminiadd ("Sherry Merrill",3);
+fminiadd ("Diane Salewski",25);
+fminiadd ("Ross Smith",3);
+fminiadd ("Jacky Wilk",5);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

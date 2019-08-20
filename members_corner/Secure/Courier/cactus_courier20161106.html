@@ -1,0 +1,322 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/6/2016">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/6/2016</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "6";
+var thisyear = "2016";
+var nextmonth = "December";
+var nextday = "3";
+var nextyear = "2016";
+var deadline = "November 25, 2016";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resize=yes,menubar=no,location=no,titlebar=no";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("November 2016","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Share What You Love!","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2016","3, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2017","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Share What You Love!</B><br>
+<br>
+<P>
+Our November meeting features an expanded &quot;show and tell&quot; Mini Show and pot luck!  Have you ever wondered what judges are looking for when they look at a plant?  Do you know the best way to stage a plant?   Do you have a favorite plant you'd love to boast about?  Then this special Mini Show event is for you.
+</P>
+<P>
+Each CSSSJ member, though, will still earn Mini Show points for the plants you bring.  You can bring a maximum of 5 plants, and we'll still vote as usual for winners in each category.  But as a bonus, the winner in each November Mini Show category will win a pot!
+</P>
+<P>
+Be prepared to discuss the plants that you bring for these categories, and don't forget your questions:<br>
+ &nbsp; &nbsp; &nbsp; <I>Cereus</I><br>
+ &nbsp; &nbsp; &nbsp; <I>Sanseveria</I><br>
+ &nbsp; &nbsp; &nbsp; What did you do with your Raffle/Country Store plants?<br>
+ &nbsp; &nbsp; &nbsp; <I>Sedum</I>
+</P>
+<P>
+We look forward to seeing what you bring in!  And bring in your favorite pot luck dish to share.
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Cereus</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Sanseveria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What did you do with your Raffle/Country Store plants? (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sedum</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Member's Corner","Byron Fan","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('fan4867.jpg',871,799)><img src='fan4867.jpg' width=331 height=304 hspace=17 vspace=17 align='right' class='enl'></a><br><I>Arthrocereus rondonianus</I> is a short columnar cactus that is native to the Brazilian state of Minas Gerais. It is known for its beautiful night blooming flowers that have a very sweet aroma. The flowers are very short lived, only opening a few hours after sunset and closing an hour after sunrise. Arthrocerei typically need protection in the winter, but this plant has survived temperatures below freezing. As long as it is under some shelter and protected from frost, it will do fine outside in the winter.</P><P>The <I>A. rondonianus</I> pictured was purchased at one of the show and sales. It has lived through a period of neglect and even rotted at the base at one point. The healthy segments were saved and eventually rooted, but they did not grow much for a couple of years. Last year was when it started forming buds and increasing in size.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('fan4876.jpg',996,747)><img src='fan4876.jpg' width=448 height=336 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Slate of CSSSJ Officers for 2017 and 2018","","<center>President – Sonia Dyer<br>Vice President – Loyd Monaco<br>Treasurer – Roger Lane<br>Secretary and Past President– Linda Delgado<br>Associate – Kathi Cambiano<br>Associate – Joseph Hidalgo<br>Associate – Claudia Damiani<br>Board Member Emeritus – Bill Kurtz</center>");
+
+fmart ("British Cactus &amp; Succulent Society National Show","Bronislava Sigal and Sonia Dyer","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('melocactusandothersb.jpg',998,800)><img src='melocactusandothersb.jpg' width=379 height=304 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('crassulamesembryanthemopsisb.jpg',995,710)><img src=' crassulamesembryanthemopsisb.jpg' width=398 height=284 hspace=17 vspace=29 align='right' class='enl'></a><br>Club member Bronislava (Slava) Sigal was in the UK on business in August and made time to attend the fabulous British Cactus &amp; Succulent Society National Show, which is only held every four years!  She is sharing with us a few of her favorite photos that she took of the show.  These eye-popping pictures give us all something to aspire to!</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('lithops1b.jpg',998,800)><img src='lithops1b.jpg' width=429 height=344 hspace=17 vspace=0 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Thank You!","Peter Beiersdorfer","You may have notice that the Club was selling plants at this year's Fall Show &amp; Sale. We were very fortunate that several members donated plants to the Club. Please join me in thanking Dennis West, Marilyn Moyer, and Kathi Cambiano for their generous contributions. All proceeds go directly to the Club. Those that did not sell will become door prizes at the monthly meetings.");
+
+fmart ("Spotlight: Interview with Roger Lane","Asmita Deshpande<br>photos by Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('rogerlane.jpg',544,800)><img src='rogerlane.jpg' width=288 height=424 hspace=17 vspace=17 align='left' class='enl'></a><br>Roger Lane is the treasurer and librarian for the San Jose Cactus and Succulent Society.  The library is at his house.  The society sets aside a budget, and he buys the books for the society, and members can borrow them.  He joined the society in 1988/89 and then dropped out and rejoined after ten years.</P><P>He likes succulents the best and then cacti.  His favorites are Euphorbias and Caudiciform plants.  He has the most impressive collection of Caudiciform succulents along with the cacti, and his <I>Copiapoa</I> cactus is over 150 years old.</P><P>His introduction to cacti and succulents started almost along with his career.  He came from Washington, DC for work here in Bay Area, and, while waiting for security clearance, his coworkers took him to different nurseries.  Then, with a nursery owner Jim Daniel, he went to southern California and collected large number of plants.</P><P>He is single and used to work for National Security Agency, where he worked in different divisions including cryptography, communication security and computers.  While on a mission for the job, he arrived in Palo Alto, liked it here, and decided to stay.  He quit NSA and worked for several companies in Bay Area until his retirement.</P><P>Besides cactus and succulents, he likes to have parties, bake, and go on tours to different parts of the world to see the plants in their original land.  He has been to Africa, Argentina, Brazil, Mexico and Chile so far.  He also has collected huge variety of Bromeliads and Tillandsias.</P><P>He says that our society is growing and volunteering is good in this society, but we need to get more young people involved.</td></tr></TABLE></center>");
+
+fmart ("Free Cactus in Need of Saving","Patricia Mears","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('sd161015.jpg',600,800)><img src='sd161015.jpg' width=300 height=400 hspace=17 vspace=17 align='right' class='enl'></a><br>I have a Yucca tree in a corner of my front yard in San Jose W. that must be removed.  Unfortunately there is a cactus that is approximately 30 years old that will get destroyed during the removal of the Yucca.  If you or anyone in your group might be interested in saving this &quot;Old Man&quot; as my husband used to call it, please contact me either by email (<a href='mailto:pamearsgb@gmail.com?Subject=Free%20Cactus'>pamearsgb@gmail.com</a>) or phone at (408) 829-7200.</P><P>(The cactus is most likely a <I>Cleistocactus strausii</I>.  It is directly in front of Yucca in the picture.  Ed.)</td></tr></TABLE></center>");
+
+fmart ("Report On The October Show and Sale","Sonia Dyer<br>photos by Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('mcph1610-28.jpg',994,588)><img src='mcph1610-28.jpg' width=596 height=353 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'>Special thanks to Show Director Jaan Lepson and Sales Director Peter Beiersdorfer for running another successful show and sale for our club!  The proceeds fund the rest of the club's activities.</P><P>Many thanks to all the volunteer club members and vendors who pitched in to help, especially during the hiccup on Friday night - everyone pulled together and made setup happen in record time.   </P><P>Here are a few pictures of the wonderful plants that were on display during the show:</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('mcph1610-26.jpg',531,794)><img src='mcph1610-26.jpg' width=244 height=365 hspace=10 vspace=17 class='enl'></a><a href=javascript:poppic('mcph1610-24.jpg',648,968)><img src='mcph1610-24.jpg' width=259 height=387 hspace=10 vspace=17 class='enl'></a><a href=javascript:poppic('mcph1610-11.jpg',648,968)><img src='mcph1610-11.jpg' width=259 height=387 hspace=10 vspace=17 class='enl'></a><a href=javascript:poppic('mcph1610-13.jpg',592,796)><img src='mcph1610-13.jpg' width=272 height=366 hspace=10 vspace=17 class='enl'></a></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('mcph1610-16b.jpg',706,802)><img src='mcph1610-16b.jpg' width=282 height=321 hspace=10 vspace=17 class='enl'></a><a href=javascript:poppic('mcph1610-23.jpg',1007,674)><img src='mcph1610-23.jpg' width=453 height=303 hspace=10 vspace=17 class='enl'></a><a href=javascript:poppic('mcph1610-20.jpg',968,648)><img src='mcph1610-20.jpg' width=436 height=292 hspace=10 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

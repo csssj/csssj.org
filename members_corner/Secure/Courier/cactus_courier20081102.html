@@ -1,0 +1,228 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/2/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/2/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "2";
+var thisyear = "2008";
+var nextmonth = "December";
+var nextday = "14";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("November 2008","2, Sunday - 10:30am to 12:00pm","Board Meeting.","2, Sunday - 12:30pm to 3:00pm","Slide Show on Fat Plants","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2008","14, Sunday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2009","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2008","26-27, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br><font size='-2'>County Fair Bldg (Hall of Flowers) 9<sup>th</sup> &amp; Lincoln, San Francisco, CA<br>Contact Bill Munkacsy 925-935-5213</font>","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Slide Show on Fat Plants</B><br>
+<br>
+<P>
+Barbara Coelho is a member of the Fresno Cactus &amp; Succulent Society, an eclectic and enthusiastic horticulturist, and a judge and exhibitor of cacti and succulents.  Her presentation will be on "Fat Plants", Caudiciforms and Pachycauls.  
+</P>
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for November:</font>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or a late bloomer</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or something that you think is a &quot;Fat Plant&quot;</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or a plant that is pretty in the Winter</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Christmas Cactus</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with N through Z should bring a snack for the November meeting.</font></B>
+</P>
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='coryphantha recurvispina fl.jpg' width=320 height=280 hspace=16 vspace=0 align='left'></td><td valign='top'> These <I>Coryphantha</I> are considered to be the same plant by some authors.  True the flower looks about the same, although <I>C. recurvispina</I> has fewer petals.  The flowers are about the same diameter.  Now here is the kicker.  In <I>C. pallida</I>, the tubercles are more sticking out away from the plant body, and the groove is more or less horizontal.  In <I>ssp. calipensis</I>. they are tighter to the body. and the groove is almost vertical.  It is the same for these two plants, and yet <I>C. recurvispina</I>i is not a subspecies of <I>C. elephantidens</I>, and in most part is ignored by most authors.  If you look at the photos, you can see that the groove area or tubercles are plant hugging in <I>C. recurvispina</I> and not so in <I>elephantidens</I>.  So I keep the names separate on the two plants. I also have noticed that <I>C. recurvispina</I> is a much prettier plant, and it grows much taller than <I>C. elephantidens</I>.  These plants come from Southern Mexico.  They do not like too much cold, but for me have with stood temperatures in the mid 20 without any blemishes.</td></tr><tr><td valign='top' align='center'><img src='coryphantha recurvispina pl.jpg' width=320 height=280 hspace=8 vspace=8></td><td valign='top' align='center'><img src='coryphantha elephantidens pl..jpg' width=320 height=280 hspace=8 vspace=8></td></tr></TABLE>");
+
+fmart ("Report on the 3<sup>rd</sup> Annual Fall Show &amp; Sale","Bill Munkacsy","The fall sale went very well from a sales prospective.  Total sales were over $15000.  We had the most vendors ever at the sale with 3 being new members and sellers to our club; Nick Wilkerson, Jamison Crosby and Karen and Richard Pontius.  The sales area had to be expanded to capacity, and all vendor tables were full of special plants and pots.  Pizza was served Friday night with a lot of members showing up and helping to set up and unload.  The vendors really appreciate this help from the members.  Many plants were picked out presale by these volunteers.  It gave them an advantage at getting special plants.  Saturday a pasta lunch was served.  Tear down went equally well.  Again special mention needs to be given to Chuck Breese who sent out the mailer of $1 off coupon reminders.  A large amount of these people came to the sale, and we were able to obtain another 100 addresses.  This was the first time the credit card system worked flawlessly.  Frank Bloss has worked out all the glitches and has it working.  Running the cash registers Karla Munkacsy and new member and vendor, Jamison Crosby, ran the system flawlessly and extremely efficiently.  Sonia Dyer was trained on the cash register and is now an efficient cashier.  The Stubbelfields and Jim Boehmke worked hard at setup and teardown along with all the other vendors and volunteers.  Larry Livermont quietly kept the floors clean of gravel and dirt.  Deek Dietrich showed up and was a big help.  It was nice to see the Kurtz's come by and offer to engage in a wheeled walker race to buy cactii.  They are both up and about which was wonderful to see and plan on being more active come next season at our sale.");
+
+
+fmart ("Our 3<sup>rd</sup> Annual Fall Show &amp; Sale","Peter Beiersdorfer","<TABLE><tr><td colspan=2>On October 4 &amp; 5 we held our 3<sup>rd</sup> Fall Show &amp; Sale.  The fall event is different from the one in spring.  In the spring, the show plants are judged by professional judges.  But in our fall event, the show plants are judged by the public.  Each show visitor was given 6 dots, and those dots were distributed among the plants viewed by each visitor to be the nicest or most special.</td></tr><tr><td align='center'><img src=' 2008fall.jpg' width=454 height=414 align='left' vspace=6 hspace=6></td><td valign='top'> It was fun to see the different plants.  Several plants were in pots made during Kathy Hendig's pottery workshop in February and September.  Others came in pots from the pottery vendors at the show.  I have to mention the <I>Eriosyce senilis (Neoporteria nidus)</I> from Kathi Cambiano in a pot shaped like a snail; and Marilyn Moyer's <I>Dorstenia</I> in what I shall dub the 'Shrek pot.'  People liked seeing the displays, and many plants received dots.<br><br>Six prizes were given - three for the top vote getters among the cacti and three for the other succulents.  A beautiful <I>Epithelantha chihuahuensis</I> (which I called the 'fractal cactus') from Bill Munkacsy got the most dots among the cacti and thus won first prize.  An <I>Ariocarpus retusus</I> in full bloom, also from Bill Munkacsy, was second.  Third place went to a huge cristate <I>Trichocereus camaguensi</I>s from, you guessed it, Bill Munkacsy.</td></tr><tr><td valign='top' colspan=2>The first, second, and third prize for succulents went, in order, to a <I>Senecio stapeliiformis</I> with a single flower on a very long stem, a large, palm-like <I>Euphorbia perrieri</I>, and a display of sea shells stuffed with various kinds of  crested <I>Echeverias</I>.  The sea shell display was from Bud 'n' Ev Livermont.  Roger Long contributed the <I>Euphorbia</I>.  Yours truly was the lucky winner with the <I>Senecio</I> - my plant decided to flower just at the right time.<br><br><B><font size=-1>Photographs by Chuck Breese</font></B></td></tr></TABLE>");
+
+fmart ("Proposed Slate - Officers and Committee Chairs","","<center><TABLE width='95%' cellspacing=0 cellpadding=7><tr><td align='center' width='47%' height='100%' valign='top'><TABLE width='100%' border=4 bordercolor='black' height='100%'><tr><td align='center'><font size='+2'><B>Officers</B></font></td><tr><td valign='top' align='center'><TABLE cellpadding=3><td nowrap valign='top' align='right'>President</td><td>-</td><td>Linda Delgado</td></tr><tr><td nowrap valign='top' align='right'>Vice President</td><td>-</td><td>Chuck Breese</td></tr><tr><td nowrap valign='top' align='right'>Treasurer</td><td>-</td><td>Roger Lane</td></tr><tr><td nowrap valign='top' align='right'>Secretary</td><td>-</td><td>Sandy Carter</td></tr><tr><td nowrap valign='top' align='right'>Associate</td><td>-</td><td>Alyene Daggett</td></tr><tr><td nowrap valign='top' align='right'>Associate</td><td>-</td><td>Tony Bassano</td></tr><tr><td nowrap valign='top' align='right'>Associate</td><td>-</td><td>Kathi Cambiano / Sonia Dyer (shared)</td></tr><tr><td nowrap valign='top' align='right'>Past President</td><td>-</td><td>Bill Munkacsy</td></tr><tr><td nowrap valign='top' align='right'>Board Member Emeritus</td><td>-</td><td>Bill Kurtz</td></tr></TABLE></td></tr></TABLE></td><td width='5%'> &nbsp; </td><td align='center' width='47%' height='100%'><TABLE width='100%' border=4 bordercolor='black' cellpadding=7 height='100%'><tr><td align='center'><font size='+2'><B>Committee Chairs</B></font></td></tr><tr><td valign='top' align='center'><TABLE cellpadding=3><td nowrap valign='top' align='right'>Affiliate Representative</td><td>-</td><td>Carole Keeton</td></tr><tr><td nowrap valign='top' align='right'>Annual Sale</td><td>-</td><td>Chuck Breese / Bill Munkacsy</td></tr><tr><td nowrap valign='top' align='right'>Annual Show</td><td>-</td><td>Bill Gingras / <I>Open</I></td></tr><tr><td nowrap valign='top' align='right'>Door Prizes and Raffle</td><td>-</td><td>Bill Kurtz</td></tr><tr><td nowrap valign='top' align='right'>Hospitality</td><td>-</td><td><I>Open</I></td></tr><tr><td nowrap valign='top' align='right'>Librarian</td><td>-</td><td>Linda Delgado</td></tr><tr><td nowrap valign='top' align='right'>Mini-Show</td><td>-</td><td>Linda Delgado, Bill Munkacsy &amp; Kathi Cambiano</td></tr><tr><td nowrap valign='top' align='right'>Newsletter Editor</td><td>-</td><td>Rich Kroll<br>Staff: Joan &amp; Bill Kurtz</td></tr><tr><td nowrap valign='top' align='right'>Membership</td><td>-</td><td>Sandy Carter</td></tr><tr><td nowrap valign='top' align='right'>Program</td><td>-</td><td>Bill Kurtz</td></tr><tr><td nowrap valign='top' align='right'>Questions</td><td>-</td><td>Chuck Breese &amp; Peter Beiersdorfer</td></tr></TABLE></tr></TABLE></td><td></td></td></tr></TABLE></center>");
+
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

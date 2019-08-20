@@ -1,0 +1,377 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 12/1/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 12/1/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "December";
+var thisday = "1";
+var thisyear = "2018";
+var nextmonth = "January";
+var nextday = "6";
+var nextyear = "2019";
+var deadline = "December 28, 2018";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("December 2018","1, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2019","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2019","27-28, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","50<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Holiday Extravaganza</B><br>
+<br>
+<P>
+This year's Holiday Banquet will be held on Saturday, December 1, 2018, from 11:00am to 3:00pm at Harry's Hofbrau.  The restaurant is located at 390 Saratoga Avenue near Kiely Boulevard.  Their number is 408-243-0434.
+<P>
+<center><a href="https://www.google.com/maps/place/390+Saratoga+Ave,+San+Jose,+CA+95129?hl=en" target="_blank"><img src="harryshofbrau.gif" width=559 height=312 alt="390 Saratoga Avenue" border=2></a></center>
+</P>
+Everyone who brings a plant puts it on the center table for the plant exchange.  A club officer will select the best plant which will be added to the auction plants.  The person who brought that plant is the first to select from the exchange.  Whoever brought the plant the first person picked picks next, and so forth until all the plants have been taken.  When all the plants are gone, the last person selects a plant from the gift plants.
+</P>
+<P>
+There will be two categories of plants for the auction: plants under $20 and plants over $20.  (See Prez Sez article in this issue for details.)
+</P>
+<P>
+Members who renew at or before the December meeting will participate in a special plant raffle.
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cactus originating from Central or South America</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Echeveria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Dudleya</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sedum</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Sunshine Report","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>I regret to report that long time club member and Past President Bill Kurtz passed away on Nov 16.  Bill was 90 years old, and had a special love for sanseverias.   Bill is being cremated, and a memorial service will be held at a future date.  There will be a sympathy card for his wife Joan available to sign at the December club meeting.</P><P>Club member Joe Langdon is having a heart ablation procedure on Nov 30, which will hopefully fix his afib problem.  Please keep him in your thoughts.  He hopes to rejoin us in January.</td></tr></TABLE></center>");
+
+
+fmart ("Bill Kurtz","Rich Kroll","","<center><TABLE width='90%'><tr><td valign='top'>Bill Kurtz was my friend.  We both looked forward to his visits to work on the newsletter.  We talked about the club, plants, and just about everything else.  The funny thing is that for someone so much the impetus for the liveliness and vitality of our club for many years, Bill was not particularly fond of cacti.  Don't get me wrong.  He showed nearly infinite patience, when I went on and on about my favorite <I>Echinofossulocactus</I>, <I>Ferocactus</I>, and such.  But they were not what thrilled him. <I> Sansevieria</I> and other leafy succulents were his passion.  He had a special gift for raising them that I admired and envied.</P><P>When I first joined the club, Bill was already a mainstay, making certain that every meeting was an interesting and informative event.  I learned a lot from him.  Often he buoyed me up, when self-doubted got me down.  Too many of our friends, fellow enthusiasts, and sometimes mentors have passed away, but they, like Bill, will never be forgotten, will always be with us, as long as the society they nurtured continues to prosper.</td></tr></TABLE></center>");
+
+fmart ("Holiday Gift Studio Tour","Richard Rowe","","<center><TABLE width='90%'><tr><td valign='top'>On Sunday, December 2, from 11am-4pm, visit four talented artists with hand-crafted surprises in two festive studios by the Bay.  Celebrate seasonal gift-giving with Unique, Affordable, &amp; Artful Gifts • Holiday Cheer •  Warm Hospitality •  Light Refreshments •  All for a Good Cause.  (A portion of Holiday Gift Studio Tour art sales will benefit those served by local non-profit RISE: Respect. Inspire. Support. Empower. <a href='https://www.riseslo.org/' target='_blank'>https://www.riseslo.org/</a>)</P><P><TABLE><tr><td nowrap valign='top' align='right'>1st STUDIO:</td><td nowrap> &nbsp; </td><td valign='top'>ROD BAKER at Central Coast Glass Blowing &amp; Fusing, with Guest Glassblowers.<br>1279 2nd Street, Baywood Park-Los Osos. 805.551.6836<br><br><a href='http://www.RodBakerGlass.com' target='_blank'>www.RodBakerGlass.com</a><br><br></td></tr><tr><td nowrap valign='top' align='right'>2nd STUDIO:</td><td></td><td valign='top'>RICHARD ROWE CLAYWORKS. Hand-crafted Ceramics &amp; Planters with Guest Artists JAYNE DEVENCENZI’S Jewelry &amp; Succulent Wreaths &amp; STEVE SUPER GARDENS’ collection of seasonal Plants &amp; Garden Gifts!<br>387 Quintana, Morro Bay. 805.235.9721.<br><br><a href='http://www.roweclayworks.com/' target='_blank'>http://www.roweclayworks.com/</a><br><a href='https://jcdjewelry.com/' target='_blank'>https://jcdjewelry.com/</a><br><a href='https://www.stevesupergardens.com/' target='_blank'>https://www.stevesupergardens.com/</a></td></tr></TABLE></P><P>For more information, please contact Richard Rowe Clayworks | 805.235.9721 | <a href='mailto:roweclayworks@gmail.com?Subject=Holiday%20Gift%20Studio%20Tour'>roweclayworks@gmail.com</a></td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'><B>Holiday Extravaganza:</B></P><P>Our year-end send off is coming up soon.  The Board has reviewed and documented some of the policies relevant to activities at this meeting:</P><P><OL><li>Auction plants.  We typically have two batches of auction plants – those expected to go for $20 or less, and those expected to go for over $20.   Members may contribute up to 5 plants to each batch.</P><P>For plants in the $20 or less category, there will be no minimum reserve.  If you really, really want that plant, be the first to bid $20 on the card next to that plant and it’s yours.  Otherwise, once bidding is closed, the highest bid written down on the card for that plant wins it.  If $6 was the highest bid made, it goes to the person who bid that amount.  If you contributed that plant to the auction, you get 75% of the amount the plant went for, and the club gets the rest.  The buyer must also pay sales tax (currently 9.25% in San Jose).  Cash or check is accepted.  Pay your total at the end of the meeting.</P><P>For plants in the over $20 category, a minimum reserve may be set by the seller.  (A minimum reserve is the minimum amount the seller will accept for that plant – if nobody bids that much, the plant goes back home with the person who brought it in.)   Sky’s the limit on bidding.  If the plant goes for over $100, the person who brought the plant in gets 80%.  Otherwise 75%.  Buyer must also pay sales tax.  Cash or check is accepted.</li><li>Plants in the back of the room.   These plants are the ones from which people get to choose (at the proper time during the meeting) for having renewed their membership during the Holiday Extravaganza, for showing plants in the monthly mini-shows, etc.  Any plants left over at the end of the meeting may be purchased for $7 each, including tax.  Payment may be made by cash or check.</P><P>This time there will be a separate checkout line for those only purchasing these plants, so they don’t have to wait in line to pay with all the auction winners.   If you’re buying both leftover plants and auction plants, you can pay for both in the auction checkout line if you prefer.</li></OL></P><br><P><B>Auf Wiedersehen:</B></P><P>Well time has come for me to say goodbye.</P><P>When I took office as President two years ago after having already served on the Board in various capacities for ten years, I asked what the club members wanted to see in the way of improvements, and the overwhelming reply was &quot;more field trips!&quot;.  I’ve done my best to provide those to you, as well as an interesting and informative slate of speakers.   I hope you enjoyed it.  I’m sure Monica Moran will continue to provide more of the same in the coming year as Program Chair.</P><P>Our club membership has increased by over 30% during the last two years, which I attribute to our collectively providing something valued by lovers of cacti and succulents.</P><P>I would particularly like to thank my slate of officers and board members who have worked with me in the monthly board meetings to focus on updating and documenting club policies, and to improve communication of this information within the club.  Previously there was negligible documentation of any of this – it was all word of mouth, which caused considerable confusion and squabbling.  These policies have been published as they are developed in the club Newsletter, so we’re all reading from the same page.  Hopefully, at some point, they will all be collected into one booklet.  As always, these are living documents, so if you have &quot;a better idea&quot;, propose it to a board member, or better yet, propose it yourself during a board meeting and it will be considered.</P><P>The folks who served on the board this year and brought a wide perspective of views to policy development are VP Wes McPheeters, Secretary and Past President Linda Delgado, and Associate Board Members Joyce McPheeters, Monica Moran, Gary Stubblefield, Dan Martinez, and Kathi Cambiano.   Also hugely helpful in conveying this information has been Rich Kroll, our longtime Newsletter Editor and Webmaster.</P><P>At last year’s Holiday Extravaganza, I instituted End of Year Prizes of $100 gift cards in recognition of some of those I felt had made significant contributions to the club in the previous year.  This year the End of Year Prizes are being continued, with the exception that this year the membership at large chose one of the winners, the Board of Directors chose one, and I chose one.   This year the prizes are $100 in ShowBucks.  These prizes are meant to be generous, to encourage people to do their best to make themselves useful to the club.  Of course, many more people also made themselves useful, and hopefully you are one of them.  I especially want to encourage our younger members to get more involved, by actively looking for ways you can contribute.  Just ask how you can help!</P><P>Two longtime members deserve special recognition for their service to the club over many, many years.  The first one is Rich Kroll, who has put out a monthly newsletter just like clockwork for the last 17 years!  Even in the years when nobody sent him much in the way of articles, Rich was creative and dedicated to the task.  The other person is Roger Lane, who served the club as treasurer for a very long time, up until January of this year.  Roger was always very quiet about what he did for the club, and most people didn’t recognize all the other ways he contributed behind the scenes, taking care of matters that most of us don’t even think about, but which are essential to keeping a club running.  Please join me in thanking both these individuals for their lengthy service, as they are awarded Life Memberships in the club.</P><P>Joyful Holidays, and best wishes to you all!</td></tr></TABLE></center>");
+
+fmart ("Items Left at the November Meeting","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>There were two items left after the November meeting, a colander and a plant from the mini show.  If you left either of these items behind, please contact Kathi at <a href='mailto:cre8vsucculents@gmail.com?Subject=Items%20Left%20at%20Meeting'>cre8vsucculents@gmail.com</a> or call 408-480-1533.</td></tr></TABLE></center>");
+
+fmart ("November 2018 Mini Show Results","Bill Lemke and Kathi Cambiano","Kathi Cambiano","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('neoporteriaviolaceiflora.jpg',1000,860)><img src='neoporteriaviolaceiflora.jpg' width=300 height=258 hspace=47 vspace=17 align='left' class='enl'></a><font size='+1'><br><B>Cactus of the Month:</B></font><br><TABLE><tr><td valign='top' align='right' nowrap><B>Advanced:</B></td><td valign='top'> Kathi Cambiano, <I>Neoporteria violaceiflora</I><br></td></tr><tr><td valign='top' align='right'><B>Novice:</B> </td><td valign='top'>Tie<br>Joyce McPheeters, <I>Ferocactus</I><br>Judi Ganschow, <I>Cereus spegazzinii cristata</I></td></tr></TABLE></td></tr><tr><td valign='top' nowrap><a href=javascript:poppic('echeveriaagavoidesbluegrey.jpg',960,770)><img src='echeveriaagavoidesbluegrey.jpg' width=288 height=231 hspace=127 vspace=17 align='right' class='enl'></a><font size='+1'><br><B>Succulent of the Month:</B></font><TABLE><tr><td valign='top' align='right' nowrap><B>Advanced:</B> </td><td valign='top' nowrap>Gary Stubblefield, <I>Echeveria Agavoides</I> Blue/Grey </td></tr><tr><td valign='top' align='right'><B>Novice:</B> </td><td valign='top' nowrap>Tie<br>Bill Lemke, <I>Echeveria gibbiflora</I> ‘Magnifica’<br>Judi Ganschow, <I>Echeveria</I></td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('haemanthus3.jpg',1080,850)><img src='haemanthus3.jpg' width=324 height=255 hspace=47 vspace=17 align='left' class='enl'></a><font size='+1'><br><B>Something Special: </B></font><br><TABLE><tr><td valign='top' align='right'><B>Advanced:</B> </td><td valign='top'>Marilyn Hofman, <I>Haemanthus</I></td></tr><tr><td valign='top' align='right'><B>Novice:</B> </td><td valign='top'>Judi Ganschow, <I>Dudleya brittonii</I></td></tr></TABLE></td></tr><tr><td valign='top' nowrap><a href=javascript:poppic('cereusspegazziniicristata.jpg',1080,860)><img src='cereusspegazziniicristata.jpg' width=324 height=258 hspace=127 vspace=17 align='right' class='enl'></a><font size='+1'><br><B>Beginners Luck:</B></font> Bill Lemke, <I>Sedum dendrobium</I> crest</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('ferocactus3.jpg',1080,850)><img src='ferocactus3.jpg' width=324 height=255 hspace=127 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

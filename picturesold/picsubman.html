@@ -1,0 +1,289 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Picture Submission</TITLE>
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+
+<SCRIPT Language="JavaScript" src="http://csssj.org/members_corner/Secure/chk01.js"></SCRIPT>
+<SCRIPT Language="JavaScript">
+<!--
+var passtxt = "";
+//
+function GetCookie (key)
+{
+//
+// This function will return either the value associated with the key or a
+// single blank.
+//
+txt = document.cookie;                      //  txt = the cookie
+var keyt = key + "=";                       //  keyt = search string
+var klen = keyt.length;                     //  klen = l'search string
+var spos = txt.indexOf(keyt);               //  spos = the start pos of key
+if (spos > -1)                              //  if the key was found
+   {                                        //     look for the value
+    vpos = spos+klen;                       //     vpos = value start pos
+    var epos = txt.indexOf(";", vpos);      //     epos = value end pos
+    if (epos == -1)                         //     if at end of cookie
+      {epos = txt.length};                  //        epos = end of cookie
+    return unescape(txt.substring(vpos, epos)); // return the value
+   }
+else                                        //  if the key was not found
+   {return " ";};                           //     return a blank
+};
+//
+function SetCookie (key, val)
+{
+//
+// This function will add the value associated with the key to a cookie
+// that lasts six weeks.
+//
+var exp = new Date();                       //  exp = today's date
+exp.setTime(exp.getTime() + (6*7*24*60*60*1000)); // exp = today + 6 weeks (mil)
+document.cookie = key + "=" + escape(val) + "; expires=" + exp.toGMTString() + "; path=/";                                //  write cookie 
+};
+//
+function RemCookie (key)
+{
+//
+// This function will remove a cookie.
+//
+var exp = new Date();                       //  exp = today's date
+document.cookie = key + "=" + escape(" ") + "; expires=" + exp.toGMTString() + "; path=/";                                 //  write cookie 
+};
+//
+function setcat(num)
+{
+if (num == 1)
+   {document.form1.cat1.checked = true}
+else
+   {document.form1.cat1.checked = false};
+if (num == 2)
+   {document.form1.cat2.checked = true}
+else
+   {document.form1.cat2.checked = false};
+if (num == 3)
+   {document.form1.cat3.checked = true}
+else
+   {document.form1.cat3.checked = false};
+if (num == 4)
+   {document.form1.cat4.checked = true}
+else
+   {document.form1.cat4.checked = false};
+};
+//
+function submitmail()
+{
+//
+//  This function will complete the email text.
+//
+var tempcat = "";
+if (document.form1.cat1.checked) {tempcat = "show";};
+if (document.form1.cat2.checked) {tempcat = "ground";};
+if (document.form1.cat3.checked) {tempcat = "cactus";};
+if (document.form1.cat4.checked) {tempcat = "special";};
+document.write ("<br><br>Category: " + tempcat + "<br>Grower: " + document.form1.grower.value + "<br>Photographer: " + document.form1.photog.value + "<br><br>Description:<br>" + document.form1.desc.value);
+document.close ();
+};
+//
+function checkForm()
+{
+//
+//  This function will check the specification to be certain the form is
+//  complete.
+//
+var retval = true;
+var temptxt = document.form1.email.value;
+if (temptxt.length < 1)
+   {
+    alert ("Please fill in your email address.");
+    retval = false;
+   }
+else
+   {
+    if (temptxt.indexOf("@") == -1)
+       {
+        alert ("Please enter a valid email address.");
+        retval = false;
+       }
+    else
+       {
+        if (temptxt.indexOf(".") == -1)
+           {
+            alert ("Please enter a valid email address.");
+            retval = false;
+           };
+       };
+   };
+if (retval)
+  {
+   if (chkem(document.form1.email.value) == false)
+      {
+       retval = false;
+       alert ("The email address specified does not match an email address of a members of the CSSSJ.");
+      };
+   };
+//
+if (retval)
+  {
+   if (document.form1.cat1.checked || document.form1.cat2.checked || document.form1.cat3.checked || document.form1.cat4.checked)
+      {retval = true;}
+   else
+      {
+       retval = false;
+       alert ("Please select a page on which to display your picture.");
+   };
+};
+//
+var temptxt = document.form1.photog.value;
+if (temptxt.length < 1)
+   {
+    retval = false;
+    alert ("Please fill in the photographer's name.");
+   };
+//
+return retval;
+};
+//
+function goauto ()
+{
+SetCookie ("manual","no");
+document.location.href="picsubmit.html";
+};
+//
+function reset ()
+{
+document.form1.email.value = "";
+document.form1.cat1.checked = false;
+document.form1.cat2.checked = false;
+document.form1.cat3.checked = false;
+document.form1.cat4.checked = false;
+document.form1.grower.value = "";
+document.form1.photog.value = "";
+document.form1.desc.value = "";
+};
+//
+ -->
+</SCRIPT>
+<STYLE>
+<!-- 
+A:link.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:active.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:visited.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:hover.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#FFCC33}
+A:link.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:active.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:visited.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#FFCC33}
+H1 {font-size: 26pt; color: #CC3333; font-family: Comic Sans MS}
+.gen {color: #333399}
+H3 {font-size: 18pt; color: #CC3333; font-family: Comic Sans MS}
+.gen {color: #333399}
+.footer {color: #99CCFF}
+H1 {font-size: 26pt; color: #0033CC; font-family: Comic Sans MS}
+.gen {color: #333399}
+-->
+</STYLE>
+ 
+</HEAD>
+<BODY bgcolor="white" leftmargin="0" rightmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=95>&nbsp;</td>
+<td bgcolor=#339966 height=95 width=60 valign="middle" align="middle"><img src="../graphics/csssj-logo.gif" border="0"></td>
+<td bgcolor=#339966 height=95 colspan=3 valign="middle" align="left"><font face="Arial" color="black" size="6"><b>Cactus &amp; Succulent Society of San Jose</b></font></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="left"><a href="../index.html" class="navmain" title="Returns to the CSSSJ Homepage">CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width="100%" align="right"><a href="../welcome_visitors/welcome-index.html" class="navmain" title="Information about the CSSSJ and the hobby.">&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../members_corner/members-index.html" class="navmain" title="Information of interest to members of the CSSSJ.">&nbsp;&nbsp;&nbsp;Member's&nbsp;Corner&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../links_of_interest/links-index.html" class="navmain" title="Links of interest to cactus and succulent enthusiasts.">&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a></td>
+</tr>
+</table>
+<br>
+<br>
+
+<center><TABLE width="95%"><tr><td>
+<center>
+<H1>Picture Submission</H1>
+</center>
+<br>
+<font color="#CC3300">
+<P>
+If you had a problem with the automated submission function, use this page to generate the format for a manually completed email.
+</P>
+<P>
+Copy the following email address into the &quot;Send To&quot; field: &nbsp; &nbsp; <font color="#000000">rkroll@aol.com</font>
+</P>
+<P>
+Copy the following text into the &quot;Subject&quot; field: &nbsp; &nbsp; <font color="#000000">CSSSJ Submit Picture</font>
+</P>
+<P>
+After pressing the &quot;Generate Content&quot; button, copy the generated text into the body of the email and attach your picture.
+</P>
+</font>
+<TABLE width="100%" cellspacing=17>
+<tr>
+<td valign="top" nowrap>
+
+<form name="form1" id="form1">
+
+<P>
+<B>Email address:</B><br>
+<input name="email" size=40>
+</P>
+<P>
+<input name="cat1" type="radio" onclick="javascript:setcat(1);">Show and Sale &nbsp; 
+<input name="cat2" type="radio" onclick="javascript:setcat(2);">In Ground Plants <br>
+<input name="cat3" type="radio" onclick="javascript:setcat(3);">Cactus/Succulents &nbsp;
+<input name="cat4" type="radio" onclick="javascript:setcat(4);">Something Special &nbsp;
+</P>  
+<P>
+<B>Grower Name:</B><br>
+<input name="grower" size=40>
+</P>
+<P>
+<B>Photographer Name:</B><br>
+<input name="photog" size=40>
+</P>
+<P>
+<B>Description: &nbsp; </B>
+<br>
+<textarea cols=40 rows=10 name="desc"></textarea><br>
+<br>
+<br>
+<center>
+<Input type="button" value="Generate Content" OnClick="if(checkForm()) {submitmail();};"> &nbsp; &nbsp; <Input type="reset" onmousedown="rset();"><br><br>
+ &nbsp; &nbsp; <Input type="button" value="Try automatic email again" onmousedown="goauto();">
+</center>
+</form>
+</P>
+</center>
+</td>
+<td valign="top">
+<font color="#CC3300">
+<P>
+Note that you must be a member of the Cactus and Succulent Society of San Jose to submit pictures for inclusion on this web site.
+</P>
+<P>
+Once your email address has been verified, this page will initiate an email in your email processing software.  Attach your picture to that email and send it.
+</P>
+<P>
+Once your picture is received, it will be reviewed.  If it is acceptable for display, it will be included on the appropriate page.  If it is not deemed acceptable for display, a return email will be sent to the submitter with an explanation.
+</P>
+<P>
+Initially, pictures have two months on the web site.  Pictures that get a vote will get an additional month.  For each vote a picture receives, it will get another month.  Voters must be members.  Each member only gets to vote for an individual picture once, but members may vote for as many different pictures as they like.
+</P>
+</font>
+</P>
+</td>
+</tr>
+</TABLE>
+
+</td></tr></TABLE></center>
+
+</BODY>
+</HTML>

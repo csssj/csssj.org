@@ -1,0 +1,313 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 12/3/2016">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 12/3/2016</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "December";
+var thisday = "3";
+var thisyear = "2016";
+var nextmonth = "January";
+var nextday = "8";
+var nextyear = "2017";
+var deadline = "December 30, 2016";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("December 2016","3, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2017","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2017","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Holiday Extravaganza</B><br>
+<br>
+<P>
+This year's Holiday Banquet will be held on Saturday, December 3, 2016, from 11:00am to 3:00pm at Harry's Hofbrau.  The restaurant is located at 390 Saratoga Avenue near Kiely Boulevard.  Their number is 408-243-0434.
+<P>
+<center><a href="https://www.google.com/maps/place/390+Saratoga+Ave,+San+Jose,+CA+95129?hl=en" target="_blank"><img src="harryshofbrau.gif" width=559 height=312 alt="390 Saratoga Avenue" border=2></a></center>
+</P>
+Everyone who brings a plant puts it on the center table for the plant exchange.  A club officer will select the best plant which will be added to the auction plants.  The person who brought that plant is the first to select from the exchange.  Whoever brought the plant the first person picked picks next, and so forth until all the plants have been taken.  When all the plants are gone, the last person selects a plant from the gift plants.
+</P>
+<P>
+There will be two categories of plants for the auction: plants under $20 and plants over $20.  For the plants under $20 the first person bidding $20 will get the plant.  The auction in this area will be silent; there will be a card next to the plant in which people will bid on the plant.  When time is up, only the top three bidders will be able to bid on the plant. Again the first person to bid $20 will get the plant.  The plants over $20 will be handled the same way; only on both categories there will be a minimum bid that will be listed and bidding will start from the minimum bid.  Members can bring in their own plants for the auction.  If you are interested, contact Bill Munkacsy at 925-935-5213.
+</P>
+<P>
+Members who renew at or before the December meeting will participate in a special plant raffle.
+</P>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Cereus</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Sanseveria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>What did you do with your Raffle/Country Store plants? (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Sedum</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Volunteers and Plants Needed for Edible Cacti Garden","JoAn Lambert","Bountiful Churchyards, whose mission is &quot;to develop edible landscapes accessible to those in need for growing or gleaning their own food&quot; is seeking seeds, cuttings, and established plants, as well as volunteers, for its various projects in Santa Clara County, especially the 5000 square feet Edible Cacti Garden and Propagation Yard it is developing at Immanuel Lutheran Church in Saratoga, CA.  When completed, the garden and propagation yard will feature an edible fence comprised primarily of <I>O. ficus-indica</I>, with other <I>Opuntia</I> species interspersed for interest, a shade structure for volunteers to work under covered with <I>Hylocereus</I>, and a hoop house for propagation.  There will also be space within the garden and propagation yard reserved for specimens of other edible cacti or succulents. For more information, or to contribute plants, seeds or cuttings, or volunteer, email <a href='mailto:stuartjrichardson@bountifulchurchyards.org?Subject=Edible%20Cacti%20Garden'>stuartjrichardson@bountifulchurchyards.org</a> or drop by one of BC’s regular Wednesday morning work events.  The events last from 9:00am to 11:30am and are usually followed by a meal open to all.  The garden is on the corner of Saratoga Avenue and Seagraves Way (14103 Saratoga Avenue, Saratoga CA 95070).");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('mammillariasaboaeplside.jpg',1011,710)><img src='mammillariasaboaeplside.jpg' width=394 height=277 hspace=17 vspace=17 align='left' class='enl'></a><br>It was over thirty years ago, that I got my first <I>Mammillaria saboae</I>. As I remember the plant was a small thing with maybe three or four heads.  It was so long ago that I do not remember that much about it.  I was not sure that I could keep it alive. But live it did, and I soon had several more plants.  I do not remember where I got them or from what person.  Back in those days, a new plant would be propagated fast as could be so someone could make money.  As I remember, all the plants I saw for sale were only three or four heads.  It was some years before I would see clumps of eight to ten stems for sale.</P><P>It is kind of hard to find a description where <I>M. saboae</I> is described by its self and not with features of subspecies <I>haudeana</I> and <I>goldii</I> included with it.</td></tr><tr><td valign='top'><a href=javascript:poppic('mammillariasaboaefls.jpg',1008,810)><img src='mammillariasaboaefls.jpg' width=403 height=324 hspace=17 vspace=17 align='right' class='enl'></a>I have never had a hard time growing the plants that I have had. The plants I have today are from those original plants I bought many years ago.  For me, the plants grow quite quickly compared to many other cactus plants.  When I say I never had a hard time with the plants that is until I only had alkaline water to give them.  They did not like that time in their life.  I did manage to get clumps of quite a few hundred stems.  My clumps filled a 15 cm pot and so I gave them 20.5 cm pots; that is when I ran into trouble.  At first the plants seemed to like their new pot, but then areas of stems started dying.  Before too long most of the plants had areas that had died.  When I discovered that they were dying, I removed what was still alive and gave them their own pots.  Now I had maybe 15 pots, and none of them any larger 9 cm diameter pots.  Most were in smaller pots like 5 and 6 cm diameter.  Even the plants that went into 9 cm pots were only about 6 to 7 cm across.  Those that went into 5 cm pots were single to maybe 3 or 4 stems.  I discovered that the plant tap roots only grow to about 4 cm long at the most.  The tap root has much smaller roots growing out the end and sides, but they did not reach down 10 cm and so the soil below the roots stayed too damp for too long.  Then root rot set in, and many of the plant stems died.  Since then I have used pots that are no more than about 7 cm deep at the most and have had no more problems with the plant.</P><P>The plants grow at an elevation of up to 2,200 meters or 7,218 feet.  At that elevation, they can take a lot of ultraviolet light and it may feel hot but the plants do not like high temperatures.  In habitat, they may have to endure 82 degrees F now and then but not too often.  At that elevation, they can take temperatures down below freezing.  They have endured temperatures to 20 degrees F here.  Keep the soil dry over the winter.  Remember the plants have tap roots, and a 7 cm plant can have about 20 taproots.  If you live where the summer temperatures climb above about 80 F, give the plants afternoon shade.  The plants hate alkaline soil give acidic water to keep the soil acidic.</td></tr></TABLE></center>");
+
+
+fmart ("Spotlight: Interview with Naomi Bloss","Asmita Deshpande<br>photos by Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('naomibloss.jpg',602,898)><img src='naomibloss.jpg' width=283 height=422 hspace=17 vspace=17 align='left' class='enl'></a><br>Naomi Bloss has been a member of the society since 1980.  In the early to mid 70s, she lived in Washington, DC.  She, along with her neighborhood friends, took their children to Pennsylvania for outings, and their husbands would join them on the weekends.  Her husband had to take care of the houseplants while she was not at home, and she realized that, among all the plants, the succulents survived.  Eventually she learned that there are two kinds, cacti and non-cactus succulents.  She got interested and joined Washington's Cactus and succulent club.</P><P>Her family later moved to California.  She met Jim Daniel, who had a nursery here, and bought several plants from him.  She met several members of San Jose society in Washington, as some people from our society often went to Washington to judge their shows.  So it was natural that, when Naomi moved to California and started collecting cacti and succulents, she became a member of the CSSSJ.</P><P>She collects more succulents than cactus.  Her favorites are Caudiciforms, <I>Aizoaceae</I>, <I>Lithops</I> and <I>Mesembryanthemum</I>.  She has more than 10,000 varieties.  She has also grown cacti and succulents from seeds and done grafting.</P><P>Naomi has been a housewife and held several jobs along with being a mother to five children.  In Washington, she ran a business taking care of plants for offices like ABC news, which let her set her own time for work.</P><P>She is an art major and picked up gardening on the go.  She was in the first class of Master Gardeners.  She likes all kind of plants and had other collections like stag horn ferns and begonias.  She will be going to Africa next year to see plants there. She is also a member of Monterey Bay society and San Francisco society.</P><P>Naomi was vice president of our society for a few years and helped out with show schedule.  She also helped prepare plants for the show.</P><P>Her message to the members is ‘jump in and help’.</td></tr></TABLE></center>");
+
+fmart ("Kudos to Rich Kroll","Sonia Dyer","Special thanks are in order to Rich Kroll, our club's newsletter editor and webmaster, for finding a solution to a perplexing problem in which some of the photos in our newsletter displayed sideways when viewed on a tablet or a smartphone.  Rich's persistence in finding an answer to this problem is most commendable.  And also thanks go to Kathi Cambiano for bringing the problem to our attention and for confirming that the fix works.  Good job all!");
+
+fmart ("November 2016 Expanded Mini Show","Therese McQuillan<br>photos by Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'>Our November meeting focused on an expanded Mini Show, with members bringing a number of great plants to show and to participate in a lively and knowledgeable round-table discussion.  Useful information from the round-table discussion follows the recap of this month's Mini Show.</P><P>In addition to gaining points, this month's winners won a pot!</P><br><P><font size='+2'><B>Something Special:</B> <I> What did you do with your Raffle/Country Store plants? (or your choice)</I></font></td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0241.jpg',904,850)><img src='mcph0241.jpg' width=380 height=357 hspace=17 vspace=17 align='left' class='enl'></a><br><B>Advanced:</B> Three years ago when Ellen Stubblefield and her husband, Gary, found several <I>Echeveria</I> 'Compton Carousel' plants, Ellen wanted to buy more than one, but Gary declined.  What a mistake!  These plants are not only hard to find, but they're difficult to propagate by leaf and they don't flower.  When Ellen returned later to the store to buy more, she and Gary were out of luck, but we are lucky they brought this beauty shown on the left to share with us.</P><P><B>Novice: </B>Wendy Levine brought in some of the Mammilarias, variegated Crassulas, and Opuntias she picked up from a big box store.  Her Opuntia won this category, though, we failed to get its photo.</td></tr><tr><td valign='top'><br><font size='+2'><B>Beginner's Luck:</B> <I>Sedum</I></font></P><P>New member Bill Lemke brought in several interesting plants, and we hope he continues to share with us in future meetings. His two-year-old <I>Sedum multiceps</I>, bought online, resembles a tiny Joshua tree, but we missed getting a photo of his winning entry.</td></tr><tr><td valign='top'><a href=javascript:poppic('mcph0211.jpg',1000,752)><img src='mcph0211.jpg' width=440 height=331 hspace=17 vspace=17 align='left' class='enl'></a><br>We do have a photo though, shown on the left, of a wonderful display Bill brought in for another category:  a wall planter he made from scrap metal and planted with Echeverias and Sedums bought at a recent Club plant sale.  We hope this display provides inspiration for other unique planter ideas for your holidays (and maybe a future Mini Show category)!</td></tr><tr><td valign='top'><br><a href=javascript:poppic('mcph0206.jpg',593,900)><img src='mcph0206.jpg' width=273 height=414 hspace=17 vspace=17 align='right' class='enl'></a><br><font size='+2'><B>Cactus:</B> <I>Cereus</I></font></P><P><B>Advanced:</B><br>The winner of this category, shown on the right, was a saucy entry from Susan McKuhen: the monstrose version of <I>Tridchocereus bridgesii</I>. Susan said she was once told that a common name for this cultivar was &quot;Women's Joy.&quot;  Whatever you nickname this plant, it was a clear winner!</td></tr><tr><td valign='top'><br><a href=javascript:poppic('mcph0203.jpg',1014,770)><img src='mcph0203.jpg' width=406 height=308 hspace=17 vspace=17 align='left' class='enl'></a><br><B>Novice:</B> Wendy Levine won a second category this month with her <I>Stenocereus hollianus</I> crested, another one of the plants from a big box store, and shown on the left.  You're finding winners, Wendy, so keep bringing them in!</td></tr><tr><td valign='top'><br><a href=javascript:poppic('mcph0236.jpg',392,990)><img src='mcph0236.jpg' width=184 height=423 hspace=17 vspace=17 align='right' class='enl'></a><br><font size='+2'><B>Succulents:</B> <I> Sanseveria</I></font></P><P><B>Advanced:</B> It's been awhile since Sanseverias were highlighted in our Mini Shows, but they came back with a vengeance. Several members brought in <I>Sanseveria suffruticosa</I> plants, but the winner was Susan McKuhen's shown on right. Her pot with three green women was also a big hit.</td></tr><tr><td valign='top'><br><a href=javascript:poppic('mcph0238.jpg',588,900)><img src='mcph0238.jpg' width=276 height=423 hspace=17 vspace=17 align='left' class='enl'></a><br><B>Novice:</B> Joyce McPheeters' winning entry, her one-year-old <I>Sanseveria</I>, shown on the left, is beginning to pup, which prompted the question of when is the right time to repot a cactus or succulent?   See some of the answers in our next section.</td></tr><tr><td valign='top'><br><font size='+2'><B>General notes from the round-table discussion</B></font></P><P>Many thanks to the members who contributed to the round-table discussion.  Below are a few items that were discussed. More information about plant care can be found at our website (See below).</P><br><P><I>What kind of water should I use to water my plant? </I> A 6 pH level is best, with rain water being the very best.  Watch for salt buildup in your pots because it's bad for your plants.</P><P><I>What's the best soil mixture?</I> Everyone has their favorite soil mixture, but generally a 50/50 mixture of pumice to soil is suitable.</P><P><I>When is the right time to repot my cactus or succulent?</I>  It depends on the plant and its condition, because some plants prefer being underpotted.  Generally, being underpotted (with lots of space in its pot) is preferred to being overpotted (having little space in its pot).</P><P><I>Tips on propagating:</I><br><TABLE cellspacing=7><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Breaking off pups is the preferred practice over cutting off pups.  If you do cut, remember to use a very sharp knife and sterilize it between cuts.</td></tr></td><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Let your cuttings heal and callus for at least one week, then plant in dirt, but don't water for another week.</td></tr></td><tr><td valign='top'><img src= 'flowericon2.gif' width=15 height=14></td><td align='top'>Sometimes root hormone powder is helpful, but you can also use yellow sulphur because it's a natural fungicide.</td></tr></TABLE></P><P>Check out our website for more information on caring for your plants <font size='-1'><a href='http://www.csssj.org/welcome_visitors/basic_culture.html' target='_blank'>(http://www.csssj.org/welcome_visitors/basic_culture.html)</a></font></P><P>We hope to see you at our Mini Shows in 2017.  If you have ideas for plant categories, drop a note to <a href='mailto:tmcq01@att.net?Subject=Mini%20Show'>tmcq01@att.net</a>; I'm always looking for new ideas.  Check out the Mini Show rules <font size='-1'><a href='http://www.csssj.org/members_corner/Secure/mini_show_rules.html' target='_blank'>(http://www.csssj.org/members_corner/Secure/mini_show_rules.html)</a>.</font></td></tr></TABLE></center>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

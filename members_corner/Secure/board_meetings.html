@@ -1,0 +1,381 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<meta name="description" content="CSSSJ">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<title>Cactus and Succulent Society of San Jose</title>
+
+<SCRIPT Language="JavaScript">
+// <!-- 
+//
+// arrays of years, descriptions, and links
+//
+var yrlst = new Array();
+var yrs = new Array();
+var yre = new Array();
+var descs = new Array();
+var lnks = new Array();
+//
+
+var sb = 1;
+var sc = 0;
+var minyr = 100000;
+var maxyr = 0;
+var curryr = 0;
+//
+// Fill in arrays
+//
+addntr ("Minutes/minutes_1-5.html","January 5th",2003); 
+addntr ("Minutes/minutes_2-2.html","February 2nd",2003); 
+addntr ("Minutes/minutes_3-2.html","March 2nd",2003); 
+addntr ("Minutes/minutes_5-4.html","May 4th",2003); 
+addntr ("Minutes/minutes_6-1.html","June 1st",2003); 
+addntr ("Minutes/minutes_8-3.html","August 3rd",2003); 
+addntr ("Minutes/minutes_9-7.html","September 7th",2003);
+addntr ("Minutes/minutes_11-2.html","November 2nd",2003);
+addntr ("Minutes/minutes_1-4-04.html","January 4th",2004); 
+addntr ("Minutes/minutes_2-8-04.html","February 8th",2004); 
+addntr ("Minutes/minutes_3-7-04.html","March 7th",2004);
+addntr ("Minutes/minutes_5-2-04.html","May 2nd",2004); 
+addntr ("Minutes/minutes_6-6-04.html","June 6th",2004); 
+addntr ("Minutes/minutes_9-12-04.html","September 12th",2004); 
+addntr ("Minutes/minutes_11-07-04.html","November 7th",2004); 
+addntr ("Minutes/Bmin_Jan2005.html","January 9th",2005); 
+addntr ("Minutes/minutes_2-6-05.html","February 6th",2005); 
+addntr ("Minutes/minutes_3-6-05.html","March 6th",2005);
+addntr ("Minutes/minutes_5-8-05.html","May 8th",2005); 
+addntr ("Minutes/minutes_6-5-05.html","June 5th",2005); 
+addntr ("Minutes/minutes_7-10-05.html","July 10th",2005); 
+addntr ("Minutes/minutes_8-7-05.html","August 7th",2005); 
+addntr ("Minutes/minutes_9-11-05.html","September 11th",2005); 
+addntr ("Minutes/minutes_10-09-05.html","October 9th",2005);
+addntr ("Minutes/minutes_11-06-05.html","November 6th",2005);
+addntr ("Minutes/minutes_01-08-06.html","January 8th",2006);
+addntr ("Minutes/minutes_02-05-06.html","February 5th",2006);
+addntr ("Minutes/minutes_03-05-06.html","March 5th",2006);
+addntr ("Minutes/minutes_05-07-06.html","May 7th",2006);
+addntr ("Minutes/minutes_06-11-06.html","June 11th",2006);
+addntr ("Minutes/minutes_07-09-06.html","July 9th",2006);
+addntr ("Minutes/minutes_08-06-06.html","August 6th",2006);
+addntr ("Minutes/minutes_09-10-06.html","September 10th",2006);
+addntr ("Minutes/minutes_11-05-06.html","November 5th",2006);
+addntr ("Minutes/minutes_01-07-07.html","January 7th",2007);
+addntr ("Minutes/minutes_02-04-07.html","February 4th",2007);
+addntr ("Minutes/minutes_03-04-07.html","March 4th",2007);
+addntr ("Minutes/minutes_05-06-07.html","May 6th",2007);
+addntr ("Minutes/minutes_06-10-07.html","June 10th",2007);
+addntr ("Minutes/Bmin20070805.html","August 5th",2007);
+addntr ("Minutes/minutes_11-4-07.html","November 4th",2007);
+addntr ("Minutes/minutes_1-6-08.html","January 6th",2008);
+addntr ("Minutes/minutes_2-3-08.html","February 3rd",2008);
+addntr ("Minutes/minutes_3-2-08.html","March 2nd",2008);
+addntr ("Minutes/minutes_5-4-08.html","May 4th",2008);
+addntr ("Minutes/minutes_8-3-08.html","August 3rd",2008);
+addntr ("Minutes/minutes0809.html","September 7th",2008);
+addntr ("Minutes/minutes0811.html","November 2nd",2008);
+addntr ("Minutes/minutes0901.html","January 4th",2009);
+addntr ("Minutes/minutes0902.html","February 1st",2009);
+addntr ("Minutes/minutes0903.html","March 1st",2009);
+addntr ("Minutes/minutes0905.html","May 3rd",2009);
+addntr ("Minutes/minutes0906.html","June 7th",2009);
+addntr ("Minutes/minutes0907.html","July 12th",2009);
+addntr ("Minutes/minutes0908.html","August 2nd",2009);
+addntr ("Minutes/minutes0911.html","November 1st",2009);
+addntr ("Minutes/minutes1001.html","January 10th",2010);
+addntr ("Minutes/minutes1002.html","February 7th",2010);
+addntr ("Minutes/minutes1003.html","March 7th",2010);
+addntr ("Minutes/minutes1005.html","May 2nd",2010);
+addntr ("Minutes/minutes1006.html","June 13th",2010);
+addntr ("Minutes/minutes1007.html","July 11th",2010);
+addntr ("Minutes/minutes1008.html","August 1st",2010);
+addntr ("Minutes/minutes1009.html","September 12th",2010);
+addntr ("Minutes/minutes1011.html","November 7th",2010);
+addntr ("Minutes/minutes1101.html","January 9th",2011);
+addntr ("Minutes/minutes1102.html","February 6th",2011);
+addntr ("Minutes/minutes1103.html","March 6th",2011);
+addntr ("Minutes/minutes1105.html","May 1st",2011);
+addntr ("Minutes/minutes1106.html","June 5th",2011);
+addntr ("Minutes/minutes1107.html","July 10th",2011);
+addntr ("Minutes/minutes1108.html","August 7th",2011);
+addntr ("Minutes/minutes1201.html","January 8th",2012);
+addntr ("Minutes/minutes1202.html","February 5th",2012);
+addntr ("Minutes/minutes1203.html","March 4th",2012);
+addntr ("Minutes/minutes1205.html","May 6th",2012);
+addntr ("Minutes/minutes1206.html","June 3rd",2012);
+addntr ("Minutes/minutes1207.html","July 1st",2012);
+addntr ("Minutes/minutes1301.html","January 6th",2013);
+addntr ("Minutes/minutes1302.html","February 3rd",2013);
+addntr ("Minutes/minutes1303.html","March 3rd",2013);
+addntr ("Minutes/minutes1306.html","June 2nd",2013);
+addntr ("Minutes/minutes1307.html","July 7th",2013);
+addntr ("Minutes/minutes1308.html","August 4th",2013);
+addntr ("Minutes/minutes1309.html","September 7th",2013);
+addntr ("Minutes/minutes1311.html","November 3rd",2013);
+addntr ("Minutes/minutes1311b.html","November 16th",2013);
+addntr ("Minutes/minutes1401.html","January 5th",2014);
+addntr ("Minutes/minutes1402.html","February 2nd",2014);
+addntr ("Minutes/minutes1403.html","March 2nd",2014);
+addntr ("Minutes/minutes1406.html","June 1st",2014);
+addntr ("Minutes/minutes1407.html","July 13th",2014);
+addntr ("Minutes/minutes1408.html","August 10th",2014);
+addntr ("Minutes/minutes1409.html","September 7th",2014);
+addntr ("Minutes/minutes1411.html","November 2nd",2014);
+addntr ("Minutes/minutes1501.html","January 4th",2015);
+addntr ("Minutes/minutes1502.html","February 1st",2015);
+addntr ("Minutes/minutes1503.html","March 1st",2015);
+addntr ("Minutes/minutes1504.html","April 12th",2015);
+addntr ("Minutes/minutes1505.html","May 10th",2015);
+addntr ("Minutes/minutes1506.html","June 7th",2015);
+addntr ("Minutes/minutes1507.html","July 12th",2015);
+addntr ("Minutes/minutes1508.html","August 16th",2015);
+addntr ("Minutes/minutes1509.html","September 13th",2015);
+addntr ("Minutes/minutes1511.html","November 1st",2015);
+addntr ("Minutes/minutes1601.html","January 3rd",2016);
+addntr ("Minutes/minutes1602.html","February 7th",2016);
+addntr ("Minutes/minutes1603.html","March 6th",2016);
+addntr ("Minutes/minutes1605.html","May 8th",2016);
+addntr ("Minutes/minutes1606.html","June 5th",2016);
+addntr ("Minutes/minutes1607.html","July 10th",2016);
+addntr ("Minutes/minutes1608.html","August 14th",2016);
+addntr ("Minutes/minutes1609.html","September 4th",2016);
+addntr ("Minutes/minutes1611.html","November 6th",2016);
+addntr ("Minutes/minutes1701.html","January 8th",2017);
+addntr ("Minutes/minutes1702.html","February 5th",2017);
+addntr ("Minutes/minutes1703.html","March 5th",2017);
+addntr ("Minutes/minutes1704.html","April 3rd",2017);
+addntr ("Minutes/minutes1706.html","June 4th",2017);
+addntr ("Minutes/minutes1707.html","July 9th",2017);
+addntr ("Minutes/minutes1708.html","August 6th",2017);
+addntr ("Minutes/minutes1709.html","September 10th",2017);
+addntr ("Minutes/minutes1711.html","November 5th",2017);
+addntr ("Minutes/minutes1801.html","January 7th",2018);
+addntr ("Minutes/minutes1802.html","February 4th",2018);
+addntr ("Minutes/minutes1803.html","March 4th",2018);
+addntr ("Minutes/minutes1804.html","April 8th",2018);
+addntr ("Minutes/minutes1806.html","June 3rd",2018);
+addntr ("Minutes/minutes1808.html","August 5th",2018);
+addntr ("Minutes/minutes1809.html","September 9th",2018);
+addntr ("Minutes/minutes1810.html","October 14th",2018);
+addntr ("Minutes/minutes1811.html","November 4th",2018);
+addntr ("Minutes/minutes1901.html","January 6th",2019);
+addntr ("Minutes/minutes1902.html","February 3rd",2019);
+//
+// Get year requested
+//
+var temploc=document.location.href;
+var seldat = 0;
+var templen = temploc.length;
+var temptxt = temploc.substring(templen-5,templen-4);
+if (temptxt == "?") seldat=temploc.substring(templen-4,templen);
+curryr = parseInt(seldat);
+if (curryr == 0) {curryr = maxyr;};
+//
+function addntr (hrf,dsc,yr)
+{
+//
+//  add an entry to the table
+//
+if (yrs[yr] === undefined)
+   {yrs[yr] = sb;
+    yrlst[sc] = yr;
+    sc = sc + 1;
+    if (yr > maxyr) maxyr = yr;
+    if (yr < minyr) minyr = yr;}; 
+yre[yr] = sb;
+descs[sb] = dsc;
+lnks[sb] = hrf;
+sb = sb + 1;
+};
+//
+function yrmenu ()
+{
+//
+//  build the menu
+//
+document.write ("<center><B>Select the Year<br>for the Last Column</B><br><input type='image' src='larrow.gif' width=46 height=37 onclick='yrmenud()'></input><input type='button' id='yrsel' name='yrsel' value='" + curryr + "' class='yrbutton'></input><input type='image' src='rarrow.gif' width=46 height=37 onclick='yrmenuu()'></input></center>");
+document.close();
+};
+//
+function yrmenud ()
+{
+//
+//  year down
+//
+curryr = parseInt(curryr) - 1;
+if (curryr < minyr) curryr = minyr;
+document.getElementById("yrsel").value=curryr;
+chgyr();
+};
+//
+function yrmenuu ()
+{
+//
+//  year up
+//
+curryr = parseInt(curryr) + 1;
+if (curryr > maxyr) curryr = maxyr;
+document.getElementById("yrsel").value=curryr;
+chgyr();
+};
+//
+function enty (yr)
+{
+//
+//  format a year
+//
+var tempyr = parseInt(yr);
+var temps = yrs[tempyr];
+var tempe = yre[tempyr];
+for (var i = temps; i <= tempe; i++)
+   {document.write("<a href='" + lnks[i] + "' target=_blank>" + descs[i] + "</a><br>");};
+};
+//
+function chgyr ()
+{
+
+var tempval = "board_meetings.html?" + document.getElementById("yrsel").value;
+document.location.href=tempval;
+};
+//
+// -->
+</SCRIPT>
+
+
+<style>
+<!--
+A:link.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:active.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:visited.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
+A:hover.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#FFCC33}
+A:link.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:active.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:visited.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
+A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#FFCC33}
+th {color:#339900;font-size:24pt}
+h1 {color:#000099;font-size:28pt}
+.yrbutton {
+  border: 3px solid black;
+  padding: 8px 6px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+ /* cursor: pointer; */
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+-->
+</style>
+</head>
+
+<body bgcolor="white" leftmargin="0" rightmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=95>&nbsp;</td>
+<td bgcolor=#339966 height=95 width=60 valign="middle" align="middle"><img src="../../graphics/csssj-logo.gif" border="0"></td>
+<td bgcolor=#339966 height=95 colspan=4 valign="middle" align="left"><font face="Arial" color="black" size="6"><b>Cactus &amp; Succulent Society of San Jose</b></font></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="left"><a href="../../index.html" class="navmain" title="Returns to the CSSSJ Homepage">CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width="100%" align="right"><a href="../../welcome_visitors/welcome-index.html" class="navmain" title="Information about the CSSSJ and the hobby.">&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11"><b>&nbsp;&nbsp;&nbsp;Member's&nbsp;Corner&nbsp;&nbsp;&nbsp;</b></font></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../links_of_interest/links-index.html" class="navmain" title="Links of interest to cactus and succulent enthusiasts.">&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a></td>
+<td nowrap bgcolor=#339966 height=10 width=120 align="right"><a href="../../pictures/index.html" class="navmain" title="Pictures of Cacti and Succulents.">&nbsp;&nbsp;&nbsp;Picture&nbsp;Albums&nbsp;&nbsp;</a></td>
+</tr>
+
+<tr bgcolor=#339966>
+<td bgcolor=#339966 height=10>&nbsp;</td>
+<td bgcolor=#339966 height=10 align="right" colspan=5 bgcolor=#339966>
+<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> - 
+<a href="mini_show.html" class="navpanel" title="Find out who is winning the points in our monthly Mini Shows.">Mini&nbsp;Show&nbsp;Standings</a> - 
+<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> - 
+<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> - 
+<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> - 
+<!-- <a href="name_badges.html" class="navpanel" title="...add information here">Name&nbsp;Badge&nbsp;Order&nbsp;Form</a> - -->
+<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> - 
+<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Board&nbsp;Meeting&nbsp;Minutes</font> - 
+<a href="bylaws.html" class="navpanel" title="View the club's constitution and bylaws.">Constitution</a>
+</td>
+</tr>
+</table>
+
+<table cellpadding=10>
+<tr>
+<td>
+<!-- INSERT MAIN PANEL CONTENT BELOW THIS LINE -->
+<!-- ***************************************** -->
+
+<font face="arial">
+
+<br>
+<TABLE width="100%"><tr><td nowrap><h1>Board Meeting Minutes</h1></td><td nowrap> &nbsp; &nbsp; &nbsp; <td align="right" nowrap>
+
+<Script language="Javascript">
+yrmenu();
+</Script>
+
+</td></tr></TABLE>
+<br>
+
+Click on a link below to view the board meeting minutes for that month.<br><br>
+
+<TABLE>
+<Script language="Javascript">
+if (seldat == 0) seldat = parseInt(maxyr);
+var yr1 = seldat-4;
+var yr2 = seldat-3;
+var yr3 = seldat-2;
+var yr4 = seldat-1;
+//
+document.write("<tr>");
+if (yre[parseInt(yr1)] > 0) {document.write("<th>" + yr1 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr2)] > 0) {document.write("<th>" + yr2 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr3)] > 0) {document.write("<th>" + yr3 + "</th><th> &nbsp; &nbsp; </th>");};
+if (yre[parseInt(yr4)] > 0) {document.write("<th>" + yr4 + "</th><th> &nbsp; &nbsp; </th>");};
+document.write("<th>" + seldat + "</th></tr>");
+document.write("<tr><td valign='top'>");
+if (yre[parseInt(yr1)] > 0)
+   {enty (yr1);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+if (yre[parseInt(yr2)] > 0)
+   {enty (yr2);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+if (yre[parseInt(yr3)] > 0)
+  {enty (yr3);
+   document.write("</td><td> &nbsp;</td>");
+   document.write("<td valign='top'>");};
+if (yre[parseInt(yr4)] > 0)
+   {enty (yr4);
+    document.write("</td><td> &nbsp;</td>");
+    document.write("<td valign='top'>");};
+enty (seldat);
+document.write("</td></tr>");
+
+document.close();
+</Script>
+
+</TABLE> 
+<br><br><br><br><br><br>
+
+</font>
+
+<!-- ***************************************** -->
+<!-- INSERT MAIN PANEL CONTENT ABOVE THIS LINE -->
+
+<hr>
+<i>Send questions or comments to the CSSSJ Webmaster:</i> <a href="mailto:webmaster@csssj.org">webmaster@csssj.org</a>
+<hr>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+

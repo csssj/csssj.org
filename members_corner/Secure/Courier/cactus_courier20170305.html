@@ -1,0 +1,315 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/5/2017">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/5/2017</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "5";
+var thisyear = "2017";
+var nextmonth = "April";
+var nextday = "2";
+var nextyear = "2017";
+var deadline = "March 24, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("March 2017","5, Sunday - 11:00am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Growing and Propagating Hardy Aloes","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2017","2, Sunday - 11:00am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","Prep for Show &amp; Sale","29-30, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","48<sup>th</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+fmcal ("May 2017","14, Sunday - 11:00am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Growing and Propagating Hardy Aloes</B><br>
+<br>
+<P>
+The UC Davis Botanical Conservatory and Ernesto Sandoval have been experimenting with a greater diversity of aloes here in Northern California. Ernesto would like to share his experience with growing and propagating Aloes beyond some of the common species such as <I>A. comosa</I>, <I>melanacantha</I>, <I>peglerae</I>, <I>hereroensis</I> and other cool/wet tolerant species. 
+</P>
+<P>
+He will touch on the more and less available Aloes.  Although his talk is focused for Northern California conditions, his program will include those that are less suitable for our climate and more suitable for Southern California or parts of the Bay Area.  As always, he will bring a selection of uncommon succulents, Aloes, and other plants for your collections and gardens and to help the Botanical Conservatory’s programs.
+</P>
+<P>
+Ernesto Sandoval has been wondering and seeking questions to why plants grow and look the way that they do for a long time.  Now he explains and interprets the world of plants to a variety of ages and experiences from K-12 to professionals and Master Gardeners.  He regularly lectures to a variety of western Garden Clubs throughout the year and particularly to Succulent Clubs throughout the State and elsewhere since that group of plants is his particular passion within his general passion for plants.  He describes himself as a &quot;Jose of All Plants, Master of None.&quot;  Ernesto thoroughly enjoys helping others, and gardeners in particular, to understand why and how plants do what they do.
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your oldest cacti</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter Growers</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Aloes (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>What's the plant that got you started with cacti or succulents?</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Aloe Bed","","Ernesto Sandoval","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('aloebed.jpg',1018,678)><img src='aloebed.jpg' width=753 height=502 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("<TABLE><tr><td><img src=' welcomecactus.gif' width=77 height=121></td><td valign='bottom'><center><B class='arthead'>WELCOME NEW MEMBERS</B><br><B>by Sandy Carter</B></center></td><td><img src=' welcomecactus2.gif' width=77 height=121></td></tr></TABLE>","","","<center>A few new members have joined us recently.</P><P>Please join us in welcoming them:</P><P>Elizabeth Menkin<br>Renu and Arthur James</P><P>Our active membership is now: 176</center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","Start saving up cardboard boxes for our customers to use at our Spring Show and Sale, which is scheduled for April 29th and 30th at the usual place, namely Peterson Middle School in Sunnyvale.  Also start thinking about the kinds of jobs you personally can do during the set-up the day beforehand, as well as during the show, to make it a success for the club.  Our Shows and Sales are where the club gets most of its funds to pay our operating expenses for the rest of the year.</P><P>Since at our Spring Shows we always have expert jurors come in to award prizes to the best Show plants, extra work is involved from us club members in setting up the submitted plants in the right categories, as well as clerk-assistants to help the judges as they go about choosing the best of the best.  So we will be needing lots of volunteers to work with Jaan Lepson in the Show area, especially on Friday evening April 28th.  Remember that if you volunteer 2 or more hours of your time, you get $10 in free ShowBucks to apply toward your purchases.  And on Friday evening you get pizza!  And on Saturday and Sunday you get lunch!</P><P>As our Show and Sale falls so late in April, we will still be having a regular club meeting early in April.  April’s topic will be a roundtable discussion led by club VP Loyd Monaco on preparing your plants for the Show and Sale.  For example, suppose you would like to sell some small number of plants on the club table at the show – how do you need to prepare your plants, and what else do you need to do before you can sell?   Or suppose you have a couple of fine specimen plants you would like to see win a prize in the Show – what do the judges look for?</P><P>Also, as several members have expressed interest in having a short hands-on practice session on how to access and use the club’s new social media internet sites, we will do that before getting into the roundtable discussion.  So bring your smartphones or tablets to the April meeting so you can practice.  There is no wi-fi in the building, so only smartphones and tablets that have access to cellular data will be usable during this practice session.  If you already know this stuff, come prepared to assist the newbies.</P><P>If you haven’t already done so, prepare ahead of time by creating your own Facebook and Instagram accounts.  To do this, use your browser to go to facebook.com, and instagram.com, and set up a User Name and Password for yourself to use.  Write these down.  Then, if you have an Apple device, go to the Apple Store, and if you have a Samsung/Android device, go to the Google Play Store using your device’s web browser.  Search for &quot;Facebook&quot; and &quot;Instagram&quot;, and follow the directions to download the apps to your device.  They’re both free.   Then use your User Name and Password to log into these apps.  You should only have to log in the first time you use them – the device should remember them for you after that.</P><P>Reminder to the Board of Directors, the March Board Meeting will begin at 11AM sharp, and everyone needs to be on time and focused, so we can finish by noon.  If you need to bring other items into the building, then you need to arrive a few minutes early to take care of that so we start up on schedule.   Review the minutes of the last board meeting ahead of time to remind yourself of your action items.");
+
+fmart ("February 2002 Revisited:What's Bugging You?","Jim Daniel","","What bugs me is the soil mixes we all use to plant our Cactus and Succulents in.  Everybody has a different recipe they follow.  I have seen cactus growing on mountaintops on Limestone rocks like <I>Agave victoria-reginae</I>.  I have seen them growing in dry lakebeds that were sometimes under water like <I>Ariocarpus kotschobeyanus</I> and <I>Porfiria schwartzii</I> (<I>Mammilaria cohulensis</I>).  The majority of Cactus grow on the slopes of mountains or on small hills.</P><P>I stopped at a small nursery outside of White City, NM.  It was located at a trailer house out in the desert.  The plants were in tin cans and all native to the region.  They were potted in desert soil in full sun, no shade, on barbecue tables.  One table had a hand written sign, plants one dollar each.  One had a sign, two dollars each, and so on.  His sales method was the honor system.  At least he had all the plants in the same soil mix.</P><P>You can't formulate a mix that fits all plants, so we formulate a mix that fits most plants.  The big advantage in having a standard mix is they all dry out at the same time (depending on pot size).");
+
+fmart ("Spotlight Interview with Sonia Dyer","Asmita Deshpande","Wes and Joyce McPheeters","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('soniadyer.jpg',596,891)><img src='soniadyer.jpg' width=298 height=446 hspace=17 vspace=17 class='enl' align='left'></a><br>Sonia joined San Jose Cactus and Succulent Society in 2007, but she was interested in Cacti and Succulents for twenty years before that.  Life was just very busy to get involved earlier.  She got onto the Board of Directors right after joining and was secretary for five years and is now President for the next two years.</P><P>Sonia likes both cacti and succulents, and her collection is about 1/3 cacti and 2/3 succulents.  Her favorites are Echevarias (for their variety) along with any kind of long white haired cactus.  She has a very old ‘Old Man’ cactus with very long white hair on it.</P><P>Besides the Cactus and Succulent Society, she is on the Board of Directors of the Gem and Mineral Society and is a part of the County Historical Society and is interested in a variety of other things.</P><P>She has two Chihuahua dogs and two Siamese cats.  She has a degree in Electrical Engineering and worked in communications engineering and project management.  For sixteen years, she worked for Hewlett Packard.</p><P>Her message to the society is that the society needs active participants on the Board of Directors, and if anyone is interested they should contact her.</td></tr></TABLE>");
+
+fmart ("Report on the February Meeting","Sonia Dyer","Jaan Lepson and Peter Beiersdorfer","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('beiersdorfer020517lepson.jpg',481,500)><img src='beiersdorfer020517lepson.jpg' width=313 height=325 hspace=17 vspace=17 align='left' class='enl'></a><br>We had a wonderful presentation at our February meeting by Peter Beiersdorfer on some of the sedums and other marvelous succulents like <I>Welwitschia</I>, that he’s seen on the travels.  He and Jaan have traveled to many places around the world, places that most of us will never see in person.</td></tr><tr><td valign='top'><a href=javascript:poppic('sedummontanaum.jpg',781,589)><img src='sedummontanaum.jpg' width=422 height=318 hspace=17 vspace=17 align='right' class='enl'></a><br>To our surprise he started in Germany and Switzerland, which most of us don’t really think of as having endemic succulents, but they do.  In many places in the mountains they grow out of cracks in the rock.  Here’s a picture of <I><I>Sedum montanaum</I></I>, native to the Alps, which Peter thinks has pretty flowers, even once they’re dried.</td></tr><tr><td valign='top'> From there he showed us photos from various trips they’ve made to South Africa and Namibia.  Besides great photos of other plants, Peter showed us succulent forests whose lower branches had all been stripped by giraffes during a drought.  The most surprising photo he showed was one Jaan took of Peter with blood all over his shirt from a cut on the head he got in a bad fall while hiking.  He had to get several stitches at a medical clinic that also sold eggs!  He’s lucky he didn’t end up like the zebra carcass they found.</P><P>Then Peter took us across the Atlantic to northern Argentina for a look at some of the cacti that grow there, and then to coastal North Carolina for a look at the native opuntia species, and some very small cacti that grow in the sand dunes, which you’ll find if you walk through them with bare feet.</P><P>Thanks Peter for a very enjoyable trip!</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>It is very easy to see that <I>Mammillaria solisioides</I> [<I>Solisia pectinata</I>] is confused with <I>Mammillaria pectinifera</I>.</P><P>The NCL has two short descriptions showing the difference in the plants.  Here is what it says for <I>ssp. pectinifera</I>:  'Areoles elongate; spines about 40 under 3 mm strictly pectinate.'  And for <I>ssp. solisioides</I>:  'Areoles less elongate; radial spines about 25 under 5 mm more or less radiating.'</P><P>The definition of 'pectinate' from the Glossary of Succulent Plant Terms by W. Taylor Marshall and R.S. Woods: 'Shaped like a comb; having narrow parallel projections, such as spines.'</P><P>A correct description of the plant we know as <I>Mammillaria pectinifera</I> would be:</P><P>Body simple, globose to short cylindric, 3 - 4 cm in diameter to 3 cm tall, milky sap, roots fibrous, tubercles oblong, axils naked, areoles narrow 1-1.5 mm wide to 10 mm long, radial spines 50 to 85, pectinate, appressed, central spines 0, flower 2 - 3 cm long and in diameter, petals pinkish white with darker mid veins, center shell pink, filaments pink, anthers yellow, stigma light green, fruit oblong to 8 mm long, seed black. Habitat is in the Mexican state of Puebla, at elevation of around 1900 meters where it grows in limestone soil.</td></tr><tr><td valign='top'><a href=javascript:poppic('3mammillariasolisioidesmpectinifera.jpg',1011,674)><img src='3mammillariasolisioidesmpectinifera.jpg' width=506 height=337 hspace=17 vspace=17 align='left' class='enl'></a><br>To the left is a photo of <I>Mammillaria solisioides</I> on the left and <I>Mammillaria pectinifera</I> on the right.  The areoles on <I>M. pectinifera</I> are quite long compared to those on <I>M. solisioides</I>.  Also the spine clusters on <I>M. pectinifera</I> are pectinate like the teeth of a comb and the spines on <I>M. solisioides</I> are more like radiating petals on a sunflower.  The spines on <I>M. solisioides</I> also overlap other spine clusters, even on this cultivated plant.  Some of the lower spines also cross over other areoles.  Plants in habitat have much denser spine clusters.</td></tr><tr><td valign='top'><a href=javascript:poppic('2mammillariasolisioides.jpg',1059,910)><img src='2mammillariasolisioides.jpg' width=455 height=391 hspace=17 vspace=17 align='right' class='enl'></a><br>You can see that the spine clusters on the plants look nothing alike. The photo to the right is of <I>Mammillaria solisioides,</I> and the one below is of <I>Mammillaria pectinifera</I>. Note how in the photo below, the spine clusters looks like a swarm of bugs marching out of a hole; then compare that with the photo to the right, which only looks like a tangle of spines in the growing point.</td></tr><tr><td valign='top'><a href=javascript:poppic('10mammillariapectinfera.jpg',1069,900)><img src='10mammillariapectinfera.jpg' width=460 height=387 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo the left shows the typical flowers of the plant we know as <I>Mammillaria pectinifera</I>.  The flowers are 3 cm in diameter the petals are light pink with a darker midstripe.  Flower center is shell pink.  Compare with the yellow flowers on the plant in the photo above. Very different!</P><P>The two plants have been mixed up for some 64 years. People have been attaching to <I>Mammillaria pectinifera</I> attributes that belong to <I>M. solisioides</I> and not to <I>M. pectinifera</I> at all! Spine numbers, spine shape, flower color and flower size.</td></tr><tr><td valign='top'>In reality the plants we know as <I>Mammillaria solisioides</I> should be named <I>Mammillaria pectinata</I> as it was described as <I>Solisia pectinata</I>.  The plant we know as <I>Mammillaria pectinifera</I> should be nameless or given a correct description, as I have given above, as it has not been described correctly.  For any description tied to it is not correct and belongs to <I>Solisia pectinata</I> [<I>M. solisioides</I>].</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

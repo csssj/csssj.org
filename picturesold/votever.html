@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Vote Verify</TITLE>
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+
+<SCRIPT language="JavaScript" src="http://csssj.org/members_corner/Secure/chk01.js"></SCRIPT>
+<SCRIPT Language="JavaScript">
+<!--
+//
+function checkForm()
+{
+//
+//  This function will check the specification to be certain the form is
+//  complete.
+//
+var rettxt = "";
+var temptxt = document.location.href;
+var pos = 0;
+pos = temptxt.indexOf("?");
+if (pos != 0)
+   {
+    rettxt = temptxt.substring(pos+1,pos+2);
+    document.form1.success.value="http://www.csssj.org/pictures/votacknow.html?" + rettxt;
+    document.form1.picnum.value = temptxt.substring(pos+2,temptxt.length);
+   };
+var retval = true;
+var temptxt = document.form1.email.value;
+if (temptxt.length < 1)
+   {
+    alert ("Please fill in your email address.");
+    retval = false;
+   }
+else
+   {
+    if (temptxt.indexOf("@") == -1)
+       {
+        alert ("Please enter a valid email address.");
+        retval = false;
+       }
+    else
+       {
+        if (temptxt.indexOf(".") == -1)
+           {
+            alert ("Please enter a valid email address.");
+            retval = false;
+           };
+       };
+   };
+if (retval)
+  {
+   if (chkem(document.form1.email.value) == false)
+      {
+       retval = false;
+       alert ("The email address specified does not match an email address of a members of the CSSSJ.");
+      };
+   };
+return retval;
+};
+//
+ -->
+</SCRIPT>
+<STYLE>
+<!-- 
+H1 {font-size: 26pt; color: #0033CC; font-family: Comic Sans MS}
+.gen {color: #333399}
+-->
+</STYLE> 
+
+</HEAD>
+<BODY>
+<center>
+<H1>Vote Verification</H1>
+<br>
+<P>
+<font color="#CC3300" size="+2">Note that you must be a member of the Cactus and Succulent Society of San Jose to vote.<br>
+Enter the email address you registered with the club and click the Vote button.</font>
+</P>
+
+<form METHOD="POST" ACTION="http://www.csssj.org/cgi-bin/cgiemail/~csssjweb/pictures/picvote.txt" OnSubmit="if(checkForm())
+   {document.form1.submit();};" name="form1" id="form1">
+
+<br>
+<P>
+<B>Email Address: &nbsp; </B> <input name="email" size=40>
+</P>
+<br>
+<br>
+
+<Input type="button" size=500 value="Vote" OnClick="if(checkForm())
+   {document.form1.submit();};">
+</center>
+
+<input type="hidden" name="picnum" value="">
+<input type="hidden" name="success" value="http://www.csssj.org/pictures/votacknow.html">
+</form>
+</P>
+<br>
+</center>
+
+</BODY>
+</HTML>

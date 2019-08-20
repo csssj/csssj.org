@@ -1,0 +1,347 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/5/2014">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/5/2014</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "5-6";
+var thisyear = "2014";
+var nextmonth = "May";
+var nextday = "17";
+var nextyear = "2014";
+var deadline = "May 9, 2014";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April 2014","5-6, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","45<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2014","17, Saturday -  7:30am to 5:00pm","Field Trip to the University of California in Davis","","","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2014","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2014","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("April 2014","19-20, Sat-Sun 9am-5pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale<br>Jardins De San Juan<br>115 Third Street<br>San Juan Bautista, CA, 95045<br><br>Contact Naomi Bloss for details 831-722-1446","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">45<sup>th</sup> Annual Spring Show and Sale</B><br>
+<br>
+<P>
+<B><font size=+1>Friday (April 4 2014):</B></font>
+<TABLE>
+<tr><td nospan>3:30pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">We can get into the school</td></tr>
+<tr><td nospan>3:30pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Set-up tables</td></tr>
+<tr><td nospan>5:00pm - 9:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Please try to get plants to the school by 7:30pm so that we can stage them on the tables by 9:00pm.
+</P>
+<P>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points.
+</P>
+<P>
+<B><font size=+1>Saturday (April 5 2014): </B></font>
+<TABLE>
+<tr><td nospan>8:00am - 10:00am</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Judging</td></tr>
+<tr><td nospan>9:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Sales area open for business</td></tr>
+<tr><td nospan>10:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show available for public viewing</td></tr>
+<tr><td nospan>4:00pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Prizes to be awarded.  Winning plants moved to stage area. </td></tr>
+</TABLE>
+</P>
+<P>
+<B><font size=+1>Sunday (April 6 2014): </B></font>
+<TABLE>
+<tr><td nospan>10:00am - 4:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+Please pick up show plants starting at 4:00pm.
+</P>
+<br>
+<P>
+<center>
+<img src="petersonmiddle2.gif" width=530 height=325 border=1 vspace=5><br>
+<font size="-1">Peterson Middle School, 1380 Rosalia Avenue, Sunnyvale, CA, 94087-3795</font>
+</center>
+</P>
+<br>
+<!-- 
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted or Crested Cacti</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Crested Succulents</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Getting ready for the Show! (Bring your staged plants in for a friendly critique) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>The plants that got you interested in the hobby</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+
+</P>
+ -->
+<!-- 
+<br>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B><font size="+2" color="#FF0000">Note</font><font size="+1"> that the meeting will be in the Meeting Hall this month<br> and not in the Multi-Cultural building.</font></B></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("COME CLERK AT THE SHOW!","Jaan Lepson","Our Spring Show is by tradition professionally judged.  The clerks who assist the judges on Saturday morning are an important part of the judging team.  We have two pairs of judges, one for cacti and one for the remaining succulents, each of which are assisted by two clerks.  The clerks punch the entry forms for the placings decided by the judges, write any comments that the judges may have, and set out ribbons.</P><P>Clerking is a great learning opportunity for anyone - but especially for beginners - as you get to listen in as the judges discuss the plants and decide on the winners.  Find out what makes a great plant great!  And learn about staging them too.  I thought that clerking was the best job I had volunteering at the show, and I look forward to clerking again, once I am no longer show chair.</P><P>We still need three more clerks to help out.  Judging starts at 8am on Saturday and continues to about 10am.  Coffee and refreshments should be available, and our club lunch will start soon after.  You'll also have the chance to shop for plants before the public comes in.  Plus, you'll earn $10 in Show Bucks (good for a year) to help pay for your purchases.</P><P>If you would like to have some fun clerking, please call Bill Kurtz (408-243-3692) or email me directly (<a href='mailto:lepson@ssl.berkeley.edu?Subject=Clerking%20at%20the%20Show'>lepson@ssl.berkeley.edu</a>).  Thanks - and hope to see you there!");
+
+fmart("FIELD TRIP TO UC-DAVIS IN LIEU OF MAY MEETING","Sonia Dyer","<center><TABLE width='90%'><tr><td valign='top'><img src='vtaparknride.gif' width=666 height=552 hspace=17 align='right'><br>Our plans are firming up for the May 17th field trip by bus to see US-Davis' plant conservatory, greenhouses, and sales area.  A better location has been found for the San Jose pickup point than the one announced at the March meeting.  The new pickup location is the VTA Park n Ride lot at the intersection of I-85 and Camden Road.  This parking lot is immediately adjacent to the west side of the freeway.  Its entrance is located on Camden.  The bus should arrive at 7:15am and depart for Davis at 7:30.  Our tour begins at 10:00am.  There will be refreshments on board, and you will need to bring a bag lunch.  We should be back in San Jose by 5:00pm.</P><P>If you haven't yet reserved a spot on the bus, or have questions, please contact Sonia Dyer at <a href='mailto:sonia.dyer@sbcglobal.net?Subject=Davis%20Trip'>sonia.dyer@sbcglobal.net</a> or 408-629-5735.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='pleiospilos magniponctatus pl.jpg' width=400 height=340 hspace=17 align='left'><I>Pleiospilos magniponctatus</I> comes from South Africa.  Like the deserts and arid lands of the Americas Southern, Africa supports a wonderful array of succulents.  Many of the succulents of South Africa are kind of strange in that the plant body has windows that let light in so photosynthesis can take place much easier.  Looking at the plant of <I>P. magniponctatus</I>, you can see these windows quite easy.  The windows show up even better behind the flower close up.  The name, <I>Pleiospilos</I>, meant more spots.  As a part of the <I>Mesembryanthema</I> family <I>Pleospilos</I> also has a seed pod that is separated in to compartments with lids for each compartment.  In a rain, the lids open, and you can see it open right before your eyes.  I have seen the lids open wide in as little as 30 seconds.  This allows the seed to be bounced out of the pod.  The seed are in a strange material that is water soluble.  If you get a light rain only a seed or two per compartment are bounced out by the falling rain.  That is so the seed is not all dumped at one time.  In a light rain, the seed will germinate, and, if no more rain falls for a while, the seedlings will die.  In a medium rain, more of the glue like substance will dissolve and more seed will be bounced out to germinate.</td></tr><tr><td valign='top'><img src='pleiospilos magniponctatus.jpg' width=400 height=340 hspace=17 vspace=23 align='right'><br>In hot house cultivation where you might want to save the seed, then water without getting the seed pod wet.  When the seed pot is all dried out, you can take the pod between your fingers.  Squeeze and give it a rolling action at the same time, and you can convince most of the seed to fall in to your container.  The best time to plant the seed is in September and October.</td></tr></TABLE></center>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B>Standings as of March 2014</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",51);
+fminiadd ("Kathi Cambiano",43);
+// fminiadd ("Joseph Hidalgo",0); 
+fminiadd ("Jaan Lepson",47);
+// fminiadd ("Marilyn Moyer",0);
+// fminiadd ("Bill Munkacsy",0);
+// fminiadd ("Maggie Palacek",0);
+fminiadd ("Joel Parker",25);
+fminiadd ("Ellen Stubblefield",47);
+fminiadd ("Gary Stubblefield",38);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Cecilia Caday",24);
+// fminiadd ("Janice Coleman",14);
+// fminiadd ("Alyene Daggett",2);
+// fminiadd ("Marilyn Hofman",26); 
+fminiadd ("Terri Koike",39);
+fminiadd ("Joan Lambert",22);
+fminiadd ("Susan McKuhen",13);
+fminiadd ("Therese McQuillan",14);
+fminiadd ("Lois McPherson",6);
+// fminiadd ("Loyd Monaco",0); 
+fminiadd ("Alex Morgan",25);
+// fminiadd ("Janet Rollin",0);
+fminiadd ("Diane Salewski",35);
+// fminiadd ("Joe Silva",0);
+fminiadd ("Ross Smith",2); 
+fminiadd ("Janet Stevenson",12);
+fminiadd ("Jacky Wilk",19);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

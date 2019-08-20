@@ -1,0 +1,263 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier -10/6/2007">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/6/2007</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "6-7";
+var thisyear = "2007";
+var nextmonth = "November";
+var nextday = "4";
+var nextyear = "2007";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Free</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>Trade or Sell - Lost and Found</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("October 2007","6-7, Sat - 9am - 5pm  Sun - 10am - 4pm","Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2007","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","Country Store.","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2007","9, Sunday - 11:00am to 4:00pm","Annual Holiday Extravaganza.","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2008","6, Sunday - 10:30am to 12:00pm","Board Meeting.","6, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2008","3, Sunday - 10:30am to 12:00pm","Board Meeting.","3, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2007","15-16, Sat - Sun - 9:00am to 5:00pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>It will be held at the Jardins de San Juan restaurant.<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">2<sup>nd</sup> Annual Fall Show and Sale</B><br>
+<br>
+<P>
+<B><font size=+1>Friday (October 5 2007):</B></font>
+<TABLE>
+<tr><td nospan>3:30pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">We can get into the school</td></tr>
+<tr><td nospan>3:30pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Set-up tables</td></tr>
+<tr><td nospan>5:00pm - 9:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Plants will be grouped by participant rather than by judged show categories.
+</P>
+<P>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points.
+</P>
+<P>
+<B><font size=+1>Saturday (October 6 2007): </B></font>
+<TABLE>
+<tr><td nospan>9:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+<B><font size=+1>Sunday (October 7 2007): </B></font>
+<TABLE>
+<tr><td nospan>10:00am - 4:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+There will be prizes for the plants that are most popular with our visitors.
+</P>
+<P>
+Please pick up show plants starting at 4:00pm.
+</P>
+<P>
+<img src="buchser.gif" width=434 height=259 alt=" Buchser Middle School, 1111 Bellomy Street, Santa Clara, CA" border=1>
+<br>
+<center><font size=-1>1111 Bellomy Street, Santa Clara</font></center>
+</P>
+<!-- <br><br><br>
+<P>
+<font size="+1"><B>Plants of the Month for September:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants native to Chile (<I>Copiapoa</I>, <I>Eulychnia</I>, <I>Trichocereus</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>South American Succulents (<I>Dykias</I>, <I>Echeverias</I>)</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or something educational</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Dish Garden</td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>We will be having a POTLUCK for the September meeting.</font></B>
+</P> -->
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("My Goodbye to Paul Long","Rich Kroll","It is with sadness that I have to report here that Paul Long died on September 7<sup>th</sup>.  I know that I will miss Paul.  He always treated me as if I mattered, even though I am an amateur in a discipline in which he was an expert.  He will be missed but never forgotten.");
+
+fmart ("Bud Livermont and Paul Long","Linda Delgado","Many of the members of our society have become like members our family.  As with all families, there will be times of sorrow.</P><P>When you share the same interest with people you build a bond that can last years, decades, or even a lifetime.  The friendships don’t end because someone moves out of the area or pass away.  The contact is still there.  Conversations will often go back to times that were shared between you; the retelling to new members of your family only helps to remind you of the importance of it all.</P><P>When we lose members of our family, it can be a pain that is hard to endure.  When the person that we lost has been with us for many years, it can be as if we have a large hole that will seem impossible to fill.  The gardeners in us know that there will never be a hole that will remain empty for long, because the memories will help to fill it.</P><P>Those of us that were fortunate enough to have known Bud Livermont and Paul Long will be at a loss for quite some time. Evalyn, Eddy and Retha will be in our hearts and our thoughts.  We will share our memories with each other and help each other through the tough times.  That’s what families do.</P><P>We will miss our brothers: Bud and Paul.");
+
+
+fmart ("The Country Store","Tony Bassano","If you have been to our Country Store before, you know that this is one of the most fun events of the season.  It is a great opportunity for you to share with your fellow members. (Bring plants that you think other members would enjoy, unless you are looking forward to taking them back home yourself.  If you bring desserts, make certain that they are individually wrapped.)</P><P>Here is how it works.  First separate tables are set up for each category, cacti, succulents, associated items, and desserts.  Then we all buy tickets at five tickets for a dollar.  Members can use their tickets in whatever categories they like.  A board member for each table picks tickets, and each winning member in the order their ticket was selected gets their pick of what is on that table.  This is repeated until the Country Store is done or everyone dies laughing.</P><P>(The Country Store is scheduled for the November meeting. - Ed.)");
+
+fmart ("Paul Long","Elton Roberts","I think it was in the first years of Norcal that I really got to know Paul. Paul and Retha were on the first board as directors and signed the first copy of the bylaws of Norcal [which I just happen to have a copy of] Up till his death Paul and Retha were on the board in some capacity. When I was asked to be president Paul was the secretary and a darn good one. He would tape the meetings and he did not miss anything going in the report, as he wanted it to be accurate. The cash registers were Paul’s responsibility and he took that responsibility serious and always got them set up and if anything went wrong he was there to set it right. This he did while helping with other things that needed doing also. He was not afraid to work at any thing that needed to be done. Back in the days of the Oakland show and sale I remember his helping with everything as very few of the members of the club would do anything. At all the shows and sales Paul was a standard fixture, kind of ramrodding the set up of the sale or show right along. If anyone had any questions he would answer them or direct you to who ever could answer.</P><P>Paul stood up for what he thought was right, I saw him defend people that were falsely accused of something they did not do. When the Stockton cactus club decided that those sellers that did not attend x number of meetings got a 5% lower cut than those who attended the said number of meetings, Paul refused to sell even if it meant loosing quite a few sales. Paul would do more work during the show and sale than most of the club members.</P><P>I think the memories that will last with me are the ones of being with Paul and Retha while they were getting ready to move to Dos Palos. They had an enthusiasm about them that made it fun to be there and see things getting done and help them so the move could be made a bit sooner. After they had been living at Dos Palos for a while Retha had her stroke. Paul dedicated his time to caring for Retha and so his doing for the cactus clubs was cut down a bit. As Retha’s condition improved Paul slowly got more involved again with the cactus world. We would talk for hours by phone and you could tell that the old fire was coming back. We set the world and the cactus business correct many times during those phone calls. Paul was really getting enthusiastic until that fateful day. Paul I miss you and so do many of the people of the different cactus societies. Rest in Peace.");
+
+fmart ("A few words on Paul Long","Jim Daniel","I had the pleasure of the company of Paul Long and his wife, Casey, on two trips into Mexico.  The first was a trip to Baja California with Paul and Casey, Manson and Lynda Waters, Millie Zink, Fred Gaumer, Lloyd Brinson, Sam and Carole Keaton.  We entered Mexico at Tijuana, drove to Esanada, then to El Rosario.  Then the road swung in to the interior and the vegetation changes.  We proceded down the peninsula to Cabo San Lucas with many side trips to see the sights and photograph the plants.  A great time was had by all.  Except the Exceptions, Fred Gamer loved to build big bonfires, and Mason Waters was concerned that his truck would burn as well.  The Mexicans built a fence around the Mission El Arco after we left.  Fred Gaumer brought his face mask, and while he was enjoying the waters of the Sea of Cortez, he found a Brittle Star Fish.  Paul Long was plagued by flat tires. He had four by the time we reached La Paz.  I suggested that he buy six ply instead of the two ply that came with his new van.  Problem Solved!  On the trip home, we found no gas as we passed through Guerre Negro.  We were all running on fumes, when we arrived at El Rosario.  A few miles past El Rosario, we came upon an accident.  A Mexican driver had run off the causeway, and his wife was injured.  As luck would have it, Manson Waters had a stretcher with him.  We loaded the lady along with her husband into a passing pickup truck.  Paul Long developed an oil leak in his new van.  All the drivers pitched in and had enough oil to make it home.  Every hundred miles, we stopped and added oil to Paul's van.");
+
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,347 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/2/2016">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/2/2016</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "2-3";
+var thisyear = "2016";
+var nextmonth = "May";
+var nextday = "8";
+var nextyear = "2016";
+var deadline = "April 29, 2016";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April 2016","2-3, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","47<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2016","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Tom Vincze - Exploring Madagascar","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2016","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Ellen Stubblefield - Windowboxes","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2016","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2016","14, Sunday - 10:30am to 12:00pm","Board Meeting","14, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<TABLE cellspacing=13 cellpadding=13 border=5 bordercolor='#FF0000'><tr><td><font color='#990000' size='+1'><center><B>Note that the dates for the Spring Show and Sale have changed.</B></center></font></td></tr></TABLE><br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+// document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("January 2015","17, Saturday - 9:00am to 4:30pm"," CSSA Desert Forum<br>The Huntington Gardens<br>1151 Oxford Road<br>San Marino, California, 91108","","");
+
+document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">47<sup>th</sup> Annual Spring Show and Sale</B><br>
+<br>
+<P>
+<B><font size=+1>Friday (April 1 2016):</B></font>
+<TABLE>
+<tr><td nospan>3:30pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">We can get into the school</td></tr>
+<tr><td nospan>3:30pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Set-up tables</td></tr>
+<tr><td nospan>5:00pm - 9:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Please try to get plants to the school by 7:30pm so that we can stage them on the tables by 9:00pm.
+</P>
+<P>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points.
+</P>
+<P>
+<B><font size=+1>Saturday (April 2 2016): </B></font>
+<TABLE>
+<tr><td nospan>8:00am - 10:00am</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Judging</td></tr>
+<tr><td nospan>9:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Sales area open for business</td></tr>
+<tr><td nospan>10:00am - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show available for public viewing</td></tr>
+<tr><td nospan>4:00pm - 5:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Prizes to be awarded.  Winning plants moved to stage area. </td></tr>
+</TABLE>
+</P>
+<P>
+<B><font size=+1>Sunday (April 3 2016): </B></font>
+<TABLE>
+<tr><td nospan>10:00am - 4:00pm</td><td> &nbsp; &nbsp;</td><td nospan valign="top">Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+Please pick up show plants starting at 4:00pm.
+</P>
+<br>
+<P>
+<center>
+<img src="petersonmiddle2.gif" width=530 height=325 border=1 vspace=5><br>
+<font size="-1">Peterson Middle School, 1380 Rosalia Avenue, Sunnyvale, CA, 94087-3795</font>
+</center>
+</P>
+<!-- 
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I>Cleistocactus</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> <I> Tylecodon/Cotyledon</I> </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1> Show off your best in plant staging (or your choice) </font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1> <I>Haworthia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+<br>
+-->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("47<sup>th</sup> Annual Spring Show and Sale","Jaan Lepson","The Cactus and Succulent Society of San Jose will hold its 47<sup>th</sup> Annual Spring Show and Sale April 2-3 at Peterson Middle School.  This is a professionally judged show, as is our custom in the spring.</P><P>I encourage all our members to enter plants.  It’s easy and it’s fun, plus it’s a good learning experience.  If you’ve never shown before, go ahead and take the plunge!  We all had to start from ground zero.  Plus there are prizes just for novices.  So take your favorite plant, groom it, and put it in a nice pot (even plastic is OK) – you’ll be surprised at how good it looks.  As I like to say, getting a plant ready for show is like putting a guy in a tuxedo – any schlubb looks better! &#9786;</P><P>I also ask for the club members’ help in setting up and running the show.  We need people to help set up the show tables on Friday afternoon and especially to help stage the plants Friday evening (free pizza!).  This is critical to the success of the show.  We also need four volunteers to clerk for the judges on Saturday morning from 8-10 (please email me <a href='mailto:jlepson@mac.com?Subject=Clerking'>jlepson@mac.com</a> if you’d like to clerk).  It’s a great opportunity to learn what the judges think about all the plants.  There are also opportunities to volunteer for show security on Saturday and Sunday and for tear-down on Sunday afternoon.  Your two-hour shift earns $10 in show bucks that can be spent now or at future shows or the holiday party.");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></center></P><P><center><B> Standings as of March 2016:</B><br><br></P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Joseph Hidalgo",38);
+fminiadd ("Terri Koike",12);
+fminiadd ("Jaan Lepson",16);
+fminiadd ("Joel Parker",39);
+fminiadd ("Janet Stevenson",8);
+fminiadd ("Ellen Stubblefield",25);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Carol Barber",1);
+fminiadd ("Manuela Burge",9);
+fminiadd ("Cecilia Caday",25);
+fminiadd ("Claudia Damiani",10);
+fminiadd ("Jeannie Echenique",7);
+fminiadd ("Marilyn Hofman",16);
+fminiadd ("JoAn Lambert",16);
+fminiadd ("Wendy Levine",7);
+fminiadd ("Therese McQuillan",41);
+fminiadd ("Sherry Merrill",3);
+fminiadd ("Diane Salewski",25);
+fminiadd ("Ross Smith",3);
+fminiadd ("Jacky Wilk",5);
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P><br><br><br><br>");
+
+
+fmart ("Grower's Garden","Elton Roberts","<center><TABLE width='90%'><tr><td valign='top'><img src='tephrocactus geometricus2.jpg' width=500 height=425 hspace=17 vspace=17 align='left'><br>One thing about <I>Tephrocactus</I> that people seem to like is the effect of a ball on a ball on a ball.  Without spines or with spines.  For this effect, Mother Nature has given orders that each plant can make just certain size joints.  For you see, <I>Tephrocactus</I> have no growing points.  It may look like it, but there are none!!!  Look at the seedling, you will see that it is a lot of rounded tubercles.  These will in time inflate with water and round out.  As you can see on the head of the fully inflated head, there is no growing point.  The head will not get any larger.  When the plant wants to take up more moisture, it will through more heads.  When these heads push through the skin of an older head, the new head is said to have everything it needs to be a full sized head except for the moisture.  As the plant takes on more water, the new joints or heads will slowly fill out and in time be a nice rounded head.</td></tr><tr><td valign='top'><img src='tephrocactus geometricus seedling.jpg' width=500 height=425 hspace=17 vspace=17 align='right'><br><br>If the plant dose not get much water for a long time, I have never seen the joints shrink back to the tubercle stage.  The head just gets soft and a few valleys will maybe show up.  These are not all that obvious.  What I have seen is that the heads just get soft.  Now if the head of <I>T. articulatus</I> falls off and lands on the bench, it will shrink back to looking like it did when it was first pushed out through the skin of the parent joint.  As long as a joint is on the plant, I have not seen it shrink back much.</td></tr><tr><td valign='top'><img src='tephrocactus alexanderi2.jpg' width=400 height=350 hspace=17 vspace=17 align='left'><img src='tephrocactus alexanderi point.jpg' width=400 height=350 hspace=17 vspace=17 align='right'><br>Here are two more photos showing that there is no growing point on some plants.  These are heads on the same plant of <I>Tephrocactus alexanderi</I>.  One is just older than the other.  The newer head is still not fully inflated with water.  You can see another difference, that being the color change in the spines from younger to older heads.</td></tr><tr><td valign='top'><img src='austrocylindropuntia pachypus.jpg' width=400 height=340 hspace=17 vspace=17 align='right'><br>A lot of Opuntia plants are just like described above.  Think of the padded type of plants.  If they had a growing point, the pads would just keep on getting bigger and bigger.  As it is, they only get to a certain size and not bigger.  I know that not all Opuntia are this way.  <I>Austrocylindropuntia</I> in the most part have growing points.  I have several <I>A. pachypus</I>, and they just slowly get taller and that is from a growing point.  I can not think of many plants in the over all Opuntia family that have a growing point.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+To contact our president, send an email to the club secretary, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.
+</P>
+<P>
+If you would like a membership badge, please contact Kathi at <a href="mailto:creativesucculents@yahoo.com?Subject=Membership%20Badge">creativesucculents@yahoo.com</a>.
+</P>
+</center>
+
+</BODY>
+</HTML>
+

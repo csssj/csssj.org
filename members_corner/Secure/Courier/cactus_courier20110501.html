@@ -1,0 +1,238 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/1/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 5/1/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "1";
+var thisyear = "2011";
+var nextmonth = "June";
+var nextday = "5";
+var nextyear = "2011";
+var deadline = "May 27, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("May 2011","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","You Had to Have It","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2011","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Peder Samuelsen - Trip to Argentina","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2011","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2011","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+document.write("<br><br><center><H2>Other Events</H2></center>");
+
+fmcal ("May 2011","28-29 Sat-Sun - 10am to 5pm","Central Coast Cactus &amp; Succulent Society<br>Ludwick Center<br>864 Santa Rosa Street<br>San Luis Obispo, CA, 93401-2806<br>805-921-2161","","","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">You Had to Have It</B><br>
+<br>
+<P>
+It was the plant that called to you from across the floor.  Among the sea of potted beauties, it stood out just for you.  You had to have it.  Putting it in your box felt like crossing from one plane of existence to another.  You just could not wait to get it home and put it in a place of honor among the other precious members of your collection of favorites.
+</P>
+<P>
+This meeting is all about that plant.  Bring it.  (Or if you cannot bear the risk of moving it, bring a picture.  We know that you could not resist immortalizing it on film as soon as the light was right!)
+</P>
+<P>
+Tell us why and how this particular specimen spoke to you, how it adds to your love and knowledge of succulent plants, and anything else about it that you would like to share.  
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Back from the Dead! (Rescues, salvages, and nursed back to health) Photos please!</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Back from the Dead! (Rescues, salvages, and nursed back to health) Photos please!</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Best use of recycled materials  (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Blooming cacti</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with A through F should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<P>
+<TABLE border=5 width="95%"><tr><td>
+<TABLE border=1 cellpadding=17><tr><td>
+<font size="+2" color="#990000">Note: The meeting location has been changed from the Meeting Hall to the Multi-Cultural Center. 
+</font>
+</td></tr></TABLE>
+</td></tr></TABLE>
+<br>
+</P>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("2011 Spring Show and Sale","Jaan Lepson","<TABLE cellspacing=23><tr><td><img src='2011_1_show.jpg' width=500 height=334 hspace=17 align='left'>The Cactus and Succulent Society of San Jose’s Spring Show and Sale was held on April 2-3 and was a resounding success, thanks to the volunteers, vendors, and exhibitors who made it all possible.</P><P>On the sale side, there were 15 vendors and the members’ table.  We had three new vendors: Joseph Hidalgo (who moved up from the members’ table), Anya Huq, and Ruhi Mehta - welcome and thank you for being vendors!</P><P>On the show side of the room, the tables groaned under the weight of over 200 entries from 20 exhibitors.  The club volunteers who helped with setting up and staging certainly had their work cut out for them, as they arranged the plants until past 9 pm on Friday.  Space was rather tight, especially around the Crassulaceae, but the stagers did an admirable job at making the show harmonious and attractive.</td></tr><tr><td><img src='2011_4_adromischus.jpg' width=500 height=400 hspace=17 align='right'>We increased the number of prize categories this year - if anyone has suggestions for additional or different categories, please let me know.  Thirteen members won prizes, which I think is a new record, while Ron and Leona Harris had five prize-winning plants, the most of anyone this year.</P><P>Naomi Bloss won the <B>sweepstakes</B> award, bringing in 50 plants to achieve both the highest mean score (adjusted for the number of plants entered) and the high points overall.  <B>Best Novice Succulent</B> was won by Joseph Hidalgo with his <I>Adromischus marianiae var. herrei</I>, while the <B>Best Advanced Succulent</B> award went to Marylin Moyer’s <I>Euphorbia tortirama</I> and the <B>Best Open Succulent</B> was taken by Nick Wilkinson with a large <I>Ceraria namaquensis</I>.  Meanwhile, the prize for <B>Best Novice Cactus</B> went to Jeff Baumgartner’s cristate <I>Mammillaria matudae</I>, and the <B>Best Advanced Cactus</B> was won by Ron and Leona Harris with their <I>Uebelmannia flavispina</I>.  The <B>Best Open Cactus</B> was awarded to an <I>Ariocarpus restusus</I> exhibited by Elton Roberts.</td></tr><tr><td><img src='2011_5_mammillaria.jpg' width=500 height=430 hspace=17 align='left'></td></tr><tr><td align='center'>We also had the following overall awards</td></tr><tr><td><img src='2011_2_tephrocactus.jpg' width=500 height=400 hspace=17 align='left'> <B>Best Cereinae:</B> <I>Echinocereus lindsayi</I> (Elton Roberts)<br><B>Best Echinopsidinae:</B> <I>Sulcorebutia swobodae</I> (Ron and Leona Harris)<br><B>Best Mammillaria:</B> <I>M. saboae</I> (Bill Munkcasy)<br><B>Best Opuntioidea:</B> <I>Tephrocactus geometricus</I> (a real crowd favorite from Ron and Leona Harris)<br><B>Best Echinocactinae other than Mammillaria:</B> <I>Ariocarpus retusus</I> (Elton Roberts)<br><B>Best Aizoaceae:</B> <I>Gibbaeum petrense</I> (Naomi Bloss)<br><B>Best Aloaceae:</B> <I>Haworthia pumila</I> ‘Mower’s Station’ (Nick Wilkinson)<br><B>Best Asclepiadaceae:</B> <I>Whitesloanea crassa</I> (Ron and Leona Harris)<br><B>Best Asteraceae:</B> <I>Othonna euphorbioides</I> (Joel Parker)<br><B>Best Crassulaceae:</B> <I>Echeveria</I> ‘Ebony’ (Naomi Bloss)</td></tr><tr><td><img src='2011_3_deuterocohnia.jpg' width=500 height=380 hspace=17 align='right'><br><B>Best Euphorbiaceae:</B> <I>E. bupleurifolia</I> (Nick Wilkinson)<br><B>Best Monocot other than Aloaceae:</B> <I>Deuterocohnia brevifolia</I> (Ron and Leona Harris)<br><B>Best Miniature:</B> <I>Dudleya gnoma</I> (Kathi Cambiano)<br><B>Best Photography:</B> <I>Cereus peruvianus</I> (Jaan Lepson)<br><B>Best Allied Interest:</B> wooden <I>Opuntia</I> (Peter Beiersdorfer)</P><P>We also added a <B>Directors’ Choice</B> award, which went to a naturalistically staged <I>Mammillaria plumosa</I> exhibited by Deet Dittrick.</P><P>Thank you very much to all who helped - we could not have done it without you!</td></tr></TABLE>");
+
+fmart ("Bay Friendly Garden Tour arrives in Santa Clara County","Kathi Cambiano"
+,"This annual East Bay event makes its first appearance in Santa Clara County on May 15.  My Garden will be included on the tour, #54.  To find out more about the tour, go to:</P><P><a href='http://www.bayfriendlycoalition.org/GardenTour.shtml'>http://www.bayfriendlycoalition.org/GardenTour.shtml</a></P><P>Register online through May 6 only!");
+
+document.close();
+
+</SCRIPT>
+
+<center>To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.</center>
+
+</P>
+
+</BODY>
+</HTML>
+

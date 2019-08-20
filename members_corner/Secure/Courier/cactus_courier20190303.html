@@ -1,0 +1,407 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/3/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/3/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "3";
+var thisyear = "2019";
+var nextmonth = "April";
+var nextday = "7";
+var nextyear = "2019";
+var deadline = "March 29, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("March 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Succulent Watercolor Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2019","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","27-28, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","50<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2019","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+// document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("April 2019","6-7, Sat &amp; Sun - 9:00am to 4:00pm","<B>South Coast Succulent and Cactus Society</B><br>47th Annual Show and Sale<br>Southcoast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes Peninsula, CA, 90274","","");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Succulent Watercolor Workshop</B><br>
+<br>
+<P>
+<a href=javascript:poppic('soneson002.jpg',1001,797)><img src='soneson002.jpg' width=300 height=239 hspace=17 vspace=17 align='right' class='enl'></a>
+Wendy Soneson will do a watercolor demonstration for 45 minutes, then give people a chance to try the paint.  At a table in the back she may take six or so people trying watercolor at a time for 45 minutes. Six to eight minute sessions will allow 30 people to try painting.
+</P>
+<P>
+Wendy Soneson has been teaching watercolor for 45 years, and in the Bay Area for 3 years. She recently had a one woman show at Oakland City Hall. She was the John Singer Sargent Watercolor demonstrator for the Museum of Fine Arts, Boston, where she taught before moving west. Her degree is in the Arts in Human Development, MA from Lesley University. See her website at <a href="https://watercolorweekly.weebly.com" target="_blank">watercolorweekly.weebly.com</a> for classes and other shows.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Cactus in bloom</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Agave</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Interesting plant worthy of painting (water color artist is our speaker) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Mixed planting</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with H through N should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("The Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>This month's update from me will be brief, since I was out of the country for a family event. (Thank you, Kathi for running the board meeting in my absence!)</P><P>The board's two biggest tasks at the moment are the search for a venue to replace Harry's Hofbrauhaus as the site of the holiday party and planning for the upcoming spring sale.</P><P>Loyd Monaco has kindly volunteered to form a committee to organize the holiday-party planning effort.  (Finding a place that can host a club of our size, will tolerate our bringing plants and the soil they will inevitably spill, and makes feeding our members in some fashion practical, all without breaking the bank, is harder than it might seem at first glance.)  Please join me in thanking Loyd for taking on the task and do share any ideas you might have with him.  While we're in the process of working out the logistics for several viable options, suggestions are always welcome.</P><P>Well before the holiday party, a little over a month from now, will be the Spring Sale.  Please note that the show schedule and the table arrangements will be slightly revised relative to past years.  We'll be posting the details on the website and summarizing them at meetings.</P><P>Last but not least, please consider volunteering.  It's enormous fun — indeed, it's what drew me into the club in the first place — and many hands make light work of the many tasks involved: preparation, the show itself, and the post-show cleanup. Please take a look at the sign-in sheets at the March and April meetings to see what roles and slots would most benefit from your generous donation of time.  Thanks in advance!</td></tr></TABLE></center>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings</B></center></P><P><B>Standings as of February 2019:</B></P><P><center><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+// fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Cecilia Caday",18);
+fminiadd ("Kathi Cambiano",25);
+// fminiadd ("Sonia Dyer",14);
+// fminiadd ("Bryan Fan",11);
+// fminiadd ("Joseph Hildago",31); 
+fminiadd ("Marilyn Hofman",3);
+fminiadd ("Terri Koike",7);
+fminiadd ("JoAn Lambert",8);
+// fminiadd ("Jaan Lepson",25);
+fminiadd ("Susan McKuhen",8);
+fminiadd ("Loyd Monaco",24);
+// fminiadd ("Janet Stevenson",0);
+// fminiadd ("Ellen Stubblefield",63);
+// fminiadd ("Gary Stubblefield",43);
+// fminiadd ("Jacky Wilk",2);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",19);
+// fminiadd ("Harley Barber",0);
+fminiadd ("Bobbi Bornstein",20);
+// fminiadd ("Manuela Burge",14);
+fminiadd ("Lanelle Faraj",7);
+fminiadd ("Nicole Faraj",2);
+fminiadd ("Judianne Ganschow",25);
+fminiadd ("Renu James",15);
+fminiadd ("Allen Krever",22);
+// fminiadd ("Catherine Lau",0);
+// fminiadd ("Bill Lemke",89);
+// fminiadd ("Dan Martinez",7);
+fminiadd ("Joyce McPheeters",5);
+// fminiadd ("Elinor McRae",5);
+// fminiadd ("Sherry Merrill",6);
+// fminiadd ("Monica Moran",26);
+fminiadd ("Desiree Faraj Perez",6);
+// fminiadd ("Slava Sigal",3);
+// fminiadd ("Janet Sparks",0);
+// fminiadd ("Navi West",4);
+fminiadd ("Tanya Wieber",11);
+// fminiadd ("Annie Wolf",4);
+// fminiadd ("Mark Womack",25);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+fmart ("Spotlight Interview with Elinor McRae","Asmita Deshpande","","<center><TABLE width='90%'><tr><td valign='top'>Elinor is a horticulturist from Australia.  She was looking for plants that stay small for apartment living, and she came across Agave Blue glow.  She liked it so much that she bought three of them, and her love for succulents and cacti spun off from there.</P><P>Her favorites are Agave Fatal Attraction and Agave Blue Glow.</P><P>Elinor has been a member of our club for the last six months.  She loves gardening in general and creating different things like jewelry, pottery, and sewing.</P><P>As an Australian, she has a strong interest in dry garden.  Weather in California is similar to Australia, so the same principles of dry garden apply here.  She likes Australian plants and flowers and is now learning about California Native garden.<br>Elinor is a full time mom of two young boys who love to come to their back yard garden and green house and play.</P><P>Elinor would like to go on more field trips as a part of our society activity.  She is also curious to see small nursery sellers or hobbyist green houses or nurseries that sell at our show and sale.</td></tr></TABLE></center>");
+
+fmart ("Free Landscape Plants","","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('foy4637.jpg',952,994)><img src='foy4637.jpg' width=286 height=298 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('foy4632.jpg',1008,756)><img src='foy4632.jpg' width=302 height=227 hspace=17 vspace=17 align='right' class='enl'></a><br>Brenda Foy recently bought a house in San Jose that has some well established succulents in the landscaping.  She does not want to keep them and is offering them for free to anyone who wants to save one or more before they are discarded.  If interested, contact her at <a href='mailto:brenda.d.foy@gmail.com'>brenda.d.foy@gmail.com</a>.</P><P><center>(A few of the plants are pictured here.)</center></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('foy4636.jpg',1000,668)><img src='foy4636.jpg' width=300 height=200 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Welcome New Members ","Sandy Carter","","<center><TABLE width='80%'><tr><td valign='top' colspan=3 align='center'>Please join us in welcoming them:<br><br><tr><td valign='top' align='center'>Megan McEvers<br>Bertha Martin<br>Michele LeBlanc<br>Lee Pochop<br>Manipipa Basu &amp; Linu Alex</td><td valign='top' align='center'>Dan Dariano<br>Steve Perez &amp; Megan Ramey<br>Gabrielle Najera<br>Richard Sullivan<br>Teri Chew &amp; Annie Lau</td><td valign='top' align='center'>Erica Yang<br>Jim &amp; Ann Balquist<br>Oanh Vu<br>Ellie Herrera &amp; Greg Garcia<br>Mark &amp; Maria Negrete<br>Janet Schachter</td></tr><tr><td valign='top' colspan=3 align='center'>Our active membership is now: 242</td></tr></TABLE></center>");
+
+fmart ("Growers Garden ","Elton Roberts ","","<center><TABLE width='90%'><tr><td valign='top'>I have had <I>Mammillaria dawsonii</I> for a long time;  I do not know how long I have had the plant; just that it has been many years.  If I have to guess it would be about 30.  I also have <I>Mammillaria glareosa</I>, which I probably bought around the time I bought <I>M. dawsonii</I>.  Those that suppose they know say that <I>Mammillaria dawsonii</I> and <I>M. glareosa</I> are one and the same plant. They say there is no <I>Mammillaria dawsonii</I> only <I>M glareosa</I> and that the correct name is <I>Mammillaria brandegeei ssp.<br>glareosa</I>.  I have also had <I>Mammillaria brandegeei</I> and <I>Mammillaria gabbii</I>, but these two plants I have not seen for quite some time.  They could still be out in one of the hothouses, but I have not seen them for some time.</P><P>A good friend was here the other day and we were discussing plant names and why we allow some person from Europe and mainly from England to dictate the names of plants they do not really know.  I did not have an answer but I have wondered the same many times.  I have noticed that every time a new book comes out that changes names of some plants, those names are also changed on the web like a flash of lightening.</P><P>There was one guy that came here, and he berated me for several hours because all the names on my plants were wrong.  He would not shup up about it, and, after about 2 hours, I had to get really mad to get him shut up.  Then he had the gall to ask if he could have a cutting, not an offset but a cutting, of each of my <I>Rebutia</I> and <I>Sulcorebutia</I> plants.  He did not get anything, offset or cutting.  He wanted them for free, and I told him no several times.  Then he said he would be willing to pay a dollar each.  The answer was still &quot;NO&quot;.</P><P>Habitat: On the ocean front, usually growing under bushes in deep shade.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariadawsonii.jpg',1011,675)><img src='1mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left is a side shot of the plant.  I did not take the time to remove the dead flower remains, as it would take an hour, and I wanted a good shot of the plant while there was still good light.  The photo was taken in April; I saw the plant in bloom and wanted to get several good shots of it while in flower.</P><P>Being a hothouse grown plant for all its life the plant color is not light green but fairly dark green.  With the plant being larger than the habitat collected plants, the tubercles are a bit different shaped and a bit larger.  The areoles and spine count is the same.  It is easy to see the one central spine and the radial spines.  There is one difference, and that is that on some areoles there are 11 radial spines.</td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariadawsonii.jpg',1011,675)><img src='5mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the right is the top and growing point of the plant.  Looking really close, there is no wool to be seen in the axils.  The spines are very dark, when they first emerge from the growing point but soon lighten up to pinkish brown.  They have not acquired that kind of waxy coating but the farther from the growing point then, they start to get that coating on them.  It is interesting to see that, as the radial spines dry, that some of them get a nice curve to them.  In the description, it says that the radial spines are straight, but here you can see that many have a nice curve to them.  On the young areoles, there is white wool, but this soon falls out.  Between the flowers and inside the ring of flowers can be seen at least 16 buds.  These will make the next ring of flowers.</td></tr><tr><td valign='top'><a href=javascript:poppic('6mammillariadawsonii.jpg',1011,675)><img src='6mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('7mammillariadawsonii.jpg',1011,675)><img src='7mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=31 align='right' class='enl'></a><br>In the photo to the left, the outer petals of the flowers are seen with reddish brown midstripes.  I have to say that they are more brownish than reddish brown.  The photo to the right is the inside of the flower.  Now to my eyes, I cannot see that the flower is greenish yellow; they look light yellow to me.  On some of the petals there is a slight rose colored midstripe.  This shows up on some flowers better than on others as is seen on the left hand flower.  The outer petals also have that rose colored midstripe.  That shows me that the midstripe on the outer petals is more a deep rose color than reddish brown.  The filaments are cream color as is the pollen.  I cannot see the style, but the stigma is cream color with a touch of green to it.  In the photo below, I can see a part of the style, and it is the same color as the filaments.  Here, the green in the stigma shows up a little better.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('8mammillariadawsonii.jpg',1011,675)><img src='8mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('9mammillariadawsonii.jpg',1011,675)><img src='9mammillariadawsonii.jpg' width=303 height=202 hspace=17 vspace=31 align='right' class='enl'></a><br>In the photo to the right, the seed pods are very ripe, and, as a result, they are red.  As the pods ripen, they lose their light whitish pink color and turn red.</P><P>In the time I have had this plant, I have kept it in the same greenhouse and it is covered with fiberglass.  The resin that the fiberglass is made with slowly evaporates and then glass fibers start showing.  These collect dust and in time moss will grow in it.  Then lichen grows and so the light is really cut down in there.  One way to fix that is to go up there with a steel brush and scrub the fiberglass and get the glass fibers removed.  That is only a fix for a few months, for the resin keeps evaporating and then it is back to glass fibers collecting dust.  I replaced the fiberglass on the side and end walls, and that lets in quite a bit of light.  The roof is still dark, but most plants do quite well in there.  For the plant having been growing in the dark of a greenhouse for many years, it is growing quite well.  It could be a lot more pin headed.  I am going to watch it to see how it grows now, for I have moved it to a very bright house.  The description says it grows in deep shade, so I guess it could be very pinheaded, but it is not too bad and it does not look much different from those on the web. </td></tr><tr><td valign='top'>All the books say that <I>Mammillaria dawsonii</I> is the same as <I>Mammillaria glareosa</I>, but I do not put much stock in that.  All the books have the descriptions of the two plants mixed together.  I have not found a good photo of the plant in any book. The ones that are pictured are in habitat and look nothing like the plants in cultivation.  There are some good photos on the web.</P><P>I have grown the plant in my regular soil mix for all these many years, and it has done just fine.  I keep it dry over the winter, and it is where a fan moves the air over it all the time all year long.  The plant is slow growing but blooms several times over the growing season.  As the description says, the plant grows in deep shade, so I have not given it any bright sunshine.  If the plant grows in deep shade, I do not think it is a good idea to put it in a hot, sunny hothouse.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:dfm@razorwind.org'>dfm@razorwind.org</a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+

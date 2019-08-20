@@ -1,0 +1,260 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 8/2/2009">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 8/2/2009</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "August";
+var thisday = "2";
+var thisyear = "2009";
+var nextmonth = "September";
+var nextday = "13";
+var nextyear = "2009";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("August 2009","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","People's Choice","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2009","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Plants from UC Davis","","");
+
+document.write("<br><br>");
+
+fmcal ("October 2009","3-4, Sat 9am-5pm -- Sun - 10am-4pm","4<sup>th</sup> Annual Fall Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2009","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2009","6, Sunday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+// document.write("<br><br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2009","25-26, Sat/Sun 9am to 5pm","NORCAL Show &amp; Sale<br>County Fair Bldg (Hall of Flowers)<br>9<sup>th</sup> &amp; Lincoln<br>San Francisco, CA<br><br>Contact Bill Munkacsy 925-935-5213","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Favorite Plants and Why We Love Them</B><br>
+<br>
+<P>
+This month, we will be exchanging stories about how and why we became involved with succulent plants.
+</P>
+<P>
+Bring your favorite plant, a plant that has taxed your patience, or a plant about which you have a question.
+</P>
+<P>
+  This is a chance to enthrall your fellow enthusiasts with the details of how you raised that magnificent ribbon winner from a tiny seed or seedling, to commiserate over an ailing favorite, or to get the advice needed to bring a plant around or even turn it into a show stopper.
+</P>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Gymnocalycium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Aloes</I> from Madagascar</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>One plant becomes one thousand.  Plants that offset or seed easily.</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Ariocarpus</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+<br>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with N through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+
+</P>
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("My love affair with Martian flowers","Joseph Hidalgo","<TABLE width='100%'><tr><td><img src='stapeliagigantea.jpg' width=320 height=280 hspace=15 align='left'>You love to love them.  You love to kill them.  Pamper them to death by overwatering or turn your back and lose them to mealy bugs, they are our pride and joy, stars in our collections.  I am talking about the succulent plants in the subfamily <I>Asclepiadoideae</I>.  Whether they are the very cactus looking <I>Hoodia</I> or the orchids of the succulent world, <I>Stapelia</I>, or the curious forms of alien looking Madagascan <I>Ceropegia</I>, xerophytic plant collectors always have one or more plants that have caught their eye over the passage of time.</P><P>I got bit by this bug many years ago, when I was lazily sorting through page after page of eBay listings for succulents and cactus in the wee hours of the morning.  What caught my eye was the flower of <I>Stapelia gigantea</I>.  The thing looked unreal.  It looked fake, like a flesh colored, giant, one foot starfish glued to succulent stems.</P><P>Anyway, being on the computer, I googled images of the plant and sure enough the bloom was real.  So after a short checkout process and the passage of a business week, my plant arrived from Florida, where the grower grew them in ground under her lemon tree.  (I also heard this from a man in San Diego.)  I opened the box to see the flower wilted, but at least there was physical proof as I tried in vain to open the shriveled bloom, trying to recreate the glory.</P><P>After repotting, the buds that were forming at the base of another stem wilted.  Nevertheless, I was semi-content watching the stems multiply over the summer and then stop growing once fall arrived.  I kept it underneath a protective overhang during the winter, and it survived frost in addition to a little rain from our winter-spring rainy season with no damage.  As soon as the heat came with spring, it resumed growth.  During the hottest part of the year, the eight stems had lengthened and multiplied to fill the pot nicely and had some nice big buds on them.  I was disappointed in thinking that a foot big bloom cannot possibly come from ‘that’, which looked to me like a slightly hairy closed lime green tulip.</P><P>A few days passed, and the closed bloom grew.  Not wanting to miss the show, I dusted and cleaned the spider webs off the terra cotta pot and put it on my kitchen table near a sunny window.  I awoke the next morning and was awestruck by what this amazing plant had produced, an 11.5 in., flesh colored, hairy, stinky flower!  A very unique aura was emanating from it, a halo of  damp towels that have been sitting too long, boys locker room, and lightly rotting trash, but &quot;who cares&quot; I thought, it was really a flower to see!  And of course, it had to do this when there was no club meeting, so no mini show points could be awarded.  My roommate admired it as well, but we decided to keep it outside as the unique perfume was permeating our small front room.  I took it outside and put it in its old area.  Almost immediately, one fly landed on it.  A bit recoiled I watched in amazement as more flies gathered on it and lapped at the bloom as if it were hot dog doo. When I checked on the plant a few hours later, there were fly eggs stuck to the middle of the flower, I guessed where the smell was the strongest.  Gross but smart, as these plants ingeniously use flies as pollinators in an arid environment where butterflies, moths and birds would be scarce.</P><P>From that point on, I tried to get my hands on every succulent plant in this family with varying degrees of horticultural success.  The plants are extremely prone to mealy bugs, and they need a regular systemic insecticide to thrive.  Not all growing requirements are the same, so do the research.</td></tr><tr><td><img src='huerniazebrina.jpg' width=320 height=280 hspace=15 align='right'><br><I>Hoyas</I> grow in subtropical to tropical humid conditions with lower light levels that some orchids favor as <I>Hoodias</I> coming from Namibia can stand some of our winter rains and full sun.  Some <I>Ceropegias</I> climb other plants in full sun, others ramble in the shade of shrubs.  If you are going to start off with a species, I do recommend <I>Stapelia gigantea</I> as it is easier to care for.  Another great starter is <I>Huernia zebrina</I>, also known as the life saver plant, named so because a major part of the bloom looks like a cherry lifesaver. Both of these beginner plants are South African and need well drained soil, and a winter rest with the smallest amount of water.  Standard watering habits that apply for most succulents in the summer, apply with these two species as well, watering only when the soil is dry.  Just be prepared to make more room in your abode, because once you are bit, the only cure is more plants!</td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='maihueniopsis platyacanthus seedlings.jpg' width=320 height=280 hspace=13 align='left' vspace=0><br>Usually I do not send out photos of seedlings except to certain people that are into growing from seed also.  The cotyledon leaves are the first 'pair' of leaves in seedling plants.  These seedlings are about 3 weeks old, and today was the first time that I noticed that one of the seedlings was a bit different.  I am not sure if it wanted to be in a different life and be a fan or a helicopter.  I am talking about the seedling top center with the three seedling leaves.  I have never seen 3 cotyledon leaves on a seedling before and decided to share this strange sight with you.</td></tr><tr><td><img src='ariocarpus fissuratus ssp hintonii.jpg' width=320 height=280 hspace=13 align='right' vspace=0><I>Ariocarpus fissuratus ssp. hintonii</I> comes from a couple of small areas in the Mexican state of San Luis Potosi.  The plant was first seen by cactus enthusiast George Hinton in 1984.  The same George Hinton that found the <I>Aztekium hintonii</I>.  The plant was first called <I>Ariocarpus hintonii</I>.  Then some one decided that it is a subspecies of <I>A. fissuratus</I>.  Where <I>A. fissuratus</I> has one furrow with wool in it, <I>A. fiss. ssp. hintonii</I> has 3 furrows.  Only the middle furrow has wool.  It also only grows to 6 cm in diameter in habitat where <I>A. fissuratus</I> can grow to about 21 cm in diameter.  That is for single heads if a clump then the plant can be larger.  The flower is to 4 cm across.</P><P>Like all <I>Ariocarpus</I> they want to be dry over winter.  When watered, water thorough and then let the soil dry before watering again.  The plant, like all good <I>Ariocarpus</I>, blooms in the fall.</td></tr></td></tr></TABLE>");
+
+fminiadd ("Tony Bassano",0,37,0);
+fminiadd ("Peter Beiersdorfer",0,68,0);
+fminiadd ("Chuck Breese",0,0,15);
+fminiadd ("Kathi Cambiano",0,0,128);
+fminiadd ("Alyene Daggett",0,0,56);
+fminiadd ("Sonia Dyer",0,0,30);
+fminiadd ("Joseph Hidalgo",0,0,96);
+fminiadd ("Bill Kurtz",13,0,0);
+fminiadd ("Jaan Lepson",0,0,58);
+fminiadd ("Susan McKuhen",0,0,17);
+fminiadd ("Marilyn Moyer",0,25,0);
+fminiadd ("Bill Munkacsy",125,0,0);
+fminiadd ("Janet Rollin",0,0,22);
+fminiadd ("Katia Romanova",0,0,7);
+fminiadd ("Joe Silva",0,0,25);
+fminiadd ("Ellen Stubblefield",0,107,0);
+fminiadd ("Gary Stubblefield",0,112,0);
+fmini ("Mini Show standings as of July 2009:");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

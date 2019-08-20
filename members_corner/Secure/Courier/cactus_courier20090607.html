@@ -1,0 +1,265 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/7/2009">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/7/2009</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "7";
+var thisyear = "2009";
+var nextmonth = "July";
+var nextday = "12";
+var nextyear = "2009";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (txt)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>" + txt + "</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("June 2009","7, Sunday - 10:30am to 12:00pm","Board Meeting.","7, Sunday - 12:30pm to 3:00pm","Grow and Show","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2009","12, Sunday - 10:30am to 12:00pm","Board Meeting.","12, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2009","2, Sunday - 10:30am to 12:00pm","Board Meeting.","2, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2009","13, Sunday - 10:30am to 12:00pm","Board Meeting.","13, Sunday - 12:30pm to 3:00pm","Ernesto Sandoval - Plants from UC Davis","","");
+
+// document.write("<br><br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("May 2009","2-3, Sat 9am to 5pm - Sun 9am to 4pm","Sacramento Cactus &amp; Succulent Society<br>49<sup>th</sup> Annual Cactus and Succulent Show<br>Shepard Garden &amp; Art Center<br>3330 McKinley Blvd.<br>Sacramento, CA 95816","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with A through F should bring a snack for the June meeting.</font></B>
+</P>
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Grow and Show</B><br>
+<br>
+<P>
+Be sure to attend our June 7th meeting because everyone will be given a plant to take home and grow.  All the plants will be the same species namely, <I>Mammillaria spinosissima</I>, and will each be in a 2” nursery pot.  
+</P>
+<P>
+The idea is to take the plant home and care for it, prepare it in a pot of your choice along with topdressing and bring it to our fall show and sale event for judging.  Remember, there will be random periodic checking for steroids, over-fertilizing, plant make-up, spray paint, gloss, botox, wax, and glued-on flowers.  All of these are no-nos.  It may not be the largest plant that takes the top honors in the fall as presentation counts. 
+</P>
+<P>
+This is the basic idea.  We know there will be lots of questions at the meeting as to what criteria will be used in judging the plants.  Maybe we should make it a special category for “People’s Choice.”  Another idea is to ‘turn the tables’ on our show vendors and have them create a committee among themselves to do the judging.
+</P>
+<P>
+<center>(continued on page 2)</center>
+</P>
+<br>
+<br>
+<P>
+<B class="leadhead">Tips and Tools</B><br>
+<br>
+For the June meeting, bring in one or two tools that make tending cactus and succulents easier.   If your tool is too large to bring in to the meeting, bring a photo of the tool.   In addition, think about some tip or advice that you can share with your fellow club members.  Regardless of how long each of us has had the succulent and cactus bug, we can all learn from each other.
+</P>
+<br>
+<br>
+<br>
+<P>
+<font size="+1"><B>Plants of the Month for June:</font>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Notocactus</I>, <I>Parodia</I> or <I>Uebelmannia</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Pachypodium</I> or <I>Adenium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Astrophytum</I> or your choice</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Dish garden</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+<!-- 
+<br>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with N through Z should bring a snack for the May meeting.</font></B>
+</P>
+ -->
+<br>
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("In Remembrance of Carole Keaton","Bill and Joan Kurtz","On April 29<sup>th</sup>, we lost our long time, active member, Carole Keaton, to injuries suffered in an automobile accident a few days earlier.  Her husband Sam was also inured, but is recovering well.</P><P>Carole and Sam were very active members of CSSSJ from the early eighties until now.  Carole was especially involved as our district delegate to the national organization, the Cactus and Succulent Society of America.  She also represented the Monterey Bay Area C and S group as well as the disbanded Oakland organization when it was active.</P><P>Carole will always be remembered for her extensive knowledge about the plants. .Her friendliness and cheerful attitude were shown as she lovingly expressed in our yearly Christmas gathering taking responsibility for the festive table decorations.</P><P>Sam, her two sons, and her sister Faye Johnson are her loving survivors.");
+
+fmart ("Additional June Attraction","","For the June meeting, Robert Melenudo will be bringing some of his unique bird houses and window boxes for sale and inspection.");
+
+fmart ("Grow and Show <font size='-1'>(continued from page 1)</font>"," ","<TABLE width='100%'><tr><td><img src='mammillaria_spinosissima.jpg' width=211 height=340 align='left' hspace=15><br><br><B>Basics:</B><br>Name - <I>Mammillaria spinosissima</I><br>Name means - very spiny<br>Indigenous to Mexico in Guerrero and Morelos<br>Found on rocky outcrops of hills, often in cracks between limestone rocks<br>Initially occurs as a single stem, later forming a ring cluster<br>Stem is Columnar, growing up to 12 inches tall and 4 inches in diameter<br>Spines are dirty white to copper colored<br>Easy to grow, very tolerant of grower’s mistakes<br>Flowers are crimson-red, forming a garland below the crown<br>Sun exposure is light shade<br>Temperature not below 26 F in winter<br>Normal summer water<br></td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td valign='top'><img src='echinocereus parkeri pl.jpg' width=320 height=280 hspace=13 align='left' vspace=0><br>The habitat of <I>Echinocereus parkeri ssp. parkeri</I> is in southeast Nuevo Leon, Mexico.  The plant can make clumps up to some 60 cm across.  The stems are to 20 cm tall and 4 to 6 cm in diameter.  The radial spines are 6 to 12 mm long and number 9 to 13.  Central spines are 15 to 25 mm long and number from 1 to 5 per areole.  Spine color is white to light yellow. New spines have a reddish brown color, but soon fade to white or off white.  The spines have a dark tip.  The flowers are to about 6 cm across.  The plants bloom for me several times a year.  I give them no special treatment as far as watering and feeding, and they can take quite a bit of cold if kept dry over winter.</td></tr><tr><td valign='top' align='right'><img src='echinocereus parkeri.jpg' width=320 height=280 hspace=13 align='right' vspace=0></td></tr></td></tr></TABLE>");
+
+fminiadd ("Tony Bassano",0,37,0);
+fminiadd ("Peter Beiersdorfer",0,43,0);
+fminiadd ("Kathi Cambiano",0,0,80);
+fminiadd ("Alyene Daggett",0,0,25);
+fminiadd ("Sonia Dyer",0,0,5);
+fminiadd ("Joseph Hidalgo",0,0,51);
+fminiadd ("Jaan Lepson",0,0,43);
+fminiadd ("Susan McKuhen",0,0,11);
+fminiadd ("Marilyn Moyer",0,25,0);
+fminiadd ("Bill Munkacsy",75,0,0);
+fminiadd ("Janet Rollin",0,0,22);
+fminiadd ("Joe Silva",0,0,18);
+fminiadd ("Ellen Stubblefield",0,76,0);
+fminiadd ("Gary Stubblefield",0,72,0);
+fmini ("Mini Show standings as of May 2009:");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

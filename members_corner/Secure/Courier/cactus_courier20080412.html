@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/12/2008">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/12/2008</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "12-13";
+var thisyear = "2008";
+var nextmonth = "May";
+var nextday = "4";
+var nextyear = "2008";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var miniopts = new Array(100);
+var miniapts = new Array(100);
+var mininpts = new Array(100);
+var minicnt = 0;
+function fminiadd (name,opts,apts,npts)
+{
+mininms[minicnt] = name;
+miniopts[minicnt] = opts;
+miniapts[minicnt] = apts;
+mininpts[minicnt] = npts;
+minicnt = minicnt + 1;
+}
+//
+function fmini (mon)
+{
+var optot = 0;
+var advtot = 0;
+var novtot = 0;
+var tot = 0;
+var stpos = 0;
+var ndpos = 0;
+document.write("<center><B class='arthead'>Mini Show Standings</B></center><P>As of " + mon + ", here are the Mini Show standings:</P><P><Table cellpadding=5 border=1><tr><td> &nbsp; </td><td align='center'><B><font size=+1>Open</td><td align='center'><B><font size=+1>Advanced</td><td align='center'><B><font size=+1>Novice</td><td align='center'><B><font size=+1>Total</td></tr>");
+for (var i = 0; i < minicnt; i++)
+  {var op = " &nbsp;";
+   var adv = " &nbsp;";
+   var nov = " &nbsp;";
+   var itot = 0;
+   if (miniopts[i] > 0) 
+      {op = miniopts[i];
+        var temp = parseInt(miniopts[i]);
+        optot = optot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (miniapts[i] > 0) 
+       {adv = miniapts[i];
+         temp = parseInt(miniapts[i]);
+         advtot = advtot + temp;
+         itot = itot + temp;
+         tot = tot + temp;}
+   if (mininpts[i] > 0)
+       {nov = mininpts[i];
+         temp = parseInt(mininpts[i]);
+         novtot = novtot + temp; 
+         itot = itot + temp;
+         tot = tot + temp;}
+   document.write("<tr><td align='right' nowrap>" + mininms[i] + "</td><td align='center'> " + op + " </td><td align='center'> " + adv + " </td><td align='center'> " + nov + "</td><td align='center'>" + String(itot) + "</td></tr>");
+}
+document.write("<tr><td align='right' nowrap><B>Totals:</B></td><td align='center'><B>" + String(optot) + "</B></td><td align='center'><B>" + String(advtot) + "</B></td><td align='center'><B>" + String(novtot) + "</B></td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("April 2008","12-13, Sat - 9:00am to 5:00 pm &amp; Sun - 10:00am to 4:00pm","39<sup>th</sup> Spring Show &amp; Sale","","","","");
+
+document.write("<br><br>");
+
+fmcal ("May 2008","4, Sunday - 10:30am to 12:00pm","Board Meeting.","4, Sunday - 12:30pm to 3:00pm","Roger Lane - Bromeliads","","");
+
+document.write("<br><br>");
+
+fmcal ("June 2008","1, Sunday - 10:30am to 12:00pm","Board Meeting.","1, Sunday - 12:30pm to 3:00pm","Tour of Stanford's Arizona Garden","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2008","13, Sunday - 10:30am to 12:00pm","Board Meeting.","13, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+// document.write("<br><br><center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2007","15-16, Sat - Sun - 9:00am to 5:00pm","Monterey Bay Area Cactus &amp; Succulent Society Show and Sale.<br>It will be held at the Jardins de San Juan restaurant.<br><br>Contact Naomi Bloss at 831-722-1446 for more details.","","","","");
+
+document.close();
+</SCRIPT>
+<br>
+<br>
+<br>
+
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><font size="-1"><B> Note the change in the dates for the Spring Show and Sale </B></font></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">39<sup>th</sup> Spring Show &amp; Sale</B><br>
+<br>
+<P>
+<font size=+1><B>Friday (April 11, 2008):</b></font>
+<TABLE>
+<tr><td nowrap>3:30pm &nbsp; &nbsp; &nbsp; </td><td>We can get into the school</td></tr>
+<tr><td nowrap>3:30pm - 5:00pm &nbsp; &nbsp; &nbsp; </td><td>Set-up tables</td></tr>
+<tr><td nowrap>5:00pm - 9:00pm &nbsp; &nbsp; &nbsp; </td><td>Stage show plants</td></tr>
+</TABLE>
+</P>
+<P>
+Please try to get plants to the school by 7:30pm so that we can stage them on the tables by 9:00pm.
+</P>
+<p>
+Write up your tags putting the information on both halves.  Fold in half leaving your name on both halves for counting points.
+</p>
+<p>
+<font size=+1><B>Saturday (April 12, 2008):</B></font>
+<TABLE>
+<tr><td nowrap>8:00am - 10:00am &nbsp; &nbsp; &nbsp; </td><td>Judging</td></tr>
+<tr><td nowrap>9:00am - 5:00pm &nbsp; &nbsp; &nbsp; </td><td>Sales area open for business</td></tr>
+<tr><td nowrap>10:00am - 5:00pm &nbsp; &nbsp; &nbsp; </td><td>Show available for public viewing</td></tr>
+<tr><td nowrap>4:00pm - 5:00pm &nbsp; &nbsp; &nbsp; </td><td>Prizes to be awarded.  Winning plants moved to stage area.</td></tr>
+</TABLE>
+</p>
+<p>
+<font size=+1><B>Sunday (April 13, 2008):</B></font>
+<TABLE>
+<tr><td nowrap>10:00am - 4:00pm &nbsp; &nbsp; &nbsp; </td><td>Show and Sales areas open to public</td></tr>
+</TABLE>
+</P>
+<P>
+Please pick up show plants starting at 4:00pm.
+</P>
+<P>
+<img src="buchser.gif" width=434 height=259 alt="Buchser Middle School, 1111 Bellomy Street, Santa Clara, CA" border=1>
+<br>
+<center><font size="-1">Buchser Middle School, 1111 Bellomy Street, Santa Clara, CA</font></center> 
+</P>
+<br>
+<!-- 
+<P>
+<font size="+1"><B>Plants of the Month for March:</font>
+</P> 
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Brazil (<I>Trichocereus, Micranthocereus, Arrojadoa</I>)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter blooming <I>crassulaceae</I></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your choice or it turned out different than you thought</td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td "nowrap"><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Melocactus</I> or <I>Echeveria</I></td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+<P>
+<B class=snacks>Members with last names starting with G through M should bring a snack for the February meeting.</font></B>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors. The deadline for submissions is the 20th day of the preceding month.  Scannable hardcopy and Windows format text files sent via email or on 3.5-inch disk are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Monterey Club Offers Joint Trip to Lotusland","Linda Delgado","The Monterey Bay Area C & S Society will be taking a chartered bus to visit Lotusland in Santa Barbara on May 10 and 11<sup>th</sup>. They have offered our club the opportunity to join them.  The cost of the bus is $50 and their club has offered to pay the $35 admission fee to Lotusland. Each person will be responsible for their own hotel and meal costs.  They are working on getting a group rate for the hotel.</P><P>They will be leaving from Watsonville on May 10<sup>th</sup> at 5:00 am and will return on the 11<sup>th</sup>.   The plan is to visit Lotusland, another botanical garden and at least two nurseries.</P><P>This is a wonderful opportunity for the person that has always wished that they could make one of the trips that we usually only get to see through slide shows.</P><P>For more information you may call Lynda Waters at 831-663-3355.");
+
+fmart ("2008 SPRING SHOW & SALE UPDATE","Bill Gingras","The 39<sup>th</sup> Annual CSSSJ Spring Show and Sale is rapidly approaching.   Our show and sale is being held on April 12<sup>th</sup> and 13<sup>th</sup> this year, with set up on the 11<sup>th</sup>.</P><P>As you are aware, the show and sale is very much a volunteer effort.  Please plan on lending a hand this year.</P><P>Signing up to be a volunteer is easy:<TABLE cellspacing=8><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>If you did not sign up at the March meeting, feel free to give Judy Goodrode or Bill Gingras a call.  We are both listed in the CSSSJ directory.  We'll answer questions, provide the necessary details and add you to the list.</td></tr></TABLE></P><P>Here are some other Show/Sale-related items:<TABLE cellspacing=8><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>If you volunteer to work at least one shift at the show and sale, you earn a &quot;Show Bucks&quot; coupon worth $5.00 that you can use to buy plants with at the show, or to use for certain club functions such as raffles.</td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>A bonus for people who volunteer to help us with set-up or staging, or for people who enter plants in the show, is that you get &quot;first dibs&quot; on sale plants.  Some plants on the sale tables are one-of-a-kind or in very limited quantities, and by being on site on Friday night, you can choose plants before the show opens to the general public (note that this is specifically NOT an invitation to the general club membership to come by and shop early; it is for set-up/staging volunteers and show entrants only). </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>Please consider showing some of your plants.  Briefly, if you have cacti or succulents in your collection that you really like, are presentable (that is, don't have scarring, etiolation, bugs, etc.), and are nicely potted, chances are that the public will really like them too.  We will have the rules and categories and entry cards at the March meeting, and they will also be available the night before the show opens while we are setting up. </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>If you decide to enter plants in the show, you must bring them into the show area between 5:00 p.m. and 7:00 p.m. on Friday, April 11th (no exceptions!), and you can pick them up after the show closes on Sunday, April 13th, no sooner than 4:00 p.m. </td></tr><tr><td valign='top'><img src='flowericon.gif' width=19 height=17></td><td>If you're a club member attending the show and sale, note that we put on a potluck/barbecue on both Saturday and Sunday.  The club provides the meat (hamburgers, hot-dogs, chicken) and the attendees bring a potluck dish to share.</td></tr></TABLE>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE><tr><td><img src='coryphantha tripugionacanthal1464.jpg' width=320 height=280 hspace=16 vspace=0 align='left'>In 1983, Alfred Lau was wandering around in the area of San Juan Capistrano in the Mexican state of Zacatecas and there came across the wonderful <I>Coryphantha</I> that he named <I>Coryphantha tripugionacantha</I>.  It is so named for the 3 stout central spines that the plant puts out when it matures a bit.  These centrals can be seen in the photo.  They are kind of apressed, but not so that they touch the plant body.  In the most part, the centrals are quite dark in color while the radials are light color.  The plant body is to about 10 cm tall and diameter in habitat.  I do not know what they will get to in cultivation.  My largest is already 11 cm across but only 7 to 8 tall.  The reason it is hard to tell exactly how tall the plant is, is because of the flowers and the dense snow white wool.</td></tr><tr><td><img src='coryphantha scheeri.jpg' width=320 height=280 hspace=16 vspace=0 align='right'><br><I>Coryphantha scheeri</I> or to be more correct <I>Coryphantha robustispina ssp. scheeri</I> is very seldom seen in collections.  I have heard of some people having it but have not seen it in anyone's collection.  It is quite sensitive to over watering.  The plant calls the hot dry area of southern New Mexico, adjacent areas of Texas, and neighboring Mexico home.  One feature of the plant is its large tubercles.  These can be up to 3.5 cm long.  As can be seen in the photo, it also has quite impressive spines!</td></tr></TABLE>");
+
+fminiadd ("Peter Beierschor",0,0,50);
+fminiadd ("Kathi Cambiano",0,0,3);
+fminiadd ("Alyene Daggett",0,0,2);
+fminiadd ("Linda Delgado",0,6,0);
+fminiadd ("Sonia Dyer",0,13,0);
+fminiadd ("Joseph Hidalyo",0,0,25);
+fminiadd ("Roger Lane",25,0,0);
+fminiadd ("Jaan Lepson",0,0,36);
+fminiadd ("Marilyn Moyer",0,46,0);
+fminiadd ("Bill Munkascy",50,0,0);
+fminiadd ("Janet Rollin",0,0,1);
+fmini ("March 2008");
+
+document.close();
+</SCRIPT>
+</P>
+
+</BODY>
+</HTML>
+

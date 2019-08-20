@@ -1,0 +1,240 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 6/5/2011">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 6/5/2011</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "June";
+var thisday = "5";
+var thisyear = "2011";
+var nextmonth = "July";
+var nextday = "10";
+var nextyear = "2011";
+var deadline = "July 1, 2011";
+//
+//
+// functions
+//
+function fmart (title,author,text)
+{
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified Advertisements</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+}
+//
+function fmini (clss)
+{
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=2><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < minicnt; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+  }
+document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");
+minicnt = 0;
+minitot = 0;
+}
+//
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 8pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td><B> The</B><td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo19.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+fmcal ("June 2011","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Peder Samuelsen - Trip to Argentina","","");
+
+document.write("<br><br>");
+
+fmcal ("July 2011","10, Sunday - 10:30am to 12:00pm","Board Meeting","10, Sunday - 12:30pm to 3:00pm","Country Store","","");
+
+document.write("<br><br>");
+
+fmcal ("August 2011","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("September 2011","11, Sunday - 10:30am to 12:00pm","Board Meeting","11, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("June 2011","11-12 Sat-Sun - 10am to 5pm","The San Francisco<br>Succulent and Cactus Society<br>2011 Annual Show and Sale<br>San Francisco Hall of Flowers<br>(County Fair Building)<br>9th Avenue at Lincoln Way<br>Golden Gate Park","","","","");
+
+document.write("<br><br>");
+
+document.write("<font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+
+<B class="leadhead">Peder Samuelsen - Trip to Argentina</B><br>
+<br>
+<P>
+The presentation at the June meeting will be about two trips to Argentina in 2004 and 2005. These trips were &quot;Cactus expositions&quot; conducted by Guillermo Rivera.
+</P>
+<P>
+It is 60 minutes in length and includes habitat photographs of the Cacti of Northern Argentina.  It also has segments about Penguins of Patagonia in Southern Argentina, A trip to Iquazu falls in Northern Argentina, and finally Thanksgiving dinner which Guillermo hosted at his elegant home in Cordoba (complete with Tango dancers)
+</P>
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Monstrose Cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Lithops/Living Stones</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Open &bull; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Twins separated by genus (two plants that resemble each other but are from different genera or families ie: euphorbia/cactus and haworthia/aloe) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Stapeliads</font></td></tr><tr><td> &nbsp; </td></tr>
+
+</TABLE>
+</P>
+
+<br>
+<br>
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through M should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+<!-- 
+<P>
+<TABLE border=5 width="95%"><tr><td>
+<TABLE border=1 cellpadding=17><tr><td>
+<font size="+2" color="#990000">Note: The meeting location has been changed from the Meeting Hall to the Multi-Cultural Center. 
+</font>
+</td></tr></TABLE>
+</td></tr></TABLE>
+<br>
+</P>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show Updates","Kathi Cambiano","As a reminder, when you enter plants in the mini show be sure to complete the entry form with your full name.  In March there were four entries that didn’t have names on them.  I was hoping that the folks would show up at the May meeting, but unfortunately they did not.  Therefore, I am including a copy of the entries with this newsletter in the hope that I can finally get the March results attributed to the appropriate people. If you recognize your handwriting below, please contact me at 408-293-4887 or email to cactuskathi-csssj@yahoo.com.</P><P><center><img src='mini1106.gif' width=1000 height=259></center>");
+
+fmart ("Grower's Garden","Elton Roberts","<TABLE width='100%'><tr><td valign='top'><img src='ariocarpus scaphirostris pl.jpg' width=320 height=280 hspace=17 align='left'><br><I>Ariocarpus scaphirostris</I> comes from Mexico in the state of Nuevo Leon.  In habitat, usually only the tips of the tubercles are above soil level.  There are no spines on the tubercles.  Seedlings will at times have some weak spines.  These soon fall off. The plants are to about 8 cm in diameter.  I would have to guess that with all the collecting, that in habitat, they probably are not that large any more.  The plants are slow growing, and it can take years to reach 3 cm across.  They are quite easy to grow from seed, but it takes some time to get a plant 1 cm across.  In cultivation, the plants get a bit larger.  I had one that was 14 cm across.  (It is disgusting that rats like <I>Ariocarpus</I> so much more than other cacti right next to them.)  My largest one now is 8 cm across.</td></tr><tr><td><img src='ariocarpus scaphirostris.jpg' width=320 height=280 hspace=17 align='right'><br>Flowers are magenta and to 5 cm across.  The plant blooms from end of summer (around September) until early winter (December and sometimes in January).  The seed pods show through the wool the next summer.  The plant is kind of rare in collections.  I guess this is because it rots quite easy.  It needs a fast draining soil.  The soil needs to dry between waterings. Do not be in a rush to water the plant in the spring time and watch the watering come fall.</P><P>If you noticed the spelling of the name, you will see that it is different from what we usually see.  The spelling above is supposed to be the correct spelling, and <I>scapharostrus</I> is, according to Hunt, incorrect.  Despite the spelling, it is a wonderful plant!!!</td></tr></TABLE>");
+
+fmart ("CSSA Convention Report, April 2011","Cecelia Pelicon","And in the beginning, a dilemma.  Can an elderly lady go alone to a convention?  How can an aged brain cope alone with the bewildering maze of the S.F. airport?  Is going alone where most people are in &quot;twosies&quot;, pathetic?  Who will take care of my dog?  Worry, fuss, fret!  Is it better to stay home and be invisible?  Nah.</P><P>My beloved dog went to Pet Smart Hotel in San Carlos.  He had a suite with a TV, walks, play times, and hung out with Zoey, a Papillon.  My guilt trip resolved.</P><P>Plane reservations were made on computer and also included a wheelchair with pusher.  I was zipped through security and zapped to departure.  Airport not a problem.</P><P>There were 300 plus &quot;succulent&quot; persons at the convention from all over the world.  I met all kinds of interesting ones.  I was never bored or lonely.  I enjoyed seeing the Harrises and the Stubblefields from the San Jose club.</P><P>Speakers gave lectures for every level of collector from the technically advanced to the just beginning neophytes.  My favorite talk was on plant mutants, crests, monstrose, and variegates.</P><P>There were different all-day field trips that all went out the same day - to the desert, to botanical gardens, private homes, etc.  We had to choose just one.  I chose a three-stop nursery tour.  Most educational was Western Cacti with 20 acres of mature, in-ground plants and tons of greenhouses with thousands of seedlings growing their little hearts out.  And we were allowed to buy!  Wholesale!</P><P>Venders at the hotel had rare plants for sale.  The San Diego club had large, gorgeous plants for show.  Mark Muradian, potter, had his totally unique pots for sale.  And there was a plant auction for the wealthy.</P><P>I attended the affiliates meeting.  Concerns were mostly about convention costs.  The next one, less expensive, will be in Texas in 2013.");
+
+fmart ("Picture Page Status","Rich Kroll","In the past two months, we have had very few votes for the pictures on our picture pages.  The consequence of this is that several pictures have expired and been removed from our web site.  More pictures will expire next month.  If this situation does not change, by September, there will not be enough pictures left on the pages to justify keeping them on the web site.");
+
+fmart ("The San Francisco Succulent and Cactus Society","Linda Delgado","A Living Tapestry of Color - sumptuous succulents and captivating cacti await eager gardeners at the San Francisco Succulent and Cactus Society’s 24th Annual Show and Sale.  The event is sure to please anyone seeking colorful succulents and cacti that are friendly to their garden budget.  Featuring more than 15 growers, the sale will have hundreds of colorful succulents and cacti available, in addition to an array of beautiful, handcrafted pots to compliment your plant selections.  Attendees may also enjoy viewing a non-juried show of special single plants and plants displays.");
+
+document.close();
+
+</SCRIPT>
+
+<center>To contact our club president, Loyd Monaco, send an email to <a href="mailto:loyd.monaco@yahoo.com">loyd.monaco@yahoo.com</a>.</center>
+
+</P>
+
+</BODY>
+</HTML>
+

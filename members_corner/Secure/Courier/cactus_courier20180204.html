@@ -1,0 +1,385 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/4/2018">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/4/2018</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "4";
+var thisyear = "2018";
+var nextmonth = "March";
+var nextday = "4";
+var nextyear = "2018";
+var deadline = "February 23, 2017";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 2:00pm","Russell Wagner - Mesembs","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2018","4, Sunday - 10:30am to 12:00pm","Board Meeting","4, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April 2018","8, Sunday - 10:30am to 12:00pm","Board Meeting","8, Sunday - 12:30pm to 3:00pm","Prepping Plants for the Show &amp; Sale","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("October 2016","15, Saturday - 9:30am to 4:00pm","Central Coast Cactus &amp; Succulent Society<br><a href='http://www.csssj.org/geneschroedercactussale.jpg' target='_blank'>Sale of Gene Schroeder's Collection</a><br>250 Via Promesa<br>Nipomo, CA","","");
+
+// document.write("<br><br>");
+
+</SCRIPT>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Russell Wagner - Mesembs</B><br>
+<br>
+<P>
+Little Sphaeroid Press founder, Russell Wagner, holds a PhD from the University of California, Berkeley, and, for seven years, was the editor of the Cactus and Succulent Journal.  His publishing concept is both traditional and modern.  The aim of Little Sphaeroid Press is to produce beautiful printed volumes on a wide range of succulent-plant topics complemented with an engaging and informative web site.
+</P>
+<P>
+Mesembryanthemums are succulent natives of the deserts of Southern Africa.
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Mammilaria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Winter grower/Summer dormant</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Favorite cactus or succulent including bulbous species (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Your choice</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>Members with last names starting with G through N should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="../../../pruschpark3.gif" target="blank"> <img src="../../../map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:csssj@ckart.com">csssj@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show January 7, 2018","Bill Lemke","Bill Lemke","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('mammilarianervosa2.jpg',554,540)><img src='mammilarianervosa2.jpg' width=222 height=216 hspace=37 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('mammilariaklissingiana2.jpg',498,500)><img src='mammilariaklissingiana2.jpg' width=199 height=200 hspace=67 vspace=17 align='right' class='enl'></a><br><br><B>Cactus - Mammilaria</B>:</P><P>Ellen Stubblefield- <I>Mammilaria klissingiana</I></P><P>Joyce McPheeters-<I>Mammilaria nervosa</I></td></tr><tr><td valign='top'><a href=javascript:poppic('oxalisversicolor2.jpg',497,500)><img src='oxalisversicolor2.jpg' width=199 height=200 hspace=167 vspace=17 align='right' class='enl'></a><br><br><B>Succulent - Winter grower/Summer dormant:</P><P></B>Gary Stubblefield - <I>Oxalis versicolor</I></P><P>Judi Ganschow - Lithrops</td></tr><tr><td valign='top'><a href=javascript:poppic('echeverialipstick2.jpg',637,540)><img src='echeverialipstick2.jpg' width=255 height=216 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B>Something Special - Favorite cactus or succulent including bulbous species:</B></P><P>Ellen Stubblefield-<I>Echeveria agavoides</I> &quot;Lipstick&quot;</P><P>Judianne Ganschow-<I>Senecio</I><br><br><center><a href=javascript:poppic('senecio2.jpg',905,540)><img src='senecio2.jpg' width=362 height=216 hspace=17 vspace=17 class='enl'></a></center></td></tr><tr><td valign='top'><a href=javascript:poppic('aeoniumcrest2.jpg',616,580)><img src='aeoniumcrest2.jpg' width=246 height=232 hspace=57 vspace=17 align='right' class='enl'></a><br><br><B>Something Special - Favorite cactus or succulent including bulbous species:</B></P><P><B>Beginner’s Luck - Your Choice:</B></P><P>Svetlana Bellam-<I>Aeonium</I> Crest</td></tr></TABLE></center>");
+
+fmart ("The Prez Sez","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Well the New Year is upon us.  Have you made any plant-related resolutions?  Mine is to get a lot of my plants repotted.  Some are very much overdue for that!</P><P>Our January general meeting started off with a bang, with lots of folks, including some of our brand new members, volunteering to take on some of the unfilled jobs that Kathi and I have been handling.  That takes a big load off of us.  There’s plenty of ways for people to contribute to making our club successful.</P><P>As previously announced, there will be another expanded Board Meeting just before the regular February meeting.  Expanded board members are invited to attend, as well as those taking on new positions.  You will have the chance to learn more about your new roles, and we will be focusing on what we want our future Show and Sales to look like.  Expanded Board Meetings start at 10:30am, instead of the usual 11:00am, and are in the same place as the regular club meeting.  Hope to see you there.</P><P>Another piece of good news: our Treasurer, Roger Lane, has met with a manager at Harry’s Hofbrau to find out whether their pending closure will be happening before our next December Holiday Extravaganza or not, in which case we’ll have to find a new place for our end-of-year party.  It turns out that the City of San Jose has changed their previous directive about the reconstruction work planned for that piece of property, and it now turns out that Harry’s will not be closing down after all!  Well that’s a relief!  Roger has gone ahead and reserved Saturday Dec 1, 2018 for us.  Thanks Roger!</P><P>Associate Director Kathi Cambiano has requested that Peterson Middle School in Sunnyvale rent us their Multi-Purpose Room on April 21-22, 2018 for our next Spring Show &amp; Sale, with a second choice of the weekend after that.   This school is always difficult to get a commitment from in writing as far in advance as we’d like, but tentatively you can plan on April 21-22.</P><P>Since our February meeting, as usual, falls on Super Bowl Sunday, our next general club meeting will end early, at 2:00pm, so those who want to watch the game have time to get home before it starts.  As a result, we will not be having a mini-show at this meeting.</td></tr></TABLE></center>");
+
+fmart ("Report on the January Meeting","Sonia Dyer","","<center><TABLE width='90%'><tr><td valign='top'>Good news!  Volunteers found!</P><P>The regular January meeting focused on the job openings currently needing to be filled within the club, and the following members were brave enough and gracious enough to step forward:</P><P><center><TABLE><tr><td valign='top'><B>Show Directors:</B>  Susan Pi and Svetlana Bellam<br><B>Show &amp; Sale Volunteer Coordinator:</B> Bobbi Bornstein<br><B>Show &amp; Sale Signs – Store and Put up:</B>  Gary &amp; Ellen Stubblefield<br><B>Publicity: </B> Elinor McRae<br><B>Mini-Show Assistant:</B>  Allen Krever</td><td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td><td valign='top'><B>Club Photographer:</B>  Allen Krever <br><B>Program Chair: </B> Monica Moran (share with Sonia Dyer) <br><B>Vice President:</B>  Wes McPheeters<br><B>Associate Directors:</B> Joyce McPheeters &amp; Gary Stubblefield<br><B>Send out hardcopies of newsletter:</B>  JoAn Lambert<br><B>Added to post-meeting clean-up crew:</B>  Mark Womack</td></tr></TABLE></center></P><P>In addition, before the January meeting, the following folks volunteered to be Assistants to the club Treasurer:  Sandy Carter, Debbie Ellis </P><P>Yaay!  Go team!</P><P>As previously announced, our next expanded Board Meeting will be held at 10:30am, just before the February meeting, in the same location.  All expanded Board Members, as well as those taking on new positions, are asked to attend.  You can learn more about your new positions, and we will  get some decisions made about the future shape of our club’s Show &amp; Sale.</td></tr></TABLE></center>");
+
+fmart ("Grower's Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>Mammillaria egregia SB 30</P><P>I really like or should I say &quot;I love <I>Mammillaria egregia</I>&quot;. It is such a beautiful plant even if it is all whitish in color.  It may be a whitish ball when golf ball size or it may be a small cylinder shaped plant, but it never tries to stick or jab a spine in my fingers.  It may have hooked or claw like tips to the spines, but it is a lady and does not use them.  The spines all lay close to the body and are almost ivory fan shaped.  It is just a really wonderful plant!  From a distance it looks like some of the other white spined plants.  Like <I>Mammillaria magallanii</I>, <I>Mammillaria lasicantha</I>, or <I>Mammillaria laui,</I> if it is single stemmed, or even <I>Mammillaria humboldtii,</I> before it offsets.  But <I>Mammillaria egregia</I>, for me, stands out as being really distinguished. In fact the name means just that!  &quot;Egregius&quot; = Distinguished; excellent.</P><P>I have four of the plants and am surprised that I have not seen any plants in shows or on the sale tables at any of the shows that I go to.  If I were to see any, and it was a true <I>Mammillaria egregia</I>, I would buy it for I figure I can never have too many of this wonderful plant.  I attend or sell at seven shows a year, and, after getting my tables set up, I wander around to see what other vendors have to offer.  Most people do not know the plants, and all they would see is an off white ball that they would take home and kill.  If it had the name of <I>M. egregia</I> on it, I would have to look it over real carefully for there are many people that believe the NCL and so cross the plants with <I>Mammillaria lasiacantha</I> or <I>M. magallanii</I> or some other white spined plant of about the same shape.  So when you see a plant with a name, you have to really be careful and make sure that it is true to the name or that the name is correct for the plant.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariaegregia.jpg',705,832)><img src='1mammillariaegregia.jpg' width=282 height=333 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariaegregia.jpg',891,830)><img src='2mammillariaegregia.jpg' width=356 height=332 hspace=17 vspace=17 align='right' class='enl'></a><br><br>The photo to the left is one of the wonderful plants.  There is not a spine out of place and they all lay tight against the plant body.  The plant is 6 cm in diameter and 8.5 cm tall.  I do not know why the plant has made a nob on the top.  The holes here and there in the spine cluster areas are where flowers were and then seed pods.  The photo to the right is another plant; it is not quite as tall as the one on the left, but it has that beautiful look to it also.  Here we see that something is different from the description and that is the spine color.  It is not white like the description says; the spine clusters have a touch of yellow at the base of the spines.  This shows up better on the plant in the photo to the right than in the one on the left.</td></tr><tr><td valign='top'><a href=javascript:poppic('3mammillariaegregia.jpg',1001,779)><img src='3mammillariaegregia.jpg' width=400 height=312 hspace=27 vspace=17 align='left' class='enl'></a><br><br>In the photo to the left; we have something that the descriptions do not mention.  If you look at the bottom center of the plant, there are six offsets.  Here is something I did not expect at all, and that is the spines on the offsets are plumose.  They have more feathering than the spines on <I>Mammillaria plumosa</I>.  When magnified to about 15 cm in diameter, looking at the offsets, I also notice that the spines on the main plant still have some feathering on the individual spines.  At the present time, these offsets are about 5 mm in diameter.</td></tr><tr><td valign='top'><a href=javascript:poppic('5mammillariaegregia.jpg',885,925)><img src='5mammillariaegregia.jpg' width=354 height=370 hspace=17 vspace=17 align='right' class='enl'></a><br><br>The photo to the right shows the growing point and the new spine clusters growing out of the plant.  From the growing point to as far down the plant as is in focus can be seen the yellowish coloring in each of the spine clusters.  This coloring starts about half way down the spines and continues to the base of the spines.  If the areole is yellowish also, I do not know as they are covered in fine wool.  The tip of the spines are not a rose or pinkish color but off white or ivory color.  Looking at the new spines in the growing point, there is not a bit of pink or rose color to the new spine tips either.  That yellowish color shows up even deep in the growing point.  The spines lay so neat and orderly and the curves are so graceful. The lower spines on a tubercle are mostly covered with the spines from the tubercle below, making the upper spines look like fans made of ivory.  Many years ago I saw some fans in China Town that looked a lot like these spine clusters.  They were quite expensive and I remember they were made of ivory.  They were the same color as the spines on these plants.  The spines are in layers.  I am not sure how many layers.  I would guess four and to even six on some areoles.  When I magnify the spine clusters to about 30 cm in diameter, it looks like there are five and may be six layers or series of spines.  The spines have a slow taper from the areole to the tip and many have a slow curve to them.  At the tip of the spines, most have a sudden claw like curve, and some actually are hooked.  The spines look like they are smooth but they are quite rough.  I am not sure if it is hair remains or just super fine pubescens.</td></tr><tr><td valign='top'><a href=javascript:poppic('9mammillariaegregia.jpg',971,706)><img src='9mammillariaegregia.jpg' width=388 height=282 hspace=17 vspace=17 align='left' class='enl'></a><br><br>In the photo to the left, the flowers are open but the stigma has not opened so as to receive any pollen.  Here again, if the spines are white, then the flowers are not white but pinkish with a dark midstripe.  The areoles show up with the white puff of wool, and the yellowish ring of the spine bases around them.  The anthers are just starting to open.  In the photo below left, the anthers are open and the stigma is open and ready to receive pollen.  The styles are dusty pink until just below the stigma, and there it is dusty rose pink.  The stigmas lobes are a fuzzy pink that is dark in the center and fades to light pink at the edges.  The plant in the photo below right has flowers that have been open for a while, others that have just opened, and one just opening.  Those that have been open for a while have the stigma lobes ready for receiving pollen.</td></tr><tr><td valign='top'><a href=javascript:poppic('10mammillariaegregia.jpg',855,534)><img src='10mammillariaegregia.jpg' width=342 height=214 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('11mammillariaegregia.jpg',906,776)><img src='11mammillariaegregia.jpg' width=362 height=310 hspace=17 vspace=17 align='right' class='enl'></a><br>The plant is very elegant, and, to keep it that way, you have to water with care.  It does not like soil that stays damp very long.  Do not give it a thick layer of topdressing, for that will hold water and help to rot the plant.  I give my plants a very fast draining soil.  I keep them powder dry in the winter time.  The plants hate alkaline water.  Give them water with a pH of about five.  Do not give any limestone in the soil or as a top dressing.  Give as much light as you can to maintain the lovely spine density and color.  If you can, make sure that the plant is where it will benefit from any breezes that blow.  The plants can take a frost to -6.5 C or about 20 F once in a while, but it is best to try to keep them just above freezing in the winter.</td></tr></TABLE></center>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings<br></B><B>by Bill Lemke</B></center></P><P><B>Standings as of January 2018:</B></P><P><center><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+// fminiadd ("Peter Beiersdorfer",0);
+// fminiadd ("Cecilia Caday",0);
+fminiadd ("Kathi Cambiano",25);
+fminiadd ("Sonia Dyer",10);
+// fminiadd ("Joseph Hildago",0); 
+// fminiadd ("Marilyn Hofman",0);
+fminiadd ("Terri Koike",11);
+fminiadd ("JoAnn Lambert",13);
+// fminiadd ("Jaan Lepson",0);
+// fminiadd ("Susan McKuhen",0);
+fminiadd ("Loyd Monaco",8);
+// fminiadd ("Janet Stevenson",0);
+fminiadd ("Ellen Stubblefield",25);
+fminiadd ("Gary Stubblefield",12);
+// fminiadd ("Jacky Wilk",0);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",11);
+// fminiadd ("Harley Barber",0);
+// fminiadd ("Manuela Burge",0);
+fminiadd ("Judianne Ganschow",25);
+// fminiadd ("Renu James",0); 
+// fminiadd ("Catherine Lau",0);
+fminiadd ("Bill Lemke",23);
+fminiadd ("Joyce McPheeters",14);
+fminiadd ("Sherry Merrill",6);
+fminiadd ("Monica Moran",4);
+fminiadd ("Susan Pi",9);
+fminiadd ("Slava Sigal",3);
+// fminiadd ("Janet Sparks",0);
+fminiadd ("Navi West",4);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: sj_cactus_succulent<br><br>
+Facebook: SJcactussucculents</td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Sonia Dyer, at <a href="mailto:sonia.dyer@sbcglobal.net">sonia.dyer@sbcglobal.net</a>.<br><br>
+If you would like a membership badge, please contact Kathi at <a href="mailto:cre8vsucculents@gmail.com?Subject=Membership%20Badge">cre8vsucculents@gmail.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
