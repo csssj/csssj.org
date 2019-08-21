@@ -1,17 +1,17 @@
 # CSSSJ Website
 
-Welcome! If you can read this, it's because you've been invited to help care
-for the website of the Cactus and Succulent Society of San Jose, a.k.a. the
-CSSSJ. Our hope is that, just as with the plants we love, a little attention
-and love will have it thriving.
+Welcome! This repository hosts the content for [the website][csssj.org] of the
+Cactus and Succulent Society of San Jose, a.k.a. the CSSSJ. Our hope is that,
+just as with the plants we love, a little attention and love will have it thriving.
 
 For the time being, this repository will have two principal branches, `master`
 and `dev`. The content of `master` will live in [csssj.org][], while the `dev`
 branch will be deployed to [dev.csssj.org][].
 
-For the time being, those deployments will be manual, i.e. someone logs into
-[csssj.org][] and performs a `git pull`. If our updates ever become voluminous
-enough, we'll revisit that.
+At present, those deployments will be manual: that is, someone will have to log into
+the host system, go into the directory corresponding to the site, and perform a
+`git pull`. If our updates ever become voluminous enough to make that tedious
+and/or cumbersome, we'll revisit that approach and see about automating it.
 
 [csssj.org]: https://csssj.org
 [dev.csssj.org]: https://dev.csssj.org
@@ -49,14 +49,14 @@ its neighbors.)
 
 - **Phase 4: Overhaul**
 
-    This is where we dig and revise the appearance and organization of the
+    This is where we dig into and revise the appearance and organization of the
     site. It will involve, among other things, more generous use of photos.
-    It's also going to involve the use of modern tools to generate "responsive"
+    It will also to involve the use of modern tools to generate "responsive"
     pages, and to generate new pages from templates.
 
     My current plan is to use a combination of [Bootstrap][] and [Hugo][] for
     much of the heavy lifting: Bootstrap for flexible control of page layout,
-    and Hugo to help uniformly apply navbars and styling.
+    and Hugo to help uniformly apply navbars, styling, and the like.
 
     Last but certainly not least, it's going to require the skill of designers
     to pick the colors, typography, and layout that please the eye.
