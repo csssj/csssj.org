@@ -10,7 +10,7 @@ and `dev`. The content of `master` will live in [csssj.org][], while the `dev`
 branch will be deployed to [dev.csssj.org][].
 
 For the time being, those deployments will be manual, i.e. someone logs into
-csssj.org and performs a `git pull`. If our updates ever become voluminous
+[csssj.org][] and performs a `git pull`. If our updates ever become voluminous
 enough, we'll revisit that.
 
 [csssj.org]: https://csssj.org
