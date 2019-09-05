@@ -1,0 +1,54 @@
+#! /usr/bin/python3
+
+import os
+import sys
+import cgitb
+import hmac
+import subprocess
+
+
+def load_key():
+    with open('/home/csssjdev/.gh-hs') as handle:
+        key = handle.readline().strip().encode('utf-8')
+
+    return key
+
+
+def read_body():
+    return sys.stdin.read().encode('utf-8')
+
+
+def verify_signature(body):
+    key = load_key()
+
+    hub_sig = os.environ['HTTP_X_HUB_SIGNATURE']
+    hub_mod, hub_digest = hub_sig.split('=')
+
+    local_mod = 'sha1'
+
+    mod_match = hmac.compare_digest(hub_mod, local_mod)
+
+    if mod_match:
+        local_digest = hmac.new(
+            key, msg=body, digestmod=local_mod
+        ).hexdigest()
+
+        return hmac.compare_digest(hub_digest, local_digest)
+    else:
+        print("Mod mismatch: {} vs. {}".format(hub_mod, local_mod))
+        return False
+
+
+cgitb.enable()
+
+print("Content-type: text/html\r\n\r\n")
+
+body = read_body()
+
+check = verify_signature(body)
+
+if check:
+    print("Signature verified. Pulling.")
+    subprocess.run(['git', 'pull'])
+else:
+    print("Signature verification failed.")
