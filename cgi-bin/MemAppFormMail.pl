@@ -36,7 +36,7 @@ $mailprog = '/usr/sbin/sendmail -i -t';
 # in this field.  This security fix from the last version which allowed      #
 # anyone on any server to use your FormMail script on their web site.        #
 
-@referers = ('csssj.org','209.61.216.111');
+@referers = ('csssj.org','69.163.157.158');
 
 # @recipients defines the e-mail addresses or domain names that e-mail can   #
 # be sent to.  This must be filled in correctly to prevent SPAM and allow    #
@@ -143,7 +143,7 @@ sub parse_form {
     elsif ($ENV{'REQUEST_METHOD'} eq 'POST') {
         # Get the input
         read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
- 
+
         # Split the name-value pairs
         @pairs = split(/&/, $buffer);
     }
@@ -156,7 +156,7 @@ sub parse_form {
 
         # Split the pair up into individual variables.                       #
         local($name, $value) = split(/=/, $pair);
- 
+
         # Decode the form encoding on the name and value variables.          #
         # v1.92: remove null bytes                                           #
         $name =~ tr/+/ /;
@@ -210,7 +210,7 @@ sub parse_form {
         foreach $valid_item (@valid_ENV) {
             if ( $env_item eq $valid_item ) { push(@temp_array, $env_item) }
         }
-    } 
+    }
     @Env_Report = @temp_array;
 }
 
@@ -374,7 +374,7 @@ sub return_html {
 
         # Print the page footer.                                             #
         print <<"(END HTML FOOTER)";
-        <hr size=1 width=75%><p> 
+        <hr size=1 width=75%><p>
         <center><font size=-1><a href="http://www.scriptarchive.com/formmail.html">FormMail</a> V1.92 &copy; 1995 - 2002  Matt Wright<br>
 A Free Product of <a href="http://www.scriptarchive.com/">Matt's Script Archive, Inc.</a></font></center>
         </body>
@@ -569,7 +569,7 @@ sub body_attributes {
     if ($Config{'text_color'}) { print " text=\"$safeConfig{'text_color'}\"" }
 }
 
-sub error { 
+sub error {
     # Localize variables and assign subroutine input.                        #
     local($error,@error_fields) = @_;
     local($host,$missing_field,$missing_field_list);
@@ -597,7 +597,7 @@ Content-type: text/html
      this cgi script.<p>
 
      If you are attempting to configure FormMail to run with this form, you need
-     to add the following to \@referers, explained in detail in the 
+     to add the following to \@referers, explained in detail in the
      <a href="http://www.scriptarchive.com/readme/formmail.html">README</a> file.<p>
 
      Add <tt>'$host'</tt> to your <tt><b>\@referers</b></tt> array.<hr size=1>
