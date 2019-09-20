@@ -2,7 +2,7 @@
 
 # AuthType Basic
 # AuthName "Dev Area"
-# AuthUserFile /home/csssjdev/.htpasswd
+# AuthUserFile /home/csssj_dev/.htpasswd
 # Require valid-user
 
 # It turns out that DreamHost's Apache is already configured to deny
