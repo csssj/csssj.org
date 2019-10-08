@@ -1,0 +1,354 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 10/13/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/13/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "13";
+var thisyear = "2019";
+var nextmonth = "November";
+var nextday = "3";
+var nextyear = "2019";
+var deadline = "October 25, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("October 2019","13, Sunday - 10:30am to 12:00pm","Board Meeting","13, Sunday - 12:30pm to 3:00pm","Adventures in Succulent Microscopy","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","Water Acidity Workshop","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2019","14, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+// document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Adventures in Succulent Microscopy</B><br>
+<br>
+<P>
+Feeling Experimental? Well, this month we’re bringing you an entirely new program in the history of succulent-club programming!  Russell Wagner will present “Adventures in succulent Microscopy,” a live endeavor to explore the microcosm available to anyone who owns a succulent plant and a small magnifier.
+</P>
+<P>
+Here’s the deal:  Russell will bring ten things to look at under the scope, and you, the audience, are tasked with bringing in at least one thing to show off under magnification: the subtle sheen of a plant’s skin, the tiny flowers of some rare bulb, an infestation of spider mite?  You decide!  Let’s discover together the beauties and horrors of the seeds and hairs, the petals and pustules, of our favorite plants.  You’ll never look at your plants the same again!  We may not have time to look at everything brought in, but we can get some ideas, at least, of where to begin.
+</P>
+<P>
+(For more about this presentation, see the first article below.)</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your new cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Your new  succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Plants with interesting leaves or Bulbous plants (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Crassula</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with H through N should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Adventures in Succulent Microscopy","","","<center><TABLE width='90%'><tr><td valign='top'>Of course every succulent grower keeps a 10x loupe handy for observing mealy bugs, the fine fuzz on gibbaeum, the wily hairs of Kalanchoe, or the split anthers of a cactus flower spilling pollen.  Or do they?  Well, if you haven’t explored the easily accessible micro-world of succulents, lets put some plants under a digital scope and see what there is to see! </P><P>Russell plans to just talk—to share thoughts and ideas with the club about the evolution of these microscopic structures, and the weird and varied ways we all can explore and enjoy our collections up close and in person.  To re-discover our plants, to enjoy them in new ways, so even the same old collection always has something new to offer‚ takes creative play, and that’s just what we’re going to do.</P><P>Added bonus: bring in your favorite loupe, microscope, or hand lens and show us how you like to view your plants close up!</P><P><B>About the speaker<br></B>Russell Wagner, former editor of Cactus and Succulent Journal, works in the manufacture of consumer electronics in San Francisco.  Although his background is in chemistry and his job title is &quot;engineer&quot;, his passion and vocation remains succulent plants and bulbs.  His specialties, as a protégé of Steven Hammer, are rare mesembs and geophytes, and any tiny plant impresses him.  You can imagine why a microscope would strike his fancy!</P><P><B>Plants for sale<br></B>Russell is also among the Bay Area’s premier growers of rare and unusual plants.  His sale table is always filled with the most unusual and inaccessible seed-grown rarities.  This month, he will have on offer a few recent seedlings, as well as a handful of mature specimens.  Sale methods are simple:  You pick the plants.  Russell names the price.  You’re going to find $3 plants next to $100 plants, and everything in between.<br> <br>Don’t be shy: this is your opportunity to ask as many questions as you like, especially about the harder-to-grow mesembs and bulbs.  Because if there’s one thing we know about Russell, he likes to talk about plants!</td></tr></TABLE></center>");
+
+fmart ("And The People Have Spoken!","Roger Lane","Allen Krever","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2astrophytum.jpg',1037,750)><img src='2astrophytum.jpg' width=259 height=188 hspace=17 vspace=17 align='left' class='enl'></a><br>Our Fall Show is over and it was a great success. We invite the public to select the winners by placing dots on the entry forms of their favorites. The public always enjoys this task and often requests more dots. Last year, most of the winners were from advanced and open exhibitors. So this year we used different colored entry forms for novice, advanced, and open. And the novice, advanced, and open exhibitor categories were each eligible for the same number of awards. We also provided an award for Allied Interests that includes photography, paintings, sculptures, etc. And here are the winning entries:</P><P><B><font size='+1'>NOVICE CACTUS</font> (There was only 1 entry)</B><TABLE><tr><td valign='top'nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Astrophytum</I> group Annie Lau</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('5portulacariaaframediopicta.jpg',1007,850)><img src='5portulacariaaframediopicta.jpg' width=252 height=212 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('3plectranthusernestii.jpg',1018,820)><img src='3plectranthusernestii.jpg' width=254 height=205 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>NOVICE SUCCULENT</font></B><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Plectranthus ernestii </I>Thomas Vincze</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Euphorbia lactea</I> variegate Bill Lemke</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 3 &nbsp; </td><td valign='top'><I>Portulacaria afra medio-picta</I> Bill Lemke</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 4 &nbsp; </td><td valign='top'><I>Lithops</I> group Renu James</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('7cereusspegazziniicristata.jpg',873,980)><img src='7cereusspegazziniicristata.jpg' width=218 height=245 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('10gymnocalyciumfriedrichii.jpg',620,990)><img src='10gymnocalyciumfriedrichii.jpg' width=156 height=248 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>ADVANCED CACTUS</font></B><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Cereus spegazzinii cristata</I> Judi Ganschow</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Melocactus ernestii</I> Roger Lane</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 3 &nbsp; </td><td valign='top'><I>Mammillaria hahniana superba</I> Deborah Ellis</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 4 &nbsp; </td><td valign='top'><I>Gymnocalycium friedrichii</I> Terri Koike</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 5 &nbsp; </td><td valign='top'><I>Trichocereus carnaguensis</I> Deborah Ellis</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('13operculicaryadecaryi.jpg',622,990)><img src='13operculicaryadecaryi.jpg' width=156 height=248 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('14lithopsmarmorata.jpg',1016,820)><img src='14lithopsmarmorata.jpg' width=254 height=205 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>ADVANCED SUCCULENT</font></B><br><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Pseudolithos migiurtinus</I> Deborah Ellis</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Operculicarya decaryi</I> Roger Lane</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 3 &nbsp; </td><td valign='top'><I>Lithops marmorata</I> Judi Ganshow</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 4 &nbsp; </td><td valign='top'><I>Euphorbia suzannae</I> crest Roger Lane<br><br><a href=javascript:poppic('12pseudolithosmigiurtinus.jpg',1002,890)><img src='12pseudolithosmigiurtinus.jpg' width=250 height=222 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('16sulcorebutiarauschiifviolacidermis.jpg',1031,680)><img src='16sulcorebutiarauschiifviolacidermis.jpg' width=258 height=170 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('19tephrocactusgeometricus.jpg',1037,750)><img src='19tephrocactusgeometricus.jpg' width=259 height=188 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>OPEN CACTUS</font></B><br><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Sulcorebutia rauschii f. violacidermis</I> Bill Munkacsy</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Opuntia c.f. vestita</I> Peter Beirsdorfer</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Blossfeldia liliputana</I> Naomi Bloss</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Tephrocactus geometricus</I> Peter Beirsdorfer</td></tr></TABLE></td></tr><tr><td valign='top'><a href=javascript:poppic('23dioscoreaelephantipes.jpg',622,990)><img src='23dioscoreaelephantipes.jpg' width=156 height=248 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('21haemanthusdeformis.jpg',1037,750)><img src='21haemanthusdeformis.jpg' width=259 height=188 hspace=17 vspace=17 align='right' class='enl'></a><br><B><font size='+1'>OPEN SUCCULENT</font></B><br><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'><I>Haemanthus coccineus</I> Peter Beirsdorfer</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Haemanthus deformis</I> Peter Beirsdorfer</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Lithops lesliei </I>Peter Beirsdorfer</td></tr><tr><td valign='top' nowrap> &nbsp; &nbsp; 2 &nbsp; </td><td valign='top'><I>Dioscorea elephantipes</I> Annie Wolf</td></tr></TABLE></P><P><font size='+1'><B><font aize='+1'>ALLIED IMTERESTS</font></B><br><TABLE><tr><td valign='top' nowrap> &nbsp; &nbsp; 1 &nbsp; </td><td valign='top'>Photograph Kathi Cambiano</td></tr></TABLE></td></tr><tr><td valign='top'>There were 26 exhibitors with 31 Novice entries, 71 Advanced entries, and 170 Open entries for a grand total of 272. Unfortunately, there was only one Novice cactus entered and there were four possible Novice awards. This new system equalizes the Novice exhibitors with the other groups – BUT we need more Novice entries. Let’s increase all exhibitor participation by at least 25% for the next show.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>A couple years ago, I came in to possession of an <I>Ariocarpus retusus ssp. retusus</I> and an <I>A. retusus ssp. furfuraceus</I>.  As I remember, it was about the same time I got the two plants maybe several months apart.</td></tr><tr><td valign='top'><a href=javascript:poppic('1ariocarpusretusus.jpg',1011,675)><img src='1ariocarpusretusus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><br>As I usually do, I repotted the plants into my soil.  In a few months I discovered that the two plants were growing strange like.  It looked like I did something they did not like, for it looked like the plants were falling apart.  The large tubercles were not standing up like normal but were lying over and at a weird angle.  Some of the tubercles were being detached or almost so from the main stem.  I decided to leave the plants alone to see what was going on with them. The <I>A. retusus ssp. furfuraceus</I> grew into a two headed plant.  The two heads put together are at the present time smaller than the original plant.  The <I>A. retusus ssp retusus</I> went three headed but is not through doing its thing.  The three heads are now well defined, but, of the old original stem, there are still several tubercles that are half off the plant.  They are the yellow tubercles on the outside of the plant.  I have watched as the tubercles have slowly turned yellow from the plant trying to reject them, which is strange. In the photo to the left, you can see what is left of the tubercles from the plant, while it was a single headed plant.  If you look close, you can see what is left of the original tubercles, there are five left and the plant is dismissing or pushing them off the plant.  It is slowly killing the old tubercles.  I just up potted the plant a couple days ago, and several of the old tubercles were dried up and had fallen off.</td></tr><tr><td valign='top'><a href=javascript:poppic('2ariocarpusretusus.jpg',1011,675)><img src='2ariocarpusretusus.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the right is a close up of the plant, and it clearly shows three heads or stems that have grown from the main stem.  The <I>furfuraceus</I> did the same thing with the old tubercles, and they all died and the plant grew into a two headed plant.  Now if you notice in the photo, the five tubercles are still attached to the plant.  As I started to up pot the plant into a larger pot, as it out grew the pot it was in, I started to remove the yellow tubercles as I figured they were mostly dead.</td></tr><tr><td valign='top'><a href=javascript:poppic('3ariocarpusretusus.jpg',1011,675)><img src='3ariocarpusretusus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><br>The tubercle in the photo to the left is one that was part way off the plant.  About half of the tubercle was still attached to the plant.  As I moved the tubercle, I noticed roots sticking a little way out of the tubercle.  The roots were close to 1 cm long but had not made it to the soil that I could see.  If you look real close at the right hand side of the base of the tubercle, there is a growth that has some scales on it and a green curl growing out of the top of it.  I am not sure what it is, unless it is trying to grow another head or the growth is out of the base of the tubercle.  If it is out of the base of the tubercle, it could be a plantlet growing from the tubercle.  Look close at the left side of the tubercle base, and there is a little green growth which looks like it could also be a tubercle.  That is where the roots are or were showing, before I put some soil on them.</td></tr><tr><td valign='top'><a href=javascript:poppic('4ariocarpusretusus.jpg',1011,675)><img src='4ariocarpusretusus.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>In the photo to the right, which shows another tubercle, this one was half disconnected from the plant, and when I looked closely at it I saw there were roots coming out the left side of the base of the tubercle.  Note that there is a rock on the tip of the tubercle, and it is wedged down to the soil.  The reason for that is that the tubercle was standing upright at an angle of maybe 40 degrees and away from the soil.  In inspecting the tubercle, I saw that about 1.5 cm from the end of the tubercle was a thick pointed root that was trying to find the soil.  The root was about 1 cm long, and the shape of the lead in a sharpened pencil.  It had a long way to grow to reach the soil, so I pushed it down and wedged the rock on the end of the tubercle so the root would be in contact with the soil.  Now if you are skeptical about growing <I>Ariocarpus</I> plants from tubercles, you can go back, maybe as much as 20 years, in the CSSA Journal, and there are several articles on growing <I>Ariocarpus</I> from tubercles.  I wrote one of the articles, and someone else also wrote one that was published in the Journal.  His was maybe one or two Journals after my article.</P><P>I covered the rooted end with soil.  How much good it will do at this stage of the growing process, I do not know.  I also do not know if pushing the tubercle down so the root near the tip is in the soil will do any good either.  Many years ago I would work for other people that had quite a few cacti and needed help a day or two a week.  This one woman had a reputation for buying very nice plants and killing them in a few months’ time.  One time she bought an <I>Ariocarpus retusus</I> that was about 18 cm in diameter, and, sure enough within a few months, the plant was mostly rotted, but there were five or six tubercles that were still solid.  I took the tubercles home, and thought I would try planting them and see what happens.  There were tubercles that had no rot on them and there were others that were rotted about 1/4 of the way up.  I cleaned those with rot and allowed all to dry a few days, and I planted them.  I watched them carefully and gave them a watering now and then.  In time, several of them rotted away, but four of them did not rot away.  I had never tried or heard of anyone trying to root a tubercle, so I decided to check what was going on.  The one I dumped out of the pot had a good root system.  But my inspecting it insulted the roots, and that tubercle also rotted.</P><P>The rest of the tubercles stayed nice and slowly got fatter, and, in time, they made offsets or plantlets.  Some broke through from the top side of the tubercle, and some from the underside of the tubercle.  A friend that had been high in the CSSA was looking at one of the tubercles, and when he put it down did not put it down in the same orientation as it was, and before I discovered that, it had sunburned.  It took that plant quite a while to grow out of the burn.  Later on I got hold of several more tubercles from a rotting plant, and I planted them.</td></tr><tr><td valign='top'><a href=javascript:poppic('7ariocarpusretusus.jpg',1011,669)><img src='7ariocarpusretusus.jpg' width=253 height=167 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left is a shot of a tubercle grown plant that has been in the world about two to three weeks.  This photo was taken in September of 2011.  Even after I wrote an article and had photos of the tubercles giving birth to plantlets, people did not believe it could happen.  With the plant in the first photo, the tubercles are still attached to the plant, and they are showing signs of wanting to grow.  I wish I had seen this sooner, but now I am hoping that the tubercles will continue to try to grow and will make plantlets in time.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
