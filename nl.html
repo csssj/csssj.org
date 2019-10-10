@@ -1,13 +1,15 @@
-<HTML>
-<SCRIPT Language="JavaScript">
-<!-- 
-//
-var temploc=document.location.href;
-var tempdat=temploc.substring(temploc.length-6,temploc.lenth);
-var tempval ="http://www.csssj.org/members_corner/Secure/Courier/cactus_courier20" + tempdat + ".html";
-document.location.href=tempval;
- -->
-</SCRIPT>
-<BODY>
-</BODY>
-</HTML>
+<html>
+  <!--
+      Do not remove this file. It handles the shorthand URL mailed out
+      to club members, redirecting them to the actual Cactus Courier
+      issue.
+    -->
+  <script>
+    var oldurl = document.location.href
+    var argdate = oldurl.substring(oldurl.length-6);
+    var newurl = "members_corner/Secure/Courier/cactus_courier20" + argdate + ".html";
+    document.location.href = newurl;
+  </script>
+  <body>
+  </body>
+</html>
