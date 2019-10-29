@@ -1,0 +1,410 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/14/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/14/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "3";
+var thisyear = "2019";
+var nextmonth = "December";
+var nextday = "14";
+var nextyear = "2019";
+var deadline = "December 6, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("November 2019","3, Sunday - 10:30am to 12:00pm","Board Meeting","3, Sunday - 12:30pm to 3:00pm","What's up with your Water?","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2019","14, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+// document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">What's up with your Water?</B><br>
+<br>
+<P>
+Think about everything you do to care for your plants.  You provide the proper soil environment, with the appropriate drainage and structure.  You try to give your plants just the right amount of sunlight. You carefully choose the correct pot.  In all this, you are doing your best to mimic the conditions of your plant(s) in the wild.  So why wouldn’t you match the characteristics of your water to what plants would receive in a natural environment?
+</P>
+<P>
+At this meeting, you will learn about the importance of water, how you can test your water, and what you can do to adjust the acidity of your water to best meet the needs of your plants. 
+</P>
+<P>
+Please bring one gallon of the water you normally use to water your plants to the meeting.  You will learn how to analyze your water and methods to adjust the pH.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Stenocereus</I> or <I>Piolsocereus</I> or <I>Ferocactus</I> or <I>Gymnocalycium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red, Pink, or Orange succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Conophytum</I> (or other Mesembs) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Crassula</I><I>Senecio</I> or <I>Tradescantia </I>(or similar trailing plant)</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with O through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show Results October 2019","Bill Lemke","Allen Krever","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('8opuntiafulgidacristata.jpg',641,990)><img src='8opuntiafulgidacristata.jpg' width=160 height=248 hspace=17 vspace=17 align='right' class='enl'></a><a href=javascript:poppic('7astrophytum.jpg',757,970)><img src='7astrophytum.jpg' width=189 height=242 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B><font size='+2'>CACTUS:</font></B><br><TABLE><tr><td valign='top' align='right'><B>Advanced: </B></td><td valign='top'><I>Opuntia fulgida</I> crested - Cecelia Caday<B></td></tr><tr><td valign='top' align='right'><B>Novice: </B></td><td valign='top'><I>Mammillaria sp</I>.- Judi Ganschow<br> <I>Astrophytum sp</I>.- Judi Ganschow<br> <I>Espostoa melanostele</I> - Joyce McPheters</td></tr></TABLE></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('6euphorbiastenoclada.jpg',909,1000)><img src='6euphorbiastenoclada.jpg' width=227 height=259 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('5trichodiademadensum.jpg',588,990)><img src='5trichodiademadensum.jpg' width=189 height=242 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B><font size='+2'>SUCCULENT: </font></B><br><TABLE><tr><td valign='top' align='right'><B>Advanced:  </B></td><td valign='top'><I>Euphorbia stenoclada</I> - Kathi Cambiano<B></td></tr><tr><td valign='top' align='right'><B>Novice: </B></td><td valign='top'><I>Trichodiadena densum</I> - Judi Ganschow</td></tr></TABLE></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('4haemanthusalbiflos.jpg',1006,755)><img src='4haemanthusalbiflos.jpg' width=252 height=189 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2faucariatigrina.jpg',797,1000)><img src='2faucariatigrina.jpg' width=199 height=250 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B><font size='+2'>SOMETHING SPECIAL:</font></B><br><TABLE><tr><td valign='top' align='right'><B>Advanced: </B></td><td valign='top'>Andromischus Collection - Joseph Hidalgo<br><I>Haemanthus albiflos</I> - Kathi Cambiano<B></td></tr><tr><td valign='top' align='right'><B>Novice:</B></td><td valign='top'><I>Faucaria tigrina</I> - Allen Krever</td></tr></TABLE></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('1crassulastringofbuttons.jpg',1003,786)><img src='1crassulastringofbuttons.jpg' width=251 height=196 hspace=17 vspace=17 align='left' class='enl'></a><br><br><B><font size='+2'>BEGINNER’S LUCK:</font></B><br><I>Crassula</I> &quot;String of Buttons&quot; - Bill Lemke</td></tr></TABLE></center>");
+
+fmart ("Holiday Extravaganza","Judi Ganschow","","<center><TABLE width='90%'><tr><td valign='top'>With December quickly approaching, it is time for our annual Holiday Extravaganza!  Mark Saturday, December 14<sup>th</sup> on your calendar.  Due to the closing of Harry’s Hofbrau, we will be holding the party at Peterson Middle School.  The event includes lunch, holiday gift exchange, silent auction, and live auction.  We hope to see you there!  </P><P>Tickets for the catered lunch are $20.00.  (If you don't want to eat, you can still attend the party without buying a ticket.)  Deadline to purchase tickets is November 30th.  The link for tickets is http://bit.ly/csssjdec19.  (If you do not have access to a computer, arrangements will be made to allow you to purchase at ticket.)</P><P>More details to come.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>For nigh on to 40 years I have looked for the real <I>Ariocarpus furfuraceus</I>.  I have even looked under the name of <I>Ariocarpus retusus v. furfuraceus</I>.  I have found a lot of plants under that name but have always had to scratch my head, for the plants never matched the name.</P><P>In the cactus world, I have heard for about 40 years that the term furfuraceus means dandruff or covered with dandruff.  Try as I may, I have never seen any plant in the <I>Ariocarpus</I> world that has dandruff of dandruff like scales on them.  In the book, Glossary of Succulent Plant Terms by W. Taylor Marshall and R. S. Woods is the definition of the word ‘furfuraceus’.  That is as follows: covered with bran-like scales.</td></tr><tr><td valign='top'><a href=javascript:poppic('2ariocarpusretususvfurfuraceus.jpg',1011,675)><img src='2ariocarpusretususvfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><br>In all the books I have that are from around 1977 on to the present day, the name of <I>Ariocarpus furfuraceus</I> is only a synonym for <I>Ariocarpus retusus ssp retusus</I>.  I counted the number of <I>A. retusus</I> plants I have, and it is sixty or sixty five and all but maybe ten have that areole at the tip of the tubercle.  At that rate, I have mostly <I>A. furfuraceus</I> and most of the plants I have ever seen for sale are also <I>A. furfuraceus</I>.  I see plants of <I>A. furfuraceus</I> or <I>A. retusus v. furfuraceus</I> for sale all the time. In my collection, I have quite a few plants with the name of <I>A. furfuraceus</I> in some form on the tags.  In the last couple years I obtained several plants with <I>A. furfuraceus</I>, <I>A. retusus v. furfuraceus</I>, or <I>A. retusus ssp. furfuraceus</I> on them.  I had resisted buying any of the plants, because I have a lot with the name in one form or another on their tag.</td></tr><tr><td valign='top'><a href=javascript:poppic('4ariocarpusretusussspfurfuraceus.jpg',1011,675)><img src='4ariocarpusretusussspfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('3ariocarpusretususvfurfuraceus.jpg',943,770)><img src='3ariocarpusretususvfurfuraceus.jpg' width=236 height=192 hspace=17 vspace=17 align='right' class='enl'></a><br>On sales tables over the last four or five years, I have seen a plant that looks different than a lot of the <I>A. retusus v. furfuraceus</I>, for it has fat light grey convex tubercles.  To me they looked like an over fed plant that has very bloated tubercles.  I decided I did not want one of the plants, for they did not look normal.  Since that time, I have seen quite a few of this form of the plant.  I decided that they are just a different variety or form of <I>A. retusus</I> and maybe the elusive <I>A. furfuraceus</I>.  In the time since I saw the plants and thought about them, I have ended up with three of them.  I bought one, was given another, and I think the third one was also a gift.  These are the plants in the photos above, left, and right.</td></tr><tr><td valign='top'><a href=javascript:poppic('1ariocarpusretususvfurfuraceus.jpg',1011,675)><img src='1ariocarpusretususvfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><br>If you look close at the photo to the left you will see light and darker bands that go across the tubercles.  These bands are made up of very small white dots.  It looks much like someone sprinkled flour over the plant.  That cannot be right, for it is in a pattern.  So I got my pocket microscope and took a look at the tubercles.  Those white dots are microscopic white puffs of wool.  Looking at the photos above, the bands of these dots of wool show up very clearly.  These plants are the plants that were kind of new to me, for they look to have very fat tubercles.  I see now that it is just a form of the plant.  When seeing these plants, I then figured they are the true <I>A. furfuraceus</I>, for they have what looks to be dandruff or really fine bran flakes in bands.  I have finally found the real <I>A. furfuraceus</I>; the only thing is that the <I>Ariocarpus</I> et cetera book says that it is the areole at the tip of the tubercle that gave the plant the name.  If that is correct, then the original description is incorrect, for it says it is the furfur (dandruff or bran) that gives the plants their name.</td></tr><tr><td valign='top'><a href=javascript:poppic('6ariocarpusretususvfurfuraceus.jpg',1011,675)><img src='6ariocarpusretususvfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('7ariocarpusretususvfurfuraceus.jpg',1011,675)><img src='7ariocarpusretususvfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>That areole is not like dandruff or like fine bran flakes, but the very fine puffs of wool all over the plant are like dandruff.  But then I have another problem and that is all the wool in the areole.  This poses another problem in my finding the real <I>Ariocarpus furfuraceus</I>, for the description says the areole is glabrous and each of the plants in all the photos except for the one below right have lots of wool in the areole, and I have some fifty five plants that are all sporting good amounts of wool in the areole.  Note the plant in the photo below right has very little wool in the areoles.  I think that, in habitat, the falling rain and blowing winds breaks off and wears away the wool, and so the glabrous areoles in the description.  Keep in mind that the description is of habitat plants and not plants that have been in cultivation all their lives.  In the <I>Ariocarpus retusus</I> description it also says that the ‘areole is minute or absent otherwise glabrous,’ if there is an areole, which the description says can be absent.  If anyone has one to many of the plants, and they are grown in good light, I dare say they are all really <I>Ariocarpus furfuraceus</I>.</td></tr><tr><td valign='top' align='center'><TABLE><tr><td valign='top' align='center'><a href=javascript:poppic('9ariocarpusretususvfurfuraceus2.jpg',1011,675)><img src='9ariocarpusretususvfurfuraceus2.jpg' width=253 height=169 hspace=17 vspace=17 class='enl'></a></td><td valign='top' align='center'><a href=javascript:poppic('10ariocarpusretususvfurfuraceus.jpg',1011,675)><img src='10ariocarpusretususvfurfuraceus.jpg' width=253 height=169 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></td></tr><tr><td valign='top'>In the three descriptions the color of the plants is described as ‘light grey, blue or olive or grey-green, yellowish or blue-green.’</P><P>I have inspected all sixty five of the <I>Ariocarpus retusus</I> type plants I have, and everyone has those microscopic dots of wool. Some like in the photos above have more, and it is easier to see, because they are in contrasting bands.  In other plants, the whole tubercle also has them but not in bands, and so they are not so obvious.  The plants that all look green have very, very minute small tufts of wool, the blue and grey looking plants have furfur that is longer and or denser, this gives the plants the different shades or colorings they have.</P><P>Underneath the furfur, the plant is green.  Depending on how the plant is grown, the green may be darker or even yellowish, but it is still green.  If a plant in cultivation is given acidic water and if fed reasonable amounts of nitrogen, the green will be darker than plants that are very seldom to never fed.  Those cultivated plants that are never fed are yellowish, and that yellowish color is enhanced by the microscopic dots of white furfur.</P><P>My search is over.  I have found the real <I>Ariocarpus furfuraceus</I> right in my own collection, and I did not know that I have had it all along.  The fact is I have about sixty four or sixty five of them, and that is not counting hundreds of seedlings that are to 2.5 cm across.  The plants in the count of sixty four or sixty five range in size from 10 cm to almost 31 cm in diameter. They range in color as described above.  Some have furfur in bands, some have very short furfur, and some have longer furfur.  Whatever the plant color, they are all covered in dandruff or super fine bran flakes.</td></tr></TABLE></center>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings</B></center></P><P><B>Standings as of October 2019:</B></P><P><center><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Peter Beiersdorfer",25);
+fminiadd ("Cecilia Caday",138);
+fminiadd ("Kathi Cambiano",150);
+// fminiadd ("Sonia Dyer",14);
+fminiadd ("Bryan Fan",7);
+fminiadd ("Joseph Hildago",16); 
+fminiadd ("Marilyn Hofman",22);
+fminiadd ("Terri Koike",44);
+fminiadd ("JoAn Lambert",21);
+fminiadd ("Jaan Lepson",10);
+fminiadd ("Susan McKuhen",20);
+fminiadd ("Loyd Monaco",24);
+// fminiadd ("Janet Stevenson",0);
+fminiadd ("Ellen Stubblefield",43);
+fminiadd ("Gary Stubblefield",50);
+// fminiadd ("Jacky Wilk",2);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",133);
+// fminiadd ("Harley Barber",0);
+fminiadd ("Bobbi Bornstein",62);
+fminiadd ("Manuela Burge",24);
+fminiadd ("Amber Carter",2);
+fminiadd ("Lanelle Faraj",44);
+fminiadd ("Nicole Faraj",56);
+fminiadd ("Beth Fryksdale",1);
+fminiadd ("Judianne Ganschow",125);
+fminiadd ("Ellie Herrera",1);
+fminiadd ("Andrew Hazlett",4); 
+fminiadd ("Renu James",104);
+fminiadd ("Allen Krever",65);
+// fminiadd ("Catherine Lau",0);
+fminiadd ("Bill Lemke",71);
+fminiadd ("Dan Martinez",4);
+fminiadd ("Joyce McPheeters",83);
+fminiadd ("Lois McPherson",6);
+// fminiadd ("Elinor McRae",5);
+// fminiadd ("Sherry Merrill",6);
+fminiadd ("Monica Moran",7);
+fminiadd ("Desiree Faraj Perez",51);
+// fminiadd ("Slava Sigal",3);
+// fminiadd ("Janet Sparks",0);
+fminiadd ("Keith Walker",6);
+// fminiadd ("Navi West",4);
+fminiadd ("Tanya Wieber",11);
+fminiadd ("Annie Wolf",25);
+// fminiadd ("Mark Womack",25);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
