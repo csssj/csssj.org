@@ -1,0 +1,373 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 12/14/2019">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 12/14/2019</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "December";
+var thisday = "14";
+var thisyear = "2019";
+var nextmonth = "January";
+var nextday = "5";
+var nextyear = "2020";
+var deadline = "December 27, 2019";
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+var popwin = window.open(addr,'CSSSJ',parmtxt);
+if (window.focus)
+   {
+    popwin.resizeTo(adjw,adjht);
+    popwin.focus();
+   };
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("December 2019","14, Saturday - 11:00am to 3:00pm","Holiday Extravaganza","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2020","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("February 2020","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 2:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("March 2020","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+// document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Holiday Extravaganza</B><br>
+<br>
+<P>
+This year's Holiday Banquet will be held on Saturday, December 14 from 11:00am to 3:00pm.  It will be at Peterson Middle School, 1380 Rosalia Ave, Sunnyvale.  Tickets are required.  Members who have not already purchased a ticket will not be able to attend.
+</P>
+<P>
+Events include:<br>
+<TABLE cellspacing=3>
+<tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Lunch catered by Maggiano's Little Italy</td></tr>
+<tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Gift Exchange</td></tr>
+<tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Silent &amp; Live auction</td></tr>
+<tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Table prize</td></tr>
+</TABLE>
+</P>
+<P>
+Members who renew at or before the December meeting will participate in a special plant raffle.
+</P>
+<P>
+<center><font size='-1'>(See the following article for more details.)</font></center>
+</P>
+<br>
+<P>
+<center>
+<a href="petersonmiddle.gif" target="blank"><img src="petersonmiddle2.gif" width=530 height=325 border=1 vspace=5><br>
+<font size="-1">Peterson Middle School, 1380 Rosalia Avenue, Sunnyvale, CA, 94087-3795</font></a>
+</center>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Stenocereus</I> or <I>Piolsocereus</I> or <I>Ferocactus</I> or <I>Gymnocalycium</I></font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red, Pink, or Orange succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Conophytum</I> (or other Mesembs) (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Crassula</I><I>Senecio</I> or <I>Tradescantia </I>(or similar trailing plant)</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with O through Z should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Holiday Extravaganza","","","<center><TABLE width='90%'><tr><td valign='top'><B>Lunch Includes</B>: salad, choice of entree including vegetarian option, choice of dessert, and choice of nonalcoholic drinks.</P><P><B>Gift exchange</B>: bring a holiday gift to exchange with another club member (cactus and succulent theme encouraged)</P><P><font size='+2'><B>Silent and Live Auctions</B></font></P><P><B>Silent Auction Rules:</B><br><TABLE cellspacing=3><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Members may bring up to 20 plants</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; <B>Please bring plants for silent auction to the venue between 10:00-10:30am</B></td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Seller chooses the minimum starting price (less than $20)</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; All plants in the silent auction sell when the bid reaches $20 or at the end of the auction time</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Members earn 75% of these sales</td></tr></TABLE></P><P><B>Live Auction Rules:</B><br><TABLE cellspacing=3><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Members may bring up to 5 plants</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Please bring plants for live auction to the venue between 10:00-10:30am.</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Seller chooses the minimum starting price ($20 and above)</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Plants will be auctioned live and sold at the minimum price or highest bid, whichever is higher</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Members earn 75% for sales under $100 and 80% for sales $100 and over</td></tr></TABLE></P><P><B>Questions?</B> Please contact Loyd Monaco @ <a href='mailto:loyd.monaco@yahoo.com?Subject=Holiday%20Extravaganza'>loyd.monaco@yahoo.com</a>.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><I>Mammillaria duwei</I> made a big splash, when it first hit the market or the sales tables.  It was named in 1985 and has gone around in circles as a subspecies of <I>Mammillaria crinita</I> and a subspecies of <I>Mammillaria nana</I>.  Anderson, in his book &quot;The Cactus Family&quot;, makes the plant disappear; he has it as a synonym of <I>Mammillaria crinita</I>.  Pilbeam, in his book &quot;Mammillaria&quot;, has the plant as a subspecies of <I>Mammillaria nana</I>.  That was in 1999, but now in 2017, in his book &quot;Mammillaria Now and Again&quot;, he has the plant standing as <I>Mammillaria duwei</I>.  This seems to go along with the NCL and Hunts listing it as a good species.  But Hunt, in the NCL, gives an afterthought of: &quot;Status uncertain. Perhaps just a form of <I>M. crinita</I> but of interest in having dimorphic fruits and lacking axillary bristle spines.&quot;  I have kept the original name on my plants.  I have five pots of them and have never changed the name.  My largest plant is filling a 20 cm pot.  The plants bloom off and on from spring to fall, and they will bloom with a few flowers or the whole plant can be covered in flowers.  I am sure that, if the plant had really hot pink flowers, it would be more popular.  I know that many times I don't even notice the flowers when they are open, for they kind of blend in with their spines and the plants around them.<br> <br>Every now and then, I will see a plant for sale at shows, but nothing like twenty five or so years ago.  Back then, the plant really became popular but seemed to fade from the sale tables and maybe even from many collections.  I am not sure if the plants have fallen out of favor, or if no one is growing them wholesale.  Now and then, I will have someone see them and want one of my full pots of this plant.  So far, I have not given in to anyone's wishes.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariaduwei.jpg',1011,669)><img src='1mammillariaduwei.jpg' width=253 height=167 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariaduwei.jpg',1011,669)><img src='2mammillariaduwei.jpg' width=253 height=167 hspace=17 vspace=17 align='right' class='enl'></a><br>The plants can differ from one another, as can be seen in the photos here.  The photo to the left was taken in September, soon after night temperatures dropped and the plant seemed to come to life.  I do not know it they go dormant in the heat of summer, because the photo to the right was taken in the middle of June and the plant was in flower.  In checking when different photos were taken, some were taken in April, some in June, and others in September.  This shows that the plants seem to bloom most of the season.  Offhand I know of no cactus plants that flower when they are dormant, so I am not sure that <I>M. duwei</I> goes dormant in the heat of summer.  In the left photo can be seen fresh green between the tubercles, showing that the plant has at least fattened up.  This could also have happened after a good watering.  In the right photo, it looks like the spines are longer than those in the left photo, but I think that it is just that the tubercles are closer together, making the spines seem to be longer.  But it is just because the plant is not as plump, and so the spine clusters are closer together.</td></tr><tr><td valign='top'><a href=javascript:poppic('4mammillariaduwei.jpg',1011,675)><img src='4mammillariaduwei.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('6mammillariaduwei.jpg',1011,675)><img src='6mammillariaduwei.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>The plants in upper two photos have no central spines, and the plant in the photo to the left has a few central spines.  The centrals are kind of sparse and few and far between, so to say.  So we go to the plant in the photo to the right, which shows the growing point, and there are areoles with and without the centrals.  The one thing I do not know is if the centrals grow after the areole is away from the growing point, but that is the way it looks like to me.  All the spines are pubescent or have hairs on them.  This can be seen quite easily in the photo below.  I have studied the photo to the right and see only one central spine near the top of the plant, but in the photo below, it is easy to see that many of the areoles have several central spines.  Also, if you look very carefully, you can see near the top of the plant at the upper right hand side, there are new centrals with the older ones.  The newer ones are still larger in diameter, as they have just grown and have not dried as yet.  This can be seen just to the right of the base of the flower tube.  There are several areoles with fat and skinny central spines.  So I have to think that the plant grows some of the centrals, after the spines start to grow over the shoulder of the plant.  Not all the areoles have multiple central spines, and some have three centrals.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('7mammillariaduwei.jpg',1011,675)><img src='7mammillariaduwei.jpg' width=253 height=169 hspace=17 vspace=17 class='enl'></a><br></td></tr><tr><td valign='top'><a href=javascript:poppic('8mammillariaduwei.jpg',1011,675)><img src='8mammillariaduwei.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('9mammillariaduwei.jpg',1011,669)><img src='9mammillariaduwei.jpg' width=253 height=167 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left shows a couple flowers up fairly close, and the photo to the right shows more but the flowers on this plant are a bit more pale yellow.<br><br>The habitat is at 1800 to 2000 meters elevation, which is about 6,000 to 6,500 feet.  Over the years, I have not had any problem with the plants in any cold weather we have here.  They seem to be able to take -3 to -4 C without any problems.  I keep them dry in the winter time, like most of the plants I have.  I give them my regular soil mix, and they get watered along with all the rest of the plants when it is watering time.  I do try to protect the plants from the hot afternoon sun so not to take a chance of them burning.  This semi protection is putting them on the morning side of the hothouse.  Somehow, they look like they might burn, if given the hot late afternoon sun.  I do not want to take a chance with them.</td></tr></TABLE></center>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
