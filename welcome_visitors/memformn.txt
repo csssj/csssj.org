@@ -30,7 +30,7 @@ Dues: [dues]
 
 Name: [name]
 
-Additional Name: [addname] 
+Additional Name: [addname]
 
 Address: [address]
 

@@ -1,10 +1,17 @@
 #! /usr/bin/python3
 
+# This script serves to handle update notifications from GitHub, and
+# deploy updates.
+
 import os
 import sys
 import hmac
 import subprocess
 from pathlib import Path
+
+
+# Load the locally-stored copy of the GitHub token used to verify
+# updates.
 
 def load_key():
     keypath = str(Path.home() / '.gh-hs')
@@ -14,9 +21,15 @@ def load_key():
     return key
 
 
+# Load the body of the update message.
+
 def read_body():
     return sys.stdin.read().encode('utf-8')
 
+
+# Verify that the GitHub-provided checksum matches our own
+# independently-computed one. Use hmac as a measure against timing
+# analysis.
 
 def verify_signature(body):
     key = load_key()
@@ -24,10 +37,13 @@ def verify_signature(body):
     hub_sig = os.environ['HTTP_X_HUB_SIGNATURE']
     hub_mod, hub_digest = hub_sig.split('=')
 
+    # First, verify that we're both using the same checksum algorithm.
     local_mod = 'sha1'
-
     mod_match = hmac.compare_digest(hub_mod, local_mod)
 
+    # Having verified that we are, generate our own digest using our
+    # copy of the key, and compare it to the provided digest. If they
+    # match, return True; otherwise return False.
     if mod_match:
         local_digest = hmac.new(
             key, msg=body, digestmod=local_mod
@@ -38,6 +54,8 @@ def verify_signature(body):
         print("Mod mismatch: {} vs. {}".format(hub_mod, local_mod))
         return False
 
+
+# --------
 
 print("Content-type: text/html\r\n\r\n")
 

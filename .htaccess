@@ -1,13 +1,6 @@
-# Limit access to the dev instance.
-
-# AuthType Basic
-# AuthName "Dev Area"
-# AuthUserFile /home/csssj_dev/.htpasswd
-# Require valid-user
-
 # It turns out that DreamHost's Apache is already configured to deny
 # dotfile access, so we don't have to go to any extra measures here.
-# Handy. But we do need to block access to the README.
+# Handy. But we don't want the README served up raw.
 
 <Files README.md>
 Order Allow,Deny
