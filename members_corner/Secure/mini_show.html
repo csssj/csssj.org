@@ -6,18 +6,33 @@
 <title>Cactus and Succulent Society of San Jose</title>
 
 <SCRIPT Language="JavaScript">
-<!-- 
+<!--
 //
 // Global variables
 //
-var minicnt = 0;
-var minitot = 0;
-var miniinf = new Array();
-var mnthtot = new Array(12);
+var eoy = "yes";              // End of year flag
+var mstitle = "Final Standings for 2019";  // Heading
+//
+var minicnt = 0;             // Participant count
+var minitot = 0;             // Mini show total
+var miniinf = new Array();   // array of participants
+var mnthtot = new Array(12); // Month totals array
+var eoy1st = 0;              // 1st place points
+var eoy1sti = 0;             // 1st place index
+var eoy1stn = "";            // 1st place name
+var eoy2nd = 0;              // 2nd place points
+var eoy2ndi = 0;             // 2nd place index
+var eoy2ndn = "";            // 2nd place name
+var eoy3rd = 0;              // 3rd place points
+var eoy3rdi = 0;             // 3rd place index
+var eoy3rdn = "";            // 3rd place name
 //
 //
 function reset ()
 {
+//
+// Reset count and totals
+//
 minicnt = 0;
 mnthtot[0] = 0;
 mnthtot[1] = 0;
@@ -31,38 +46,133 @@ mnthtot[8] = 0;
 mnthtot[9] = 0;
 mnthtot[10] = 0;
 mnthtot[11] = 0;
-}
+//
+// Reset end of year variables
+//
+eoy1st = 0;              // 1st place points
+eoy1sti = 0;             // 1st place index
+eoy1stn = "";            // 1st place name
+eoy2nd = 0;              // 2nd place points
+eoy2ndi = 0;             // 2nd place index
+eoy2ndn = "";            // 2nd place name
+eoy3rd = 0;              // 3rd place points
+eoy3rdi = 0;             // 3rd place index
+eoy3rdn = "";            // 3rd place name
+};
 //
 function fminiadd (txt)
 {
-miniinf[minicnt] = txt;
-minicnt = minicnt + 1;
-}
+//
+// Add a participant to the matrix
+//
+miniinf[minicnt] = txt;     // Add info to array
+minicnt = minicnt + 1;      // Increment count
+if (eoy == "yes")            // End of year format?
+   {
+   var parsum = 0;          // Init participant sum to 0
+   var stpos = 0;           // Init start of points to 0
+   var ndpos = 0;           // Init end of points to 0
+   ndpos = txt.indexOf("#",1);  // Find end of name
+   var iname = txt.substring(0,ndpos);  // Set name
+   stpos = ndpos + 1        // Set start to points
+   while (ndpos != -1)  // As long as there are points
+      {
+         ndpos = txt.indexOf("#",stpos);  // Find end of points
+         if (ndpos != -1)       // Not at end?
+            {parsum = parsum + parseInt(txt.substring(stpos,ndpos));}  // Add
+         else
+            {parsum = parsum + parseInt(txt.substring(stpos,txt.length));};
+         stpos = txt.indexOf("#",ndpos)+1;  // find start of next points
+      };
+   if (parsum > eoy1st)    // If high score so far
+      {
+      eoy3rd = eoy2nd;     // move 2nd to 3rd
+      eoy3rdi = eoy2ndi;
+      eoy3rdn = eoy2ndn;
+      eoy2nd = eoy1st;     // move 1st to 2nd
+      eoy2ndi = eoy1sti;
+      eoy2ndn = eoy1stn;
+      eoy1st = parsum;     // Set high score
+      eoy1sti = minicnt-1; // Set high score subscript
+      eoy1stn = iname;     // Set high score name
+      }
+   else
+      {
+       if (parsum > eoy2nd)  // If second high score so far
+         {
+         eoy3rd = eoy2nd;    // move 2nd to 3rd
+         eoy3rdi = eoy2ndi;
+         eoy3rdn = eoy2ndn;
+         eoy2nd = parsum;    // Set second high score
+         eoy2ndi = minicnt-1; // Set second high score subscript
+         eoy2ndn = iname;    // Set second high score name
+         }
+       else
+          {
+           if (parsum > eoy3rd)  // If third high score so far
+              {
+              eoy3rd = parsum;   // Set third high score
+              eoy3rdi = minicnt-1; // Set third high score subscript
+              eoy3rdn = iname;   // Set third high score name
+              };
+          };
+      };
+   };
+};
 //
 //
 function fmini ()
 {
-var optot = 0;
-var tot = 0;
-var mnth = new Array(12);
+//
+// Write the matrix
+//
+
+var tot = 0;                // Total points
+var mnth = new Array(12);   // Month array
+//
+// If end of year, write top winners
+//
+if (eoy == "yes")
+   {
+    document.write("<center><font size='+2' color='#A08114'><B>The Winners Are:</B></font><br><font size='+1'><font color='0000CC'><B>First is ");
+    document.write(eoy1stn);
+    document.write(" with ");
+    document.write(eoy1st);
+    document.write(" points.</B></font>");
+    document.write("<center><font color='CC0000'><B>Second is ");
+    document.write(eoy2ndn);
+    document.write(" with ");
+    document.write(eoy2nd);
+    document.write(" points.</B></font>");
+    document.write("<center><font color='CCCC00'><B>Third is ");
+    document.write(eoy3rdn);
+    document.write(" with ");
+    document.write(eoy3rd);
+    document.write(" points.</B></font></font></center><br>");
+   };
+//
+// Write the month headers for the matrix.  (This can be modified, if
+// the Mini Show is held on different months.
 //
 document.write("<P><Table cellpadding=3 border=3><tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td><td align='center' valign='middle'><img src='jan.gif' width=82 height=26></td><td align='center' valign='middle'><img src='feb.gif' width=82 height=26></td><td align='center' valign='middle'><img src='mar.gif' width=82 height=26></td><td align='center' valign='middle'><img src='apr.gif' width=82 height=26></td><td align='center' valign='middle'><img src='may.gif' width=82 height=26></td><td align='center' valign='middle'><img src='jun.gif' width=82 height=26></td><td align='center' valign='middle'><img src='sep.gif' width=82 height=26></td><td align='center' valign='middle'><img src='oct.gif' width=82 height=26></td><td align='center' valign='middle'><img src='nov.gif' width=82 height=26></td><td &nbsp; </td><td align='center' valign='middle'><img src='tot.gif' width=82 height=26></td></tr>");
-var mnthcnt = 9;
+//
+var mnthcnt = 9;            // Set the number of months to be processed
 for (var i = 0; i < minicnt; i++)
-  {var itot = 0;
-   var txt = miniinf[i];
-   var stpos = 0;
-   var ndpos = txt.indexOf("#",stpos);
-   if (ndpos != -1)
-      {var iname = txt.substring(0,ndpos);
-      if (iname.substring(0,1) == "1")
-         {iname = "<font color='0000CC'><B>" + iname.substring(1,iname.length) + "</B></font>";}
-      if (iname.substring(0,1) == "2")
-         {iname = "<font color='CC0000'><B>" + iname.substring(1,iname.length) + "</B></font>";}
-      if (iname.substring(0,1) == "3")
-         {iname = "<font color='CCCC00'><B>" + iname.substring(1,iname.length) + "</B></font>";}
-      stpos = ndpos + 1;
-      var mncnt = 0;
+  {var itot = 0;            // Init participant's total to 0
+   var txt = miniinf[i];    // Get a participant's name and points
+   var stpos = 0;           // Init start of entry to 0
+   var ndpos = txt.indexOf("#",stpos);  // Find end of name
+   if (ndpos != -1)         // If found,
+      {var iname = txt.substring(0,ndpos);  // Set name
+      if (i == eoy1sti)
+         {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
+      if (i == eoy2ndi)
+         {iname = "<font color='CC0000'><B>" + iname + "</B></font>";}
+      if (i == eoy3rdi)
+         {iname = "<font color='CCCC00'><B>" + iname + "</B></font>";}
+      stpos = ndpos + 1;    // Set start of points array
+      var mncnt = 0;        // Init month subscript to 0
+// Init array of points by month to 0
       mnth[0] = 0;
       mnth[1] = 0;
       mnth[2] = 0;
@@ -75,31 +185,35 @@ for (var i = 0; i < minicnt; i++)
       mnth[9] = 0;
       mnth[10] = 0;
       mnth[11] = 0;
-      while (stpos <= txt.length)
+//
+      while (stpos <= txt.length)  // As long as there are points
          {ndpos = txt.indexOf("#",stpos);
+// Get points for month
          if (ndpos == -1) ndpos = txt.length;
          mnth[mncnt] = txt.substring(stpos,ndpos);
          stpos = ndpos + 1;
-         itot = itot + parseInt(mnth[mncnt]);
-         minitot = minitot + parseInt(mnth[mncnt]);
-         mnthtot[mncnt] = mnthtot[mncnt] + parseInt(mnth[mncnt]);
-         tot = tot + parseInt(mnth[mncnt]);
-         mncnt = mncnt + 1;};
- 
-
+         itot = itot + parseInt(mnth[mncnt]);  // Add to points for participant
+         minitot = minitot + parseInt(mnth[mncnt]); // Add overall total
+         mnthtot[mncnt] = mnthtot[mncnt] + parseInt(mnth[mncnt]);  // Add to month total
+         tot = tot + parseInt(mnth[mncnt]);  // Add to participant total
+         mncnt = mncnt + 1;};     // Increment month subscript
+//
+//  Write entry
+//
         document.write("<tr><td align='right' nowrap>" + iname + "</td>");
        for (var j = 0; j < mnthcnt; j++)
          {if (mnth[j] > 0) document.write("<td align='center'> " + mnth[j] + " </td>")
-         else document.write("<td align='center'> &nbsp; </td>");}
+         else document.write("<td align='center'> &nbsp; </td>");};
       };
    document.write("<td> &nbsp; </td><td align='center'>" + String(itot) + "</td></tr>");
    };
 document.write("<tr><td align='right' nowrap><font size=+1><B>Totals:</B></font></td>");
+//
 for (var k = 0; k < mnthcnt; k++)
       {if (mnthtot[k] > 0) document.write("<td align='center'> <B>" + String(mnthtot[k]) + "</B> </td>")
       else document.write("<td align='center'> &nbsp; </td>");}
 document.write("<td> &nbsp; </td><td align='center'><B>" + String(tot) + "</B></td></tr></TABLE></P>");
-}
+};
 //
 // -->
 </SCRIPT>
@@ -118,7 +232,7 @@ A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoratio
 th {color:#339900; font-size:24pt}
 h1 {color:#000099; font-size:28pt}
 h2 {color:#990066; font-size:20pt}
-h3 {color:#009966; font-size:18pt}
+h3 {color:#006633; font-size:19pt}
 h4 {color:#006666; font-size:18pt}
 -->
 </style>
@@ -146,14 +260,14 @@ h4 {color:#006666; font-size:18pt}
 <tr bgcolor=#339966>
 <td bgcolor=#339966 height=10>&nbsp;</td>
 <td bgcolor=#339966 height=10 align="right" colspan=5 bgcolor=#339966>
-<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> - 
-<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Mini&nbsp;Show&nbsp;Standings</font> - 
-<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> - 
-<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> - 
-<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> - 
+<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> -
+<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Mini&nbsp;Show&nbsp;Standings</font> -
+<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> -
+<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> -
+<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> -
 <!-- <a href="name_badges.html" class="navpanel" title="...add information here">Name&nbsp;Badge&nbsp;Order&nbsp;Form</a> - -->
-<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> - 
-<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> - 
+<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> -
+<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> -
 <a href="bylaws.html" class="navpanel" title="View the club's constitution and bylaws.">Constitution</a>
 </td>
 </tr>
@@ -163,7 +277,7 @@ h4 {color:#006666; font-size:18pt}
 <center>
 <TABLE width="90%">
 <tr><td><H1>Mini Show</H1></td>
-<td align="right"><font size="+2"><!-- <a href="mini_show_cats2015.html">2015 Categories</a> --> &nbsp; &nbsp; &nbsp; 
+<td align="right"><font size="+2"><!-- <a href="mini_show_cats2015.html">2015 Categories</a> --> &nbsp; &nbsp; &nbsp;
 <a href="mini_show_rules.html">Rules</a></font></td></tr>
 <tr><td valign="top"><B> &nbsp; &nbsp; <!-- Members:</B> Take the <a href="mssurvey1007.html"> Mini Show Survey</a> --></td>
 <td align="right"><font size="+1">
@@ -190,31 +304,12 @@ h4 {color:#006666; font-size:18pt}
 </TABLE>
 <br>
 <br>
-<H2> Standings as of October 2019</H2>
-</P>
-<P>
-<!-- 
-<TABLE width="75%">
-<tr><td valign="top" align="center"><H3>Advanced</H3></td><td valign="top" align="center"><H3>Novice</H3></td></tr>
-<tr>
-<td valign="top" align="center">
-<TABLE cellpadding=4><tr>
-<td valign="top" align="center"><font color="0000CC"><B>First is Cecilia Caday with 125 points.</B></font></td></tr>
-<tr><td valign="top" align="center"><font color="CC0000"><B>Second is Ellen Stubblefield with 117 points.</B></font></td></tr>
-<tr><td valign="top" align="center"><font color="CCCC00"><B>Third is Kathi Cambiano with 105 points.</B></font></td></tr>
-</TABLE>
-</td>
-<td valign="top" align="center">
-<TABLE cellpadding=4><tr>
-<td valign="top" align="center"><font color="0000CC"><B>First is Monica Moran with 89 points.</B></font></td></tr>
-<td valign="top" align="center"><font color="CC0000"><B>Second is Bill Lemke with 54 points.</B></font></td></tr>
-<td valign="top" align="center"><font color="CCCC00"><B>Third is a tie between Renu James and Joyce McPheeters with 50 points.</B></font></td></tr>
-</TABLE>
-</td></tr></TABLE>
- -->
+<SCRIPT Language="JavaScript">
+document.write("<H2>" + mstitle + "</H2>");
+document.close();
+</SCRIPT>
+
 <br>
-<br>
-</P>
 <P>
 <H3>Advanced</H3>
 
@@ -223,16 +318,16 @@ h4 {color:#006666; font-size:18pt}
 <SCRIPT Language="JavaScript">
 //
 reset ();
-
+//
 fminiadd("Peter Beiersdorfer#0#0#25#0#0#0#0#0#0");
 // fminiadd("Bobbi Bernstein#0#0#0#0#0#0#4#0#0");
-fminiadd("Cecilia Caday#0#18#25#21#0#25#25#24#0");
-fminiadd("Kathi Cambiano#0#25#25#25#0#25#25#25#0");
+fminiadd("Cecilia Caday#0#18#25#21#0#25#25#24#12");
+fminiadd("Kathi Cambiano#0#25#25#25#0#25#25#25#25");
 // fminiadd("Sonia Dyer#10#0#4#0#0#0#0#0#0");
 fminiadd("Bryan Fan#0#0#0#0#0#0#0#7#0");
 // fminiadd("Bill Gringas#0#0#0#0#0#0#0#0#0");
-fminiadd("Joseph Hildago#0#0#0#0#0#0#0#16#0");
-fminiadd("Marilyn Hofman#0#3#12#0#0#0#0#7#0");
+fminiadd("Joseph Hildago#0#0#0#0#0#0#0#16#23");
+fminiadd("Marilyn Hofman#0#3#12#0#0#0#0#7#5");
 fminiadd("Terri Koike#0#7#13#0#0#20#4#0#0");
 fminiadd("JoAn Lambert#0#8#8#5#0#0#0#0#0");
 fminiadd("Jaan Lepson#0#0#10#0#0#0#0#0#0");
@@ -242,7 +337,7 @@ fminiadd("Loyd Monaco#0#24#0#0#0#0#0#0#0");
 // fminiadd("Romanova Katya#0#0#0#0#0#0#6#0#0");
 // fminiadd("Ross Smith#0#0#0#0#0#0#0#0#0");
 // fminiadd("Janet Stevenson#0#0#0#0#0#0#0#0#0");
-fminiadd("Ellen Stubblefield#0#0#23#20#0#0#0#0#0");
+fminiadd("Ellen Stubblefield#0#0#23#20#0#0#0#0#25");
 fminiadd("Gary Stubblefield#0#0#25#25#0#0#0#0#0");
 // fminiadd("Jacky Wilk#0#0#2#0#0#0#0#0#0");
 fmini ();
@@ -252,33 +347,35 @@ fmini ();
 <tr><td>
 <br>
 <br>
+<br>
 <center>
 <H3>Novice</H3>
 
 <SCRIPT Language="JavaScript">
 //
 reset ();
+//
 // fminiadd("Harley Barber#0#0#0#0#0#0#0#0#0");
-fminiadd("Svetlana Bellam#0#19#15#25#0#25#25#24#0");
+fminiadd("Svetlana Bellam#0#19#15#25#0#25#25#24#25");
 fminiadd("Bobbi Bornstein#0#20#8#5#0#0#17#12#0");
-fminiadd("Manuela Burge#0#0#11#6#0#7#0#0#0");
-fminiadd("Amber Carter#0#0#0#0#0#0#2#0#0"); 
+fminiadd("Manuela Burge#0#0#11#6#0#7#0#0#15");
+fminiadd("Amber Carter#0#0#0#0#0#0#2#0#2");
 // fminiadd("Jing Chen#0#0#0#0#0#0#6#0#0");
 fminiadd("Lanelle Faraj#0#7#0#7#0#15#15#0#0");
 fminiadd("Nicole Faraj#0#2#0#11#0#18#25#0#0");
 fminiadd("Beth Fryksdale#0#0#0#0#0#0#1#0#0");
-fminiadd("Judianne Ganschow#0#25#25#25#0#0#25#25#0");
+fminiadd("Judianne Ganschow#0#25#25#25#0#0#25#25#25");
 fminiadd("Andrew Hazlett#0#0#0#0#0#4#0#0#0");
 fminiadd("Ellie Herrera#0#0#1#0#0#0#0#0#0");
 fminiadd("Renu James#0#15#25#25#0#25#14#0#0");
-fminiadd("Allen Krever#0#22#19#8#0#0#0#16#0");
+fminiadd("Allen Krever#0#22#19#8#0#0#0#16#10");
 // fminiadd("Catherine Lau#0#0#0#0#0#0#0#0#0");
 fminiadd("Bill Lemke#0#0#0#25#0#0#21#25#0");
 fminiadd("Dan Martinez#0#0#4#0#0#0#0#0#0");
-fminiadd("Joyce McPheeters#0#5#25#13#0#18#0#22#0");
+fminiadd("Joyce McPheeters#0#5#25#13#0#18#0#22#25");
 fminiadd("Lois McPherson#0#0#0#0#0#0#6#0#0");
 // fminiadd("Elinor McRae#0#0#5#0#0#0#0#0#0");
-// fminiadd("Sherry Merrill#6#0#0#0#0#0#0#0#0"); 
+// fminiadd("Sherry Merrill#6#0#0#0#0#0#0#0#0");
 fminiadd("Monica Moran#0#0#7#0#0#0#0#0#0");
 fminiadd("Desiree Faraj Perez#0#6#0#8#0#22#15#0#0");
 // fminiadd("Susan Pi#9#0#0#0#0#0#0#0#0");
@@ -321,4 +418,3 @@ document.close();
 
 </body>
 </html>
-
