@@ -8,57 +8,136 @@
   <title>Cactus and Succulent Society of San Jose</title>
 <style>
 
-A:link.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
-A:active.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
-A:visited.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#ffffff}
-A:hover.navmain {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;font-weight:bold;color:#FFCC33}
-A:link.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
-A:active.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
-A:visited.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#ffffff}
-A:hover.navpanel {font-family:Tahoma, Verdana, Arial;font-size:11;text-decoration:none;font-style:normal;color:#FFCC33}
+  A:link.navmain {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    font-weight:bold;
+    color:#ffffff;
+  }
 
-div {
-    margin-left: 10%;
-    margin-right: 10%;
+  A:active.navmain {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    font-weight:bold;
+    color:#ffffff;
+  }
 
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
+  A:visited.navmain {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    font-weight:bold;
+    color:#ffffff;
+  }
 
-div.miniShow {
-  margin-left: 3%;
-}
+  A:hover.navmain {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    font-weight:bold;
+    color:#FFCC33;
+  }
 
-hr.sep {
-    text-align: left;
-    margin-left: 0;
-    width: 75%;
-}
+  A:link.navpanel {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    color:#ffffff;
+  }
 
-a.social_icon {
-  color: black;
-}
+  A:active.navpanel {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    color:#ffffff;
+  }
 
-a.social_icon:hover {
-  color: blue;
-}
+  A:visited.navpanel {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    color:#ffffff;
+  }
 
-h1 {
-  font-size: 36pt;
-}
+  A:hover.navpanel {
+    font-family:Tahoma, Verdana, Arial;
+    font-size:11;
+    text-decoration:none;
+    font-style:normal;
+    color:#FFCC33;
+  }
 
-h2 {
-  font-size: 24pt;
-}
+  a:link {
+    text-decoration: none;
+    color: #009933;
+  }
 
-h1, h2, h3 {
-  color: #660000;
-}
+  a:visited {
+    text-decoration: none;
+    color: #009933;
+  }
 
-dt {
-  font-weight: bold;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
+  a:hover {
+    text-decoration: underline;
+    color: #33cc33;
+  }
+
+  a:active {
+    text-decoration: underline;
+  }
+
+
+  div {
+      margin-left: 10%;
+      margin-right: 10%;
+
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  }
+
+  div.miniShow {
+    margin-left: 3%;
+  }
+
+  hr.sep {
+      text-align: left;
+      margin-left: 0;
+      width: 75%;
+  }
+
+  a.social_icon {
+    color: black;
+  }
+
+  a.social_icon:hover {
+    color: blue;
+  }
+
+  h1 {
+    font-size: 36pt;
+  }
+
+  h2 {
+    font-size: 24pt;
+  }
+
+  h1, h2, h3 {
+    color: #660000;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
 
 </style>
 </head>
@@ -114,7 +193,7 @@ dt {
 <p>
     Succulent plants are among the most bizarre, beautiful, and varied
     in the entire plant kingdom. If you share our interest in these
-    fascinating and unique plants or just want to learn more, we
+    fascinating and unique plants, or just want to learn more, we
     invite you to join us at our meetings and have some fun.
 </p>
 
@@ -122,9 +201,16 @@ dt {
 
 <h2>Upcoming Events</h2>
 
-<h3>Monthly Club Meeting: Sunday</h3>
+<ul>
+  <li><h3><a href="#meeting">Club Meeting: February 2nd</a></h3></li>
+  <li><h3><a href="#bancroft">Society Day at Ruth Bancroft Garden: February 29th</a></h3></li>
+</ul>
 
-<h4>February 2nd, 2020, 12:30 PM: Grafting</h4>
+<hr class="sep">
+
+<h3 id="meeting">Monthly Club Meeting</h3>
+
+<h4>Sunday, February 2nd, 12:30 PM: Grafting</h4>
 
   <p>
     Have you ever wanted to learn how to make a cactus Frankenstein
@@ -162,9 +248,9 @@ dt {
 
 <hr class="sep">
 
-<h3>Society Day at Ruth Bancroft Garden</h3>
+<h3 id="bancroft">Society Day at Ruth Bancroft Garden</h3>
 
-<h4>Saturday Feb 29, 2020: 10am–4pm</h4>
+<h4>Saturday Feb 29: 10am–4pm</h4>
 
 <p>This will be a joint field trip, along with members of the <a href="https://sfsucculent.org">San Francisco Succulent and Cactus Society</a>, to the <a href="https://www.ruthbancroftgarden.org">Ruth Bancroft Garden</a> in Walnut Creek.</p>
 
