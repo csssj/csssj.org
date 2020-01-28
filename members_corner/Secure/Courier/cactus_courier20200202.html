@@ -1,0 +1,389 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 1/5/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 1/5/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "2";
+var thisyear = "2020";
+var nextmonth = "March";
+var nextday = "1";
+var nextyear = "2020";
+var deadline = "February 21, 2020";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 2:00pm","Grafting Cacti","","");
+
+document.write("<br><br>");
+
+fmcal ("March","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","TBD","","");
+
+document.write("<br><br>");
+
+fmcal ("April","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","25-26, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","51<sup>st</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("August 2019","10-11 Sat-Sun - 9:00am to 5:00pm","<B>34th Inter-City Cactus and Succulent Show and Sale</B><br>Los Angeles County Arboretum<br>301 North Baldwin Avenue<br>Arcadia, CA, 91007","","");
+
+// document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Grafting Cacti</B><br>
+<br>
+<P>
+Have you ever wanted to learn how to make a cactus Frankenstein through grafting?  Come to this month's meeting for a lesson on how to graft a small cutting of a slow growing cactus to a fast growing root stock and increase the growth rate by 100x.  Learning this skill allows you to quickly propagate rare and unusual varieties or save a beloved rotting plant before it's too late.  Club member Andrew Hazlett will present this month's meeting on learning what it takes to graft cactus successfully.
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Zygocactus </I>(<I>Schlumbergera</I>) <I></I>(Christmas Cactus) or other Epiphyte cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Multi succulent container</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1><I>Pelargonium </I>or <I>Andromiscus</I> (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Echeveria</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Mini Show Winners","Bill Lemke","Allen Krever","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('9schlumbererasalmon.jpg',1014,885)><img src='9schlumbererasalmon.jpg' width=254 height=221 hspace=17 vspace=17 align='left' class='enl'></a><br><br><B><font size='+2'>CACTUS:</font> <I>Zygocactus</I> (<I>Schlumbergera</I>) (Christmas Cactus) or other Epiphyte cactus</B><br><TABLE><tr><td valign='top' align='right'><B>Advanced: </B></td><td valign='top'>M. Hofman - <I>Schlumbergera salmon</I></td></tr><tr><td valign='top' align='right'><B>Novice: </B></td><td valign='top'>Svetlana Bellam - <I>Rhipsalis</I> species</td></tr></TABLE></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('5succulentwallgarden.jpg',622,995)><img src='5succulentwallgarden.jpg' width=156 height=249 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B><font size='+2'>SUCCULENT:</font> Multi succulent container</B><br><TABLE><tr><td valign='top' align='right'><B>Advanced: </B></td><td valign='top'>Cecilia Caday-Multi succulent planting</td></tr><tr><td valign='top' align='right'><B>Novice: </B></td><td valign='top'>tie:<br> &nbsp; Bill Lemke - Succulent Wall Garden<br> &nbsp; Bobbie Bornstein - Mixed Planter</td></tr></TABLE></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('4adromischusfilicaulis.jpg',622,995)><img src='4adromischusfilicaulis.jpg' width=156 height=249 hspace=17 vspace=17 align='right' class='enl'></a><br><br><B><font size='+2'>SOMETHING SPECIAL:</font><I>Pelargonium</I> or <I>Andromiscus</I> (or your choice)</B><br><TABLE><tr><td valign='top' align='right'><B>Advanced: </B></td><td valign='top'>Joseph Hidalgo - <I>Adromischus filicaulis</I></td></tr><tr><td valign='top' align='right'><B>Novice:</B></td><td valign='top'> Judi Ganschow - <I>Senecio</I></td></tr></TABLE></td></tr><tr><td valign='top' align='center'><B><font size='+2'><a href=javascript:poppic('1echeveriaagavoidesebony.jpg',968,685)><img src='1echeveriaagavoidesebony.jpg' width=242 height=171 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2echeveriasetosacompacta.jpg',1037,750)><img src='2echeveriasetosacompacta.jpg' width=259 height=188 hspace=17 vspace=17 align='right' class='enl'></a><br><br>BEGINNER’S LUCK:</font> <I>Echeveria</I>\</B><br> Svetlana Bellam - <I>Echeveria agavoides</I><br>Allen Krever - <I>Echeveria setosa compacta</I></td></tr></TABLE></center>");
+
+document.write("<P><center><B class='arthead'>Mini Show Standings</B></P><P>Standings as of January</P><P><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Cecilia Caday",25);
+fminiadd ("Kathi Cambiano",17);
+fminiadd ("Joseph Hildago",15); 
+fminiadd ("Marilyn Hofman",18);
+// fminiadd ("Terri Koike",44);
+// fminiadd ("JoAn Lambert",21);
+// fminiadd ("Jaan Lepson",10);
+// fminiadd ("Susan McKuhen",20);
+// fminiadd ("Loyd Monaco",24);
+fminiadd ("Ellen Stubblefield",18);
+fminiadd ("Gary Stubblefield",13);
+
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",25);
+
+fminiadd ("Bobbi Bornstein",25);
+fminiadd ("Richard Cox",2);
+fminiadd ("Judianne Ganschow",25);
+fminiadd ("Andrew Hazlett",2);
+// fminiadd ("Renu James",0);
+fminiadd ("Allen Krever",25);
+fminiadd ("Bill Lemke",25);
+// fminiadd ("Joyce McPheeters",0);
+fminiadd ("Monica Moran",5);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+fmart ("Collection for Sale","","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('britdog001a.jpg',959,718)><img src='britdog001a.jpg' width=240 height=180 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('britdog005a.jpg',951,718)><img src='britdog005a.jpg' width=238 height=180 hspace=17 vspace=17 align='right' class='enl'></a><br>Hello my name is Joe.  I have a very unique situation.  I've been a cactus grower/collector for 15+ years.  I have a huge collection of large and small plants in the ground and also a very large collection of greenhouse plants, as well.  Here's my situation, I have finally obtained a permit for a thru-hike on the Pacific Crest Trail, which is a hike that will take me from the Mexican border 2650 miles north all the way to the Canadian border.  I start that in May of 2020.  I will be gone for six months, and I don't want to put the burden of care and watering of approximately 1000 plants on someone else, so what I would like to do is sell off my entire collection of ground plants and Greenhouse plants to help fund my Pacific Crest Trail hike.  My idea is to have a MAKE OFFER SALE.  It would be almost impossible to put prices on every single plant that I have, so all REASONABLE offers will be accepted.  I would prefer the method of appointment by EMAIL or TEXT ONLY. I live in a residential neighborhood on a very busy street with basically no parking.  That's why I must insist on appointments only.  I'm really excited for my plants to move on and have a new home.  Thank you so much. Joe.</td></tr><tr><td valign='top'><a href=javascript:poppic('britdog007a.jpg',1011,569)><img src='britdog007a.jpg' width=253 height=142 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('britdog002a.jpg',957,719)><img src='britdog002a.jpg' width=239 height=180 hspace=17 vspace=17 align='right' class='enl'></a><br>My home is located in South San Jose near the old IBM plant.  The sale will start in February and last until everything is gone or until the time of my departure, which is in May of 20/20.</P><P><center>ALL SALES ARE CASH ONLY</center></P><P>NOTE: If you think you might want large plants and some of them are up to 10 foot tall, please bring your own digging tools, carrying tools and hauling tools. I cannot provide boxes, carts or dollies.</P><P>408 693-9418<br><a href='mailto:Britdog_1@yahoo.com?Subject=Collection%20for%20Sale'>Britdog_1@yahoo.com</a></P><P>If anybody wants to check out my link for the PCT Trail, here you go. Thanks for watching.</P><P>Watch &quot;PCT 2020 dreams do become a reality&quot; on YouTube: <a href='https://youtu.be/HJcyMhaNNns' target='_blank'>https://youtu.be/HJcyMhaNNns</a></td></tr></TABLE></center>");
+
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><I>Mammillaria viridiflora</I> has been dumped with several other plants, under <I>Mammillaria barbata</I>.  The names are now called synonyms of <I>Mammillaria barbata</I> and are: <I>M. chavezei</I>, <I>M. garessii</I>, <I>M. morricalii</I>, <I>M. orestera</I>, <I>M. santaclarensis</I>, <I>M. viridiflora</I>, and <I>M. wrightii var. viridiflora</I>.  Some of these names I have never known as a <I>Mammillaria</I>.  I have had several of them over the last 30 years, but they have died.  The last one to die was named <I>M. wilcoxii</I>, but I am sure it was <I>M. morricalii</I>.  Now the thing about these plants is that most of them grow in Mexico in the state of Chihuahua.  When David Hunt added <I>Mammillaria viridiflora</I> to the mix, then the range of the plants had to be increased and moved north into south eastern Arizona and south western New Mexico.  This is why some people have plants of <I>Mammillaria viridiflora</I> named as <I>Mammillaria wrightii</I> and also <I>Mammillaria wilcoxii</I>.  On the web when I went under the name of <I>M. wilcoxii</I> there were plants of <I>M. viridiflora</I>, <I>M. thornberi</I>, and several other <I>Mammillaria</I> names.  When I type in the name of <I>Mammillaria viridiflora</I>. up come photos of quite a few <I>Mammillaria</I> species including <I>M. candida</I>, <I>M. wrightii</I>, <I>M. duwei</I> and even a couple of <I>Echinomastus </I>species.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariaviridiflora.jpg',979,854)><img src='1mammillariaviridiflora.jpg' width=245 height=214 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariaviridiflora.jpg',726,668)><img src='2mammillariaviridiflora.jpg' width=182 height=167 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left is a plant of <I>Mammillaria viridiflora</I>, not <I>M. barbata</I>.  This is a young plant, for there is still only one central spine on most of the areoles.  When the plant blooms, it usually indicates that the plant is maturing and so it will start to grow more central spines.  If pollinated it, will also make seed pods.  The photo to the right is a plant that has bloomed and has set seed pods, and so it is also growing more central spines.  Many of the areoles have more than one central spine now, but they are hard to see for they are still as white as the radial spines, so they blend in with them.  On the areoles I see, there are at least two new central spines but on a couple I see three new centrals.</td></tr><tr><td valign='top'><a href=javascript:poppic('4mammillariaviridiflora.jpg',1011,675)><img src='4mammillariaviridiflora.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('5mammillariaviridiflora.jpg',1011,675)><img src='5mammillariaviridiflora.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>The centrals spines are brownish even at a young age.  The photo to the left is the spine clusters up close, and on several areoles are new centrals that are turning from white to brownish and soon will be brown.  The photo to the right shows the growing point.  I like to investigate, and what I find is that the central spines come out of the plant straight, but soon they start to bend and later, as they dry more, they will get a good strong hook on the end.  There are also several areoles that have several central spines, but they are still white.</td></tr><tr><td valign='top'><a href=javascript:poppic('6mammillariaviridiflora.jpg',931,851)><img src='6mammillariaviridiflora.jpg' width=233 height=213 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('7mammillariaviridiflora.jpg',1011,675)><img src='7mammillariaviridiflora.jpg' width=253 height=169 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left shows the outside petals of the flower.  Notice the midstripe up the outer petals.  It looks tan, when you look at it on the plant.  But when it is enlarged on the screen, it is brownish pink.  On the left hand side against the black back ground, the cilia or hairs on the outer petals show up quite well.  Between the flowers, still down in the spines, is a bud, and it is easy to see the cilia along the edges of the outer petals.  The photo to the right is looking down into the flower.  The flower looks to be straw color with a pink midstripe up the petals, but it is really yellowish pink along the edge of the petals.  The filaments and style are also light pinkish.  The stigma is very light green; the pollen is medium yellow.  With all the names they lump under the one name, it is easy to see why there are pink flowers, greenish flowers, straw colored flowers and whatever other colored flowers there are.  People believe what the lumpers say and cross any of the plants that have any of the names lumped under a name.</td></tr><tr><td valign='top'><a href=javascript:poppic('9mammillariaviridiflora.jpg',1011,672)><img src='9mammillariaviridiflora.jpg' width=253 height=168 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('10mammillariaviridiflora.jpg',1011,672)><img src='10mammillariaviridiflora.jpg' width=253 height=168 hspace=17 vspace=17 align='right' class='enl'></a><br>These photos are of <I>Mammillaria morricalii</I> now listed as a synonym of <I>M. barbata</I> v. <I>viridiflora</I>.  In the photo to the left can be seen the cilia on the edges of the outer petals of the flowers and buds.  The midstripe up the petals is much darker than on that of <I>M. viridiflora</I>.  The spines are denser, because of higher number of radial spines. The photo to the right, which shows the flower inside; the filaments are dark pink and not the light pinkish color of <I>M. viridiflora</I>. Also the style is visible and it is a darker pink than that in <I>M. viridiflora</I>.  The petals are more a tricolor of pinks, being delicate pink at the tips, then fading to almost whitish and then a different color of pink on the lower part of the petals.  The central spines are dark reddish brown.</td></tr><tr><td valign='top'> In times past <I>Mammillaria viridiflora</I> and <I>Mammillaria barbata</I> were two different plants.  Along comes the lumper, and he says that the two plants are one and the same.  We have a description of <I>Mammillaria viridiflora</I> that says it has 20 to 30 radial spines, and a description of <I>M. barbata</I> that has 50 to 60 radial spines.  Now if the true <I>M. viridiflora</I> has 20 to 30 radial spines, how can it also have 50 to 60 radial spines?  If the true <I>M. barbata</I> has 50 to 60 radial spines, how can it also only have 20 to 30?  Something is very screwy here, and I do not think it is the plants, but someone saying they are one and the same plant. <I> Mammillaria viridiflora</I> grows in the corner areas of Arizona and New Mexico and just across the border in the states of Chihuahua and Sonora Mexico. <I> Mammillaria barbata</I> grows close to 200 miles south of <I>M. viridiflora</I>, and that is quite a few miles separating them to call them one and the same plant. </P><P>Another problem that I see popping up is that some people collect plants in south east Arizona and south west New Mexico, and they give the plants whatever name they think the plants are.  In that area grows <I>Mammillaria viridiflora</I>, <I>Mammillaria wrightii</I> and <I>Mammillaria wrightii ssp. wilcoxii</I>.  This is why we get plants called <I>M. viridiflora</I> with large vivid purple flowers and also <I>Mammillaria wrightii</I> and <I>Mammillaria wrightii ssp. wilcoxii </I>with much smaller greenish to yellowish tan and yellowish pinkish colored flowers.  I have <I>Mammillaria wrightii ssp. wilcoxii</I> and <I>Mammillaria viridiflora</I> plants of about the same size.  I have them named, and I would be hard pressed to tell the plants apart, if someone came in and pulled the tags out of them and mixed them up.  I would have to wait till they bloom again to know for sure which is which.  I am writing this in the middle of November, and both of the plants are growing very nicely at the present time. <I> M. viridiflora</I> grows at elevations of 1,500 to 2,100 meters (5,000 to 7,000 feet) and <I>M. wrightii ssp. wilcoxii</I> grows at elevations of about 1,200 to 2,300 meters (3,900 to 7,550 feet).  So they are enjoying our warm late fall days and showing it by growing.</P><P>I give the plants my regular soil mix, and they get regular waterings but with only acidic water.  Alkaline water will kill them in fairly short order.  I keep them dry over the winter, and I do not water them too early in the spring time.  Give them plenty of bright light, so they will grow compact and with good spine growth and will not become elongated.  The plants have a reputation of being hard to grow, dying at the drip of too much water.  I think it is that people give the plants alkaline water, and they go to cactus heaven soon after that watering.  The plants can take temperatures down to 10 F (-12C) if kept dry over the winter.</td></tr></TABLE></center>");
+
+
+document.write ("<br><br><br>");
+
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
