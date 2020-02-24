@@ -1,0 +1,383 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/29/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/29/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "1";
+var thisyear = "2020";
+var nextmonth = "April";
+var nextday = "5";
+var nextyear = "2020";
+var deadline = "March 27, 2020";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February","29, Saturday - 10:00am to 4:00pm","Society Day at Ruth Bancroft Garden<br>(SJ &amp; SF Societies)<br>Featured Speaker Ron Parker<br>Sign up in advance at the meeting or email <a href='mailto:aflau913@gmail.com?Subject=Society%20Day'>Annie Lau</a> if you are interested","","");
+
+document.write("<br><br>");
+
+fmcal ("March","1, Sunday - 10:30am to 12:00pm","Board Meeting","1, Sunday - 12:30pm to 3:00pm","Show and Sale Presentation","","");
+
+document.write("<br><br>");
+
+fmcal ("April","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","TBD","25-26, Sat - 9:00am to 5:00pm &amp; Sun - 10:00am to 4:00pm","51<sup>st</sup> Spring Show &amp; Sale");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+document.write("<center><H2>Other Events</H2></center>");
+
+fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Society Day at Ruth Bancroft Garden</B><br>
+See the first article in this issue for details.
+</P>
+<center><hr class="brkhr"></center>
+<P>
+<B class="leadhead">March 1: Show and Sale Presentation</B><br>
+<br>
+<P>
+Have you never been to a show?  Do you have questions?  Do you want to know about entering and/or displaying your cactus?  What do you need to know as a member? Are you a new member and have questions?
+</P>
+<P>
+For answers to these and any other questions you may have, please make sure to come to the Show &amp; Sale presentation by Loyd Monaco at the scheduled March meeting.
+</P>
+<br>
+<br>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+
+<!-- <P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br> -->
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+
+<!-- <P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br> -->
+
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Society Day at Ruth Bancroft Garden","","","<center><TABLE width='90%'><tr><td valign='top'>This will be a joint field trip, along with members of the San Francisco Succulent and Cactus Society, to the Ruth Bancroft Garden in Walnut Creek.</P><P>The Featured Speaker will be Ron Parker, author of Chasing Centuries: The Search for Ancient Agave Cultivars</P><P>There will also be garden tours from the garden staff, including:<br><TABLE cellspacing=3><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Aloes in Bloom with Brian Kemble (Curator of the Ruth Bancroft Gardens).</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Ethnobotany with Ersten Imaoka.</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; General-interest tours with Stephen Lysaght.</td></tr></TABLE></P><P>2020 members of the San Francisco and San Jose societies may attend for $10. </P><P>Each attendee will able to attend the main presentation, an indoor slideshow, along with at least one garden tour. Additional tours will be available as space allows.</P><P>There will be ample time for individual exploration, shopping in the nursery, and socializing with members from the other society.</P><P>Please carpool.  The Garden has very limited parking: we will be renting a lot with 50 spaces. Parking for single-occupant vehicles will be $10, but free for carpool vehicles. (This is what they call &quot;incentivizing&quot;.)</P><P>Food won’t be served on-site, so please bring your own brown-bag lunch.</td></tr></TABLE></center>");
+
+fmart ("Help Wanted","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'><B>Club Librarian Wanted</B><br><TABLE cellspacing=3><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Must be a CSSSJ member in good standing, and attend meetings regularly.</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Have space to house the club’s library of books and journals. </td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp;Maintain the database of club’s holdings. </td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp;Bring books relating to the monthly speaker in to the meeting, and check out to members if requested.  Follow up to ensure their return the following month.</td></tr></TABLE></P><P><B>Associate Director openings on Board of Directors</B><TABLE cellspacing=3><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp; Must be a CSSSJ member in good standing, and attend meetings regularly</td></tr><tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp;Attend board meetings regularly, which precede the regular CSSSJ meetings.<tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp;Associate Directors vote on all matters before the Board. <tr><td valign='top'> &nbsp; &nbsp; <img src='flowericon2.gif' width=15 height=14></td><td align='top'> &nbsp;Ideally will be comfortable sharing information electronically.</td></tr></TABLE></P><P><B>Show Co-Chair</B> needed, please come to the March meeting for more information. </td></tr></TABLE></center>");
+
+fmart ("Looking for a Speaker","","","<center><TABLE width='90%'><tr><td valign='top'>My name is Juan, president of the Atlanta Cactus &amp; Succulent Society.  I am reaching out to ask for help.  We are looking for a speaker to come to one of our meetings and give a presentation that perhaps you’ve already done.  It is difficult for us to find speakers, because of our location.  If any of you are planning a trip to Atlanta, maybe we can coordinate schedules. Please email us and let us know.  We’d love to have you!  Thank you. </P><P>Juan Galvan<br>Atlanta Cactus &amp; Succulent Society<br><a href='mailto:info@atlantacactus.org?Subject=Speaker'>info@atlantacactus.org</a><br><a href='http://www.atlantacactus.org/' target='_blank'>www.atlantacactus.org/</a></td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>For years I have had <I>Mammillaria humboldtii</I>.  It was a small stemmed plant and grew in size until I had a 24 inch pot [61cm] made specially to house it.  At times, I would obtain other plants as a gift, or I might even buy one now and then.  One plant I got as a gift had larger stems than any other <I>Mammillaria humboldtii</I> that I had seen up to that time.  Its stems were four or five times larger than the 'normal' sized plant stems that I was used to seeing.  At times, I saw a plant with large stems and figured it was a plant that was way over fed.  The large stemmed plant I got kept on getting larger until it was very large for a <I>Mammillaria humboldtii</I>.  I knew that I was not over feeding the plants, so I put a tag in my plants that said <I>Mammillaria humboldtii</I> 'giant form' and let it go at that.  I had that name on the large headed plants for a couple years.  Then at a show, I saw a plant and it had a tag in it that said <I>Mammillaria humboldtii v. xilo</I>.  Well, I had never heard of that name for <I>M. humboldtii</I>, and, as I remember, I ignored the name.  Later on, I was given a plant with that name on it. Look as I may, I did not find any such name in any of the books I have.  When I looked on line under the name, it was there but it did not give much information about the name or who gave it to the plant.</P><P>I cannot find who gave the name <I>xilo</I> to the plant, or when the name was given.  I do not know if it is a true <I>M. humboldtii</I> or if it is a hybrid.  I will say that the plant is a lot larger than the normal sized plants of <I>M. humboldtii</I> that I have seen for forty of so years.  I have to wonder if this is a new discovery, and, if so, who found it, when was it found, where was it found, and where was it named?  Is the plant named after a place where it was found?  Is the name supposed to be as <I>Mammillaria humboldtii</I> form from Xilo?</P><P>Looking on the web, I find the name but no really useful information as to who, where and any other important information.  I am glad to see the plant named something besides 'giant form'.  Pilbeam and the NCL mention that there are two forms of <I>Mammillaria humboldtii</I>, one with appressed spines and one with shaggy spines.  There is no mention of a giant stemmed plant.  Pilbeam, in his green <I>Mammillaria</I> book, says that the plants grow on limestone hills between Ixmiquilpan and Metztitlan, specifically from between Gilo to Almolon.  On the web, one site says the plant was named as <I>M. humboldtii v. gilo</I> but then they say the name <I>gilo</I> was a mistake and it should be <I>xilo</I>.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariahumboldtiivxilo.jpg',1011,674)><img src='1mammillariahumboldtiivxilo.jpg' width=253 height=168 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left is of a plant that is, at the present time, 23 cm across.  I did not measure how large the large stem is or how tall it is. There are many more offsets on the backside of the plant.  This plant is making a lot of offsets, where the plants in photos below seem to have put a lot of growing power into growing the main stem.  I did not realize it, but when I bought some plants as single head plants, I was getting the large stem plants.  I have quite a few of these now.  The plant in the photo below to the left is 11 cm in diameter and is 13 cm tall.  Not seen but at the bottom of the stem, there is an offset starting to show below the spines. This shows that the main stem can grow quite large, before starting to clump.  Some other plants like the one in the photo to the left started making offsets, when the main stem was fairly small.  The offset growing to the left is almost as old as the main stem; it is growing lying on the ground and so is fairly long.  If it were standing upright, it would be taller than the main stem.  All the offsets have grown from near the bottom of the main stem, and each one is quite long and will continue growing longer. The main stem will not grow to the length of the offsets.  The plant I had to have a 61 cm pot made to house, had stems that were 28 to 30 cm long, but the whole plant was only about14 cm tall.</td></tr><tr><td align='center'><a href=javascript:poppic('2mammillariahumboldtiivxilo.jpg',1011,674)><img src='2mammillariahumboldtiivxilo.jpg' width=253 height=168 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('3mammillariahumboldtiivxilo.jpg',663,993)><img src='3mammillariahumboldtiivxilo.jpg' width=166 height=248 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('4mammillariahumboldtiivxilo.jpg',1000,806)><img src='4mammillariahumboldtiivxilo.jpg' width=250 height=202 hspace=17 vspace=17 class='enl'></a><br><br></td></tr><tr><td valign='top'>The plant in the middle photo above has three offsets and is a giant for a <I>Mammillaria humboldti</I>, for it is 19 cm tall and the main stem is 10 cm in diameter.  In the last year or so, I have seen several plants in shows that are about this size but had more offsets than this one has.  Those show plants also had the name of <I>Mammillaria humboldtii v. xilo</I> on their tags.  The offset at the front base of the plant is the size of a golf ball.  The plant in the photo above to the right is 13 cm tall and 11 cm in diameter.  (The bottom offset on the right hand side is not an offset but a golf ball I put there to show the size of the offsets and the main stem.  The two offsets are larger in diameter than the golf ball.)  I have shown four different plants to show the size of the stems, and that it is not just one plant that is this size.  Besides these four plants, I also have several more of these giant size <I>Mammillaria humboldtii</I>.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('6mammillariahumboldtiivxilo.jpg',1011,674)><img src='6mammillariahumboldtiivxilo.jpg' width=253 height=168 hspace=17 vspace=17 class='enl'></a><br><br></td></tr><tr><td valign='top'>The photo above is of the spine clusters.  The spines are translucent white, more white than translucent but still semi translucent.  I have had a go at trying to count the number of spines on a couple areoles, and, by the time I got half way around, I had 50 to 52 spines.  At that rate, I would say the areoles have around 100+ spines per areole.  I took the spine cluster up to the size of a dinner plate and gave a try at counting them without getting confused.  It was not easy, so I gave up half way around.  I tried counting the spines on two of the clearest clusters and still did not get any farther than half way around.  This photo is taken about half way down the side of a plant, and, even this far down, there is still wool in the areole.  The spines are too dense to really see the tubercles, and I am not about to pull some spine clusters off one of my plants just to see the tubercle.</td></tr><tr><td valign='top'><a href=javascript:poppic('7mammillariahumboldtiivxilo.jpg',1011,676)><img src='7mammillariahumboldtiivxilo.jpg' width=253 height=169 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left shows the top of one clump of the plant in flower.  Its flowers are darker colored than other of the plants.  I have since noticed that a couple plants have the darker flowers, and others have the lighter colored flowers.  I did not measure the flowers on this plant, as I just wanted to get a photo of the plant in flower.  The photo below left is of one plant stem on which I did measure the flowers, and they were 13 mm in diameter.  Later I took another photo of another plant in flower (photo below right), the flowers were the same color as those in the below left photo, but the flowers were 16 mm in diameter.  The flowers were just as packed together in a ring on top of the stem, but they were 3 mm larger in diameter.  The flowers in the photo to the left are darker colored, and also there is not a clear cut midstripe up the petals.  The petals are a bit darker in the middle and fade only very slightly toward the edge.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('8mammillariahumboldtiivxilo.jpg',1011,674)><img src='8mammillariahumboldtiivxilo.jpg' width=253 height=168 hspace=27 vspace=17 class='enl'></a><a href=javascript:poppic('9mammillariahumboldtiivxilo.jpg',1011,674)><img src='9mammillariahumboldtiivxilo.jpg' width=253 height=168 hspace=27 vspace=17 class='enl'></a><br><br></td></tr><tr><td valign='top'>Today is December 24.  I just went out and checked the plants, and two of them have flowers open on them. <I> M. humboldtii</I> grows at an elevation up to 1,500 meters or 5,000 feet.  None of my regular <I>M. humboldtii</I> are flowering, and this makes me wonder if <I>M. humboldtii v. xilo</I> comes from a much higher elevation.</P><P>The plants are potted in my regular soil mix.  For nice white and dense spines, give them very good light.  I have seen several plants that have been grown in poor light, and the spine clusters are farther apart and the tubercles below show through somewhat.  The spines are shorter than on plants that have had very good light.  Another important thing is to give a shallow pot and make it at least the diameter of the clump of stems.  If the plant grows like the plant in photo 1 and 10, the stems help to hold in moisture in the soil, and that can make the roots and stems rot.  I find that a large shallow pan is best for keeping the plants alive.  As to topdressing, have only a single layer.  More layers holds moisture too long and again can make the plant rot off its roots.</td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
