@@ -1,0 +1,385 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 4/5/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 4/5/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "April";
+var thisday = "5";
+var thisyear = "2020";
+var nextmonth = "April";
+var nextday = "5";
+var nextyear = "2020";
+var deadline = "March 27, 2020";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("April","5, Sunday - 12:30pm","Virtual Meeting - Grafting Cactus Followup","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Grafting Cactus Followup</B>
+</P>
+<br>
+<P>
+Attend our first ever virtual meeting on Sunday, April 5, 2020 at 12:30 pm.
+</P>
+<P>
+Back by popular demand (and a statewide shelter-in-place order), Andrew Hazlett will, via a live video stream you can watch from home, host a meeting following up on his February talk about grafting.
+</P>
+<P>
+With spring here, and a few extra hours to spend at home, it's a great time to learn this cactus-grafting hobby for yourself. This time around, Andrew will take your requests and questions ahead of the meeting, and help you get started with grafting at home. Anything is open to discussion, from tiny seedling scions to giant root stocks. If he has it in his yard, he may chop it up on live video. Andrew will go into some more advanced techniques and dive deeper into Q&A.
+</P>
+<P>
+Please ask him anything you're interested in about grafting ahead of time, either via the club's social media account, or by emailing Andrew at drewboogs@gmail.com. There will also be a live chat available, through which you can ask questions during the YouTube live stream presentation.
+</P>
+<P>
+You can access the stream via the club's homepage, or jump directly to it via the URL below:
+</P>
+<P>
+<a href='https://youtu.be/JL2pjV4aMwM' target='_blank'>https://youtu.be/JL2pjV4aMwM</a>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Virtual Show and Tell","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Since we won’t be meeting in person, our mini show will be entering new territory…virtual!  We’d like to invite members to share an image to share for our online show and tell. Whatever is spectacular in your garden right now is fair game, but only ONE per person please. The photos will be shown on our Facebook page. You can email your image to: <a href='mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell'>sjcactussucculent@gmail.com</a></td></tr></TABLE></center>");
+
+fmart ("Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>Dear Members:</P><P>If you can't recall a stranger, more surreal experience than the one we're having right now, with a good chunk of the entire world hunkered down, and no one really knowing what the next few weeks or months will look like, don't worry --- no one else around you can, either.</P><P>I take a certain solace from that: we may be in unknown territory, but at least we're all in it together. I've seen friends and acquaintances make a point of touching base with the people they care about, using technology for actual human contact.</P><P>The club is going to try to follow suit. April's meeting at Prusch farms is cancelled, but member Andrew Hazlett, who gave a presentation on the subject of grafting at February's meeting, has kindly offered to return to the topic with a live video presentation. You can find the details, along with links to the video feed, elsewhere in this newsletter, as well as on the club's website. Please join me in thanking Andrew for suggesting this.</P><P>We'll keep you posted about the club's future activities and plans as the shelter-in-place situation unfolds. In the meantime, be well and stay safe.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>I have looked at <I>Mammillaria humboldtii</I> and written it up, and now I am writing up the small stem smooth spined form. This is the one I have had for maybe forty year or so. I thought this was the only form or variety of <I>Mammillaria humboldtii</I> there was. That is until about three years ago, when I discovered that there is a rough or shaggy spined form and the very large stem plant <I>M. humboldtii v. xilo</I>. For years I did not know there were two different forms of the plant. When I worked with them, like repotting them, I did not pay any attention as to the fact that one was smooth as glass almost and the other was like sand paper. It was not until I discovered that I had a plant that got so large that it made the others look really small, that I looked into the matter and saw that there were two forms. I have to wonder what will be said about the <I>M. humboldtii v. xilo</I> form in the books that come out from now on. Will it be admitted that there are three forms or will the <I>M. v. xilo</I> form be ignored?</P><P>It is this small stemmed, smooth spine form that I had that just kept on growing until it grew so large that I had to have a 61 cm pot made for it. The pot was only about 3.5 inches deep, as the plants do not like deep pots for the soil stays damp way too long. I do not know how large the plant would have grown, but someone wanted it very much and so I sold it. The plant was really a beautiful plant, and, when it bloomed, it sure put on a show. Sometimes it would start flowering on one side, and the blooming would travel across the plant in about ten days' time.</td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariahumboldtii.jpg',1024,682)><img src='1mammillariahumboldtii.jpg' width=256 height=170 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2mammillariahumboldtii.jpg',1024,682)><img src='2mammillariahumboldtii.jpg' width=256 height=170 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left is a clump of the smooth spined form of the plant. This clump is about 9.5 cm in diameter and the tallest stem is about 3 cm tall. I count 13 heads or stems at this angle. I am sure there are two more heads on the back side of the plant. The spines are not a solid mat of white, as there are some spaces between clusters of spines. The reason is that the plant was growing at the time and so not all hunkered down where the spine clusters would be tighter together. The plant in the photo to the right is also growing and so the spine clusters are farther apart than when the plant is dormant.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('4mammillariahumboldtii.jpg',1024,682)><img src='4mammillariahumboldtii.jpg' width=256 height=170 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'>The photo above is of the top of the stem showing the growing point. Here the growing point is not a solid mat of spines like that of <I>M. humboldtii v. xilo</I>. It is not easy to see which cluster of spines is just emerging from the growing point.</td></tr><tr><td valign='top'><a href=javascript:poppic('6mammillariahumboldtii.jpg',1024,682)><img src='6mammillariahumboldtii.jpg' width=256 height=170 hspace=17 vspace=17 align='right' class='enl'></a><br>In the photo to the right, I picked out the clearest cluster of spines and counted the number of spines I could see. I counted the best I could, and I counted 111 spines. That is the spine cluster in the center of the photo, and it also shows up the best and is face on. I cannot agree with the description that the spines are all straight, for most have a curve to them and some are hooked and some are curled at the end. In some of the clusters about half of the spines have a hook or curl to them. In looking as close as I can, I can only see maybe 10 percent of the spines that I would call straight. When I go out and pick up a plant and look at it closely, I can see that the spines have a curve and some curl. On the computer screen with the cluster at about 15 to 20 cm in diameter, the curved, hooked, and curled spines show up very well.</td></tr><tr><td valign='top'><a href=javascript:poppic('7mammillariahumboldtii.jpg',1024,682)><img src='7mammillariahumboldtii.jpg' width=256 height=170 hspace=17 vspace=17 align='left' class='enl'></a><br>The photo to the left is a clump of the smooth spined form of the plant in flower.<br>The clump is about 24 cm in diameter. The flowers are 10 mm in diameter. When I measure the flowers and there is more than one flower open, I measure several of the flowers. Most of the largest flowers are 10 mm across; some are not all the way open and so are a bit smaller. I found no flower larger than the 10 mm on any of the smooth spine form plants. The flowers on <I>M. humboldtii v. xilo</I> on one plant were 13 mm where they were tight together and 16 mm on another plant where the flowers were free to open as they wanted. The larger bodied plant has larger flowers, and this small stemmed plant has smaller flowers. I have not seen any varieties listed in any book, only <I>M. humboldtii v. xilo</I>, and I am not sure it is an official variety. I have not seen it described and only have seen a couple pages mentioning it on the web. Pilbeam mentions two forms the shaggy spine form and the small headed smooth spine form.</td></tr><tr><td valign='top'>The care for this plant is the same for all <I>Mammillaria humboldtii</I>. A shallow pot or pan even for a large plant that is over 40 cm. Keep the pot and soil shallow. I have seen where some people have a deep pot and they say it is all they have. They say that they have only a few inches of soil and under that the rest is rock. Using a deep pot and putting rock in the bottom is asking for trouble for the rock holds water. When I refer to a shallow pot, I mean nothing deeper than 3.5 to 4 inches at the most. That is 9 to 10 cm of soil. On the larger diameter plants that have stems that are 15 + cm long, the stems need a single layer of topdressing under them to keep them off the soil and that will keep them white. Stems laying on the soil have the tendency to absorb minerals out of the soil, and that makes the white spines stain a dark color. Again, give lots of light but do not burn the plant with too much sunlight. In our hothouses, the plants can get too warm and that can, even under the white spines, cook the stems. It does not usually show up under the spines, when the stems die. Water, then allow the soil to dry before watering again. Watering too often will allow the soil to remain damp too long, and the roots will rot, killing the plant.</td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
