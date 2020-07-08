@@ -1,0 +1,370 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 7/11/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 7/11/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "July";
+var thisday = "11";
+var thisyear = "2020";
+var nextmonth = "";
+var nextday = "";
+var nextyear = "2020";
+var deadline = "";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Virtual Show and Tell</B>
+</P>
+<br>
+<P>
+Since we won’t be meeting in person for the foreseeable future, our mini show will be entering new territory…virtual!  We’d like to invite CLUB MEMBERS to share an image to share for our online show and tell. Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page. 
+</P>
+<P>
+You can email your image to: <a href="mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell">sjcactussucculent@gmail.com</a>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("CSSA Webinar: Secrets of Success with Cacti/Succulents in Cold Climates","Rod Haenni","","<center><TABLE width='90%'><tr><td valign='top'><center>Saturday, July 11, 10:00 PDT</center></P><P>My passion for cacti and succulents that could thrive in a cold climate began 42 years ago when I traveled the Colorado Plateau and the Southwest desert as a minerals geologist, looking for uranium deposits. Cacti, yuccas,and agaves were commonly seen in my travels and I wondered what I could grow in Denver.</P><P>Today, I grow thousands of plants outdoors and in the lightly heated conservatory of my one acre microclimate - based succulent gardens . I have traveled the world to see what exotic cacti and succulents might be hardy in Patagonia, South Africa , and from European collections. I am an adventurous seed grower and utilize a wide network of other growers, nurseries and seed brokers, always expanding my search for new cold - tolerant succulents.</P><P><a href='https://us02web.zoom.us/webinar/register/WN_FrZgQ8GeS7Sn1o56XcCrwA' target='_blank'>Register for this webinar</a></td></tr></TABLE></center>");
+
+fmart ("SFSCS Events","","","<center><TABLE width='90%'><tr><td valign='top'>The San Francisco Succulent and Cactus Society presents the following events:</P><P><center>Gasterias in Habitat &amp; Culture<br>Dr Tony Roberts<br>Tuesday, July 21, 2020 at 7 PM – 9 PM</P><P>Geometric Geophytes - Tom Knapick<br>Tuesday August 18th 7-9pm</center></P><P>For more information and/or to register, go to their <a href=' https://www.facebook.com/sfsucculent/' target='_blank'>Facebook page</a>.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>I have grown <I>Tephrocactus weberi</I> for many years; I do not know when I got my first plant, maybe thirty-four years ago. They are easy to propagate, for the joints fall off or are knocked off very easily. Needless to say, around my plants, I quite often have joints on the bench or on the ground under the bench, where the plant hangs over the edge. A couple days ago, I used my foot and shoved several joints under the bench, where I would not walk on them. In the last few months, I have repotted almost all of my plants of <I>T. weberi</I>. I have had a lot of joints fall off, so it is not growing over other plants.</P><P>For many years all I had seen was <I>T. weberi</I> with white spines.  Then one time, someone gave me a plant with red spines. I figured that I really had something rare. In talking with other people that had <I>Tephrocactus weberi</I>, all they had heard of was the white spined plants. I had never seen a <I>T. weberi</I> with red spines before, and, by that time, it had been about 20 years that I had been growing the plants. Somewhere along the years, someone gave me a white spined plant that did not look right. I figured it had not been getting the right amount of light, and so the spines were very short and weak. The stems were weird looking and compact, and they grow quite tight together; I was not sure it was even a real <I>Tephrocactus weberi</I>. I thought, with time and good light, it should grow out of the strange growth and grow like the normal white spined plant. Well that never happened, and since then I have acquired several more of these weird growing plants.(See the photo below of <I>Tephrocactus weberi ssp. deminuta</I>.)</P><P>When I started writing about <I>Tephrocactus weberi</I>, I had in mind to point out the roots of the plants. I have discovered in my studying of the plants that the brownish spined plant was described first and not the white spined one like I thought. I have also discovered that the plant I have that I thought was a plant with monstrose or deformed stems is <I>T. weberi ssp. deminuta</I>.</td></tr><tr><td valign='top'><a href=javascript:poppic('1tephrocactusweberisspweberi.jpg',1011,720)><img src='1tephrocactusweberisspweberi.jpg' width=303 height=216 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2tephrocactusweberisspweberi.jpg',1011,720)><img src='2tephrocactusweberisspweberi.jpg' width=303 height=216 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left is <I>Tephrocactus weberi ssp weberi</I>. It matches the original description very well. I call it the red spined form, for that is what I have called it for many years. If you are back and away from the plant, the spines do have a reddish color to them. Looking at the photo to the right, the spines do look brownish but also, to my eyes, there is some pink to the spines.</td></tr><tr><td valign='top'><a href=javascript:poppic('3tephrocactusweberisspsetiger.jpg',1011,720)><img src='3tephrocactusweberisspsetiger.jpg' width=303 height=216 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('6tephrocactusweberisspdeminuta.jpg',1011,720)><img src='6tephrocactusweberisspdeminuta.jpg' width=303 height=216 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left must be <I>Tephrocactus weberi ssp. setiger</I>. Notice that the spines are kind of contorted compared to the brownish spined plant. The tubercles do not stand out as well on the <I>T. weberi ssp. setiger</I> as they do on <I>T. weberi ssp weberi.</I> The photo to the right is a plant I thought was monstrose or in some way deformed. I had hoped long ago that it would have grown out of that look with the short and clumped together stems. Over the years, it has stayed quite compressed together. Nothing like what I was used to, which is normal plants growing like in the other photos. Anywhere I have seen <I>Tephrocactus weberi</I>, they have always been growing like the plant in the first photo above left. It was when I got the book &quot;Tephrocactus and Other Prickly Pears&quot;, that I got a hint that this plant just may be normal and not monstrose. There are two things that caught my eye about the description of <I>T. weberi ssp. deminuta</I> and those are 'dense groups and tuberose root.' I have to think that 'dense groups' means the stems are kind of packed together exactly like in the photos. And the 'tuberose root' was the main reason I decided to write up <I>Tephrocactus weberi</I>.</td></tr><tr><td valign='top'><a href=javascript:poppic('7tephrocactusweber.jpg',1011,720)><img src='7tephrocactusweber.jpg' width=303 height=216 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('9tephrocactusweberi.jpg',1011,720)><img src='9tephrocactusweberi.jpg' width=303 height=216 hspace=17 vspace=17 align='right' class='enl'></a><br>As I said back at the beginning of this blurb, I have repotted most of the plants of <I>Tephrocactus weberi</I>. The plants have been with me for years and have only gotten up potted, when they would not stand up or were in way too small of pots. When the repotting or up potting took place, I never noticed the tuberous roots. This time when I started to remove the old soil from the roots, I discovered that the plants have tuberous roots. These tuberous roots are not like large underground yams or potatoes. They are more like a foot at the base of the main stem. When I up potted the plants and discovered the tuberous roots, I decided to raise the root to show it off. I had never known that <I>T. weberi</I> had a heavy foot like root.</P><P>These photos show the roots of different plants. Not knowing that there were different varieties of <I>Tephrocactus weberi</I>, I just took photos of the different roots as I potted the plants. These photos are of the red, white and what I though were monstrose plants. I found no differences in the roots of the different plants, so I thought it was not necessary to put the name of the plant the roots were on. Michael KieBling in his book only mentions <I>Tephrocactus weberi</I> and the variety <I>deminuta</I>. He does not mention any tuberous roots for the species. I thought I would never see much less have the variety. Little did I know that I have several of the plants, and the largest one is 30 cm in diameter and that is after I trimmed it up to make it look nice. </td></tr><tr><td valign='top'><a href=javascript:poppic('10tephrocactusweberi.jpg',1011,720)><img src='10tephrocactusweberi.jpg' width=303 height=216 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('12tephrocactusweberisspdeminuta.jpg',1011,720)><img src='12tephrocactusweberisspdeminuta.jpg' width=303 height=216 hspace=17 vspace=17 align='right' class='enl'></a></td></tr><tr><td valign='top'>With my up potting and trimming the plants, I have discovered that <I>Tephrocactus weberi ssp. weberi</I>, <I>T. Weberi ssp. dispar</I> and <I>T. weberi ssp. deminuta</I> all have a tuberous root that seems to be an anchor for the plant. True, the tuberous root is not super large, but it is there and on every variety of <I>Tephrocactus weberi</I>.</td></tr><tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
