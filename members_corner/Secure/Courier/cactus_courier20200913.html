@@ -1,0 +1,388 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 9/13/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 9/13/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "September";
+var thisday = "13";
+var thisyear = "2020";
+var nextmonth = "";
+var nextday = "";
+var nextyear = "2020";
+var deadline = "";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("September 2020","13, Sunday - 12:30am to 3:00pm","Virtual Show &amp; Tell","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Virtual Show &amp; Tell</B>
+</P>
+<br>
+<P>
+Join us online on Sunday, September 13th, at 12:30 PM, for a Virtual Show and Tell via <a href="https://zoom.us/" target="_blank">Zoom</a>. Show us a plant — or a pot, a tool, something in some way related to the care and raising of cacti and succulents — and tell us the story behind it.
+</P>
+<P>
+In order to reduce the odds of a <a href="https://en.wikipedia.org/wiki/Zoombombing" target="_blank">zoombombing</a>, we're having folks register in advance for the event. To do so, just visit the <a href="https://us02web.zoom.us/meeting/register/tZEtduiurjkrH9Z9M1HCcoaLkt-PavLWQbkp" target="_blank">registration page</a> and send us your name and e-mail address. You should get a response, with instructions for joining the meeting, within a day.
+</P>
+<P>
+We look forward to seeing you!</P>
+<P>
+Zoom doesn’t run in your browser. It is a desktop app, and there are also mobile apps you can download in your device’s app store to watch on a phone or tablet.
+If it’s your first time using zoom, click the link below and it will automatically take you through a download process. If you already have Zoom installed, you can click and go straight in, or open zoom and use the meeting ID and password to get in. At some point you may be asked a question about audio. “Join with computer audio” is the right choice. Don’t worry, you will be able to keep your microphone muted until you are ready to speak.
+</P>
+<br>
+<P>
+<font size="+1"><B>Don't forget to share an image for our online show and tell.</B></font> Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page. 
+</P>
+<P>
+You can email your image to: <a href="mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell">sjcactussucculent@gmail.com</a>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Member Highlight: Judy Goodrode","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('judygoodrode.jpg',482,480)><img src='judygoodrode.jpg' width=241 height=240 hspace=17 vspace=17 align='left' class='enl'></a><br><br>Judy learned about CSSSJ when she visited a pottery outlet and found a brochure about the club. She joined CSSSJ more than 25 years ago after becoming very interested in cactus and succulents and acquiring many plants. She was amazed at just how many plants were available through our local growers. Right after she joined our club she went on a field trip with a van full of growers and enthusiasts to some nurseries in the Bay Area. She bought an amazing plant for $40.00, could not believe at the time she would ever pay so much for a plant, little did she know what was to come!</P><P>Judy served as VP for 2 terms, treasurer for 2 terms and show chair for at least 10 years.  She said, &quot;I especially enjoyed my tenure as show chair, setting up the tables and seeing first hand the judging of the plants. Always a lot of excitement the night before and the opening morning of the sale.&quot;</P><P>She learned so much about these wonderful plants by participating in club meetings, activities and by talking and visiting the growers. Judy found a couple of mentors, and helped out one nursery where she gained knowledge and many great plants.</P><P>Judy joined the CSSA in 1994 after reading a couple of their journals, and was just appointed to a director position for them.  She now spends half her time in Tucson, but hopes to be able to meet everyone in the  future when we can hold in person meetings again. Congratulations to Judy for moving up to the big league!</td></tr></TABLE></center>");
+
+fmart ("SGVCSS September Webinar:<br>&quot;Cactus and Succulent Conservation Around the World&quot;","Woody Minnich","","<center><TABLE width='90%'><tr><td valign='top'><img src='woody4sm.jpg' width=300 height=452 vspace=11 hspace=11 align='right'>SGVCSS September Webinar<br>September 10th at 7:30 pm.<br>Register for this Webinar: <a href='https://us02web.zoom.us/webinar/register/WN_K2h3WSqnTX2GHFtw7T5oJw' target='_blank'>Registration link</a><br>Everyone is welcome!</P><br><P>Never has there been a time when conservation of our cacti and other succulents has been more urgent! Due to many factors, our precious succulents, as well as many other plants and animals, are now facing severe problems. When traveling around the world in succulent rich regions, I have observed an amazing increase in the devastation of habitats and the illegal removal of many rare and endangered species of cacti, succulents, and other plants and animals. Not only are we losing these very special and unique plants, sadly enough, we are aggressively destroying many valuable and irreplaceable habitats. Our desires to urbanize and agriculturally develop great numbers of virgin environments have only produced severe ecosystem imbalances, thus the extinction, at a most rapid rate, of many of the world’s most beautiful and fascinating plants and animals.</P><P>There are many cacti and other succulents that are becoming very valuable to the collector’s egos and appetites. Generally, these plants and animals are those that we have a difficult time producing in the nursery.</P><P>Due to their rarity in cultivation, they often demand high dollars in the trade. Also, because many of these special species take extremely long periods of time (10s to 100s of years) to develop their wonderful character, it is not commercially feasible for growers or breeders to produce them. The unscrupulous collector will often spend huge sums of money to get these unique and rare specimens. And with the demand and dollars being high, it has become more and more common for commercial collectors to find ways to acquire these special plants and animals. Now, with the internet being a very popular method of acquiring merchandise, our rare and endangered cacti and other succulents are being sold internationally with very little, if any, controls being enforced.</P><P>The countries that are most affected with cactus and succulent problems are: Brazil, Bolivia, Chile, Kenya, Madagascar, Mexico, Namibia, Socotra, Somalia, South Africa, Peru, and the United States. All of these countries have well intended conservation programs, but most do not have the funds available to properly enforce their laws or monitor their endemic species. In this presentation you will see many of the cacti and other succulents that are considered threatened or endangered, and what has happened to place them in this perilous position.</P><P>Although, it may appear as if there are many difficult problems on the horizon, we shouldn’t give up! It is really encouraging to know, there are many positive things we can all do to help resolve our current plant and animal issues. A few simple efforts we can make are: do not buy field collected plants or animals, support the artificial propagation of rare or endangered species, support our nurseries who produce artificially grown material, modify our current international treaties to become modern, demonstrate our appreciation for artificially produced plants, and help our enforcement agencies to better stop illegal collecting and the sale of wild grown plants.</P><P>Our world is getting smaller and smaller, and as our human population continues to increase, we ALL need to do our part to help protect our amazing world of plants, animals, and habitats. Conservation is not a spectator sport. Please speak out when and where you can, as the future generations of all things depend on us.</P><br><P>Woody and his wife, Kathy, live in Cedar Grove, New Mexico. He is a retired secondary school teacher of 32 years where he taught Graphics, Art and Architecture. In the cactus and succulent hobby, Woody is recognized for his high energy and creative spirit. As an educator, he has become an important part of the hobby and thus is an honorary life member of twelve C&amp;S societies. With 51 years in the hobby and 64 years in the field, he has many experiences to share and numerous photos to show.</td></tr></TABLE></center>");
+
+fmart ("SFSCS Events: Part one of &quot;Plants and Animals of the Western Cape&quot;","","","<center><TABLE width='90%'><tr><td valign='top'>Presentation by Hazel Taylor<br>Login Link: <a href='https://us02web.zoom.us/j/84121195110?pwd=dlV4Y2prbnRTZEpJMm5iOUdjQVlwZz09' target='_blank'>https://us02web.zoom.us/j/84121195110?pwd=dlV4Y2prbnRTZEpJMm5iOUdjQVlwZz09</a></P><P>We often see talks about the Western Cape of South Africa, but the region's leaf and stem succulents adapted to their winter-rainfall environments alongside bulbs and other xerophytic plants, not to mention a host of fascinating animals. In part one of her series &quot;Plants and Animals of the Western Cape&quot;, Hazel Taylor invites us to step back to take in that wider view. </P><P>Our tour begins in Cape Town, including the world-famous Kirstenbosch National Botanical Garden, before exploring the fynbos (fine-leafed bush) vegetation of the Cape of Good Hope. We will travel north along the coast, visiting wildflower bulbs in the reserves of Waylands and Tienie Versveld, and then on to the West Coast National Park for more wildflowers and increasing numbers of succulent plants.</P><P>From there we head to the Knersvlakte, an area of quartz plains in Namaqualand, to see a population of <I>Argyroderma delaetii</I>, a mesemb being studied at the time by university scientists. Our final destination will be Nieuwoudtville, which has a reputation as the &quot;Bulb Capital of the World&quot;. Here we will also see a forest of tree aloes – <I>Aloidendron dichotoma</I> – and visit the Hantam Botanical Garden. All along the way the region’s fauna will be highlighted, from penguins and reptiles to pollinating insects. </P><P>Dr. Taylor has been in the British Cactus and Succulent Society (BCSS) and its predecessor for over 50 years. She was a founding member of the Bromley branch, and is currently its Chairman. She also belongs to the CSSA, and has attended several of their conventions and field trips. After studying biochemistry and completing a PhD in bacterial genetics, she later decided to complement her scientific training with a financial qualification and embarked on a career in finance. She currently serves on the BCSS Shows Committee where she enjoys training aspiring and experienced judges, and was helping to organize the BCSS quadrennial National Show this year, before it was postponed.</P><P>ZOOM MEETING FORMAT</P><P>The meeting starts at 7:00pm, and we will have casual chit-chat among members and some structured mingling.</P><P>The formal presentation will start promptly at 7:30pm, but please plan to join the meeting at 7:00pm before mingling and announcements if you haven't used zoom before, as it takes a moment to download and install.</P><P>First time using zoom? click the link below and it will take you through a download process. If you already have Zoom installed, you can just open it and use the meeting ID and password to get in.</P><P>MEETING LINK - <a href='https://us02web.zoom.us/j/84121195110?pwd=dlV4Y2prbnRTZEpJMm5iOUdjQVlwZz09' target='_blank'>https://us02web.zoom.us/j/84121195110?pwd=dlV4Y2prbnRTZEpJMm5iOUdjQVlwZz09</a><br>MEETING ID: 841 2119 5110<br>PASSWORD - sfscs</P><P>If the Zoom meeting fills up or you cant get it to work, we will simulcast on Facebook live on our page at: <a href='https://www.facebook.com/sfsucculent/' target='_blank'>https://www.facebook.com/sfsucculent/</a></td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'><I>Mammillaria caerulea<br></I><br>I have had this plant for a long time.  If I had to guess, I would say about 40 years.  I still have the original name tag in the plant, but, for some reason, I did not put a date on it.  I paid $3.50 for the plant way back then, and I have to think it was a single head at that time.  I see in my records that, back in 2007 in January of that year, I wrote a paragraph on the plant.</P><P>I have a photo of the plant I took in 2007, and the plant was a clump at the time.  If you go hunting for the plant, you will have to look under <I>Mammillaria chionocephala</I> in Pilbeam's green Mammillaria book.  In the NCL, you will have to look under <I>Mammillaria Formosa</I>, for they have put <I>M. chionocephala</I> under <I>M. formosa</I> and <I>M. caerulea</I> is not mentioned.  It shows what happens, when people that think they know everything do not grow the plants themselves. </P><P><I>Mammillaria caerulea</I> is a slow growing plant; anyway it is slow growing for me.  I have had <I>Mammillaria chioncephala</I> and <I>M. ritteriana</I> out grow <I>M. caerulea</I> by at least five to one. My plant of <I>M. caerulea</I> is older than the <I>M. ritteriana</I> and <I>M. chioncephala</I> I have grown. When <I>M. ritteriana</I> was hitting 20 cm tall, <I>M. caerulea</I> was only hitting 6 cm tall. They were grown about 60 cm from each other. When one got watered, so did the other. <I>M. chioncephala</I> hit about 25 cm tall in the same time, but it was growing some meters away but it also got watered at the same time.  When <I>Mammillaria caerulea</I> would finally out grow its pot, it got a larger pot and that was not very often. The plant is now quite old, and it is all of 10.5 cm tall.  Now if it were 20 to 25 cm tall and a lot larger in diameter than the 5.5 cm it is, I might think that it is a form of <I>M. ritteriana</I> or <I>M. chioncephala</I> but I cannot see that they are even kin to each other. </td></tr><tr><td valign='top'><a href=javascript:poppic('1mammillariacaerulea.jpg',998,666)><img src='1mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><br><br>The photo to the left is the plant from how I would see it as it sat on the bench.  A year ago, I gave it a larger pot, as it was filling the pot it was in.  It lived in a clay pot for many years, and since I have changed to plastic pots to save room, the plant now lives in a plastic 15 cm pot.  It seems strange to me to see it in a plastic pan, for it lived for so many years in a clay pot.  Back in the day when I bought the plant, we were brainwashed into believing that plastic pots were not good for cactus to be growing in.  The clay pots breath, and the plants loved the clay pots ever so much better. People whispered about those growers that used plastic pots. Now clay pots are almost a thing of the past for cactus growers, but you will still find a grower now and then that thinks that a clay pot is much better.</td></tr><tr><td valign='top'><a href=javascript:poppic('2mammillariacaerulea.jpg',998,666)><img src=' 2mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('3mammillariacaerulea.jpg',998,666)><img src='3mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 align='right' class='enl'></a><br>The photo to the left is the plant level from the side.  Notice that all the offsets are about the same size.  I am quite sure that the plant grew all the offsets at about the same time.  All I remember of the plant is it being a clump; first with small offsets, and, over the next thirty or so years, it slowly grew so the offsets are almost as large as the main stem.  But they still have a little way to grow, before they are as large as the main stem.  As slow as the plant has grown, it could be another twenty years before they are as large as the main stem.  The main stem is 10.5 cm tall and 5.5 cm in diameter.  The photo to the right is another different view of the plant.  The plant is 15 cm in diameter, and it has taken many years to grow to that size.  With three different views of the plant, if anyone out there has a plant and they cannot figure out what it is, maybe the three photos will help.  I suppose that I could have spent a day or two picking the dead flower remains out of the spines, but I just did not do it.  Many times, I have tried to remove flower remains that are under fairly dense spines only to many times remove spine clusters and sometimes also part of the tubercles.  That I do not like doing.</td></tr><tr><td valign='top'><a href=javascript:poppic('4mammillariacaerulea.jpg',798,786)><img src='4mammillariacaerulea.jpg' width=239 height=236 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('5mammillariacaerulea.jpg',998,666)><img src='5mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 align='right' class='enl'></a><br><br>The photo to the left is the growing point of the main stem.  New growth is only about 1 cm across.  With close investigation, one can see that two of the central spines have black tips.  From what I can see, it is only the two stout spines that have the black tips.  As can be seen when the spine clusters emerge from the growing point, there are only two stout centrals.  At this stage of life, the two spines are almost white, allowing the black tip to show up quite well.  Going to the photo to the right, which shows the spine clusters, it is easy to see that the two spines slowly change color.  Down lower on the body, the spines turn a chalky grey, and, at the tip, there is a band of almost white and then the dark tip.  I say dark tip, for it then looks like it is more a reddish brown than black.</td></tr><tr><td valign='top'><a href=javascript:poppic('6mammillariacaerulea.jpg',750,803)><img src='6mammillariacaerulea.jpg' width=285 height=241 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('7mammillariacaerulea.jpg',927,753)><img src='7mammillariacaerulea.jpg' width=278 height=226 hspace=17 vspace=17 align='right' class='enl'></a><br>These photos show the shoulder of the plant, where the flower buds form.  In the photo to the left, it is easy to see the darker midstripe up the outer petals.  Even at a small size, the flower buds are straw colored with a darker midstripe.  It looks to be only a semi-ring of buds.  In the photo to the right, it is easy to see a complete ring of buds.  In the photos below, we come to the flowers.  In the photo below left, the flower color can be seen as a very light yellow, and the petals have a slightly darker midstripe.  There is a pink stigma on a pinkish style.  The filaments also show up as light pinkish. The pollen is also a light yellow but almost looks whitish in the flower.  In the photo below right, the pink of the stigma shows up somewhat against the pollen, and the filaments show up in a couple flowers as being pinkish yellow.  With the style, stigma, and filaments being light pink,  I have to wonder if the midstripe up the petals are pink but with the yellow in them they look to be pinkish tan.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('8mammillariacaerulea.jpg',998,666)><img src='8mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('9mammillariacaerulea.jpg',998,666)><img src='9mammillariacaerulea.jpg' width=299 height=200 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'>I have grown this plant for many years in a cold hothouse, and whatever the temperature is outside is what it is inside. The plant has taken cold down to -13 C and was not killed or even showed any signs of being frost burnt.  I have kept the plant powder dry over the winters.  I have given the plant the soil I was using at the time it was repotted or up potted.  I have had the plant in a very bright hothouse for years.  I believe that is why the plant is nice and compact like it is.  I have seen it bloom year after year, and so I think it likes the conditions I have given it. </td></tr><tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
