@@ -1,0 +1,413 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 11/1/2020">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 11/1/2020</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "November";
+var thisday = "1";
+var thisyear = "2020";
+var nextmonth = "";
+var nextday = "";
+var nextyear = "2020";
+var deadline = "";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("November 2020","1, Sunday - 12:30am to 3:00pm","Winterizing Cactus and Succulents","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Winterizing Cactus and Succulents</B>
+</P>
+<br>
+<P>
+This month’s presentation/discussion will be on the winterizing of our cactus and succulents.  Whether they be Epi’s, Lithops, or any other type, now is the time for us to share information and help each other out.
+</P>
+<P>
+Please download and import the following iCalendar (.ics) files to your calendar system.<br>
+<B>Monthly:</B><br>
+<a href='https://us02web.zoom.us/meeting/tZ0tduquqzgpGtUqO6Ali1YCEcjq6uDVcNd0/ics?icsToken=98tyKuGhrjopHNGWsxmGRpx5Aoj4b-7wmHZejbdojTCzIixaMzrVE-FII-RqNO7T' target='_blank'>https://us02web.zoom.us/meeting/tZ0tduquqzgpGtUqO6Ali1YCEcjq6uDVcNd0/ics?icsToken=98tyKuGhrjopHNGWsxmGRpx5Aoj4b-7wmHZejbdojTCzIixaMzrVE-FII-RqNO7T</a>
+</P>
+<P>
+<B>Join Zoom Meeting</B><br>
+<a href='https://us02web.zoom.us/j/89013653301' target='_blank'>https://us02web.zoom.us/j/89013653301</a>
+</P>
+<P>
+<B>Meeting ID:</B> 890 1365 3301<br>
+<B>One tap mobile</B>
++16699009128,,89013653301# US (San Jose)<br>
++13462487799,,89013653301# US (Houston)
+</P>
+<P>
+<B>Dial by your location</B>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 669 900 9128 US (San Jose)</td>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 346 248 7799 US (Houston)</td>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 253 215 8782 US (Tacoma)</td>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 301 715 8592 US (Germantown)</td>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 312 626 6799 US (Chicago)</td>
+<tr><td nowrap> &nbsp; &nbsp; &nbsp; &nbsp; </td><td nowrap>+1 646 558 8656 US (New York)</td>
+</TABLE>
+</P>
+<P>
+<B>Meeting ID:</B> 890 1365 3301<br>
+<B>Find your local number:</B> <a href='https://us02web.zoom.us/u/kb0fSpequS' target='_blank'>https://us02web.zoom.us/u/kb0fSpequS</a>
+</P>
+<br>
+<P>
+<font size="+1"><B>Remember to share an image for our online show and tell.</B></font> Maybe, what you were going to bring in for the Fall Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font>
+</P>
+<P>
+You can email your image to: <a href="mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell">sjcactussucculent@gmail.com</a>
+</P>
+<P>
+<a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a>
+</P>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@ckart.com">editor@ckart.com</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Remembering Joan Kurtz","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('joankurtz.jpg',828,621)><img src='joankurtz.jpg' width=248 height=186 hspace=17 vspace=17 align='right' class='enl'></a><br><br>After celebrating her 88th birthday, one of our long time members, Joan Kurtz recently passed away. She is probably best known as the wife of Bill Kurtz, but she was much more to our club. She was a teacher in Santa Clara Unified School District, and it was through Joan that we were able to start holding our show and sale at Buchser Middle School. She and Bill would always deliver pizza for the hardworking volunteers on our Friday night setup, so I remember her as the &quot;pizza lady.&quot; The next opportunity I get to have pizza, I’ll be thinking of Joan and saluting her, I hope that you’ll do the same.</td></tr></TABLE></center>");
+
+fmart ("CSSA Webinar: Propagating Plants and Cultivating Friendships","Gunnar Eisel","","<center><TABLE width='90%'><tr><td valign='top'>Join us Saturday, October 31 at 10:00am PDT for the next in our series of webinars featuring Cactus and Succulent experts from around the world.</P><P><B>Program:</B> Joe Stead’s program will focus on the techniques and methods he has used in propagating and hybridizing plants. He will also speak about the people and friendships which have influenced him throughout his career.</P><P><B>A Short Biography of Joe Stead</B><br>Joe Stead is the full-time horticulture lab coordinator and adjunct professor at Orange Coast College Horticulture Department in Costa Mesa, CA. He has worked at OCC since 1994 and teaches classes such as &quot;Cactus, Succulents and their use in Landscape.&quot;<br> <br>His passion and expertise are in the propagation and hybridization of many types of plants. He has co-authored articles published in the CSSA journal and has been a CSSA convention speaker. His succulent garden designs were featured in Sunset Magazine. He is currently working on a new hybrid of Boswellia.<br></P><P>To register for the webinar in advance, <a href='https://us02web.zoom.us/webinar/register/WN_YkFq2TQATw-qSf0RIs_Rbg' target='_blank'>click here</a><br>After registering, you will receive a confirmation email.</td></tr></TABLE></center>");
+
+fmart ("Joan Kurtz","Rich Kroll","","<center><TABLE width='90%'><tr><td valign='top'>Joan Kurtz was a friend through a friend.  So, there is a lot about her I just don't know.  We talked on the phone each time I called.  These conversations always ended the same way: &quot;Here's Bill,&quot; Joan would say.  What I do know about her is that she always shared with me her warmth and good nature and never her hardships, which I knew existed only from my talks with Bill.  She cared for my friend as wonderfully as any of us would want our spouse to do and tolerated his fixation with Sansevieria better than anyone I know married to someone with out obsession.  I can only hope that she and Bill are reunited and happy together again. </td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>I want to tell you a story about my trying to grow <I>Ariocarpus</I> from seed.</P><P>But first about 35 years ago, I heard of and joined a cactus club. I had been growing cactus for years and did not know there was such a thing as a cactus club. I guess they like to be called ‘Cactus &amp; Succulent Societies.’ Well to me it is a cactus club.  One evening, my wife said that there is a cactus show in Stockton. Somehow, I found the place and joined the club. Since I had been growing the plants for many years, I figured why not, for I could learn from the ‘experts.’ When I looked back on it, I was doing fine but figured that I could really learn things I did not know about growing the plants.</P><P>One of the things I found I was supposed to do is stop watering cactus plants about mid-September, so they could shrink before the cold and frosts hit. Well I had not done that before. I also discovered from different speakers of the time that if I were to feed the plants, it was to be no more than one or two times a year and that the fertilizer should not be any higher numbered than 2-3-2 and it was better to use 1-3-2. This was supposed to be less than ¼ or better yet 1/8 strength. I also learned that if I did not have a hothouse that I should bring my plants into a garage or cool room to winter over. They could also go in the house into a cool dark room. If you could not do that, you could cover them with plastic suspended above the plants and leave an open area at the bottom of the plastic for air to circulate.</P><P>I learned that <I>Melocactus</I>, <I>Discocactus</I>, and <I>Ariocarpus</I> were some of the plants most to be babied. You were never to water them any later than past the middle of September and never water before the middle of May. Wow was I ever messing up. So, I started to treat my plants the way the ‘experts’ said to. Well I started killing plants a lot more often than under my dumb way of caring for them like I used to. Reading some of the books, some really experienced growers said to add limestone to the soil. So, I went out and bought a cubic yard of limestone to add to the soil. This limestone was greenish in color and was BB sized pellets. It was limestone that was being made just for chicken feed. It was to help them grind the food in their gizzard. It also makes stronger egg shells. I started adding some of the limestone to the soil mix. Well the plants seemed to go downhill, so I stopped using the limestone. (I have lots of BB size limestone for someone to haul away for free.) The plants potted without the limestone in the soil grew better. I studied the plants and decided that the writers of the books did not know anything about most of what they wrote about. The same went with the speakers at the club meetings. </P><P>One thing that was taught was if you collected seed from your plants and were going to keep them over the winter, you have to keep them in the refrigerator so they will not die. I got to contemplating that concept and wondered where the plants in the desert kept their seed over the winter. In talking to Steven Brack of Mesa Garden, he said some seed will lay in the desert twenty-five or more years, until the right conditions come along for the seed to germinate. Somewhere along the line, I was given the job of doing the club newsletter. One time I wrote a short article about camping in the desert and in the night, I heard this strange noise. I got up and investigated and all the Saguaro in the area had gathered all their seed pods and were running off to hidden refrigerators in the desert. They were storing the seed in the fridge over the winter. The Saguaro told me there are refrigerators hidden all over the desert, where the cactus can store their seed for the winter. Come spring time, they go retrieve the seed and spread it around the desert. Then if the ants, bugs and rodents do not eat them, they may germinate. Needless to say, most of the old guard in the cactus club did not like my article. I was mud holed! I remember the subject coming up in several meetings, and I pointed out that the seed lays where it lands, until conditions were right and then it may germinate. Within a couple years, I heard nothing more about having to refrigerate seed over the winter time.</P><P>Another thing I heard was that <I>Ariocarpus</I> need special care, and you only water them in the hottest months of the year. If you are lucky enough to get seed from your <I>Ariocarpus</I>, it will be next to impossible to grow any plants from it. And if you are lucky enough to get seedlings up and if they live any more than a few months, you will be lucky. After quite a few tries I saw that they were correct. I would count out 100 seed and sow them in a seed tray.</P><P>The luckiest I ever was, was to get 19 seedlings up. Wow, that was great compared to what I usually did. But alas in the first three weeks, a quarter of them died. I guess they damped off. That is what it was called back then, when seedlings would just fall over and rot away. As I remember, the most seedlings of <I>Ariocarpus</I> I managed to grow to a two-year plant was three out of 100 seed. I tried year after year, and sometimes I would try at different times in one season to grow at least fifty seedlings out of 100 seed. That never happened. Finally I gave it up. I just did not have the knack of growing <I>Ariocarpus</I> from seed. </P><P>Now, come down some years to about 2014 or was it 2015. I just do not remember. Christmas came and went and a couple of days afterwards, in came a storm. This storm had some strong winds with it. Well the plastic on the big greenhouse was ripped off and shredded, and we got rain and rain and more rain. By the time the rains stopped and I could put up more plastic, the rain gage read 9 inches. So much for the <I>Ariocarpus</I>; they got 9 inches of rain and that after Christmas. Christmas is in the beginning of the winter; when you are not supposed to allow <I>Ariocarpus</I> to even have a smell water. It wasn’t until about the 10th of January, when I managed to get plastic up on the house again. I know all the <I>Ariocarpus</I> are going to turn to mush. What frustration! Water stood on the wool in the growing points of the plants. I removed the water the best I could, but the wool molded and turned hard and black anyway. The pots were soaked and some weed seeds were germinating in the pots. I would go out every so often and check the plants to see how many had rotted enough to toss. Some days I did not have the heart to go out and inspect the plants. The first of February came and went, and not a plant had yet rotted off. February is our coldest month of the year. March and then April came and went and still no rotted plants. Finally, I found my first rotted plant; it was an <I>Ariocarpus retusus</I>. It was a small plant. now I am not sure that the rain months before had anything to do with the plant rotting.</td></tr><tr><td valign='top'><a href=javascript:poppic('1ariocarpusretususvarscapharostroides.jpg',1011,720)><img src='1ariocarpusretususvarscapharostroides.jpg' width=303 height=216 hspace=17 vspace=17 align='left' class='enl'></a><a href=javascript:poppic('2ariocarpustrigonus.jpg',1011,720)><img src='2ariocarpustrigonus.jpg' width=303 height=216 hspace=17 vspace=17 align='right' class='enl'></a><br>In looking closely, I discovered that the pots were loaded with seedlings. (See photos.) Backing up some months to summer time, I was walking by the <I>Ariocarpus</I> and all were all moving, I looked bit closer and there were millions of ants invading the seedpods and carrying seed off to their home somewhere. All these years I have blamed mice for all the empty seed pods. I cannot have ants walking off with my seed, so I got out the Terro and placed bait stations in the ants’ trails and freeways. I even placed a few drops on some tubercles on plants that were covered in ants. Thankfully the ants decided that the sweet syrup was a lot easier to take home than having to carry all those seed. They really worked over those bait stations, and I had to renew the syrup several times a day. In three days’, time, there was not an ant moving anywhere around the <I>Ariocarpus</I>. Apparently, the word spread among the ants that there was easier and sweeter food to be had, for they dropped seed where ever they were. All the plants had seed scattered over them from top to bottom. The wool at the top had lots of seed in it. There were seeds all over the tubercles and in the pots. It looked like someone had been out with a pepper shaker, shaking black pepper all over the plants. The problem is what seed came from which plant? I could not tell where the ants were going, as they were going in too many different directions</P><P>As I said, a lot of the pots were loaded with <I>Ariocarpus</I> seedlings. In time, I started removing seedlings, as they were so crowded that some were dying. In time I had over 1000 2-inch pots of seedlings. In the time since then until now, some have died, but I still have over 1000 seedlings. I have seedlings in pots with the parent plants still that I have not tried to remove to their own pots. How many I do not know. In some pots there are over two dozen seedlings growing still.</P><P>Thanksgiving 2019 came and went. On Saturday, two days after Thanksgiving, I was gone. A storm came in, and when we got home most of the plastic on that same big hothouse was torn off and it was raining. Only this time it was in the end of November instead of December, not that it makes any difference.</P><P>Again, the <I>Ariocarpus</I> were getting soaked. This time it was three inches of rain. We finally got a nice day, and a friend came down from Sacramento, and we got the plastic up on the house and locked down. A few days later, I was out inspecting the <I>Ariocarpus</I>, and there in the pots were seed just germinating. This last summer instead of gathering the seed, I sprinkled it around the parent plants. This time there were no ants trying to help in spreading the seed around. I hope this time I will have a better idea as to what seedlings are from what parent plant. The seedlings from a few years ago are now getting large enough that I can tell more or less which species they are.</P><P>I tell this story to help dispel the mentality that <I>Ariocarpus</I> should never be watered after about mid-September. Also, to point out the fact that the plants that got the 9 inches of rain between Christmas and about the 10th of January did not rot away, like I have heard they would. I have heard this over and over in the cactus club meetings down through the years. Anyone that mentioned <I>Ariocarpus</I> would say to stop watering them no later than the middle of September. I have found that this is the time of year the plants are growing. For years I have watered the plants at least until Thanksgiving and a few years the good weather lasted till mid-December. I watered the plants even that late. Doing so I have never lost a plant. I am not suggesting that plants should be watered like that in areas where you may get snow or hard freezes around the beginning to mid-October.</td></tr><tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
