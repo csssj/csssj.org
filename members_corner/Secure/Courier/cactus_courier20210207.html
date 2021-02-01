@@ -1,0 +1,412 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 2/7/2021">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 2/7/2021</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "February";
+var thisday = "7";
+var thisyear = "2021";
+var nextmonth = "";
+var nextday = "";
+var nextyear = "2021";
+var deadline = "";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("February 2021","7, Sunday - 12:30am to 2:30pm","Cactus Propagation: Techniques for Multiplying and Growing Your Cactus Collection","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Cactus Propagation: Techniques for Multiplying and Growing Your Cactus Collection</B>
+</P>
+<br>
+<P>
+Andrew Hazlett and Byron Fan will present lessons learned from the past year propagating cacti, starting with the best practices for taking cuttings to root out and grow successfully. We will also cover growing cacti from seed, how variegated cacti grow, and how they can be propagated to produce beautifully marbled specimens. We'll discuss our year studying grafting stock compatibility and some adventures in propagating extremely rare cactus that cannot grow on their own roots. 
+</P>
+<SCRIPT Language="JavaScript">
+document.write ("<center><a href=javascript:poppic('program210126.jpg',1020,930)><img src='program210126.jpg' width=306 height=279 hspace=17 vspace=7 class='enl'></a></center>");
+document.close();
+</SCRIPT>
+<P>
+Byron and Andrew are backyard cactus growers in the South Bay. Byron is currently a graduate student in Biotech, and first joined the CSSSJ when he was 14 years old, over 10 years ago now. Andrew is a research and development engineer in San Jose and enjoys the low tech of propagating cacti. 
+</P>
+<P>
+<B>Topic:</B> CSSSJ February 2021 Meeting<br>
+<B>Time:</B> Feb 7, 2021 12:30 PM to 2:30 PM Pacific Time
+</P>
+<P>
+<B>Zoom Meeting Link:</B><br>
+<a href='https://us02web.zoom.us/j/81475610281?pwd=YStjUFh1TDRUR0JKdXZTZDBJZ1U5dz09' target='_blank'>https://us02web.zoom.us/j/81475610281</a><br>
+<B>Passcode:</B> cactus
+</P>
+<P>
+<B>Zoom Phone:</B> 1 (669) 900-9128<br>
+<B>Meeting ID:</B> 814 7561 0281<br>
+<B>Passcode:</B> cactus
+</P>
+<P>
+<B>One tap mobile:</B><br>
++16699009128,,81475610281#,,,,*400118# US (San Jose)
+</P>
+<br>
+<P>
+<font size="+1"><B>Remember to share an image for our online show and tell.</B></font> Maybe, what you were going to bring in for the Fall Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font>
+</P>
+<P>
+You can email your image to: <a href="mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell">sjcactussucculent@gmail.com</a>
+</P>
+<P>
+<a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a>
+</P>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@csssj.org">editor@csssj.org</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>Dear Fellow Club Members:</P><P>The winter rains have arrived, and in their wake, all of the seeds that spent summer and fall hiding under the dried-amber foliage are poking their little green sprout-heads out of the ground to see what's new with the freshly-washed world.</P><P>We humans, meanwhile, will have to play things a touch more safely for a little while longer, as our efforts to vaccinate the bulk of the population race against mutant variations of COVID-19. There won't be a Spring Show &amp; Sale, but there's reason to hope that we'll be able to have a Fall Show &amp; Sale with the right precautions. This, of course, depends on factors beyond our control; we'll keep you posted as things develop.</P><P>In the meantime, Andrew Hazlett and his associates will be presenting us with some cutting-edge findings about some of the things you can do with sharp tools and plant tissue.</P><P>In February, Andrew, with the help of his friend Byron Fan, will be sharing everything he's learned in the last year about propagating cacti: how to give cuttings the best chance of rooting and growing out successfully, how to grow cacti from seed, how to use grafting to foster rare and finicky cacti, and much more.</P><P>You can join the Zoom meeting, which will take place at 12:30 PM on Sunday, February 7th, via the following link: <a href='https://us02web.zoom.us/j/81475610281?pwd=YStjUFh1TDRUR0JKdXZTZDBJZ1U5dz09' target='_blank'>https://us02web.zoom.us/j/81475610281?pwd=YStjUFh1TDRUR0JKdXZTZDBJZ1U5dz09</a></P><P>In March, Dr. Justin Tanner, who recently received his PhD at Colorado State University, and specializes in the preservation and management of agriculturally-important genetic resources, will dive deeply into the subject of tissue culture: how to collect and nurture samples before proceeding to propagate them.</P><P>That presentation will take place as part of the March club meeting; we'll send out additional information, including the Zoom link, as the date approaches.</P><P>Last but not least, two years have passed since the last round of club elections, making it time to once again choose new officers. The following slate has been proposed:</P><P>President: Kathi Cambiano<br>Vice President: Loyd Monaco<br>Secretary: Monica Moran<br>Treasurer: Annie Lau</P><P>In addition, we're looking for volunteers who'd be willing to take on two open roles: one as the manager of insurance, responsible for covering club events, and one as the Membership chair. If you have any interest in filling either role, please contact <a href='mailto:president@csssj.org?Subject=CSSSJ%20Office%20Volunteering'>president@csssj.org</a>. If you'd like to submit an alternate nomination for any of the roles listed above, please do so via the same address.</P><P>Thanks! It's been an honor to be your President. Stay safe, and I'll see you online in a week!</td></tr></TABLE></center>");
+
+fmart ("Membership","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>We are most grateful to Joe Langdon for serving as our Membership Chair, and wish him well until we are able to meet in person again. As a result, the club will be needing to find someone to replace his position of the board.</P><P>With memberships on hold right now, it would be a great time to ease into the position while it is quiet. If you would like to discuss the requirements in detail, please email Kathi at <a href='mailto:sjcactussucculent@gmail.com?Subject=Membership'>sjcactussucculent@gmail.com</a></td></tr></TABLE></center>");
+
+fmart ("Virtual Show and Tell","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Since we haven’t been meeting in person, our mini show has transformed into a virtual show and tell. Unfortunately, it hasn’t lived up to the turnout of our in person mini shows.   Although the album of images are posted on Facebook, you do not have to have an account to participate. If you are a member, all you have to do is email your image to <a href='mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell'>sjcactussucculent@gmail.com</a></P><P>This is an opportunity to show off more than what you would bring in to a meeting, you can show us what is looking fabulous in your yard. We look forward to seeing what you have to share with us!</td></tr></TABLE></center>");
+
+fmart ("New Board Member","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Andrew Hazlett is our newest CSSSJ board member. By day, Andrew is a research and development engineer working in Silicon Valley, working on GPS navigation technology. Late nights and weekends, Andrew has joyfully tried new cactus propagation experiments, applying the R&amp;D to the low tech of our society's beloved plants.<br><br></td></tr><tr><td align='center'><a href=javascript:poppic('hazlett001.jpg',768,701)><img src='hazlett001.jpg' width=230 height=210 hspace=17 vspace=7 class='enl'></a><br><font size='-1'>Andrew and his wife, Liz, at the Buffalo, New York<br>Botanical Gardens Cacti &amp; Succulent Greenhouse.</font></td></tr></TABLE></center>");
+
+fmart ("CSSA Webinar: Elisabeth Sarnes: The Amazing North of Patagonia","Gunnar Eisel","","<center><TABLE width='90%'><tr><td valign='top'>Join us Saturday, February 6th at 10:00 a.m. PST for the next in our series of webinars featuring Cactus and Succulent experts from around the world.</P><P><B>Elisabeth Sarnes: The Amazing North of Patagonia: <br>A virtual journey through the province of Neuquén</B></P><P>To register for the webinar, click <a href='https://us02web.zoom.us/webinar/register/WN_nfxRjc1gTUKE4ZNxjZ7YGA' target='_blank'>here</a><br>After registering, you will receive a confirmation email.</P><P><B>Elisabeth Sarnes<br>Program: The Amazing North of Patagonia: A virtual journey through the province of Neuquén</B><br>The province of Neuquén is Patagonia’s smallest and northernmost province in Argentina. It is not only the Patagonia of lakes and the steppe of dinosaurs. Neuquén is also the Patagonia of volcanoes and it is the country of the Mapuche people. The variety of cacti is greater here than in the rest of Patagonia. The talk will give a portrait of the cacti of this region – and the genus Austrocactus will take the lead. You will see the great scenery, beautiful endemic flowers, and some of the animals too, Get surprised by the beauty of the smallest Patagonian province!</P><P><B>Biographies:</B> Norbert and Elisabeth Sarnes, a German couple, started collecting cacti in 1977. Only in 2004, after a trip to Patagonia, they began to specialize on the genera Austrocactus, Pterocactus and Maihueniopsis. Many travels to Patagonia followed this first one and they made more than 50,000 km in that part of the world in search for cacti. As a result of these travels and their studies they published several articles in different journals, both German and international. Some of these publications were dedicated to first descriptions of new austrocacti and a Pterocactus. Their books &quot;<I>Cactus de Patagonia</I>&quot; and &quot;<I>Austrocactus 2015</I>&quot; were published in 2012 and 2015. At home in western Germany, they cultivate a collection of seed-grown Patagonian cacti on about 50 square meters. Norbert and Elisabeth are fellows of the DKG, BCSS, CSSA, Succulenta and the IOS. Between 2008 and 2017 Norbert was Vice-President of the German Cactus Association DKG, and Elisabeth is member of the ELK committee.</td></tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>To Kill a Mealy Bug</P><P>What is a mealy bug? To a lady bug it is breakfast, lunch, or dinner. To ants it is a ‘honey cow’ to be tapped for sweet honey dew all the time. To those that grow house plants it is creature you do not want to see at all. To growers of cactus and succulents it is a darn disgusting pest. Anyone that grows cactus and succulents and spends any time around cactus clubs knows that mealy bugs are something to get really upset about. Those that have prize plants in a greenhouse or hothouse and find mealy bugs cannot be blamed if they go stark raving mad. Mealy bugs, like aphids, suck the life out of plants. If left uncontrolled, they will kill a plant; a small plant quite soon and a larger plant a while longer but they will kill it also. I got several trays of plants, and some of the plants were not green like they should be for a healthy plant. These were plants about an inch in diameter. On inspection, sure enough, the roots were white with mealy bugs. The plants with white roots were of a distressed color like when they are sun stressed. They were a reddish color and so easy to pick out. Also, the body was soft instead of firm like a healthy plant. With a fine but powerful blast of water, the plant roots and body were washed clean of any signs of the mealies. </P><P>Story 1: I worked for a woman that had lots of cactus and succulents. She had me spray the plants every so often with Cygon 3E, which was a brand name for Dimethoate, which is/was a systemic insecticide. (I say was because the government in their god given, better than anyone else’s knowledge declared dimethoate too dangerous for the regular dummy to buy and use. It was banned from the market.) Now keep in mind that I worked for this lady for years and, in those years, she never got rid of the mealy bugs. After a spraying, they would sometimes disappear for a while. Sometimes after three to five days, I would get a call saying that I did not spray very well, because the bugs are back again. She would even say that a lot more bugs had shown up. She then got to sticking right by me as I sprayed the plants. She would tell me to hit that area hard because they got mealy a lot more than another section. So, it was hit and miss for the different plants. ‘Hit these hard and do not hit these at all for they never get mealy bugs.’ As far as I know she never did get rid of the mealy bugs. </P><P>Story 2: I worked at a cactus nursery for thirteen years. This was mostly for two days a week and sometimes three to four days a week. It depended on how busy they were. I was assigned to water the plants. I was to water the plants every week. In about a months’ time, I started taking out the dead plants before starting to water. In a few weeks, I discovered I was taking out between forty and sixty plants a week. I told the boss I was not going to water every week, as it was killing way too many plants. So, one week I would water, and the next week I was potting or up potting plants. In three weeks’ time, the number of dead plants dropped down to about twenty, and then went on down to maybe three or four plants in a couple weeks. What does this have to do with mealy bugs? Well I had the privilege of also applying Dimethoate 2.67 EC when the boss decided it was time. </P><P>They had two large hothouses that were 30 x 90 feet; so a lot of plants. Cactus and a few succulents were in about 2/3 of the area. The last 1/3 held the boss’s wife’s plants, mainly succulents. I was not to water or mess with any of her plants, unless she was there to tell me what to do, as she would get quite upset. Any plant that died, if I watered it or not, was usually my fault. For years, I would water at least two times a year with dimethoate to try to get rid of the mealy bugs. The dimethoate did a wonderful job. I really went after those mealy bugs, but before long mealies started showing up again. One time, the boss wanted me to go after the mealy bugs again. This time I told him to keep his wife in the house, and I would hit her plants because her plants were loaded with mealies. He agreed, and I went to work with the insecticide. She had a lot of hanging pots of Hoya plants, and they each had a city of mealy bugs on them. She would use a hand sprayer and spray the plants and only kill the bugs that were seen on the stems. I worked all her plants over really well and soaked the roots with the dimethoate, and the next week there were no live mealy bugs to be seen. For the rest of the time I worked there, I did not have to treat for mealy bugs.  </P><P>Different kinds of mealy bugs: root mealy bugs, spine mealy bugs, leaf mealy bugs, and any other names people want to call them. Root mealy bugs live on the roots of plants and suck the life juices from the roots. Leaf mealy bugs live on any soft body plants including the roots. One year I noticed the neighbor’s apple tree had white areas all up and down the trunk and branches and on some leaves. When I investigated, I saw there were many patches of mealy bugs. The neighbor said I could spray the tree. I did, and, in a month, the bugs were back again. I discussed the situation with them, and they said they did not get apples off the tree any way, so I could cut it down. I also dug out the roots. These mealy bugs I call leaf mealy bugs, as they will attack a plant where ever they can stick their suckers into a soft area and suck juice. Leaves, stems, and, on succulents, on any part of the plant where they can poke a hole and dip their straw into for a drink. </P><P>Spine mealies, there is no such thing as a spine mealy! Oh boy, did I ever hear a roar go up from a lot of people. I have heard the term spine mealy bugs for more years than I care to mention. What people are calling spine mealy bugs are, most of the time, mealy bug egg cases. It seems that the mealy bugs climb up the plant in the cool of the night to lay their eggs. Sometimes, the egg laying mealy bug does not get to a place to hide and so is seen crawling along a spine. It does not live on the spine! It can not get any nutrients from the hard spines. On most cactus plants, the mealy bugs are seen on the roots and so the name ‘root mealy bugs’. When the bugs want to lay their eggs, they climb up the plant and go to the highest part of the plant or out on the spines to lay the eggs. These are in the cases they deposit on the spines. When done, they will head back down below onto the roots, or they will hide from the heat in the wool at the top soft area of a plant. The female mealy bug will supposedly die about ten days after laying her eggs. When there are too many bugs on the roots, some will migrate up the new growth of the plants and suck juice there. By that time, it is almost too late for the plant unless drastic measures are taken, sometimes it is too late for the plant anyway.</P><P>There are many ways of getting or spreading mealy bugs. Buying infested plants or someone giving you plants that are infested with mealy bugs. This can happen without any mealy bugs showing on the above the soil part of the plants. When I get new plants, I usually repot them into my soil so I know the plant has the same soil as all the rest of my plants. When repotting, I get most of the old soil off the roots and, that way, I can inspect the roots for mealies and also for the health of the root system. If there are white fluffs all over the roots and also on the inside of the pot, then you know the plant has had or has live mealy bugs. It is easy to wipe the signs of mealy bugs off the outside of a pot and also to remove signs of mealies from the plant and spines. But when you get into the roots, it is next to impossible to hide the fact that a plant has mealies. I use a metal cake pan to depot in and catch all the old soil. If there are any signs of mealy bugs, that soil goes straight into the trash. That way it does not contaminate the soil bin and spread mealies to all other plants that are potted. </P><P>If I find mealy bugs, I will take the plant out to a hose with a special nozzle and use a fine but strong stream of water to wash the roots and the entire plant clean. When repotted, the plant gets put in a special place, and when time comes to water, it gets special water care in that it gets watered with a systemic insecticide. If there were signs of only a couple mealy bugs, the plant will get two waterings that way, but if the roots were white with mealies, it will get quite a few waterings with the systemic. </P><P>The root system and the shape of the roots can tell you what kind of life the plant has endured up to the time you got it. One grower used desert sands and pumice, and the plants he sold had roots that were like short stubby sharpened pencils. He used the 3.25 inch rose pots and the roots were only like an inch long at the most. Out of the bottom were thread-like roots. So, what does that tell me? It says that his soil held water, and so the roots would not grow any longer than about an inch. They tried to grow more roots, but the roots rotted off and kept them stubby and short. If you buy a plant that has a pot packed with roots and it is hard to see any soil, then you know the plant has been in that pot for half of forever and sure needs a repot job. Another thing is if you get small plants (young plants) and they have been ravaged with mealy bugs, they will also have short, stubby weak roots. I also use the fine spray to make sure any mealies are washed off of even small and seedling plants. </P><P>If you know you have mealy bugs on a couple plants, you can move them to an area away from the other plants and treat them. But I like to leave them where they are and treat every plant in three to four feet (a meter) of the mealy bugged plants. If I find plants in several places on that bench, I will treat the entire bench. If you really want to get rid of mealy bugs, you cannot just spray the above soil part of the plant. You also have to really soak the root system. I have seen many hundreds of times where a good watering only wets about one centimeter into the soil, and the rest of the soil inside the root ball is powder dry. That is where the mealy bugs are making their city. Many people will water with the systemic but never really be rid of the mealy bugs. If you really want to kill the mealy bugs, you have to ‘waterlog’ the root system. I have also seen that one treatment with the systemic insecticide is not enough to wipe out an infestation of mealy bugs. I now water with the insecticide at least three waterings in a row. That way the plant will soak up enough systemic to poison the plant and eliminate the pests. </P><P>Another thing to think about is that a single thorough watering with systemic will be ok for a plant in a 2-inch (5 cm) pot. A plant that is the size of an orange will have to take on more systemic to make the plant poison to the mealies. It will take at least two soakings to get enough poison into that plant to kill any mealies that want to take a sip out of that plant. Where a lot of people go wrong is, they think a single watering with systemic will take care of a plant that is 12 inches in diameter (30 cm). It takes a lot more systemic to poison a plant that size. But if the root system is soaked very well, the entire plant will not need to be made poison to rid it of mealy bugs. All the systemic insecticide that I know of are also contact insecticides. That means that besides being taken up by a plant and killing mealies through their sucking the plant juices, the insecticide kills on contact. I know people that think that by spraying a plant with a spray will rid them of the mealy bugs, and this does not happen. I know people, like the woman I worked for, that only spray the plant bodies and wonders why the mealies are back in a few weeks. </P><P>For the ‘spine mealy’, those are egg cases and the eggs hatch out in a few days, and then the plant is covered with minute mealy bugs. If not sprayed, they head down stairs to the root system and live to lay eggs in time. Mealy bugs do not seem to like living in a damp environment, and so, after a good watering, they will go topside and lay their eggs. I have seen quite a few times where a plant hasn’t any mealy bugs to be seen.  Give it a good watering, and, in a day or two, there are egg cases all over the plant. I have a good size <I>Mammillaria baxteriana</I>.  It did not have any mealy bugs. I gave it a real good watering, and, in two days, the entire plant was covered in egg cases. That is very irritating to say the least. That is why I try to make sure I treat at least two times a year for mealies, even if I have not seen any signs of mealy bugs at all.</td></tr><tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Joseph Langdon at <a href="mailto:jlangdon@ix.netcom.com?Subject=Membership%20Badge">jlangdon@ix.netcom.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
