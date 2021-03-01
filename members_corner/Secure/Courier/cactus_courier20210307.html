@@ -1,0 +1,409 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 3/7/2021">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 3/7/2021</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "March";
+var thisday = "7";
+var thisyear = "2021";
+var nextmonth = "";
+var nextday = "";
+var nextyear = "2021";
+var deadline = "";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+} 
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center>
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("March 2021","7, Sunday - 12:30am to 2:30pm","Plant Tissue Culture of Cactus and Succulents at Home","","","","");
+
+document.write("<br><br>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+// ocument.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("April 2020","4-5 Sat-Sun - 9:00am to 4:00pm","<B>South Coast Cactus &amp; Succulent Society Show &amp; Sale</B><br>South Coast Botanic Garden<br>26300 Crenshaw Blvd<br>Palos Verdes, CA.<br><a href='http://southcoastcss.org/event/south-coast-css-show-and-sale-2020/' target='_blank'>southcoastcss.org/event/south-coast-css-show-and-sale-2020/</a>","","");
+
+document.write("<br><br>");
+
+// document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Plant Tissue Culture of Cactus and Succulents at Home</B>
+</P>
+<br>
+<P>
+The CSSSJ March presentation will cover the basic concepts and practical implementation of plant tissue culture of cactus and succulents. Topics such as necessary supplies and equipment, culture establishment, micropropagation, rooting and acclimation out of culture will be discussed. The aim of this talk is to encourage cactus and succulents hobbyists/collectors interested in setting up a home laboratory.
+</P>
+<P>
+<B>Presenter:</B> Dr. Justin Tanner of San Jose, Plant Scientist 
+Join Zoom Meeting
+</P>
+<SCRIPT Language="JavaScript">
+document.write ("<center><a href=javascript:poppic('crest5.jpg',733,800)><img src='crest5.jpg' width=220 height=240 hspace=17 vspace=7 class='enl'></a></center>");
+document.close();
+</SCRIPT>
+<P>
+<B>Topic:</B> CSSSJ March 2021 Meeting<br>
+<B>Time:</B> Mar 7, 2021 12:30 PM to 2:30 PM Pacific Time
+</P>
+<P>
+<B>Zoom Meeting Link:</B><br>
+<a href='https://us02web.zoom.us/j/85448417687?pwd=a2F3YXhtVlljZGpPbG9pV2Z0K01Ldz09' target='_blank'>https://us02web.zoom.us/j/85448417687?pwd=a2F3YXhtVlljZGpPbG9pV2Z0K01Ldz09</a>
+</P>
+<P>
+<B>Meeting ID:</B> 854 4841 7687<br>
+<B>Passcode:</B> 674291
+</P>
+<P>
+One tap mobile
++16699009128,,85448417687#,,,,*674291# US (San Jose)
+</P>
+<br>
+<P>
+<font size="+1"><B>Remember to share an image for our online show and tell.</B></font> Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font>
+</P>
+<P>
+You can email your image to: <a href="mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell">sjcactussucculent@gmail.com</a>
+</P>
+<P>
+<a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a>
+</P>
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@csssj.org">editor@csssj.org</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("CSSSJ Elections","","","<center><TABLE width='90%'><tr><td valign='top'>The elections will be held electronically this year.  (You will need a Google logon to vote.  These are easy to obtain, if you do not have one already.)</P><P>Go to the following address to vote: <a href='https://forms.gle/LZQKJ3WmwJsVpcpEA' target='_blank'>https://forms.gle/LZQKJ3WmwJsVpcpEA</a></P><P><UL><li>After going to the address, log in to your Google account, if necessary</li><li>Answer the questions</li><li>If desired, switch the toggle at the bottom to blue to receive an email copy of your vote</li><li>Submit your vote</li></UL></P><P>Thank you for voting.</td></tr><tr></TABLE></center>");
+
+fmart ("Prez Sez","Dan Martinez","","<center><TABLE width='90%'><tr><td valign='top'>Greetings, fellow members. I hope that you're all enjoying the brief period between the gray chill and the dry summer heat as much as I am.</P><P>March's meeting presentation will be all about plant tissue culture from an expert in the subject: Dr. Justin Tanner. If you've ever wanted to know how to propagate a rare plant that won't pup or seed, be sure to join the Zoom meeting:</P><P><a href='https://us02web.zoom.us/j/85448417687?pwd=a2F3YXhtVlljZGpPbG9pV2Z0K01Ldz09' target='_blank'>https://us02web.zoom.us/j/85448417687?pwd=a2F3YXhtVlljZGpPbG9pV2Z0K01Ldz09</a></P><P>In other news, the vote for the future board is now online. (Thanks to Judi Ganschow for assembling it.) You can cast your vote here:</P><P><a href='https://forms.gle/LZQKJ3WmwJsVpcpEA' target='_blank'>https://forms.gle/LZQKJ3WmwJsVpcpEA</a></P><P>Please note that casting your vote will entitle you to $25 of showbucks, usable at future Show &amp; Sale events. (We still hope that the next one will take place in the fall; we'll keep you posted as the situation evolves.)</P><P>Speaking of which, we're still looking for someone to handle club insurance, as well as for someone to become the Membership chair. Please contact <a href='mailto:president@csssj.org'>president@csssj.org</a> if you have any interest in those roles, or would like to learn more about them.</td></tr></TABLE></center>");
+
+fmart ("CSSA Webinar: The Splendor of Orchid Cacti","Gunnar Eisel","","<center><TABLE width='90%'><tr><td valign='top'><B>Saturday, March 6th at 10:00 a.m. PST<br>The Splendor of Orchid Cacti</B></P><P>To register for the webinar in advance, click:<br><a href='https://us02web.zoom.us/webinar/register/WN_Wpq10sw-SUmpgfQHJgB04A' target='_blank'>https://us02web.zoom.us/webinar/register/WN_Wpq10sw-SUmpgfQHJgB04A</a><br>After registering, you will receive a confirmation email.</P><P><B>Program:</B> With over 7,000 registered names, Epiphytic cactus hybrids, commonly known as Epiphyllums, Orchid Cacti, or Epis for short, have been a fascinating and growing hobby for many years. Join us as we explore this wonderful evolving world. See the latest advances and trends, and get cultural tips from one of the world experts in the field.<br></P><P><B>Biography:</B> Frank Süpplie's parents were already collecting Epiphyllum hybrids, when Frank was a little boy. At the age of 6, he came in contact with many, now famous, Epiphyllum growers such as Walther Haage, Kurt Petersen, and many more. At the age of 15, he wrote his first article about an Epiphyllum for the Dutch cactus society. Frank has written more than 300 articles and books about epiphytic cacti hybrids. He is a prolific grower of new hybrids and has made some stunning crosses. Due to his never ending work with these plants and his worldwide contacts, his collection has thousands of different hybrids.</P><P>Frank resides in Nijmegen, Netherlands and is member of several cactus societies. He has won international awards with many of his plants.</td></tr></TABLE></center>");
+
+fmart ("CSSA Affiliate Rep Wanted","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>The Affiliate Representative serves on the Board of Directors as a voting position and acts as the liaison between our club and the Cactus and Succulent Society of America (CSSA). Please contact Kathi at <a href='mailto:sjcactussucculent@gmail.com?Subject=CSSA%20Affiliate%20Rep'>sjcactussucculent@gmail.com</a> for a detailed description of the position. Thank you for your consideration!</td></tr><tr></TABLE></center>");
+
+fmart ("Growers Garden","Elton Roberts","","<center><TABLE width='90%'><tr><td valign='top'>Blooming Out of Season</P><P>I got my first Ariocarpus around 50 years ago. I am sure it was an <I>Ariocarpus fissuratus</I>, as they were easy to get for people were going to Texas and digging them about any place. They found them even in Big Bend National Park. Some people were also going to Mexico and bringing back pickup loads of the plants. I was at one nursery, I think it was in Arizona many years ago, and there were <I>A. fissuratus</I> in a bin that was about five feet wide, and the plants were about three feet deep. They looked like they were dumped from a tractor front end loader or skip loader. Not only was there a bin of <I>A. fissuratus</I>, but there were bins of all kinds of cactus plants. If I had to guess the number of plants in the one bin of <I>Ariocarpus fissuratus</I>, I would have to figure there was at least five hundred to a thousand. Some of the bins were full and over flowing with plants, and other bins were like the one with the <I>A. fissuratus</I> in it; only part full. There were hundreds of bins. I did not buy a single plant that I remember, for you had to buy a whole lot as it was wholesale. They were quite cheap per plant, but you had to buy a lot of each plant. I told a guy that, like me, liked growing cactus, and he went down to the nursery and got plants. He called me up. When I got to his place, he had two burlap bags each half full of <I>Mammillaria candida</I>. I helped him pot all those plants. At the time, he had a larger hothouse than I had. He worked in construction and so was hardly home except late in the evening and on Sunday. One day I stopped by, and his wife said I could go look around in the hothouse. All the plants needed a watering and really bad, some were about dead. I took pity on the plants and watered all of them. I stopped in again in about another year and looked at the plants. I had to leave, for just about every plant in the hothouse was dead. That included all the <I>Mammillaria candida</I>.</P><P>Any one that grows Ariocarpus knows that they can expect to see flowers from about mid-September to maybe mid-December. Most books that I have paid any attention to point out that the plants bloom in the fall. Like Andersons book, &quot;The Cactus Family&quot;, says on page 109; &quot;All six species of Ariocarpus (type, <I>A. retusus</I>) flower in the fall.&quot; Del Weniger, in his book, &quot;Cacti of Texas and Neighboring States&quot;, writes; &quot;The members of this genus are unusual among cacti of our area, because they flower in the fall of the year, usually from September to December.&quot; Pilbeam in his book, &quot;Ariocarpus et cetera&quot;, writes on page 14; &quot;The blooms which are produced in the autumn....&quot;</td></tr><tr><td valign='top'><a href=javascript:poppic('1ariocarpusretususb.jpg',1011,725)><img src='1ariocarpusretususb.jpg' width=303 height=218 hspace=17 vspace=7 align='left' class='enl'></a>In all cactus and succulent societies meetings I attended, any one that spoke about Ariocarpus would always say that the plants flower only in the fall. This is April 3rd of 2020, and I was watering and saw something that looked strange on one of the plants. I turned off the water and looked, and, low and behold, there was a large bud on a plant of Ariocarpus, I believe to be <I>A. retusus</I> (see photo to the left.) I had been noticing that many of the plants have wool growing in the center of the plant, but was I surprised to see a good-sized bud. These are plants that I call seedling plants, but they are larger than seedling. They range in size from about 5 cm to as large as 9 cm in diameter. I have seen people selling plants about this size at sales. The plant with the bud is 6.5 cm across; the pot is a 3.25-inch (8.3 cm), rose pot. With the tap roots, the plants need a rose pot. (Rose pot means it is deeper than other pots that size.) To me, the plant does not look like it is large enough to flower, but there is the bud. I was across the hothouse from the large old Ariocarpus and happened to look across the house about 20 feet away. I thought I saw a small patch of magenta over there, so I put the hose down and made my way across the house, and, sure enough, there was a small patch of magenta.</td></tr><tr><td valign='top'><a href=javascript:poppic('2ariocarpusagavoidesb.jpg',1011,725)><img src='2ariocarpusagavoidesb.jpg' width=303 height=218 hspace=17 vspace=7 align='right' class='enl'></a><br>The plant in the photo above is looking like it is an <I>A. retusus</I>. The second plant I saw is <I>Ariocarpus agavoides</I> (see photo to the right.) That was really surprising to me that two very different plants would be blooming out of season. I looked up and down the row of <I>A. agavoides</I>, and not another plant had even a bud on it. Why this one? Then I looked down the bench, and there was a light-yellow flower on a large <I>A. trigonus</I> (photo below left.) Three Ariocarpus blooming out of season is something I did not expect. I went to the <I>A. trigonus</I> and leaned over to smell the flower, and, as I did not detect any odor, I started to stand up and right under my chin was an <I>Ariocarpus retusus</I> with ash grey tubercles, and there was a snow white flower in the middle of it (see photo below right.) Now I was wondering what was going on, and so I inspected all the plants, and these four plants are the only ones that I could see that have buds or flowers on them and that being out of season. If it had been four of all one variety of plant, I would wonder some, but since it is three different species of Ariocarpus, it really makes me wonder why they are blooming out of season. In all my eons of growing the plants, I have never had any Ariocarpus blooming out of season, and then to have three different species to open flowers at the same time; well I figure I have seen it all now! But I still have to wonder why three different species of the plants are blooming out of season.</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('3ariocarpustrigonusb.jpg',1011,725)><img src='3ariocarpustrigonusb.jpg' width=303 height=218 hspace=27 vspace=7 class='enl'></a><a href=javascript:poppic('4ariocarpusretususb.jpg',1011,725)><img src='4ariocarpusretususb.jpg' width=303 height=218 hspace=27 vspace=7 class='enl'></a></td></tr><tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td align="center">
+Contact our president, Dan Martinez, at <a href='mailto:president@csssj.org'>president@csssj.org </a>.<br><br>
+If you would like a membership badge, contact Membership Chair at <a href="mailto:sjcactussucculent@gmail.com?Subject=Membership%20Badge">sjcactussucculent@gmail.com</a>.</td>
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
