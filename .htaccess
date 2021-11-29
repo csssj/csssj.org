@@ -28,3 +28,5 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
 Redirect /zoom/board https://us02web.zoom.us/j/83550445559?pwd=M0llTWxTSFl5K1NiK1A3L1ovUHBoZz09
 Redirect /zoom/general https://us02web.zoom.us/j/81770647195?pwd=eHhUdExPVVVYaVptczBpRjFTbFphdz09
+
+Redirect /forms/membership https://docs.google.com/forms/d/e/1FAIpQLSejJWEjoj1cxd4Zb3RjVd6And2yWJ64GJ1fm1MXR0GG0VtkKQ/viewform
