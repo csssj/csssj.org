@@ -1,0 +1,415 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 5/1/2022">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 5/1/2022</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "May";
+var thisday = "1";
+var thisyear = "2022";
+var nextmonth = "June";
+var nextday = "5";
+var nextyear = "2022";
+var deadline = "May 27, 2022";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+}
+.thickhr {
+  border: none;
+  height: 4px;
+  background: black;
+}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<!-- <center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center> -->
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("May 2022","1, Sunday - 11:00am to &tilde;12:00pm","Tour of UC Santa Cruz Arboretum","","","","");
+
+// document.write("<center><a href=javascript:poppic('pruschpark3.gif',1000,760)><img src='pruschpark3.gif' width=400 height=304 hspace=11 vspace=7 class='enl'></a></center>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2021","18 Sat - 9:00am to 5:00pm<br>19 Sun - 9:00am to 4:00pm","<B>Monterey Bay Area Cactus &amp; Succulent Society Show &amp; Sale</B><br>Portuguese Community Hall<br>124 Atkinson Lane, Watsonville, CA.<br> <a href='http://mbsucculent.org/wp-content/uploads/2021/09/Fall_2021_Flyer_V6-2.pdf' target='_blank'>http://mbsucculent.org/wp-content/uploads/2021/09/Fall_2021_Flyer_V6-2.pdf</a>","","");
+
+document.write("<br><br>");
+
+document.write("<br><P><center><font size='+2'><B>Last chance to share an image for our online<br>Virtual Show and Tell</B></font></center></P><P>Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font></P><P>You can email your image to: <a href='mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell'>sjcactussucculent@gmail.com</a></P><P><a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a></P>");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Tour of UC Santa Cruz Arboretum</B>
+</P>
+<P>
+<center><a href=javascript:poppic('ucsca.gif',764,1000)><img src='ucsca.gif' width=267 height=350 hspace=7 vspace=7 align='right' class='enl'></a></center>
+Our May Meeting and program will be a guided private tour of the UC Santa Cruz Arboretum by renowned Dudleya expert Stephen McCabe. Stephen has worked at the Arboretum for 30 years and still takes care of a good number of Dudleya there since his retirement. It will indeed be a special treat to have him lead our group on this tour! 
+</P>
+<P>
+Plan on meeting in visitor parking near the South African Area, and we will begin the tour at 11:00 am. The tour will last approximately one hour. If you’d like to download or print out a visitor guide before your visit:<br>
+<center><a href='https://arboretum.ucsc.edu/visit/garden-map/2019map2page.pdf' target='_blank'>https://arboretum.ucsc.edu/visit/garden-map/2019map2page.pdf</a></center>
+</P>
+<P>
+Their web site is located at: <a href='https://arboretum.ucsc.edu/' target='_blank'>https://arboretum.ucsc.edu/</a>
+</P>
+<P>
+General admission and guided-tour fees will be covered by the club for CSSSJ members. During our guided tour, we are asking that participants wear a mask. Please RSVP, so we may get an accurate head count, by April 30 via email <a href='mailto:sjcactussucculent@gmail.com?Subject=Arboretum%20Tour'>sjcactussucculent@gmail.com</a>
+</P>
+<P>
+Plan ahead for potential &quot;beach traffic&quot; and allow for extra drive time.  
+</P>
+<P>
+Before you leave the Arboretum, you may want to visit Norrie’s Gift Shop for plants or gifts. If you’d like to make a day of it, here are some great places &quot;over the hill&quot; to explore:
+</P>
+<P>
+<center>
+	Dig Garden, 420 Water St, Santa Cruz, <a href='https://www.diggardens.com' target='_blank'>https://www.diggardens.com</a><br>
+	The Garden Company, 2218 Mission St, Santa Cruz, <a href='http://thegardenco.com' target='_blank'>http://thegardenco.com</a><br>
+	Dig Garden, 7765 Soquel Dr, Aptos, <a href='https://www.diggardens.com' target='_blank'>https://www.diggardens.com</a><br>
+	Pottery Planet, 2600 Soquel Ave, Santa Cruz, <a href='https://www.potteryplanet.com' target='_blank'>https://www.potteryplanet.com</a><br>
+	Sierra Azul, 2660 E. Lake Ave, Watsonville, <a href='https://sierraazul.com' target='_blank'>https://sierraazul.com</a><br>
+	Navarro’s Mixed Nursery, 1700 Watsonville Rd, Castroville, (831) 809-2302<br>
+	*Succulent Gardens*, 2133 Elkhorn Rd, Castroville, <a href='https://sgplants.com' target='_blank'>https://sgplants.com</a>
+</P>
+<P>
+*Closes at 3 pm
+</center>			
+</P>
+<br>
+<br>
+<br>
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red spined cactus</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Red succulent</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Grafted cactus (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1><I>Kalenchoe</I></font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@csssj.org">editor@csssj.org</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez","Kathi Cambiano","Allen Krever","<center><TABLE width='90%'><tr><td valign='top'>It was wonderful to see everyone at our April meeting, our first in person one in such a very long time! We had some time to get reacquainted and swap some plants. I believe that a good time was had by all!</P><P><center><a href=javascript:poppic('prezsez2205.jpg',1410,992)><img src='prezsez2205.jpg' width=494 height=347 hspace=11 vspace=7 class='enl'></a></center></P><P>We did a technical check before the meeting to see whether we’d be able to run a zoom meeting in the future in addition to our in person meetings. Unfortunately, the internet capability at the park won’t accommodate that. Should a workaround present itself in the future, we’ll keep you posted. </P><P>As we ease back into our regular meetings, I’d like to remind you of some of the ways you can contribute to the club as a member:<center><TABLE><tr><td nowrap align='top'>Membership Chair<br>Membership Host<br>Website Designer<br>Publicity<br>Venue Manager</td><td nowrap> &nbsp; &nbsp; &nbsp; </td><td nowrap align='top'>Cleanup Crew<br>Program Chair<br>Mini Show Helper<br>Associate Board Member<br>Community Outreach</td></tr></TABLE></center></P><P>Our ‘Virtual Show and Tell&quot; will end at the of May 2022 as we transition back into our regular Monthly Mini Shows. We thank everyone who has contributed to the album, and welcome any final entries this month.</P><P><img src='kathi.gif' width=196 length=104 align='right' vspace=11></td></tr></TABLE></center>");
+
+fmart ("Free Aloe Cuttings","","","<center><TABLE width='90%'><tr><td valign='top'>We are giving away free Aloe Cuttings.  The plant is too large to be moved because of its weight and is 20 years old.  We are removing it to make way for a new Vegetable Garden. The cuttings will grow well if you put them in a pot with some well-drained soil.  We have stared several new plants of our own using this method.  Cuttings must be picked up in North Fremont-Union City.  Cuttings will be bagged and labeled with your name attached.</P><P>Please indicate the number of cuttings you would like to receive and date you would like to pick them up, allowing a day to prepare them for pick-up.  Cuttings range in size from five inches to 14 inches across.  We will send back a confirming email with the pick-up location.  <br>Contact:  <a href='mailto:plantbasura+0601@gmail.com?Subject=Free%20Aloe'>plantbasura+0601@gmail.com</a></P><P><center><a href=javascript:poppic('aloe2205a.jpg',840,794)><img src='aloe2205a.jpg' width=294 height=278 hspace=21 vspace=7 class='enl'></a><a href=javascript:poppic('aloe2205b.jpg',863,799)><img src='aloe2205b.jpg' width=302 height=280 hspace=21 vspace=7 class='enl'></a></center></td></tr></TABLE></center>");
+
+fmart ("CSSA Webinar: Ernst van Jaarsveld: <I>The Succulent Collection of Babylonstoren Farm</I>","Gunnar Eisel","","<center><TABLE width='90%'><tr><td valign='top'>Join us Saturday, April 30th at 10:00 a.m. PDT for the next in our series of webinars featuring Cactus and Succulent experts from around the world.</P><P><B>Ernst van Jaarsveld: <I>The Succulent Collection of Babylonstoren Farm</I><br></B><br>Registration link:<br><a href='https://us02web.zoom.us/webinar/register/WN_5ON7eir4SKuE4Nf_GxbBIw' target='_blank'>https://us02web.zoom.us/webinar/register/WN_5ON7eir4SKuE4Nf_GxbBIw</a><br><br></td></tr><tr><td valign='top'><a href=javascript:poppic('ernst2022.jpg',800,836)><img src='ernst2022.jpg' width=400 height=418 hspace=11 vspace=7 align='left' class='enl'></a><B>Program:</B> <I>The Succulent Collection of Babylonstoren Farm</I> is situated near Paarl in the Western Cape. It has a Mediterranean type climate with long dry summers. The succulent section on this farm was started 6 years ago and consists of  several rockeries, biomes garden, succulent house and a newly added outdoor Welwitschia garden where plants from the Namib are grown (from seed). This garden is focused mainly on succulents from southern Africa and is run like a botanical garden using the IRIS accessioning system.</P><P><B>Short Bio: Ernst van Jaarsveld<br></B>Born in Johannesburg, Gauteng, SA in 1953, Ernst van Jaarsveld matriculated from Linden High School, Technikon, with a National Diploma in Horticulture in (1975). MSC, the Natal University (1990, plant systematics). He received a PhD from the University of Pretoria (Gauteng, 2012).</P><P>Ernst was employed by the South African National Biodiversity Institute from 1974 to 2015.  As a horticulturist, he curated the succulent section at Kirstenbosch National Botanical Gardens. After retirement, he has taken full-time work on the Babylonstoren Farm, near Paarl, and is involved in building a succulent collection.</P><P>He is author of more than 200 articles (popular, semi-scientific and scientific) and several books: <I>A Revision of the Genus Gasteria</I> (1994), <I>Wonderful Waterwise Gardening</I> (2000), <I>Succulents of South Africa, A Guide to Their Regional Diversity</I> (co- authors Ben-Eric van Wyk and Gideon Smith, (2000), <I> Vygies, Gems of the Veld</I> (2000), <I>Cotyledon and Tylecodon Handbook</I> (2004, co-author Dr Daryl Koutnik), and <I>The Southern African Plectranthus and the Art of Turning Shade to Glade</I> (2006).</P><P>He and Uschi Pond produced a coffee-table book on Welwitschia mirablis  in 2013 to commemorate the 100th birthday of Kirstenbosch Botanical Garden. He has also authored <I>Tree Aloes of the World</I> (2015).  Ernst is a fellow of the Cactus and Succulent Society of America.</P><P>He regularly contributes to PlantzAfrica website and has written articles on all species of Gasteria for that publication. At his new workplace, he contributes  to the Candide Gardening app., and  does many workshops on succulents, water-wise gardening, and related topics.</td></tr></TABLE></center>");
+
+fmart ("Sacramento Cactus &amp; Succulent Society Sale &amp; Exhibition","","","<center><TABLE width='90%'><tr><td valign='top' align='center' colspan=3><B><font size='+2' color='#737D28'>Cactus &amp; Succulent<br>2022 Plant Sale &amp; Exhibition</font></B><br>Free Admission<br><br></td></tr><tr><td valign='top' align='center'><TABLE border=1><tr><td><img src='scss2205.jpg' width=299 height=388></td></tr></TABLE></td><td valign='top' align='center'><B><font size='+1'>May 6, Friday<br>1PM-6PM</P><P>May 7, Saturday<br>9AM-6PM</P><P>May 8, Sunday<br>9AM-4PM</B></font></P><P><br>9:00am to 4:00pm</P><P>Shepard Garden &amp; Arts Center<br></font>3330 McKinley Blvd<br>Sacramento, CA, 95816</P><P><a href='http://www.sacramentocss.com' target='_blank'>www.sacramentocss.com</a><br><font size='-1'>Masks and socvial distancing encouraged</font></B></center></td><td valign='top' align='center'><TABLE border=1><tr><td><img src='scss2205.jpg' width=299 height=388></td></tr></TABLE></td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td>
+<B>Contact us:</B><br>
+President: Kathi Cambiano, at <a href='mailto:president@csssj.org?Subject=CSSSJ'>president@csssj.org </a><br>
+Newsletter Editor: Rich Kroll, <a href='mailto:editor@csssj.org?Subject=CSSSJ%20newsletter'>editor@csssj.org</a><br>
+Website: Dan Martinez, <a href='mailto:webmaster@csssj.org?Subject=CSSSA%20website'>webmaster@csssj.org</a><br>
+Programming: Kathi Cambiano, at <a href='mailto:president@csssj.org?Subject=CSSSJ'>president@csssj.org </a><br>
+General questions/membership badges: <a href="mailto:sjcactussucculent@gmail.com?Subject=Membership">sjcactussucculent@gmail.com</a></td>
+
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
