@@ -1,0 +1,474 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 10/2/2022">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/2/2022</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "2";
+var thisyear = "2022";
+var nextmonth = "November";
+var nextday = "6";
+var nextyear = "2022";
+var deadline = "October 28, 2022";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+}
+.thickhr {
+  border: none;
+  height: 4px;
+  background: black;
+}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<!-- <center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center> -->
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("October 2022","2, Sunday - 10:30am to 12:00pm","Board Meeting","2, Sunday - 12:30pm to 3:00pm","Evolution of a Dry Garden<br>(lessons from a trial and error gardener)","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2022","6, Sunday - 10:30am to 12:00pm","Board Meeting","6, Sunday - 12:30pm to 3:00pm","Stephen McCabe: Dudleyas","","","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2022","4, Sunday - 9:30am to 4:00pm","Holiday Party","","","","","","");
+
+// document.write("<center><a href=javascript:poppic('pruschpark3.gif',1000,760)><img src='pruschpark3.gif' width=400 height=304 hspace=11 vspace=7 class='enl'></a></center>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("September 2022","16, Friday - 17, Saturday - 18, Sunday","<B>Monterey Bay Area Cactus and Succulent Society Show and Sale<br></B><a href='http://mbsucculent.org' target='_blank'>http://mbsucculent.org</a>","",""); 
+
+document.write("<br><br>");
+
+// document.write("<br><P><center><font size='+2'><B>Last chance to share an image for our online<br>Virtual Show and Tell</B></font></center></P><P>Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font></P><P>You can email your image to: <a href='mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell'>sjcactussucculent@gmail.com</a></P><P><a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a></P>");
+
+// document.write("<br><br><P><center><TABLE border=7 bordercolor='#FF3333' cellpadding=17 width='60%'><tr><td align='center'><B>The meeting will be held in the Meeting Hall</B><br><br><a href='pruschpark3.gif' target='blank'> <img src='map.gif' width=135 height=73 border=0 hspace=23><br>map</a></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+</SCRIPT>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Evolution of a Dry Garden<br>(lessons from a trial and error gardener)</B><br>
+<br>
+<P>
+After moving back into her family home in 2006, Kathi made it a priority to get rid of the lawn and replace it with a drought tolerant alternative.  Her Southwest style courtyard garden was designed by California Nativescapes. It is composed of cacti, succulents, and native plants as well as a wealth of recycled and found materials. She began with the front yard in the Fall of 2007, followed by the backyard in 2011/12. She will go over the process that she went through, tools, plants, and changes to the garden.
+</P>
+<P>
+<center><a href=javascript:poppic('kathigarden01.jpg',1096,877)><img src='kathigarden01.jpg' width=548 height=438 hspace=17 vspace=17 class='enl'></a></center>
+</P>
+<P>
+She will also have materials available regarding the Valley Water Landscape Rebate Program at the meeting.
+</P>
+<br>
+<P>
+<B><font color="red" size="+1">COVID precautions: </font> <font size="-1">Masks are encouraged, but optional for our meetings.</font></B>
+</P>
+<br>
+
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>New acquisition from club sale</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>New acquisition from club sale</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Agaves (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Something blooming</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+
+<!-- 
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>There will be no Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The March meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@csssj.org">editor@csssj.org</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>I hope everyone had an opportunity to come out to Peterson over the weekend and enjoy being among friends and plants once more. It takes a dedicated group of people to organize our twice yearly events. The more people that help out, the smoother it goes. I’d like to thank everyone who volunteered their time, especially those who spent entire days or the whole weekend with us. I appreciate all you! </P><P>I was informed by our scheduled speaker Stephen Lysaght that he had a family commitment that will make him unavailable. Since the topic he was going to speak about is literally close to home for me, I will be doing the presentation instead.</P><P><img src='kathi.gif' width=196 length=104 align='right' vspace=11></td></tr></TABLE></center>");
+
+fmart ("Nominating Committee Needed","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>The Board is seeking club members to serve on a Nominating Committee to form the slate of officers for the next term. If you are able to serve in this capacity, please reach out to one of our Board members.</td></tr></TABLE></center>");
+
+fmart ("Sale Overview","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Thanks to Peter Beiersdorfer’s always great planning, we were able to have wider aisles to have more space for visitors to have space to move comfortably and safely. We had ample registers and cashiers to handle the sales. In fact I didn’t see any lines to speak of during the entire weekend, except for one minor hiccup; and I am very grateful to Dan for fixing that issue quickly and calmly. For the first time ever, we had plenty of boxes and stuffing to meet our needs and we didn’t have to go scrounging for boxes mid-sale! That is due to everyone’s collective effort and it was a huge success.</P><P>This was the first time that we tried an early access to Society members on Friday night. My goal is to have the membership set up in such a way that we have the framework and volunteers to accommodate signups on site during the early access times at the Spring sale. Tyler Carson provided valuable information via his demos on both days, &quot;Seed Starting 101.&quot; We look forward to doing this again in the Spring, stay tuned for updates as soon as we have them locked down.</td></tr></TABLE></center>");
+
+fmart ("Show Display at Peterson","Roger Lane","Kathi Cambiano","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('2022fall03.jpg',1089,816)><img src='2022fall03.jpg' width=435 height=326 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'><a href=javascript:poppic('2022fall01.jpg',778,988)><img src='2022fall01.jpg' width=233 height=296 hspace=17 vspace=17 class='enl' align='left'></a><a href=javascript:poppic('2022fall02.jpg',792,990)><img src='2022fall02.jpg' width=238 height=297 hspace=17 vspace=17 class='enl' align='right'></a><br>Since this Fall sale was the first sale the CSSSJ has had since the pandemic, the board decided not to have the regular Fall show. Instead, each vendor was required to bring one show plant that would be displayed on the stage. Some society members brought show plants to supplement those of the vendors. Annie Wolf and Tyler Carson arranged the plants on the stage. They were presented on two levels: on the stage floor and a raised level in the rear. Black cloth which blended with the stage curtain was used to highlight the plants. For each plant an index card identified the plant name, where it grows, and who brought in the plant. There were 54 plants not including the large group of Haworthia hybrids that George Theodoris provided. The selection of plants was diverse and beautiful. A big THANK YOU to all of you who contributed to a wonderful display!</td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('2022fall04.jpg',798,969)><img src='2022fall04.jpg' width=239 height=291 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('2022fall05.jpg',848,993)><img src='2022fall05.jpg' width=254 height=298 hspace=17 vspace=17 class='enl'></a><a href=javascript:poppic('2022fall06.jpg',635,986)><img src='2022fall06.jpg' width=190 height=296 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top' align='center'><a href=javascript:poppic('2022fall07.jpg',1073,700)><img src='2022fall07.jpg' width=322 height=210 hspace=17 vspace=17 class='enl'></a></td></tr></TABLE></center>");
+
+fmart ("Membership Signup/Renewal","","","<center><TABLE width='90%'><tr><td valign='top'>Club membership is $15 for an individual, and $20 per household. (&quot;Household&quot; is defined as &quot;living at the same address&quot;: families, couples, roommates, etc.). You can sign up or renew at our monthly meetings.</P><P><center><TABLE width='50%' border=4 bordercolor='#000099' cellpadding=9><tr><td align='center'><font color='#CC0000'><B>Beat the end of the year rush!</B></font><br>Renew now at the full rate ($15 or $20) and your membership will be extended through 2023</td></tr></TABLE></center></td></tr></TABLE></center>");
+
+fmart ("Volunteers Needed","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>As our membership continues to grow, it is vital that our leadership grows as well. Leaning heavily on the same few people is not a long term solution. In the words of the great cactus guru, Woody Minich, &quot;Its all about the young people, you are our future.&quot;</P><P>Please consider how you can give back to our volunteer driven organization. Here are just a few of the opportunities that are open. The ones with an asterisk are more critical:</P><P><center><TABLE><tr><td valign='top' align='center' bgcolor='#000066'><font color='#FFFF00'><B>Priority Need</B></font></td><td nowrap> &nbsp; &nbsp; &nbsp; </td><td valign='top' align='center' bgcolor='#000066'><font color='#FFFF00'><B>Secondary Need</B></font></td></tr><tr><td valign='top'>Associate Director<br>Membership Assistant<br>Social Media<br>Photographer</td><td nowrap> &nbsp; &nbsp; &nbsp; </td><td valign='top'>Cleanup Crew<br>Website Designer<br>Community Outreach<br>Publicity</td></tr></TABLE></center></td></tr></TABLE></center>");
+
+fmart ("Social Group for CSSSJ on Facebook","Andrew Hazlett","","<center><TABLE width='90%'><tr><td valign='top' align='center'><a href=javascript:poppic('facebookgroup.jpg',1009,576)><img src='facebookgroup.jpg' width=504 height=288 hspace=17 vspace=17 class='enl'></a></td></tr><tr><td valign='top'>The society has rolled out a Facebook group for socializing online about cactus and succulents. The group has reached 150 members and is growing. The group is meant to be an easy way for members and the community to share, ask questions and easily reach many people in our group between our monthly meetings. The South Bay has a unique climate and local plant knowledge can be helpful. </P><P>Come join the discussion, share knowledge and show off your plants. This is the link to the Facebook group:</P><P><a href='http://facebook.com/groups/sjcactus' target='_blank'>facebook.com/groups/sjcactus</a></td></tr></TABLE></center>");
+ 
+fmart ("Holiday Party","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Sunday Dec 4, 2022: Plan ahead for our Holiday Party. It will be held at Prusch Park, not at the Meeting Hall, but in the Multi-Cultural Center or MCC. When you turn into the park from King Road, you drive by the MCC aka “the Barn” on your left. If you would like to be part of the planning for this event, please reach out!</td></tr></TABLE></center></td></tr></TABLE></center>");
+
+fmart ("Thanks","Kathi Cambiano","","<center><TABLE width='90%'><tr><td>Thank you to Tanya Wieber for graciously agreeing to store the club signage. With the signs and boxes I had been saving for the sale gone, my garage actually has some space now!</P><P>We are most grateful to Allan Krever for providing such wonderful photographs of our mini show entries during his time as our club photographer. Unfortunately, he will need to take a break.</td></tr></TABLE></center>");
+
+fmart ("CSSA Webinar: A glimpse of the Natural beauty of Chiapas","Gunnar Eisel","","<center><TABLE width='90%'><tr><td><a href=javascript:poppic('cssa2210a.jpg',1097,919)><img src='cssa2210a.jpg' width=329 height=276 hspace=17 vspace=17 class='enl' align='right'></a>Join us Saturday, October 1st at 10:00 a.m. PDT for the next in our series of webinars<br>featuring Cactus and Succulent experts from around the world.</P><P>Julia Etter and Martin Kristen: A glimpse of the Natural beauty of Chiapas</P><P>Registration link: <a href='https://us02web.zoom.us/webinar/register/WN_bF8VqvPFT3WMCRcaGXbIMQ' target='_blank'>https://us02web.zoom.us/webinar/register/WN_bF8VqvPFT3WMCRcaGXbIMQ</a></P><P><B>Program:</B> A glimpse of the Natural beauty of Chiapas We’ll be taking you on a sightseeing tour to many localities of Agaves and Crassulaceae in the southeastern-most corner of Mexico, mainly in the state of Chiapas. As always it’s not only about Agaves and Echeverias, but we’d like to encourage people to get further south than Oaxaca and explore the beauty of Chiapas, a state that has it all: fabulous plants, wildlife, hidden archaeological sites, spectacular landscapes, and colorful towns and villages.</td></tr><tr><td valign='top'><a href=javascript:poppic('cssa2210b.jpg',1101,646)><img src='cssa2210b.jpg' width=330 height=194 hspace=17 vspace=17 class='enl' align='left'></a><B>Bios:</B> Julia Etter and Martin Kristen Originally from Switzerland and Austria, Julia and Martin have focused on the Agavaceae and Crassulaceae since 1989, which led to extensive field research starting in 1997. For several years they lived in their Unimog expedition vehicle PocoLoco, travelling through the US and Mexico taking pictures of and studying Crassulaceae and Agavaceae. They relocated to Jalisco, Mexico, almost 20 years ago and are now (practically) Mexican. They are busy tending to the plants in their garden and greenhouse, caring for a large flock of chickens and seven cats, and of course trying to get into the field as much as possible.</P><P>Since 2009 they have been working together with botanists of the Institute of Biology of the Mexican university UNAM and the University of Guadalajara.</P><P><I>Agave kristenii</I>, <I>Echeveria juliana</I>, <I>E. kristenii</I>, <I>Graptopetalum kristenii</I>, and <I>Sedum kristenii</I> are named in their honor. Their photographs and articles have been published widely in books and journals, and on the internet. More info can be found on their websites at <a href='https://globetrotters.ch' target='_blank'>globetrotters.ch</a>, <a href='https://agavaceae.com' target='_blank'>agavaceae.com</a>, and <a href='https://crassulaceae.com' target='_blank'>crassulaceae.com</a>.</td></tr></TABLE></center>");
+
+document.write("<center><TABLE width='90%'><tr><td valign='top'><P><center><B class='arthead'>Mini Show Standings</B></center></P><P><B>Standings as of September 2022:</B></P><P><center><font size='-1'>(Note that this includes January's numbers from 2020.)</font><br><TABLE width='80%' cellspacing=23><tr><td valign='top' width='30%'>");
+
+fminiadd ("Cecilia Caday",25);
+fminiadd ("Kathi Cambiano",85);
+fminiadd ("Tyler Carson",31);
+fminiadd ("Bryan Fan",25);
+fminiadd ("Joseph Hildago",15); 
+fminiadd ("Marilyn Hofman",18);
+fminiadd ("Terri Koike",25);
+// fminiadd ("JoAn Lambert",21);
+// fminiadd ("Jaan Lepson",10);
+// fminiadd ("Susan McKuhen",20);
+fminiadd ("Loyd Monaco",33);
+// fminiadd ("Janet Stevenson",0);
+fminiadd ("Ellen Stubblefield",18);
+fminiadd ("Gary Stubblefield",13);
+// fminiadd ("Jacky Wilk",2);
+fmini ("Advanced");
+
+document.write("</td><td valign='top' width='30%'>");
+
+fminiadd ("Svetlana Bellam",25);
+// fminiadd ("Harley Barber",0);
+fminiadd ("Bobbi Bornstein",28);
+// fminiadd ("Manuela Burge",24);
+fminiadd ("Richard Cox",2);
+fminiadd ("Judianne Ganschow",75);
+fminiadd ("Andrew Hazlett",27); 
+fminiadd ("Huda",7); 
+fminiadd ("Vickie Jackson",25);
+fminiadd ("Allen Krever",63);
+fminiadd ("Annie Lau",7);
+fminiadd ("Bill Lemke",25);
+// fminiadd ("Dan Martinez",4);
+// fminiadd ("Joyce McPheeters",83);
+fminiadd ("Monica Moran",51);
+fminiadd ("Thuy Tran",21);
+fminiadd ("Tanya Wieber",14);
+
+fmini ("Novice");
+
+document.write("</td></tr></TABLE></P><P><center>Total points for all classes:<B> " + minitots + "</B></center></center></P></td></tr></TABLE></center>");
+
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<map name='prez'>
+
+<area shape="rect" coords="0,0,220,222" class="enl" href=javascript:poppic('p2207a2.jpg',726,968)>
+<area shape="rect" coords="0,222,222,449" class="enl" href=javascript:poppic('p2207b2.jpg',720,960)>
+
+</map>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td>
+<B>Contact us:</B><br>
+President: Kathi Cambiano, at <a href='mailto:president@csssj.org?Subject=CSSSJ'>president@csssj.org </a><br>
+Newsletter Editor: Rich Kroll, <a href='mailto:editor@csssj.org?Subject=CSSSJ%20newsletter'>editor@csssj.org</a><br>
+Website: Dan Martinez, <a href='mailto:webmaster@csssj.org?Subject=CSSSA%20website'>webmaster@csssj.org</a><br>
+Programming: Kathi Cambiano, at <a href='mailto:president@csssj.org?Subject=CSSSJ'>president@csssj.org </a><br>
+General questions/membership badges: <a href="mailto:sjcactussucculent@gmail.com?Subject=Membership">sjcactussucculent@gmail.com</a></td>
+
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
