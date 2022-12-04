@@ -26,9 +26,11 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
+# Shortcuts to Zoom meetings.
 Redirect /zoom/board https://us02web.zoom.us/j/83550445559?pwd=M0llTWxTSFl5K1NiK1A3L1ovUHBoZz09
 Redirect /zoom/general https://us02web.zoom.us/j/81770647195?pwd=eHhUdExPVVVYaVptczBpRjFTbFphdz09
 
+# Redirects to the Square membership form.
 Redirect /members_corner/Secure/membership_form.html https://csssj-membership.square.site
 Redirect /welcome_visitors/membership_form.html https://csssj-membership.square.site
 
