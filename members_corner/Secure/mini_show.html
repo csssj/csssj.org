@@ -10,8 +10,8 @@
 //
 // Global variables
 //
-var eoy = "no";              // End of year flag
-var mstitle = "September 2022 Standings<br><font size='-1'>(Note that scores include January of 2020)</font>";  // Heading
+var eoy = "yes";              // End of year flag
+var mstitle = "Final 2022 Standings<br><font size='-1'>(Note that scores include January of 2020)</font>";  // Heading
 //
 var mnnm = new Array(10)     // Month names
 mnnm[1] = "January";
@@ -29,14 +29,20 @@ var minitot = 0;             // Mini show total
 var miniinf = new Array();   // array of participants
 var mnthtot = new Array(12); // Month totals array
 var eoy1st = 0;              // 1st place points
-var eoy1sti = 0;             // 1st place index
+var eoy1sti1 = -1;           // 1st place indices
+var eoylsti2 = -1;
 var eoy1stn = "";            // 1st place name
+var eoy1stp = 0;             // 1st place previous value
 var eoy2nd = 0;              // 2nd place points
-var eoy2ndi = 0;             // 2nd place index
+var eoy2ndi1 = -1;           // 2nd place indices
+var eoy2ndi2 = -1;
 var eoy2ndn = "";            // 2nd place name
+var eoy2ndp = 0;             // 2nd place previous value
 var eoy3rd = 0;              // 3rd place points
-var eoy3rdi = 0;             // 3rd place index
+var eoy3rdi1 = -1;           // 3rd place indices
+var eoy3rdi2 = -1;
 var eoy3rdn = "";            // 3rd place name
+var eoy3rdp = 0;             // 3rd place previous value
 //
 //
 function reset ()
@@ -61,14 +67,20 @@ mnthtot[11] = 0;
 // Reset end of year variables
 //
 eoy1st = 0;              // 1st place points
-eoy1sti = 0;             // 1st place index
+eoy1sti1 = -1;           // 1st place indices
+eoy1sti2 = -1;
 eoy1stn = "";            // 1st place name
+eoy1stp = 0;             // first place previous value
 eoy2nd = 0;              // 2nd place points
-eoy2ndi = 0;             // 2nd place index
+eoy2ndi1 = -1;           // 2nd place indices
+eoy2ndi2 = -1;
 eoy2ndn = "";            // 2nd place name
+eoy2ndp = 0;             // 2nd place previous value
 eoy3rd = 0;              // 3rd place points
-eoy3rdi = 0;             // 3rd place index
+eoy3rdi1 = -1;           // 3rd place indices
+eoy3rdi2 = -1;
 eoy3rdn = "";            // 3rd place name
+eoy3rdp = 0;             // 3rd place previous value
 };
 //
 function fminiadd (txt)
@@ -95,36 +107,70 @@ if (eoy == "yes")            // End of year format?
             {parsum = parsum + parseInt(txt.substring(stpos,txt.length));};
          stpos = txt.indexOf("#",ndpos)+1;  // find start of next points
       };
-   if (parsum > eoy1st)    // If high score so far
+   if (parsum >= eoy1st)    // If high score so far
       {
       eoy3rd = eoy2nd;     // move 2nd to 3rd
-      eoy3rdi = eoy2ndi;
+      eoy3rdi1 = eoy2ndi1;
+      eoy3rdi2 = eoy2ndi2;
       eoy3rdn = eoy2ndn;
       eoy2nd = eoy1st;     // move 1st to 2nd
-      eoy2ndi = eoy1sti;
+      eoy2ndi1 = eoy1sti1;
+      eoy2ndi2 = eoy1sti2;
       eoy2ndn = eoy1stn;
       eoy1st = parsum;     // Set high score
-      eoy1sti = minicnt-1; // Set high score subscript
-      eoy1stn = iname;     // Set high score name
+      if (parsum > eoy1stp)
+         {
+          eoy1sti1 = minicnt-1; // Set high score subscript
+          eoy1stn = iname;     // Set high score name
+          eoy1sti2 = -1;   // Reset tie index
+          eoy1stp = parsum;  // set past high value
+         }
+      else
+         {
+          eoy1sti2 = minicnt-1;
+          eoy1stn = eoy1stn + " and " + iname; // Set high score name
+         };
       }
    else
       {
-       if (parsum > eoy2nd)  // If second high score so far
+       if (parsum >= eoy2nd)  // If second high score so far
          {
          eoy3rd = eoy2nd;    // move 2nd to 3rd
-         eoy3rdi = eoy2ndi;
+         eoy3rdi1 = eoy2ndi1;
+         eoy3rdi2 = eoy2ndi2;
          eoy3rdn = eoy2ndn;
          eoy2nd = parsum;    // Set second high score
-         eoy2ndi = minicnt-1; // Set second high score subscript
-         eoy2ndn = iname;    // Set second high score name
+         if (parsum > eoy2ndp)
+            {
+             eoy2ndi1 = minicnt-1; // Set second high score subscript
+             eoy2ndn = iname;    // Set second high score name
+             eoy2ndi2 = -1;  // reset tie index
+             eoy2ndp = parsum;   // set past high value
+            }
+         else
+            {
+             eoy2ndi2 = minicnt-1;
+             eoy2ndn = eoy2ndn + " and " + iname; // Set 2nd high score name
+            };
+
          }
        else
           {
-           if (parsum > eoy3rd)  // If third high score so far
+           if (parsum >= eoy3rd)  // If third high score so far
               {
               eoy3rd = parsum;   // Set third high score
-              eoy3rdi = minicnt-1; // Set third high score subscript
-              eoy3rdn = iname;   // Set third high score name
+              if (parsum > eoy3rdp)
+                 {
+                  eoy3rdi1 = minicnt-1; // Set third high score subscript
+                  eoy3rdn = iname;   // Set third high score name
+                  eoy3rdi2 = -1;  // reset tie index
+                  eoy3rdp = parsum;  //set past high value
+                 }
+              else
+                 {
+                  eoy3rdi2 = minicnt-1;
+                  eoy3rdn = eoy3rdn + " and " + iname; // Set 3rd high score nm
+                 };
               };
           };
       };
@@ -178,11 +224,17 @@ for (var i = 0; i < minicnt; i++)
    var ndpos = txt.indexOf("#",stpos);  // Find end of name
    if (ndpos != -1)         // If found,
       {var iname = txt.substring(0,ndpos);  // Set name
-      if (eoy == "yes" && i == eoy1sti)
+      if (eoy == "yes" && i == eoy1sti1)
          {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
-      if (eoy == "yes" && i == eoy2ndi)
+      if (eoy == "yes" && i == eoy1sti2)
+         {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
+      if (eoy == "yes" && i == eoy2ndi1)
          {iname = "<font color='CC0000'><B>" + iname + "</B></font>";}
-      if (eoy == "yes" && i == eoy3rdi)
+      if (eoy == "yes" && i == eoy2ndi2)
+         {iname = "<font color='CC0000'><B>" + iname + "</B></font>";}
+      if (eoy == "yes" && i == eoy3rdi1)
+         {iname = "<font color='CCCC00'><B>" + iname + "</B></font>";}
+      if (eoy == "yes" && i == eoy3rdi2)
          {iname = "<font color='CCCC00'><B>" + iname + "</B></font>";}
       stpos = ndpos + 1;    // Set start of points array
       var mncnt = 0;        // Init month subscript to 0
@@ -336,13 +388,13 @@ reset ();
 //
 // fminiadd("Peter Beiersdorfer#0#0#0#0#0#0#0#0#0");
 fminiadd("Cecilia Caday#25#0#0#0#0#0#0#0#0");
-fminiadd("Kathi Cambiano#17#0#0#0#25#25#18#0#0");
+fminiadd("Kathi Cambiano#17#0#0#0#25#25#18#25#25");
 fminiadd("Tyler Carson#0#0#0#0#25#6#0#0#0");
 // fminiadd("Sonia Dyer#0#0#0#0#0#0#0#0#0");
 fminiadd("Bryan Fan#0#0#0#0#25#0#0#0#0");
 // fminiadd("Bill Gringas#0#0#0#0#0#0#0#0#0");
-fminiadd("Joseph Hildago#15#0#0#0#0#0#0#0#0");
-fminiadd("Marilyn Hofman#18#0#0#0#0#0#0#0#0");
+fminiadd("Joseph Hildago#15#0#0#0#0#0#0#0#17");
+fminiadd("Marilyn Hofman#18#0#0#0#0#0#0#0#14");
 fminiadd("Terri Koike#0#0#0#0#0#0#25#0#0");
 // fminiadd("JoAn Lambert#0#0#0#0#0#0#0#0#0");
 // fminiadd("Jaan Lepson#0#0#0#0#0#0#0#0#0");
@@ -371,30 +423,30 @@ fmini ();
 reset ();
 //
 // fminiadd("Harley Barber#0#0#0#0#0#0#0#0#0");
-fminiadd("Svetlana Bellam#25#0#0#0#0#0#0#0#0");
+// fminiadd("Svetlana Bellam#25#0#0#0#0#0#0#0#0");
 fminiadd("Bobbi Bornstein#25#0#0#0#0#3#0#0#0");
 // fminiadd("Manuela Burge#0#0#0#0#0#0#0#0#0");
 // fminiadd("Amber Carter#0#0#0#0#0#0#0#0#0");
-fminiadd("Richard Cox#2#0#0#0#0#0#0#0#0");
-// fminiadd("Lanelle Faraj#0#0#0#0#0#0#0#0#0");
+// fminiadd("Richard Cox#2#0#0#0#0#0#0#0#0");
+fminiadd("James Endo#0#0#0#0#0#0#0#0#5");
 // fminiadd("Nicole Faraj#0#0#0#0#0#0#0#0#0");
 // fminiadd("Beth Fryksdale#0#0#0#0#0#0#0#0#0");
-fminiadd("Judianne Ganschow#25#0#0#0#0#25#25#0#0");
-fminiadd("Huda#0#0#0#0#0#0#7#0#0");
+fminiadd("Judianne Ganschow#25#0#0#0#0#25#25#0#25");
 fminiadd("Andrew Hazlett#2#0#0#0#0#0#25#0#0");
 // fminiadd("Ellie Herrera#0#0#0#0#0#0#0#0#0");
-fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#0");
+fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#1");
+fminiadd("Huda Khan#0#0#0#0#0#0#7#13#0");
 fminiadd("Allen Krever#25#0#0#0#0#25#13#0#0");
-fminiadd("Annie Lau#0#0#0#0#0#7#0#0#0");
-fminiadd("Bill Lemke#25#0#0#0#0#0#0#0#0");
+fminiadd("Annie Lau#0#0#0#0#0#7#0#0#18");
+// fminiadd("Bill Lemke#25#0#0#0#0#0#0#0#0");
 // fminiadd("Dan Martinez#0#0#0#0#0#0#0#0#0");
 // fminiadd("Joyce McPheeters#0#0#0#0#0#0#0#0#0");
 // fminiadd("Lois McPherson#0#0#0#0#0#0#0#0#0");
 // fminiadd("Sherry Merrill#0#0#0#0#0#0#0#0#0");
-fminiadd("Monica Moran#5#0#0#0#23#0#23#0#0");
+fminiadd("Monica Moran#5#0#0#0#23#0#23#9#24");
 fminiadd("Thuy Tran#0#0#0#0#0#21#0#0#0");
 // fminiadd("Keith Walker#0#0#0#0#0#0#0#0#0");
-fminiadd("Tanya Wieber#0#0#0#0#0#9#5#0#0");
+fminiadd("Tanya Wieber#0#0#0#0#0#9#5#0#16");
 // fminiadd("Annie Wolf#0#0#0#0#0#0#0#0#0");
 // fminiadd("Mark Womack#0#0#0#0#0#0#0#0#0");
 
