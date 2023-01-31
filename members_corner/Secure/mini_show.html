@@ -10,8 +10,8 @@
 //
 // Global variables
 //
-var eoy = "yes";              // End of year flag
-var mstitle = "Final 2022 Standings<br><font size='-1'>(Note that scores include January of 2020)</font>";  // Heading
+var eoy = "no";              // End of year flag
+var mstitle = "Standings as of January 2023</font>";  // Heading
 //
 var mnnm = new Array(10)     // Month names
 mnnm[1] = "January";
@@ -349,16 +349,17 @@ h4 {color:#006666; font-size:18pt}
 <td align="right"><font size="+1">
 <TABLE><tr>
 <td valign="top">
+<a href="mini_show2022.html">2022 Results</a><br>
 <a href="mini_show2019.html">2019 Results</a><br>
 <a href="mini_show2018.html">2018 Results</a><br>
 <a href="mini_show2017.html">2017 Results</a><br>
 <a href="mini_show2016.html">2016 Results</a><br>
 <a href="mini_show2015.html">2015 Results</a><br>
 <a href="mini_show2014.html">2014 Results</a><br>
-<a href="mini_show2013.html">2013 Results</a><br>
 </td>
 <td> &nbsp; </td>
 <td valign="top">
+<a href="mini_show2013.html">2013 Results</a><br>
 <a href="mini_show2012.html">2012 Results</a><br>
 <a href="mini_show2011.html">2011 Results</a><br>
 <a href="mini_show2010.html">2010 Results</a><br>
@@ -387,25 +388,26 @@ document.close();
 reset ();
 //
 // fminiadd("Peter Beiersdorfer#0#0#0#0#0#0#0#0#0");
-fminiadd("Cecilia Caday#25#0#0#0#0#0#0#0#0");
-fminiadd("Kathi Cambiano#17#0#0#0#25#25#18#25#25");
-fminiadd("Tyler Carson#0#0#0#0#25#6#0#0#0");
+// fminiadd("Cecilia Caday#25#0#0#0#0#0#0#0#0");
+fminiadd("Kathi Cambiano#14#0#0#0#0#0#0#0#0");
+fminiadd("Tyler Carson#23#0#0#0#0#0#0#0#0");
+// fminiadd("Tyler Carson#0#0#0#0#25#6#0#0#0");
 // fminiadd("Sonia Dyer#0#0#0#0#0#0#0#0#0");
-fminiadd("Bryan Fan#0#0#0#0#25#0#0#0#0");
+// fminiadd("Bryan Fan#0#0#0#0#25#0#0#0#0");
 // fminiadd("Bill Gringas#0#0#0#0#0#0#0#0#0");
-fminiadd("Joseph Hildago#15#0#0#0#0#0#0#0#17");
-fminiadd("Marilyn Hofman#18#0#0#0#0#0#0#0#14");
-fminiadd("Terri Koike#0#0#0#0#0#0#25#0#0");
+fminiadd("Joseph Hildago#25#0#0#0#0#0#0#0#0");
+fminiadd("Marilyn Hofman#9#0#0#0#0#0#0#0#0");
+// fminiadd("Terri Koike#0#0#0#0#0#0#25#0#0");
 // fminiadd("JoAn Lambert#0#0#0#0#0#0#0#0#0");
 // fminiadd("Jaan Lepson#0#0#0#0#0#0#0#0#0");
 // fminiadd("Susan McKuhen#0#0#0#0#0#0#0#0#0");
 // fminiadd("Therese McQuillan#0#0#0#0#0#0#0#0#0");
-fminiadd("Loyd Monaco#0#0#0#0#0#8#25#0#0");
-// fminiadd("Romanova Katya#0#0#0#0#0#0#0#0#0");
+fminiadd("Loyd Monaco#3#0#0#0#0#0#0#0#0");
+fminiadd("Diane Salewski#25#0#0#0#0#0#0#0#0");
 // fminiadd("Ross Smith#0#0#0#0#0#0#0#0#0");
 // fminiadd("Janet Stevenson#0#0#0#0#0#0#0#0#0");
-fminiadd("Ellen Stubblefield#18#0#0#0#0#0#0#0#0");
-fminiadd("Gary Stubblefield#13#0#0#0#0#0#0#0#0");
+// fminiadd("Ellen Stubblefield#18#0#0#0#0#0#0#0#0");
+// fminiadd("Gary Stubblefield#13#0#0#0#0#0#0#0#0");
 // fminiadd("Jacky Wilk#0#0#0#0#0#0#0#0#0");
 fmini ();
 //
@@ -424,29 +426,29 @@ reset ();
 //
 // fminiadd("Harley Barber#0#0#0#0#0#0#0#0#0");
 // fminiadd("Svetlana Bellam#25#0#0#0#0#0#0#0#0");
-fminiadd("Bobbi Bornstein#25#0#0#0#0#3#0#0#0");
+fminiadd("Bobbi Bornstein#3#0#0#0#0#0#0#0#0");
 // fminiadd("Manuela Burge#0#0#0#0#0#0#0#0#0");
 // fminiadd("Amber Carter#0#0#0#0#0#0#0#0#0");
 // fminiadd("Richard Cox#2#0#0#0#0#0#0#0#0");
-fminiadd("James Endo#0#0#0#0#0#0#0#0#5");
+// fminiadd("James Endo#0#0#0#0#0#0#0#0#5");
 // fminiadd("Nicole Faraj#0#0#0#0#0#0#0#0#0");
 // fminiadd("Beth Fryksdale#0#0#0#0#0#0#0#0#0");
-fminiadd("Judianne Ganschow#25#0#0#0#0#25#25#0#25");
-fminiadd("Andrew Hazlett#2#0#0#0#0#0#25#0#0");
+// fminiadd("Judianne Ganschow#25#0#0#0#0#25#25#0#25");
+// fminiadd("Andrew Hazlett#2#0#0#0#0#0#25#0#0");
 // fminiadd("Ellie Herrera#0#0#0#0#0#0#0#0#0");
-fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#1");
-fminiadd("Huda Khan#0#0#0#0#0#0#7#13#0");
-fminiadd("Allen Krever#25#0#0#0#0#25#13#0#0");
-fminiadd("Annie Lau#0#0#0#0#0#7#0#0#18");
+// fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#1");
+// fminiadd("Huda Khan#0#0#0#0#0#0#7#13#0");
+fminiadd("Allen Krever#25#0#0#0#0#0#0#0#0");
+// fminiadd("Annie Lau#0#0#0#0#0#7#0#0#18");
 // fminiadd("Bill Lemke#25#0#0#0#0#0#0#0#0");
 // fminiadd("Dan Martinez#0#0#0#0#0#0#0#0#0");
 // fminiadd("Joyce McPheeters#0#0#0#0#0#0#0#0#0");
-// fminiadd("Lois McPherson#0#0#0#0#0#0#0#0#0");
+fminiadd("Sara McPherson#17#0#0#0#0#0#0#0#0");
 // fminiadd("Sherry Merrill#0#0#0#0#0#0#0#0#0");
-fminiadd("Monica Moran#5#0#0#0#23#0#23#9#24");
-fminiadd("Thuy Tran#0#0#0#0#0#21#0#0#0");
+// fminiadd("Monica Moran#5#0#0#0#23#0#23#9#24");
+// fminiadd("Thuy Tran#0#0#0#0#0#21#0#0#0");
 // fminiadd("Keith Walker#0#0#0#0#0#0#0#0#0");
-fminiadd("Tanya Wieber#0#0#0#0#0#9#5#0#16");
+// fminiadd("Tanya Wieber#0#0#0#0#0#9#5#0#16");
 // fminiadd("Annie Wolf#0#0#0#0#0#0#0#0#0");
 // fminiadd("Mark Womack#0#0#0#0#0#0#0#0#0");
 
