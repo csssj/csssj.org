@@ -6,18 +6,18 @@
 <title>Cactus and Succulent Society of San Jose</title>
 
 <SCRIPT Language="JavaScript">
-<!-- 
+<!--
 //
 // Global variables
 //
 var eoy = "no";              // End of year flag
-var mstitle = "Standings as of February 2023</font>";  // Heading
+var mstitle = "Standings as of March 2023</font>";  // Heading
 //
 var mnnm = new Array(10)     // Month names
 mnnm[1] = "January";
 mnnm[2] = "February";
 mnnm[3] = "March";
-mnnm[4] = "May";
+mnnm[4] = "April";
 mnnm[5] = "June";
 mnnm[6] = "August";
 mnnm[7] = "September";
@@ -37,7 +37,7 @@ var eoy2nd = 0;              // 2nd place points
 var eoy2ndi1 = -1;           // 2nd place indices
 var eoy2ndi2 = -1;
 var eoy2ndn = "";            // 2nd place name
-var eoy2ndp = 0;             // 2nd place previous value  
+var eoy2ndp = 0;             // 2nd place previous value
 var eoy3rd = 0;              // 3rd place points
 var eoy3rdi1 = -1;           // 3rd place indices
 var eoy3rdi2 = -1;
@@ -97,7 +97,7 @@ if (eoy == "yes")            // End of year format?
    var ndpos = 0;           // Init end of points to 0
    ndpos = txt.indexOf("#",1);  // Find end of name
    var iname = txt.substring(0,ndpos);  // Set name
-   stpos = ndpos + 1        // Set start to points 
+   stpos = ndpos + 1        // Set start to points
    while (ndpos != -1)  // As long as there are points
       {
          ndpos = txt.indexOf("#",stpos);  // Find end of points
@@ -124,11 +124,11 @@ if (eoy == "yes")            // End of year format?
           eoy1stn = iname;     // Set high score name
           eoy1sti2 = -1;   // Reset tie index
           eoy1stp = parsum;  // set past high value
-         } 
+         }
       else
          {
           eoy1sti2 = minicnt-1;
-          eoy1stn = eoy1stn + " and " + iname; // Set high score name 
+          eoy1stn = eoy1stn + " and " + iname; // Set high score name
          };
       }
    else
@@ -165,12 +165,12 @@ if (eoy == "yes")            // End of year format?
                   eoy3rdn = iname;   // Set third high score name
                   eoy3rdi2 = -1;  // reset tie index
                   eoy3rdp = parsum;  //set past high value
-                 }  
+                 }
               else
                  {
-                  eoy3rdi2 = minicnt-1;   
+                  eoy3rdi2 = minicnt-1;
                   eoy3rdn = eoy3rdn + " and " + iname; // Set 3rd high score nm
-                 };  
+                 };
               };
           };
       };
@@ -222,7 +222,7 @@ for (var i = 0; i < minicnt; i++)
    var txt = miniinf[i];    // Get a participant's name and points
    var stpos = 0;           // Init start of entry to 0
    var ndpos = txt.indexOf("#",stpos);  // Find end of name
-   if (ndpos != -1)         // If found, 
+   if (ndpos != -1)         // If found,
       {var iname = txt.substring(0,ndpos);  // Set name
       if (eoy == "yes" && i == eoy1sti1)
          {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
@@ -260,7 +260,7 @@ for (var i = 0; i < minicnt; i++)
          stpos = ndpos + 1;
          itot = itot + parseInt(mnth[mncnt]);  // Add to points for participant
          minitot = minitot + parseInt(mnth[mncnt]); // Add overall total
-         mnthtot[mncnt] = mnthtot[mncnt] + parseInt(mnth[mncnt]);  // Add to month total 
+         mnthtot[mncnt] = mnthtot[mncnt] + parseInt(mnth[mncnt]);  // Add to month total
          tot = tot + parseInt(mnth[mncnt]);  // Add to participant total
          mncnt = mncnt + 1;};     // Increment month subscript
 //
@@ -326,14 +326,14 @@ h4 {color:#006666; font-size:18pt}
 <tr bgcolor=#339966>
 <td bgcolor=#339966 height=10>&nbsp;</td>
 <td bgcolor=#339966 height=10 align="right" colspan=5 bgcolor=#339966>
-<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> - 
-<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Mini&nbsp;Show&nbsp;Standings</font> - 
-<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> - 
-<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> - 
-<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> - 
+<a href="courier_archives.html" class="navpanel" title="Access past issues of our club newsletter, The Cactus Courier.">Newsletter</a> -
+<font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:11">Mini&nbsp;Show&nbsp;Standings</font> -
+<a href="show_sale.html" class="navpanel" title="Access information and forms relevant to CSSSJ's annual Show & Sale.">Show&nbsp;&amp;&nbsp;Sale</a> -
+<a href="library.html" class="navpanel" title="View the CSSSJ library holdings and check books out online.">Library</a> -
+<a href="membership_form.html" class="navpanel" title="Online form and instructions for membership renewal.">Membership&nbsp;Renewal</a> -
 <!-- <a href="name_badges.html" class="navpanel" title="...add information here">Name&nbsp;Badge&nbsp;Order&nbsp;Form</a> - -->
-<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> - 
-<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> - 
+<a href="officers.html" class="navpanel" title="Find out who's who on the current CSSSJ executive board, and identify the chairpersons of the various committees.">Officers&nbsp;/&nbsp;Committees</a> -
+<a href="board_meetings.html" class="navpanel" title="View the minutes of past CSSSJ board meetings.">Board&nbsp;Meeting&nbsp;Minutes</a> -
 <a href="bylaws.html" class="navpanel" title="View the club's constitution and bylaws.">Constitution</a>
 </td>
 </tr>
@@ -343,7 +343,7 @@ h4 {color:#006666; font-size:18pt}
 <center>
 <TABLE width="90%">
 <tr><td><H1>Mini Show</H1></td>
-<td align="right"><font size="+2"><!-- <a href="mini_show_cats2015.html">2015 Categories</a> --> &nbsp; &nbsp; &nbsp; 
+<td align="right"><font size="+2"><!-- <a href="mini_show_cats2015.html">2015 Categories</a> --> &nbsp; &nbsp; &nbsp;
 <a href="mini_show_rules.html">Rules</a></font></td></tr>
 <tr><td valign="top"><B> &nbsp; &nbsp; <!-- Members:</B> Take the <a href="mssurvey1007.html"> Mini Show Survey</a> --></td>
 <td align="right"><font size="+1">
@@ -388,28 +388,29 @@ document.close();
 reset ();
 //
 // fminiadd("Peter Beiersdorfer#0#0#0#0#0#0#0#0#0");
-fminiadd("Manuela Burge#0#6#0#0#0#0#0#0#0");
+fminiadd("Manuela Burge#0#6#4#0#0#0#0#0#0");
 // fminiadd("Cecilia Caday#25#0#0#0#0#0#0#0#0");
-fminiadd("Kathi Cambiano#14#4#0#0#0#0#0#0#0");
-fminiadd("Tyler Carson#23#4#0#0#0#0#0#0#0");
+fminiadd("Kathi Cambiano#14#4#15#0#0#0#0#0#0");
+fminiadd("Tyler Carson#23#4#1#0#0#0#0#0#0");
 // fminiadd("Tyler Carson#0#0#0#0#25#6#0#0#0");
 // fminiadd("Sonia Dyer#0#0#0#0#0#0#0#0#0");
 // fminiadd("Bryan Fan#0#0#0#0#25#0#0#0#0");
 // fminiadd("Bill Gringas#0#0#0#0#0#0#0#0#0");
 fminiadd("Joseph Hildago#25#0#0#0#0#0#0#0#0");
-fminiadd("Marilyn Hofman#9#6#0#0#0#0#0#0#0");
+fminiadd("Marilyn Hofman#9#6#17#0#0#0#0#0#0");
 // fminiadd("Terri Koike#0#0#0#0#0#0#25#0#0");
 // fminiadd("JoAn Lambert#0#0#0#0#0#0#0#0#0");
 // fminiadd("Jaan Lepson#0#0#0#0#0#0#0#0#0");
 // fminiadd("Susan McKuhen#0#0#0#0#0#0#0#0#0");
 // fminiadd("Therese McQuillan#0#0#0#0#0#0#0#0#0");
-fminiadd("Loyd Monaco#3#14#0#0#0#0#0#0#0");
-fminiadd("Diane Salewski#25#4#0#0#0#0#0#0#0");
+fminiadd("Loyd Monaco#3#14#10#0#0#0#0#0#0");
+fminiadd("Diane Salewski#25#4#22#0#0#0#0#0#0");
 fminiadd("Jim Smith#0#14#0#0#0#0#0#0#0");
 // fminiadd("Janet Stevenson#0#0#0#0#0#0#0#0#0");
 // fminiadd("Ellen Stubblefield#18#0#0#0#0#0#0#0#0");
 // fminiadd("Gary Stubblefield#13#0#0#0#0#0#0#0#0");
 // fminiadd("Jacky Wilk#0#0#0#0#0#0#0#0#0");
+fminiadd("Annie Wolf#0#0#25#0#0#0#0#0#0");
 fmini ();
 //
 </SCRIPT>
@@ -429,27 +430,27 @@ reset ();
 // fminiadd("Svetlana Bellam#25#0#0#0#0#0#0#0#0");
 fminiadd("Bobbi Bornstein#3#0#0#0#0#0#0#0#0");
 // fminiadd("Manuela Burge#0#0#0#0#0#0#0#0#0");
-// fminiadd("Amber Carter#0#0#0#0#0#0#0#0#0"); 
+// fminiadd("Amber Carter#0#0#0#0#0#0#0#0#0");
 // fminiadd("Richard Cox#2#0#0#0#0#0#0#0#0");
-// fminiadd("James Endo#0#0#0#0#0#0#0#0#5");
+fminiadd("James Endo#0#0#16#0#0#0#0#0#0");
 fminiadd("Desiree Faraj#0#18#0#0#0#0#0#0#0");
-fminiadd("Lonelle Faraj#0#23#0#0#0#0#0#0#0");
+fminiadd("Lonelle Faraj#0#23#4#0#0#0#0#0#0");
 fminiadd("Nicole Faraj#0#16#0#0#0#0#0#0#0");
 // fminiadd("Beth Fryksdale#0#0#0#0#0#0#0#0#0");
-fminiadd("Judianne Ganschow#0#16#0#0#0#0#0#0#0");
+fminiadd("Judianne Ganschow#0#16#22#0#0#0#0#0#0");
 fminiadd("Robert Guerra#0#5#0#0#0#0#0#0#0");
 // fminiadd("Andrew Hazlett#2#0#0#0#0#0#25#0#0");
 // fminiadd("Ellie Herrera#0#0#0#0#0#0#0#0#0");
 // fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#1");
 // fminiadd("Huda Khan#0#0#0#0#0#0#7#13#0");
-fminiadd("Allen Krever#25#18#0#0#0#0#0#0#0");
+fminiadd("Allen Krever#25#18#25#0#0#0#0#0#0");
 // fminiadd("Annie Lau#0#0#0#0#0#7#0#0#18");
 // fminiadd("Bill Lemke#25#0#0#0#0#0#0#0#0");
 // fminiadd("Dan Martinez#0#0#0#0#0#0#0#0#0");
 // fminiadd("Joyce McPheeters#0#0#0#0#0#0#0#0#0");
-fminiadd("Sara McPherson#17#24#0#0#0#0#0#0#0");
-// fminiadd("Sherry Merrill#0#0#0#0#0#0#0#0#0"); 
-// fminiadd("Monica Moran#5#0#0#0#23#0#23#9#24");
+fminiadd("Sara McPherson#17#24#25#0#0#0#0#0#0");
+// fminiadd("Sherry Merrill#0#0#0#0#0#0#0#0#0");
+fminiadd("Monica Moran#0#0#22#0#0#0#0#0#0");
 // fminiadd("Thuy Tran#0#0#0#0#0#21#0#0#0");
 // fminiadd("Keith Walker#0#0#0#0#0#0#0#0#0");
 // fminiadd("Tanya Wieber#0#0#0#0#0#9#5#0#16");
@@ -487,4 +488,3 @@ document.close();
 
 </body>
 </html>
-
