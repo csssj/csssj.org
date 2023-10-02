@@ -1,0 +1,471 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="DESCRIPTION" content="Cactus Courier - 10/6/2023">
+<META name="MSSmartTagsPreventParsing" content="TRUE">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<TITLE>Cactus Courier - 10/6/2023</TITLE>
+
+<SCRIPT Language="JavaScript">
+<!-- 
+//
+// Global variables
+//
+var thismonth = "October";
+var thisday = "6-8";
+var thisyear = "2023";
+var nextmonth = "November";
+var nextday = "5";
+var nextyear = "2023";
+var deadline = "October 27, 2023";
+//
+var winno = 0;  // number of open window
+//
+//
+// functions
+//
+function fmart (title,author,photo,text)
+{
+// Format newsletter article
+//
+// title=title of article
+// author=author of the article (optional)
+// photo=photographer for pictures (optional)
+// text=content of article
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photography by " + photo;
+document.write("<center><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+//
+function fmartw (title,author,photo,text)
+{
+// Format newsletter article (Welcome New Members)
+//
+var auth = "";
+if (author != " " && author != "") auth = "by " + author;
+if (author != " " && author != ""  && photo != " " && photo != "") auth = auth + "<br>";
+if (photo != " " && photo != "") auth = auth + "photos by " + photo;
+document.write("<center><TABLE><tr><td><center><img src='welcomecactus.gif' width=77 height=121 align='left' hspace=27><img src='welcomecactus2.gif' width=77 height=121 align='right' hspace=27><B class='arthead'>" + title + "</B><br><B> " + auth + "</B></center></td></tr></TABLE></center><P>" + text + "</P><br><center><img src='elipsis10.gif' width=114 height=76 alt=' . . . '></center><br><br><br>");
+};
+//
+function fmarted (title,author,text)
+{
+document.write("<center><B class='arthead'>" + title + "</B><br><B> by " + author + "</B></center><P>" + text + "</P><br><center><img src='rich10.gif' width=180 height=270 alt='Editor'></center><br><br><br>");
+};
+//
+function fmcal (monyear,daytime1,event1,daytime2,event2,daytime3,event3)
+{
+// Format calendar entry
+//
+// monyear=month and year of entry
+// daytime1=day and time of first event
+// event1=description of first event
+// daytime2=day and time of second event
+// event2=description of second event
+// daytime3=day and time of third event
+// event3=description of third event
+//
+var temptxt1 = "";
+if (monyear != "") temptxt1 = "<TABLE width='95%' border=2><tr><td><center><B class='calhead'>" + monyear + "</B></center></td></tr></TABLE>";
+document.write(temptxt1 + "<hr width='98%'><B class='caltext'>" + daytime1 + "</B><br><div class='caltext'>" + event1 + "</div>");
+if (daytime2) {document.write("<hr width='98%'><B class='caltext'>" + daytime2 + "</B><br><div class='caltext'>" + event2 + "</div>");};
+if (daytime3) {document.write("<hr width='98%'><B class='caltext'>" + daytime3 + "</B><br><div class='caltext'>" + event3 + "</div>");};
+};
+//
+function fmclass (freehead,freetit1,freetxt1,freetit2,freetxt2,freetit3,freetxt3,salehead,saletit1,saletxt1,saletit2,saletxt2,saletit3,saletxt3)
+{
+document.write("<center><P><B class='arthead'>Classified</B></P><TABLE width='95%' border=0 cellpadding=9><tr><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + freehead + "</font></B></th><th> &nbsp;</th><th bgcolor='#CCFFCC' width='45%'><center><B><font size=+1>" + salehead + "</font></B></th></tr><tr><td valign='top'>");
+if (freetit1) {document.write("<B>" + freetit1 + "</B><br>" + freetxt1 + "<br><br>");};
+if (freetit2) {document.write("<B>" + freetit2 + "</B><br>" + freetxt2 + "<br><br>");};
+if (freetit3) {document.write("<B>" + freetit3 + "</B><br>" + freetxt3 + "<br><br>");};
+document.write("</td><td></td><td valign='top'>");
+if (saletit1) {document.write("<B>" + saletit1 + "</B><br>" + saletxt1 + "<br><br>");};
+if (saletit2) {document.write("<B>" + saletit2 + "</B><br>" + saletxt2 + "<br><br>");};
+if (saletit3) {document.write("<B>" + saletit3 + "</B><br>" + saletxt3 + "<br><br>");};
+document.write("</td></tr></TABLE></center><br><br><br>");
+};
+//
+// global variables for mini show status
+//
+var mininms = new Array(100);
+var minival = new Array(100);
+var minicnt = 0;
+var minitot = 0;
+var minitots = 0;
+//
+function fminiadd (name,val)
+{
+// Add entry for participant to array
+//
+// name=name of participant
+// val=mini show scores by month
+//
+mininms[minicnt] = name;
+minival[minicnt] = val;
+minicnt = minicnt + 1;
+};
+//
+function fmini (clss)
+{
+// Format mini show class standings
+//
+// clss=mini show class
+//
+var splt = 0;
+var cspn = 2;
+var mci = minicnt;
+if (minicnt > 11)
+   {
+    splt = 1;
+    var spltcnt = parseInt(minicnt/2);
+    spltcnt = parseInt(spltcnt + parseInt(minicnt - spltcnt*2));
+    mci = spltcnt;
+    cspn = 4;
+   };
+document.write("<Table cellpadding=5 border=1><tr><td align='center' colspan=" + cspn + "><B><font size=+2>" + clss + "</B></td></tr>");
+for (var i = 0; i < mci; i++)
+  { 
+   var temp = parseInt(minival[i]);
+   minitot = minitot + temp;
+   minitots = minitots + temp;
+   if (splt == 0)
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td></tr>");
+     } 
+   else
+     {
+      document.write("<tr><td align='right' width='20%' nowrap> " + mininms[i] + " </td><td align='center' width='5%'> " + temp + " </td>");
+     var j = i + spltcnt;
+     if (j < minicnt)
+       {
+        temp = parseInt(minival[j]);
+        minitot = minitot + temp;
+        minitots = minitots + temp;
+        document.write("<td align='right' width='20%' nowrap> " + mininms[j] + " </td><td align='center' width='5%'> " + temp + " </td>");
+       }
+     else
+       {document.write("<td> &nbsp; </td><td> &nbsp; </td>");};   
+     };
+
+  }
+if (splt == 0)
+   {document.write("<tr><td align='right' nowrap><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");}
+else
+   {document.write("<tr><td align='right' nowrap colspan=3><B>Total: </B></td><td align='center'><B> " + minitot + " </B></td></tr></TABLE>");};
+minicnt = 0;
+minitot = 0;
+};
+//
+function poppic(addr,w,ht)
+{
+// Set up picture enlargement
+//
+// addr=name of picture file
+// w=width of picture
+// ht=height of picture
+//
+adjw = parseInt(w) + 28;
+adjht = parseInt(ht) + 80;
+var parmtxt = "toolbar=no,width=" + adjw + ",height=" + adjht + ",status=no,resizable=yes,menubar=no,location=no,titlebar=no,scrollbars=yes";
+winno = winno + 1;
+var nm = "CSSSJ" + winno;
+var popwin = window.open(addr,nm,parmtxt);
+popwin.SizeToContent = SizeToContent.WidthAndHeight;
+};
+// 
+
+// -->
+</SCRIPT>
+<STYLE>
+.arthead {font-size: 20pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.leadhead {font-size: 20pt}
+.calhead {font-size: 14pt}
+.caltext {font-size: 9pt}
+.snacks {font-size: 12pt; font-family: Arial, Helvetica, Helv, sans-serif}
+.contact {font-size: 11pt}
+.note {font-size: 16pt; font-family: Arial, Helvetica, Helv, sans-serif}
+h4 {color:#006666; font-size:18pt}
+.enl {cursor: url('enlarge12.cur'), move;}
+.brkhr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: inset;
+  border-width: 3px;
+  color: #000099;
+}
+.thickhr {
+  border: none;
+  height: 4px;
+  background: black;
+}
+.mscat {font-size: 14pt; color: #336600;}
+.ulspec {list-style-image: url('flowericon2.gif'); line-height: 1.4}
+.ulspec2 {list-style-image: url('flowericon3.gif'); line-height: 1.1}
+.ulspec3 {list-style-image: url('clogo21c.gif'); line-height: 1.4}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<SCRIPT Language="JavaScript">
+document.write("<TABLE width=98%><tr><td> &nbsp; <td align=right>" + thismonth + ", " + thisyear + "</td></tr></TABLE>");
+document.close();
+</SCRIPT>
+<img src="clogo20.gif" width=535 height=118 alt="Cactus Courier">
+
+<TABLE width="95%"><tr><td align="right"><B>Newsletter of the Cactus and Succulent Society of San Jose</B></td></tr></TABLE><br>
+
+<TABLE width="98%" cellspacing=9>
+<TBODY valign="top">
+<tr><td width="33%">
+
+<!-- <center><TABLE width="90%" border=3 bordercolor="#990000" cellpadding=11><tr><td><font color="#990000">Due to the Shelter-in-Place order, we cannot predict when regular meetings will resume.</font></td></tr></TABLE></center> -->
+
+<SCRIPT Language="JavaScript">
+
+document.write("<br><br>");
+
+fmcal ("October 2023","6-8 Friday-Sunday","Fall Show and Sale","","","","","","");
+
+document.write("<br><br>");
+
+fmcal ("November 2023","5, Sunday - 10:30am to 12:00pm","Board Meeting","5, Sunday - 12:30pm to 3:00pm","Stephen McCabe, &quot;Dudleya hybrids (and other hybrids)&quot;","","","","");
+
+document.write("<br><br>");
+
+fmcal ("December 2023","3, Sunday - 10:00am to 3:00pm","Holiday Party","","","","","","");
+
+document.write("<br><br>");
+
+fmcal ("January 2024","7, Sunday - 10:30am to 12:00pm","Board Meeting","7, Sunday - 12:30pm to 3:00pm","Sara McPherson, &quot;Planstagram and Social Media&quot;","","","","");
+
+// document.write("<center><a href=javascript:poppic('pruschpark3.gif',1000,760)><img src='pruschpark3.gif' width=400 height=304 hspace=11 vspace=7 class='enl'></a></center>");
+
+// document.write("<P><center><TABLE border=11 bordercolor='#FF3333' cellpadding=27 width='80%'><tr><td align='center'><B>Note that the date for the August meeting has changed.</B></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+// document.write("<center><H2>Other Events</H2></center>");
+
+// fmcal ("July 2023","12-16, Wednesday - Sunday","<B>CSSA 39<sup>th</sup> Biennial Convention<br>Colorado Springs, Colorado<br></B><a href='http://cssaconvention.com/' target='_blank'>http://cssaconvention.com/</a>","",""); 
+
+// document.write("<br><br>");
+
+// document.write("<center><iframe src='https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1584.0484130452905!2-122.17189095183397!3d37.43481733618504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x808fbb2c6da4f739%3A0x1c304ccfdefb7396!2sCantor%20Arts%20Center%20at%20Stanford%20University%2C%20328%20Lomita%20Dr%2C%20Stanford%2C%20CA%2094305!3m2!1d37.4329672!2d-122.17052659999999!4m5!1s0x808fbb2d99cfc089%3A0x481611f0862356a3!2sCactus%20Garden%2C%20Stanford%2C%20CA!3m2!1d37.4358933!2d-122.17102829999999!5e0!3m2!1sen!2sus!4v1681963373052!5m2!1sen!2sus' width='400' height='300' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></center>");
+
+// document.write("<br><P><center><font size='+2'><B>Last chance to share an image for our online<br>Virtual Show and Tell</B></font></center></P><P>Maybe, what you were going to bring in for the Spring Show? Whatever is spectacular in your garden right now is fair game. ONE per person please (per month). The photos will be shown on our Facebook page.</B></font></P><P>You can email your image to: <a href='mailto:sjcactussucculent@gmail.com?Subject=Virtual%20Show%20and%20Tell'>sjcactussucculent@gmail.com</a></P><P><a See the Virtual Show and Tell at this address: href='https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal' target='_blank'>https://www.facebook.com/pg/SJcactussucculents/photos/?tab=album&album_id=882925525517737&ref=page_internal</a></P>");
+
+// document.write("<br><br><P><center><TABLE border=7 bordercolor='#FF3333' cellpadding=17 width='60%'><tr><td align='center'><B>The meeting will be held in the Meeting Hall</B><br><br><a href='pruschpark3.gif' target='blank'> <img src='map.gif' width=135 height=73 border=0 hspace=23><br>map</a></td></tr></TABLE></center></P>");
+
+// document.write("<br><br><P><center><font color='#660000'><B>Note:</B></font> Change in meeting location!</center></P><P><center><TABLE border=7 bordercolor='#FF3333' cellpadding=17 width='60%'><tr><td align='center'><B>The meeting will be held in the Multi Cultural Center </B><br><br><a href='pruschpark4.gif' target='blank'> <img src='map.gif' width=135 height=73 border=0 hspace=23><br>map</a></td></tr></TABLE></center></P>");
+
+document.write("<br><br>");
+
+document.write("<br><br><font size='-1'><I>" + nextmonth + " article due date: " + deadline + "</I></font>");
+
+document.close();
+
+</SCRIPT>
+<br>
+<br>
+<br>
+<br>
+
+<!-- 
+<center><TABLE border=3><tr><td><TABLE border=1 cellpadding=5><tr><td><TABLE><tr><td valign="top"><font size="+1"><B> Note: </B></font></td><td valign="top"> Daylight saving time begins Sunday morning at 2:00 am.  Set your clocks back one hour.</td></tr></TABLE></td></tr></TABLE></td></tr></TABLE></center>
+<br>
+<br>
+ -->
+</td>
+
+<td background="dot.gif" width=1> </td>
+
+<td width="67%">
+<P>
+<B class="leadhead">Fall Show and Sale</B><br>
+
+<P> 
+</P>
+<H3>Friday - October 6<sup>th</sup></H3>
+<TABLE>
+<tr><td align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 12:00pm &nbsp; </td><td valign='top'nowrap>Set-up for Vendors</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>12:00pm - 3:00pm &nbsp; </td><td valign='top'nowrap>Volunteer Sale <font size='-1'><B>(Member Volunteers Only!)</B></font></td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>3:00pm - 5:00pm &nbsp; </td><td valign='top'nowrap>Membership Shopping</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>4:30pm &nbsp; </td><td valign='top'nowrap>Show Plants Arrival Deadline</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>3:00pm - 7:00pm &nbsp; </td><td valign='top'nowrap>Show Set-up<br><br></td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'><B>5:00pm - 7:00pm</B> &nbsp; </td><td valign='top'nowrap><B>Public Sale</B></td></tr>
+</TABLE>
+</P>
+<br>
+<P>
+<H3>Saturday - October 7<sup>th</sup></H3>
+<TABLE>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 10:00am &nbsp; </td><td valign='top'nowrap>Set-up for Vendors</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 10:00am &nbsp; </td><td valign='top'nowrap>Membership Shopping</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 10:00am &nbsp; </td><td valign='top'nowrap>Other Societies Access</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 5:00pm &nbsp; </td><td valign='top'nowrap>Show Voting<br><br></td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'><B>10:00am - 5:00pm</B> &nbsp; </td><td valign='top'nowrap><B>Public Sale</B></td></tr>
+</TABLE>
+</P>
+<br>
+<P>
+<H3>Sunday - October 8<sup>th</sup></H3>
+<TABLE>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>9:00am - 10:00am &nbsp; </td><td valign='top'nowrap>Set-up for Vendors</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>2:00pm &nbsp; </td><td valign='top'nowrap>Show Winners Announced</td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'>3:30pm - 5:00pm &nbsp; </td><td valign='top'nowrap>Clean-up<br><br></td></tr>
+<tr><td valign='top'align='right'><img src='clogo21c.gif' width=22 height=22 hspace=7></td><td valign='top' nowrap align='right'><B>9:00am - 3:30pm</B> &nbsp; </td><td valign='top'nowrap><B>Public Sale</B></td></tr>
+</TABLE>
+<br>
+
+<!-- 
+<P>
+<I><font color='red' size='+1'><B>Note:</B></font> Due to a scheduling issue with Prusch Park, the meeting will be held in the Multi Cultural Center rather than our usual Meeting Hall. Parking is limited, please plan on parking in the larger parking lot (see map.)</I>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<B><font color="red" size="+1">COVID precautions: </font> <font size="-1">Masks are encouraged, but optional for our meetings.</font></B>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<font size='+1'><B>Plants of the Month for " + thismonth + ":</font>");
+document.close();
+</SCRIPT>
+</P> 
+<P>
+<TABLE cellspacing=0 cellpadding=0>
+<tr><td align="right" "nowrap" valign="top"><font color="#003399"><B>Cactus: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Something mostrose</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Succulents: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Something black</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Something Special: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Advanced &bull; Novice &nbsp; </font></U></B></font><br><font size=-1>Variegated plant (or your choice)</font></td></tr><tr><td> &nbsp; </td></tr>
+
+<tr><td align="right" valign="top"><font color="#003399"><B>Beginners' Luck: &nbsp; </B></font></td><td "nowrap"> &nbsp; &nbsp; </td><td><font size=-2><B><U>&nbsp; Novice Only &nbsp; </font></U></B></font><br><font size=-1>Something purple</font></td></tr><tr><td> &nbsp; </td></tr>
+</TABLE>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<B class=snacks> Members with last names starting with R through Z should bring a snack for the March meeting.</B>
+</P>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks> Members with last names starting with M through Q should bring a snack for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+<br>
+ -->
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<br><B class=snacks>We will be having a Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+
+<!-- 
+<P>
+<SCRIPT Language="JavaScript">
+document.write ("<B class=snacks>There will be no Pot Luck for the " + thismonth + " meeting.</font></B>");
+document.close();
+</SCRIPT>
+</P>
+<br>
+ -->
+<!-- 
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="90%">
+<tr><td align="center"><B>Note that the February meeting will be ending early due to the Super Bowl</B></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+<!-- 
+<br>
+<br>
+<P>
+<center><TABLE border=7 bordercolor="#FF3333" cellpadding=17 width="60%">
+<tr><td align="center"><B>The meeting will be held in the Meeting Hall</B><br><br><a href="pruschpark3.gif" target="blank"> <img src="map.gif" width=135 height=73 border=0 hspace=23><br>map</a></td></tr>
+</TABLE></center>
+</P>
+<br>
+ -->
+</td>
+</tr>
+</TBODY>
+</TABLE>
+
+<TABLE width="98%" border=1 cellpadding=13><tr><td class="contact">The Cactus Courier is the newsletter of the Cactus and Succulent Society of San Jose (CSSSJ).  The members of the CSSSJ freely contribute the materials published herein.  The accuracy of information and opinions expressed are those of the contributors.  Scannable hardcopy and Windows format text files sent via email or on CD or DVD are acceptable as input. Send newsletter articles to Rich Kroll at: <a href="mailto:editor@csssj.org">editor@csssj.org</a></td></tr></TABLE>
+<br>
+<br>
+<br>
+
+<SCRIPT Language="JavaScript">
+
+fmart ("Prez Sez","Loyd Monaco","","<center><TABLE width='90%'><tr><td valign='top'>Hello Everyone!</P><P>We are quickly approaching our fall show and sale and I have a few things to let you know about: <UL class='ulspec'><li>We still need volunteers to work the show. Please contact Celeste or Judi to sign up. <font size='-1'>(See Fall Show and Sale article for a sign up link.  ed.)</font></li><li>Please save boxes for use at the event. A show credit of 5 cents per box will be given.</li><li>Please, also, save sales and newspapers for use as packing material during the event.</li></UL></P><P>Hope to see you all soon!</P><P>Loyd</td></tr></TABLE></center>");
+
+fmart ("2023 Fall Show and Sale","Celeste Paradise","","<center><TABLE width='90%'><tr><td valign='top'><a href=javascript:poppic('2023fall2.jpg',1080,1080)><img src='2023fall2.jpg' width=335 height=335 hspace=11 vspace=11 align='right' class='enl'></a>Our 2023 Fall Show and Sale is October 6th - October 8th!!</P><P>A three-day extravaganza of plant show and plant sale in an expanded venue offering 10,000 square feet of show and plant fun! Bring a friend and a box!<br>The show will be People’s Choice, which means that you will help pick the winning plants! Grab some voting dots at the Membership Table and tag your favorite contenders.</P><P>For sale, meanwhile, will be a wide variety of cacti and succulents, along with pots and assorted accessories; the vendors who raised the plants from seeds and pups will be there to answer your questions and provide suggestions.<UL class='ulspec'><li><B>More information about the Fall Show &amp; Sale</B> can be accessed <a href='https://csssj.org/2023/fall-show-and-sale/' target='_blank'>here</a>.</li><li><B>If you missed September’s CSSSJ meeting</B> where we discussed the Fall Show &amp; Sale you can access the presentation <a href='https://docs.google.com/presentation/d/1UNhHtqMyB98KHZRB9kTTMyk8nIk_NKZM/edit?usp=sharing&ouid=101343703989763394456&rtpof=true&sd=true1EL5SI-iGTVDCXx4SFtRhMnAn/edit?usp=sharing&ouid=101343703989763394456&rtpof=true&sd=true' target='_blank'>here</a>.</li><li><B>Keep up to date with the announcements</B> on our <a href='https://www.facebook.com/SJcactussucculents/' target='_blank'>Facebook</a>, <a href='https://www.facebook.com/groups/sjcactus' target='_blank'>Facebook Group</a> and <a href='https://www.instagram.com/sj_cactus_succulent/' target='_blank'>Instagram</a> pages.</li></UL></P><br><P><font size='+1'><B>Calling All Volunteers</B></font><a href='https://www.signupgenius.com/go/4090D4EADAE2EA1FC1-csssj1#/' target='_blank'><image src='signup.gif' width=250 height=45' hspace=17></a><br><br><B>We need YOUR help!</B>  Our Show &amp; Sales are 100% volunteer driven and we need as many volunteers as possible to create an effective, efficient and enjoyable Show &amp; Sale.  Volunteering is a great way to meet people and have fun helping the Society.  We really need members to help in this very important area:<UL class='ulspec'><li>Sign up today and help us create an amazing event:  <a href='https://bit.ly/fall23vol' target='_blank'>https://bit.ly/fall23vol</a></li><li>Did you know that <B>volunteers get early access to shop</B> before everyone else on Friday, October 6th starting at noon?</li><li>Did you know that <B>volunteers earn Show Bucks</B> which allow them to purchase even more plants and/or allied arts as thanks for their contributions?</li></UL>If you are unable to volunteer in person there are additional ways you can help: <UL class='ulspec'><li><B>Invite your family and friends</B><UL class='ulspec2'><li>Please help us to spread the word using our <a href='https://www.facebook.com/events/1641503556344547/' target='_blank'>Facebook Event</a> |  <a href='https://nextdoor.com/p/q2Gh6hdr4sHq?utm_source=share&extras=MjI4MjgwMQ%3D%3D' target='_blank'>Nextdoor Event</a> | <a href='https://www.eventbrite.com/e/fall-show-plant-sale-cacti-and-succulents-tickets-713122256867?aff=oddtdtcreator' target='_blank'>Eventbrite</a>. Mark yourself as &quot;going&quot; and click share to send invites to family and friends</li></UL></li><li><B>Follow us on social media and &quot;like&quot; and &quot;share&quot; our posts</B><UL class='ulspec2'><li><a href='https://www.instagram.com/sj_cactus_succulent/' target='_blank'>Instagram</a> | <a href='https://www.facebook.com/SJcactussucculents/' target='_blank'>Facebook Page</a> | <a href='https://www.facebook.com/groups/sjcactus' target='_blank'>Facebook Group</a> | <a href='https://nextdoor.com/g/td3eaup9q/' target='_blank'>Nextdoor</a></li></UL></li><li><B>Print out and share our Show &amp; Sale Flyer</B> <a href='https://drive.google.com/file/d/1IPvGfzw9prDeXAcW7jlAOUDf709qwSj2/view?usp=sharing' target='_blank'>Download Now</a></li></UL></P><br><P><font size='+1'><B>New Location &amp; New Hours!</font></B></P><P>We are happy to announce that we are moving to the Fiesta Building at the Santa Clara Fairgrounds.  The location is:<br><B>Santa Clara County Fairgrounds - Fiesta Building #4</B><UL class='ulspec'><li>Enter through gate C on Old Tully Road - <a href='https://www.google.com/maps/place/Santa+Clara+County+Fairgrounds+-+Gate+C/@37.302131,-121.8560584,17z/data=!3m1!4b1!4m6!3m5!1s0x808e33e4f5368dd5:0x594063f345a351cf!8m2!3d37.302131!4d-121.8560584!16s%2Fg%2F11gxzkbs2t?entry=ttu' target='_blank'>directions</a></li><li>Parking is <B>FREE</B> if you enter through gate C and park in Lot C</li><li>344 Tully Road, San Jose CA 95111</li></UL><center><a href=javascript:poppic('scfairgrounds2.jpg',1024,738)><img src='scfairgrounds2.jpg' width=614 height=443 hspace=11 vspace=11 class='enl'></a></center></P><P><center><a href=javascript:poppic('poster2023f3.jpg',1103,613)><img src='poster2023f3.jpg' width=794 height=441 hspace=11 vspace=11 class='enl'></a></center><B>Membership Perk!</B>  Members can gain early access Friday, October 6th from 3 PM-5 PM.  More information is provided below on how to utilize this membership perk.</P><br><P><font size='+1'><B>How to enter the &quot;People’s Choice&quot; Show:</B></font><UL class='ulspec'><li>You need to be a current member of CSSSJ</li><li>You must own the plants you exhibit for at least six months</li></UL>Because it is a People’s Choice show, rather than a judged show, you may choose to be a bit more relaxed in selecting your entries. However, we encourage you to enter your best as you want to garner the most votes from the public.<UL class='ulspec'><li><B>Each member is allowed a MAXIMUM of 10 plants to show.</B> We have a limited amount of space for the show. Please provide a list of what you are entering with your name on it to assist with our record keeping.</li><li><B>Entries need to arrive by 4:30 pm Friday, October 6th for the show. </B>You will find entry tags for each classification (see below for details). Write up your tags putting the information on both halves. Fold in half leaving your name on both halves for counting points.</li></UL><br><font size='+1'><B>Exhibitor Classifications:</B></font><UL class='ulspec'><li><B>Novice: </B>If you are under 18, have not won a total of 50 first place ribbons in previous CSSA affiliated shows, or have been competing for less than 5 years.</li><li><B>Advanced:</B> You must exhibit in this class if you no longer qualify for the above class.</li><li><B>Open:</B> If you possess or have possessed a nurseryman’s license, or earn a substantial income from the sale of plants, you must exhibit in this class.</li></UL><br><font size='+1'><B>Membership:</B></font></P><P><B>In order to gain early access Friday afternoon from  3-5 PM</B>, all you need to do is show proof of your membership at the door. Since our membership is now online, you should have received a receipt from Square when you signed up for CSSSJ membership. If you can’t locate it, or you signed up via our hard copy method you can contact <a href='mailto:membership@csssj.org?Subject=Proof%20of%20Membership'>membership@csssj.org</a> for help in getting a copy by Oct 5th.</P><br><P><font size='+1'><B>Vendor Information:</B></font></P><P>Returning for this Show &amp; Sale is a Vendor Handbook specifically set-up to help support our amazing vendors.  Access to this Vendor Handbook was provided directly to Vendors in an email from Celeste Paradise, our Show Director.</P><br><P><font size='+1'><B>Vendor Feedback:</B></font></P><P>One of our goals as the CSSSJ Board of Directors is to continually enhance the Vendor experience during Show &amp; Sales. We would love to hear your feedback regarding what we should stop, start and continue. Please use the following form to provide this very important input: <a href='https://docs.google.com/forms/d/e/1FAIpQLSc_cSp_CTDUY-tGsLRZtcuQA59hzribYpCAujJffWu03iyn1g/viewform' target='_blank'>CSSSJ Vendor Feedback Form</a>.</P><br><P><font size='+1'><B>Social Media</B></font></P><P>Keep up to date with all the announcements and fun on our <a href='https://www.facebook.com/SJcactussucculents/' target='_blank'>Facebook</a> and <a href='https://www.instagram.com/sj_cactus_succulent/' target='_blank'>Instagram</a> pages.</td></tr></TABLE></center>");
+
+fmart ("Programs","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>We are looking ahead at our 2024 meeting programming. If you have suggestions or would be interested in being a speaker, please email <a href='mailto:programs@csssj.org?Subject=Program%20Speaker'>programs@csssj.org</a>.</td></tr></TABLE></center>");
+
+fmart ("Membership","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'>Remember to look for your online membership receipt as proof of membership for the Fall show and sale. If you didn’t join via the online portal, or have any problems please contact <a href='mailto:membership@csssj.org?Subject=Membership%20Receipt'>membership@csssj.org</a> prior to the show and sale. There will be a member list at the door.</P><P>We have over 250 members now! Although I am very familiar with names as I input them into the membership list, I’d love to put faces to names that I am not acquainted with yet. If you are coming to the show and sale, please stop by the membership table and ask for Kathi. If you haven’t received a roster, you may pick up one there, look for the neon cactus.</td></tr></TABLE></center>");
+
+fmart ("Volunteer Opportunities","Kathi Cambiano","","<center><TABLE width='90%'><tr><td valign='top'><B>Beautification Project at Wallenberg Park, San Jose</B><br>This project outside a community garden is seeking donations of drought tolerant plants, with an emphasis on natives and succulents. All plant donations should have labels with name of plant and size at maturity. There is a planning meeting via zoom on Tues, October 3rd at 7:00pm Click <a href='https://us02web.zoom.us/meeting/register/tZcofuGqpz8vGdYeaIotzEPbQLY12qnDYcxV#/registration' target='_blank'>here</a> for meeting registration. Installation date is planned for Saturday November 4th. For more information, email <a href='mailto:membership@wgna.net?Subject=Wallenberg%20Park%20Volunteer'>membership@wgna.net</a>.<br><B><br>Stanford Arizona Garden workday<br></B>Saturday, October 7th from 9:00am to 1:00pm. Participants are invited to help clean and maintain the garden on a monthly basis. You can use the tools provided, or bring your own. Please contact Christy Smith to be placed on the mailing list or for any questions:  <a href='mailto:christy.smith@stanford.edu?Subject=Stanford%20Arizona%20Garden%20Volunteer'>christy.smith@stanford.edu</a>.</td></tr></TABLE></center>");
+
+fmart ("Door Prize Donation Request","Loyd Monaco","","<center><TABLE width='90%'><tr><td valign='top'>Anybody that has an excess of plants, pots, or cactus/succulent related potting materials, tools, or books and wishes to donate any as door prizes, please contact me at <a href='mailto:loyd.monaco@yahoo.com?Subject=Door%20Prizes'>loyd.monaco@yahoo.com</a>.</P><P>Thank you!</td></tr></TABLE></center>");
+
+fmart ("CSSA To the Point","","","<center><TABLE width='90%'><tr><td>CSSA is pleased to announce the Fall 2023 edition of our <I>To The Point </I>quarterly newsletter, <B>To download your copy</B>, click <a href='https://cactusandsucculentsociety.org/TTP_Fall_2023.pdf ' target='_blank'>here</a>.</td></tr></TABLE></center>");
+
+document.write ("<br><br><br>");
+
+document.close();
+
+</SCRIPT>
+
+<map name='prez'>
+
+<area shape="rect" coords="0,0,220,222" class="enl" href=javascript:poppic('p2207a2.jpg',726,968)>
+<area shape="rect" coords="0,222,222,449" class="enl" href=javascript:poppic('p2207b2.jpg',720,960)>
+
+</map>
+
+<center>
+<P>
+<TABLE cellspacing=17><tr>
+<td><TABLE bordercolor="#CC0000" border=3><tr><td><TABLE bordercolor="#0000CC" border=3 cellpadding=5><tr><td align="center">Instagram: <a href="https://www.instagram.com/sj_cactus_succulent/" target="_blank">sj_cactus_succulent</a><br><br>
+Facebook: <a href="https://www.facebook.com/SJcactussucculents/" target="_blank">SJcactussucculents</a></td></tr></TABLE></td></tr></TABLE></td><td>
+<B>Contact us:</B><br>
+President: Loyd Monaco, at <a href='mailto:president@csssj.org?Subject=CSSSJ'>president@csssj.org </a><br>
+Newsletter Editor: Rich Kroll, <a href='mailto:editor@csssj.org?Subject=CSSSJ%20newsletter'>editor@csssj.org</a><br>
+Website: Dan Martinez, <a href='mailto:webmaster@csssj.org?Subject=CSSSJ%20website'>webmaster@csssj.org</a><br>
+Programming: Kathi Cambiano, at <a href='mailto:programs@csssj.org?Subject=CSSSJ%20Programs'>programs@csssj.org</a><br>
+Membership questions or badges: <a href="mailto: membership@csssj.org?Subject=Membership">membership@csssj.org</a></td>
+
+</tr></TABLE>
+</P>
+</center>
+
+</BODY>
+</HTML>
+
