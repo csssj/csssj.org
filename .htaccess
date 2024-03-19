@@ -34,10 +34,12 @@ Redirect /zoom/general https://us02web.zoom.us/j/81770647195?pwd=eHhUdExPVVVYaVp
 Redirect /members_corner/Secure/membership_form.html https://csssj-membership.square.site
 Redirect /welcome_visitors/membership_form.html https://csssj-membership.square.site
 
-# Redirect from the Spring 2023 to the Summer 2023 Show and Sale to
-# address some external confusion.
-Redirect /2023/spring-show-and-sale /2023/summer-show-and-sale
+Redirect /2024/spring-show-and-sale/volunteer https://www.signupgenius.com/go/805084CAEAE2EA7FD0-48609387-spring
 
 Redirect /forms/membership https://docs.google.com/forms/d/e/1FAIpQLSejJWEjoj1cxd4Zb3RjVd6And2yWJ64GJ1fm1MXR0GG0VtkKQ/viewform
 
 Redirect /forms/mini-show-winners https://docs.google.com/forms/d/e/1FAIpQLScJFedywZzcZwLZxZVCGvnR5T5Kga-0wgg9ByGAXC7xM24XGg/viewform
+
+# Redirect from the Spring 2023 to the Summer 2023 Show and Sale to
+# address some external confusion.
+Redirect /2023/spring-show-and-sale /2023/summer-show-and-sale
