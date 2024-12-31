@@ -10,8 +10,11 @@
 //
 // Global variables
 //
-var eoy = "no";              // End of year flag
-var mstitle = "2024 Standings for October";  // Heading
+var eoy = "yes";              // End of year flag
+var wred = "CC0000";         // Red
+var wblue = "0000CC";        // Blue
+var wyellow = "BBCC00";      // Yellow
+var mstitle = "Final 2024 Standings";  // Heading
 //
 var mnnm = new Array(10)     // Month names
 mnnm[1] = "January";
@@ -191,17 +194,17 @@ var mnth = new Array(12);   // Month array
 //
 if (eoy == "yes")
    {
-    document.write("<center><font size='+2' color='#A08114'><B>The Winners Are:</B></font><br><font size='+1'><font color='0000CC'><B>First is ");
+    document.write("<center><font size='+2' color='#A08114'><B>The Winners Are:</B></font><br><font size='+1'><font color='" + wblue + "'><B>First is ");
     document.write(eoy1stn);
     document.write(" with ");
     document.write(eoy1st);
     document.write(" points.</B></font>");
-    document.write("<center><font color='CC0000'><B>Second is ");
+    document.write("<center><font color='" + wred + "'><B>Second is ");
     document.write(eoy2ndn);
     document.write(" with ");
     document.write(eoy2nd);
     document.write(" points.</B></font>");
-    document.write("<center><font color='CCCC00'><B>Third is ");
+    document.write("<center><font color='" + wyellow + "'><B>Third is ");
     document.write(eoy3rdn);
     document.write(" with ");
     document.write(eoy3rd);
@@ -225,17 +228,17 @@ for (var i = 0; i < minicnt; i++)
    if (ndpos != -1)         // If found, 
       {var iname = txt.substring(0,ndpos);  // Set name
       if (eoy == "yes" && i == eoy1sti1)
-         {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wblue + "'><B>" + iname + "</B></font>";}
       if (eoy == "yes" && i == eoy1sti2)
-         {iname = "<font color='0000CC'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wblue + "'><B>" + iname + "</B></font>";}
       if (eoy == "yes" && i == eoy2ndi1)
-         {iname = "<font color='CC0000'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wred + "'><B>" + iname + "</B></font>";}
       if (eoy == "yes" && i == eoy2ndi2)
-         {iname = "<font color='CC0000'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wred + "'><B>" + iname + "</B></font>";}
       if (eoy == "yes" && i == eoy3rdi1)
-         {iname = "<font color='CCCC00'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wyellow + "'><B>" + iname + "</B></font>";}
       if (eoy == "yes" && i == eoy3rdi2)
-         {iname = "<font color='CCCC00'><B>" + iname + "</B></font>";}
+         {iname = "<font color='" + wyellow + "'><B>" + iname + "</B></font>";}
       stpos = ndpos + 1;    // Set start of points array
       var mncnt = 0;        // Init month subscript to 0
 // Init array of points by month to 0
@@ -393,8 +396,8 @@ reset ();
 fminiadd("Peter Beiersdorfer#0#25#0#0#0#0#0#0#0");
 fminiadd("Bobbi Bornstein#6#14#0#0#0#0#0#0#0");
 fminiadd("Manuela Burge#15#0#0#10#5#0#0#0#0");
-fminiadd("Cecilia Caday#0#0#0#25#0#19#25#13#0");
-fminiadd("Kathi Cambiano#25#18#24#25#19#25#25#25#0");
+fminiadd("Cecilia Caday#0#0#0#25#0#19#25#13#25");
+fminiadd("Kathi Cambiano#25#18#24#25#19#25#25#25#25");
 fminiadd("Tyler Carson#0#6#0#0#0#0#0#0#0");
 // fminiadd("Sonia Dyer#0#0#0#0#0#0#0#0#0");
 // fminiadd("Bryan Fan#0#0#0#0#25#0#0#0#0");
@@ -402,10 +405,10 @@ fminiadd("Desiree Faraj-Perez#0#11#0#0#25#0#25#10#0");
 fminiadd("Lanelle Faraj#0#0#0#0#0#19#23#25#0");
 fminiadd("Nicole Faraj#0#12#0#0#13#25#14#10#0");
 fminiadd("Judy Goodrode#0#0#0#0#0#15#0#0#0");
-fminiadd("Joseph Hidalgo#11#25#20#21#25#22#25#10#0");
-fminiadd("Marilyn Hofman#0#0#0#0#22#0#0#0#0");
+fminiadd("Joseph Hidalgo#11#25#20#21#25#22#25#10#20");
+fminiadd("Marilyn Hofman#0#0#0#0#22#0#0#0#8");
 // fminiadd("Terri Koike#0#0#0#0#0#0#25#0#0");
-fminiadd("Allen Krever#0#21#25#25#21#0#6#0#0");
+fminiadd("Allen Krever#0#21#25#25#21#0#6#0#12");
 // fminiadd("JoAn Lambert#0#0#0#0#0#25#0#0#0");
 fminiadd("Jaan Lepson#0#4#0#0#0#0#0#0#0");
 // fminiadd("Susan McKuhen#0#0#0#0#0#0#0#0#0");
@@ -416,7 +419,7 @@ fminiadd("Diane Salewski#19#16#24#25#0#0#0#0#0");
 // fminiadd("Janet Stevenson#0#0#0#0#0#0#0#0#0");
 fminiadd("Ellen Stubblefield#18#0#0#0#12#0#0#0#0");
 fminiadd("Gary Stubblefield#13#0#0#0#6#0#0#0#0");
-fminiadd("Tanya Wieber#4#0#0#0#0#12#0#0#0");
+fminiadd("Tanya Wieber#4#0#0#0#0#12#0#0#25");
 // fminiadd("Jacky Wilk#0#0#0#0#0#0#0#0#0");
 // fminiadd("Annie Wolf#0#0#25#0#0#0#0#0#0");
 fmini ();
@@ -440,7 +443,7 @@ fminiadd("Lisa Brooks-Williams#0#0#0#0#0#25#0#0#0");
 fminiadd("Diana Choi#0#0#0#0#0#0#4#0#0"); 
 fminiadd("Barbara Coats#2#0#12#7#0#22#0#8#0");
 fminiadd("Chris Davis#0#0#8#0#18#0#4#0#0");
-fminiadd("James Endo#25#25#0#25#25#25#25#0#0");
+fminiadd("James Endo#25#25#0#25#25#25#25#0#25");
 // fminiadd("Desiree Faraj#0#18#0#0#0#25#14#21#0");
 // fminiadd("Lanelle Faraj#0#23#4#0#0#25#25#25#0");
 // fminiadd("Beth Fryksdale#0#0#0#0#0#0#0#0#0");
@@ -449,30 +452,30 @@ fminiadd("James Endo#25#25#0#25#25#25#25#0#0");
 fminiadd("Renee Gunn#0#6#0#0#0#11#0#14#0");
 fminiadd("Andrew Hazlett#25#25#25#25#25#25#19#0#0");
 // fminiadd("Ellie Herrera#0#0#0#0#0#0#0#0#0");
-// fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#1");
+// fminiadd("Vickie Jackson#0#0#0#0#0#25#0#0#0");
 // fminiadd("Huda Khan#0#0#0#0#0#10#4#0#0");
-// fminiadd("Annie Lau#0#0#0#0#0#7#0#0#18");
+// fminiadd("Annie Lau#0#0#0#0#0#7#0#0#0");
 // fminiadd("Bill Lemke#25#0#0#0#0#0#0#0#0");
 // fminiadd("Dan Martinez#0#0#0#0#0#0#0#0#0");
-fminiadd("Marcy McCarrell#10#0#0#0#23#23#0#0#0");
+fminiadd("Marcy McCarrell#10#0#0#0#23#23#0#0#21");
 // fminiadd("Joyce McPheeters#0#0#0#0#0#0#0#0#0");
 fminiadd("Sara McPherson#0#19#0#23#0#0#0#0#0");
 // fminiadd("Sherry Merrill#0#0#0#0#0#0#0#0#0"); 
-fminiadd("Monica Moran#0#0#0#8#0#7#2#0#0");
+fminiadd("Monica Moran#0#0#0#8#0#7#2#0#7");
 fminiadd("Jody Myers#0#0#0#4#0#0#0#0#0");
 fminiadd("John-Paul Oliverio#0#0#0#0#0#0#25#0#0");
 fminiadd("Steve Patchin#0#0#0#0#0#0#10#0#0");
 fminiadd("Silas Prouty#0#0#0#1#0#0#1#0#0");
-fminiadd("Rachel Rose#0#0#0#0#0#0#25#0#0");
+fminiadd("Rachel Rose#0#0#0#0#0#0#25#0#14");
 fminiadd("Sofia Salazar-Rubio#0#0#0#0#0#17#10#0#0");
 fminiadd("Kate Sover#0#0#0#0#0#0#3#0#0");
 fminiadd("Angelvy Tran#0#0#0#1#0#0#0#0#0");
 // fminiadd("Thuy Tran#0#0#0#0#0#21#0#0#0");
-fminiadd("Tina Van Laarhoven#25#25#23#11#0#23#11#25#0");
+fminiadd("Tina Van Laarhoven#25#25#23#11#0#23#11#25#23");
 // fminiadd("Keith Walker#0#0#0#0#0#0#0#0#0");
 // fminiadd("Annie Wolf#0#0#0#0#0#0#0#0#0");
 // fminiadd("Mark Womack#0#0#0#0#0#0#0#0#0");
-fminiadd("Kaleb Zhan#16#25#11#7#17#9#19#14#0");
+fminiadd("Kaleb Zhan#16#25#11#7#17#9#19#14#25");
 
 fmini ();
 //
