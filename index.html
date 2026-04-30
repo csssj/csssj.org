@@ -1,290 +1,392 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <meta name="description" content="The official web site of the Cactus and Succulent Society of San Jose.">
-    <meta name="keywords" content="cactus,cacti,succulent,succulents,san jose">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="The official web site of the Cactus and Succulent Society of San Jose."
+        />
+        <meta
+            name="keywords"
+            content="cactus,cacti,succulent,succulents,san jose"
+        />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-          crossorigin="anonymous">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
 
-    <title>Cactus and Succulent Society of San Jose</title>
+        <title>Cactus and Succulent Society of San Jose</title>
 
-    <style>
-      A:link.navmain {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          font-weight:bold;
-          color:#ffffff;
-      }
+        <style>
+            A:link.navmain {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                font-weight: bold;
+                color: #ffffff;
+            }
 
-      A:active.navmain {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          font-weight:bold;
-          color:#ffffff;
-      }
+            A:active.navmain {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                font-weight: bold;
+                color: #ffffff;
+            }
 
-      A:visited.navmain {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          font-weight:bold;
-          color:#ffffff;
-      }
+            A:visited.navmain {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                font-weight: bold;
+                color: #ffffff;
+            }
 
-      A:hover.navmain {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          font-weight:bold;
-          color:#FFCC33;
-      }
+            A:hover.navmain {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                font-weight: bold;
+                color: #ffcc33;
+            }
 
-      A:link.navpanel {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          color:#ffffff;
-      }
+            A:link.navpanel {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                color: #ffffff;
+            }
 
-      A:active.navpanel {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          color:#ffffff;
-      }
+            A:active.navpanel {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                color: #ffffff;
+            }
 
-      A:visited.navpanel {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          color:#ffffff;
-      }
+            A:visited.navpanel {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                color: #ffffff;
+            }
 
-      A:hover.navpanel {
-          font-family:Tahoma, Verdana, Arial;
-          font-size:11;
-          text-decoration:none;
-          font-style:normal;
-          color:#FFCC33;
-      }
+            A:hover.navpanel {
+                font-family: Tahoma, Verdana, Arial;
+                font-size: 11;
+                text-decoration: none;
+                font-style: normal;
+                color: #ffcc33;
+            }
 
-      a:link {
-          text-decoration: none;
-          color: #009933;
-      }
+            a:link {
+                text-decoration: none;
+                color: #009933;
+            }
 
-      a:visited {
-          text-decoration: none;
-          color: #009933;
-      }
+            a:visited {
+                text-decoration: none;
+                color: #009933;
+            }
 
-      a:hover {
-          text-decoration: underline;
-          color: #33cc33;
-      }
+            a:hover {
+                text-decoration: underline;
+                color: #33cc33;
+            }
 
-      a:active {
-          text-decoration: underline;
-      }
+            a:active {
+                text-decoration: underline;
+            }
 
+            div.main {
+                margin-left: 10%;
+                margin-right: 10%;
 
-      div.main {
-          margin-left: 10%;
-          margin-right: 10%;
+                font-family:
+                    Helvetica Neue,
+                    Helvetica,
+                    Arial,
+                    sans-serif;
+                font-size: 14pt;
+            }
 
-          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-          font-size: 14pt;
-      }
+            div.miniShow {
+                margin-left: 3%;
+            }
 
-      div.miniShow {
-          margin-left: 3%;
-      }
+            dt {
+                font-weight: bold;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+            }
 
-      dt {
-          font-weight: bold;
-          margin-top: 1em;
-          margin-bottom: 0.5em;
-      }
+            hr.sep {
+                text-align: left;
+                margin-left: 0;
+                width: 75%;
+            }
 
-      hr.sep {
-          text-align: left;
-          margin-left: 0;
-          width: 75%;
-      }
+            a.social_icon {
+                color: black;
+            }
 
-      a.social_icon {
-          color: black;
-      }
+            a.social_icon:hover {
+                color: blue;
+            }
 
-      a.social_icon:hover {
-          color: blue;
-      }
+            h1 {
+                font-size: 36pt;
+            }
 
-      h1 {
-          font-size: 36pt;
-      }
+            h2 {
+                font-size: 24pt;
+            }
 
-      h2 {
-          font-size: 24pt;
-      }
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: #660000;
+            }
 
-      h1, h2, h3, h4 {
-          color: #660000;
-      }
+            img.body {
+                max-width: 100%;
+            }
 
-      img.body {
-          max-width: 100%;
-      }
+            .container {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
 
-      .container {
-          display: flex;
-          gap: 10px;
-          margin-bottom: 20px;
-      }
+            .hanging-indent {
+                text-indent: -0.7em;
+                padding-left: 0.7em;
+            }
 
-      .hanging-indent {
-          text-indent: -0.7em;
-          padding-left: 0.7em;
-      }
+            .image-container {
+                min-width: 10%;
+            }
 
-      .image-container {
-          min-width: 10%;
-      }
+            .image-row {
+                display: flex;
+                align-items: flex-start; /* Top alignment */
+                gap: 10px; /* Optional space between images */
+            }
 
-      .image-row {
-          display: flex;
-          align-items: flex-start; /* Top alignment */
-          gap: 10px;               /* Optional space between images */
-      }
+            .image-row img {
+                max-width: 33%; /* Optional sizing */
+            }
 
-      .image-row img {
-          max-width: 33%;        /* Optional sizing */
-      }
+            .break {
+                clear: both;
+            }
+        </style>
+    </head>
 
-      .break {
-          clear: both;
-      }
+    <body
+        bgcolor="white"
+        leftmargin="0"
+        rightmargin="0"
+        marginwidth="0"
+        topmargin="0"
+        marginheight="0"
+    >
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="#339966">
+                <td bgcolor="#339966" height="95">&nbsp;</td>
+                <td
+                    bgcolor="#339966"
+                    height="95"
+                    width="60"
+                    valign="middle"
+                    align="center"
+                >
+                    <img src="graphics/csssj-logo.gif" border="0" />
+                </td>
+                <td
+                    bgcolor="#339966"
+                    height="95"
+                    colspan="2"
+                    valign="middle"
+                    align="left"
+                >
+                    <font face="Arial" color="black" size="6"
+                        ><b>Cactus &amp; Succulent Society of San Jose</b></font
+                    >
+                </td>
+                <td align="right">
+                    <a
+                        class="social_icon"
+                        href="https://www.facebook.com/SJcactussucculents/"
+                    >
+                        <i class="fab fa-facebook-square fa-2x"></i>
+                    </a>
+                </td>
+                <td align="center">
+                    <a
+                        class="social_icon"
+                        href="https://www.instagram.com/sj_cactus_succulent/"
+                    >
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </td>
+            </tr>
 
-    </style>
-  </head>
+            <tr bgcolor="#339966">
+                <td bgcolor="#339966" height="10">&nbsp;</td>
+                <td
+                    nowrap
+                    bgcolor="#339966"
+                    height="10"
+                    width="120"
+                    align="left"
+                >
+                    <font
+                        color="#BFBFBF"
+                        style="
+                            font-family: Tahoma, Verdana, Arial;
+                            font-size: 8pt;
+                        "
+                    >
+                        <b>CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</b></font
+                    >
+                </td>
+                <td
+                    nowrap
+                    bgcolor="#339966"
+                    height="10"
+                    width="100%"
+                    align="right"
+                >
+                    <a
+                        href="welcome_visitors/welcome-index.html"
+                        class="navmain"
+                        title="Information about the CSSSJ and the hobby."
+                        >&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a
+                    >
+                </td>
+                <td
+                    nowrap
+                    bgcolor="#339966"
+                    height="10"
+                    width="120"
+                    align="right"
+                >
+                    <a
+                        href="members_corner/members-index.html"
+                        class="navmain"
+                        title="Information of interest to members of the CSSSJ."
+                        >&nbsp;&nbsp;&nbsp;Member’s&nbsp;Corner&nbsp;&nbsp;&nbsp;</a
+                    >
+                </td>
+                <td
+                    nowrap
+                    bgcolor="#339966"
+                    height="10"
+                    width="120"
+                    align="right"
+                >
+                    <a
+                        href="links_of_interest/links-index.html"
+                        class="navmain"
+                        title="Links of interest to cactus and succulent enthusiasts."
+                        >&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a
+                    >
+                </td>
+                <td
+                    nowrap
+                    bgcolor="#339966"
+                    height="10"
+                    width="120"
+                    align="right"
+                >
+                    <a
+                        href="pictures/index.html"
+                        class="navmain"
+                        title="Pictures of Cacti and Succulents."
+                        >&nbsp;&nbsp;&nbsp;Picture&nbsp;Albums&nbsp;&nbsp;</a
+                    >
+                </td>
+            </tr>
+        </table>
+        <br />
 
-  <body bgcolor="white" leftmargin="0" rightmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+        <!-- INSERT MAIN PANEL CONTENT BELOW THIS LINE -->
+        <!-- ***************************************** -->
 
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <div>
+            <div class="main">
+                <h1>Welcome, Visitors!</h1>
 
-      <tr bgcolor="#339966">
-        <td bgcolor="#339966" height=95>&nbsp;</td>
-        <td bgcolor="#339966" height=95 width=60 valign="middle" align="center">
-          <img src="graphics/csssj-logo.gif" border="0"></td>
-        <td bgcolor="#339966" height=95 colspan=2 valign="middle" align="left">
-          <font face="Arial" color="black" size="6"><b>Cactus &amp; Succulent Society of San Jose</b></font></td>
-        <td align="right">
-          <a class="social_icon" href="https://www.facebook.com/SJcactussucculents/">
-            <i class="fab fa-facebook-square fa-2x"></i>
-          </a>
-        </td>
-        <td align="center">
-          <a class="social_icon" href="https://www.instagram.com/sj_cactus_succulent/">
-            <i class="fab fa-instagram fa-2x"></i>
-          </a>
-        </td>
-      </tr>
+                <p>
+                    The Cactus and Succulent Society of San Jose (CSSSJ)
+                    welcomes you to our website.
+                </p>
 
-      <tr bgcolor="#339966">
-        <td bgcolor="#339966" height=10>&nbsp;</td>
-        <td nowrap bgcolor="#339966" height=10 width=120 align="left">
-          <font color="#BFBFBF" style="font-family:Tahoma, Verdana, Arial;font-size:8pt">
-            <b>CSSSJ&nbsp;Homepage&nbsp;&nbsp;&nbsp;</b></font>
-        </td>
-        <td nowrap bgcolor="#339966" height=10 width="100%" align="right">
-          <a href="welcome_visitors/welcome-index.html" class="navmain"
-             title="Information about the CSSSJ and the hobby.">&nbsp;&nbsp;&nbsp;Welcome&nbsp;Visitors&nbsp;&nbsp;&nbsp;</a></td>
-        <td nowrap bgcolor="#339966" height=10 width=120 align="right"><a href="members_corner/members-index.html" class="navmain" title="Information of interest to members of the CSSSJ.">&nbsp;&nbsp;&nbsp;Member’s&nbsp;Corner&nbsp;&nbsp;&nbsp;</a></td>
-        <td nowrap bgcolor="#339966" height=10 width=120 align="right"><a href="links_of_interest/links-index.html" class="navmain" title="Links of interest to cactus and succulent enthusiasts.">&nbsp;&nbsp;&nbsp;Links&nbsp;of&nbsp;Interest&nbsp;&nbsp;</a></td>
-        <td nowrap bgcolor="#339966" height=10 width=120 align="right"><a href="pictures/index.html" class="navmain" title="Pictures of Cacti and Succulents.">&nbsp;&nbsp;&nbsp;Picture&nbsp;Albums&nbsp;&nbsp;</a></td>
-      </tr>
-    </table>
-    <br>
+                <p>
+                    The CSSSJ is a diverse group of people with a mutual
+                    interest in and fascination for cacti and other succulent
+                    plants.
+                </p>
 
-    <!-- INSERT MAIN PANEL CONTENT BELOW THIS LINE -->
-    <!-- ***************************************** -->
+                <p>
+                    Succulent plants are among the most bizarre, beautiful, and
+                    varied in the entire plant kingdom. If you share our
+                    interest in these fascinating and unique plants, or just
+                    want to learn more, we invite you to join us at our meetings
+                    and have some fun.
+                </p>
 
-    <div>
+                <p>
+                    If you’d like to become a member, you can do so for $15 a
+                    person, or $20 a couple. See the
+                    <a href="welcome_visitors/membership_form.html"
+                        >Membership Page</a
+                    >
+                    for additional details.
+                </p>
 
-      <div class="main">
-        <h1>Welcome, Visitors!</h1>
+                <hr />
 
-        <p>
-          The Cactus and Succulent Society of San Jose (CSSSJ) welcomes you
-          to our website.
-        </p>
+                <h2>Upcoming Events</h2>
 
-        <p>
-          The CSSSJ is a diverse group of people with a mutual interest in
-          and fascination for cacti and other succulent plants.
-        </p>
+                <p>
+                    Reminder: we won’t won't be meeting at Prusch Park this
+                    month! We'll be back in June after our road trip this
+                    Sunday. Members, be sure to check your email for the latest
+                    newsletter with all the details.
+                </p>
 
-        <p>
-          Succulent plants are among the most bizarre, beautiful, and
-          varied in the entire plant kingdom. If you share our interest in
-          these fascinating and unique plants, or just want to learn more,
-          we invite you to join us at our meetings and have some fun.
-        </p>
+                <img
+                    src="graphics/no-meeting-small.jpg"
+                    alt="No meeting this month"
+                    width="100%"
+                />
+            </div>
 
-        <p>
-          If you’d like to become a member, you can do so for $15 a
-          person, or $20 a couple. See
-          the <a href="welcome_visitors/membership_form.html">Membership
-            Page</a> for additional details.
-        </p>
+            <!-- ***************************************** -->
+            <!-- INSERT MAIN PANEL CONTENT ABOVE THIS LINE -->
 
-        <hr>
+            <hr />
+            <font size="-1">
+                <i>Send questions or comments to the CSSSJ Webmaster:</i>
+                <a href="mailto:webmaster@csssj.org">webmaster@csssj.org</a>
+            </font>
+            <hr />
+        </div>
 
-        <h2>Upcoming Events</h2>
-
-        <h3>Spring Show & Sale: Saturday & Sunday, April 18-19</h3>
-
-        <p>
-          The <a href="2026/spring-show-and-sale/">Spring Show and
-          Sale</a> will take place at the Peterson Middle School this
-          weekend.
-        </p>
-
-        <a href="2026/spring-show-and-sale/">
-          <img src="2026/spring-show-and-sale/postcard-s.png">
-        </a>
-
-        <hr>
-
-      </div>
-
-      <!-- ***************************************** -->
-      <!-- INSERT MAIN PANEL CONTENT ABOVE THIS LINE -->
-
-      <hr>
-      <font size=-1>
-        <i>Send questions or comments to the CSSSJ Webmaster:</i>
-        <a href="mailto:webmaster@csssj.org">webmaster@csssj.org</a>
-      </font>
-      <hr>
-
-    </div>
-
-    <script src="https://kit.fontawesome.com/ab409d123c.js"></script>
-
-  </body>
+        <script src="https://kit.fontawesome.com/ab409d123c.js"></script>
+    </body>
 </html>
